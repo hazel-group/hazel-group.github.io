@@ -1,0 +1,143 @@
+---
+import _ from "lodash";
+import { useTranslations } from "@i18n/util";
+import Navbar from "@components/common/Navbar.astro";
+import { LanguageToggle } from "@serverless-cd/goat-ui"
+import MobileNavbar from "@components/common/MobileNavbar.astro";
+import SearchComp from "./searchComp/index.astro";
+import { SITE } from "@utils/config";
+
+interface Props {
+  align?: "home" | "docs";
+  position?: "static" | "sticky";
+  lang: "zh-cn" | "en" | string;
+}
+
+const t = useTranslations(Astro);
+const { align = "home", position = "sticky", lang } = Astro.props;
+
+let height,
+  width,
+  xpadding = "";
+(() => {
+  switch (align) {
+    case "home":
+      height = "4rem";
+      width = "85.125rem";
+      xpadding = "0";
+      return;
+    case "docs":
+      height = "3.5rem";
+      width = "100%";
+      xpadding = "1.5rem";
+      return;
+  }
+})();
+---
+
+<my-layout
+  style={`position: ${position}; height: ${height}`}
+  class="backdrop-blur-md top-0 z-[10] bg-base-100 flex justify-center"
+>
+  <!-- 方便控制header宽度 -->
+  <div class="header-content flex items-center justify-between">
+    <div class="left-content h-full flex items-center">
+      <a class="no-underline" href="/">
+        <img class="logo" src={SITE.logoUrl} alt=`${SITE.name}-logo` />
+      </a>
+      <MobileNavbar top={height} class="mobile-navbar h-full ml-4" />
+    </div>
+
+    <div class="center-content h-full">
+      <Navbar top={height} class="pc-navbar h-full" />
+    </div>
+
+    <div class="right-content flex items-center md:gap-4">
+      <LanguageToggle id="pc-toggle" defaultValue="zh-cn" theme="error"/>
+      <SearchComp />
+    </div>
+  </div>
+</my-layout>
+
+<script>
+  class HeaderLayout2 extends HTMLElement {
+    private ifscroll: boolean;
+    constructor() {
+      super();
+      this.ifscroll = false;
+      window.addEventListener("scroll", this.handleScroll);
+    }
+
+    handleScroll = () => {
+      if (window.innerWidth <= 800) return;
+      if (window.scrollY >= 100 && !this.ifscroll) {
+        this.ifscroll = true;
+        this.classList.add("bg-secondary/[0.84]");
+      }
+      if (window.scrollY <= 100 && this.ifscroll) {
+        this.ifscroll = false;
+        this.classList.remove("bg-secondary/[0.84]");
+      }
+    };
+  }
+  customElements.define("my-layout", HeaderLayout2);
+</script>
+
+<style define:vars={{ width, height, xpadding }}>
+  my-layout {
+    --header-content-width: var(--width);
+    --logo-width: 96px;
+    --header-height: var(--height);
+    --header-xl-padding: var(--xpadding);
+  }
+
+  .header-content {
+    width: var(--header-content-width);
+    padding-left: var(--header-xl-padding);
+    padding-right: var(--header-xl-padding);
+  }
+
+  .left-content .logo {
+    vertical-align: sub;
+    width: var(--logo-width);
+  }
+
+  .left-content .mobile-navbar {
+    display: none;
+  }
+
+  @media (max-width: 85.125rem) {
+    /* 在这里编写屏幕宽度小于85.125rem的CSS样式 */
+    .header-content {
+      width: 100%;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 50rem) {
+    /** header 特殊处理 屏幕小于 800px 就显示不完全 */
+    .header-content {
+      width: 100%;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .left-content .mobile-navbar {
+      display: block;
+    }
+    .center-content {
+      display: none;
+    }
+    .code-toggle {
+      padding: 0 !important;
+      background-color: transparent !important;
+      span {
+        display: none;
+      }
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+</style>

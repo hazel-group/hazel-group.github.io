@@ -1,0 +1,17 @@
+[
+    {
+        "label": "最佳实践",
+        "translations": {
+            "en": "Best Practice"
+        },
+        "autogenerate": { "directory": "best-practice" }
+    },
+    {
+        "label": "概览",
+        "translations": {
+            "en": "Overview"
+        },
+        "autogenerate": { "directory": "overview" }
+    }
+    
+]
