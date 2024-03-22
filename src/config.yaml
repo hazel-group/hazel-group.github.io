@@ -1,7 +1,7 @@
 site:
   name: SCA
-  site: 'https://hazel0928.github.io/'
-  base: '/spring-cloud-alibaba-group.github.io/'
+  site: 'https://hazel-group.github.io/'
+  base: '/'
   trailingSlash: 'always'
   websiteGithubUrl: 'https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/blob/main'
   githubUrl: 'https://github.com/alibaba/spring-cloud-alibaba'
