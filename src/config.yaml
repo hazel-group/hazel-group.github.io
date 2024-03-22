@@ -41,11 +41,6 @@ metadata:
     site: '@onwidget'
     cardType: summary_large_image
 
-algolia:
-  appId: '1QV814950M'
-  apiKey: '7445da3dec050d45d29f3fe93ed45af3'
-  indexName: 'nacos'
-
 
 ui:
   colors:

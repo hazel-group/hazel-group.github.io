@@ -3,6 +3,12 @@ import type { Customer, Solution, ChooseReason, CommunityLink, ContributeLink } 
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
+export const ALGOLIA = {
+  appId: '1QV814950M',
+  apiKey: '7445da3dec050d45d29f3fe93ed45af3',
+  indexName: 'nacos'
+}
+
 // 文档Header数据
 export const DOCS_ITEM = [
   {
