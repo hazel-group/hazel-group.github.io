@@ -7,7 +7,8 @@ import locales from './src/i18n/languages';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 // import compress from 'astro-compress';
-import rehypeExternalLinks from 'rehype-external-links'
+import rehypeExternalLinks from 'rehype-external-links';
+import preact from "@astrojs/preact";
 
 import { remarkRemoveMdLinks, remarkRemovePlainLanguageCode, remarkRemoveRepeatHeader, addPrefixImageLink, setLinkReferrer } from './src/utils/frontmatter.mjs';
 import { ANALYTICS, SITE } from './src/utils/config.ts';
@@ -33,6 +34,7 @@ export default defineConfig({
 	},
 
 	integrations: [
+		preact({ compat: true }),
 		starlight({
 			title: SITE.site,
 			social: {
