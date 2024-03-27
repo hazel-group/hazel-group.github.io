@@ -1,17 +1,13 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-import { goatuiPlugins } from "@serverless-cd/goat-ui/src/plugins"
+import { goatuiPlugins, getSafelist } from "@serverless-cd/goat-ui/src/plugins"
 import { GOAT_UI_CONTENT_PATH } from "@serverless-cd/goat-ui/src/common";
 import { UI } from './src/utils/config.ts';
 
 const colorList = UI?.colors;
 // 预先设置tailwindcss的safelist，保证动态classname
-const safelist = [];
-Object.keys(colorList).forEach((item) => {
-  safelist.push(`bg-${item}-button`);
-  safelist.push(`bg-${item}`);
-  safelist.push(`text-${item}-button`);
-  safelist.push(`text-${item}-button-active`);
-})
+const safelist = getSafelist({ 
+  colorList: Object.keys(colorList)
+});
 
 /** @type {import('tailwindcss').Config} */
 

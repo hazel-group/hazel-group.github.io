@@ -4,6 +4,7 @@ import { CarouselCard } from "@serverless-cd/goat-ui";
 import { useTranslations } from "@i18n/util";
 import { Arrow } from "../icon";
 const t = useTranslations(Astro);
+
 const MICROSERVICE_SOLUTION = [
   {title: 'Spring Cloud Alibaba SEATA', image: '/assets/2-1.jpg',detailTitle:"home.introduction.detailTitle.1",detail:'home.introduction.detail.1'},
   {title: 'Spring Cloud Alibaba Sentinel', image: '/assets/2-2.jpg', detailTitle: 'home.introduction.detailTitle.2', detail: 'home.introduction.detail.2'},
@@ -13,12 +14,11 @@ const MICROSERVICE_SOLUTION = [
   {title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-6.jpg', detailTitle: 'home.introduction.detailTitle.6', detail: 'home.introduction.detail.6'},
   {title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-7.jpg', detailTitle: 'home.introduction.detailTitle.7', detail: 'home.introduction.detail.7'},
 ];
-
-
 ---
 <div class='flex flex-col justify-center items-center mt-16'>
     <div class='lg:w-[85.125rem] md:w-full'>
-      <div class='md:w-[438px] h-[41px] text-success text-[16px]  md:text-[20px] leading-4 rounded-[20px] bg-gradient-to-r from-muted from-70% to-success to-110% px-5 py-3'>
+      <div class='solution-slogan md:w-[438px] h-[41px] text-success text-[16px]  md:text-[20px] leading-4 rounded-[20px] px-5 py-3'
+      >
       One-stop Open Source Microservice Solution
       </div>
     </div>
@@ -47,6 +47,10 @@ const MICROSERVICE_SOLUTION = [
     
   </div>
 <style>
+  .solution-slogan {
+    background: linear-gradient(90deg, rgba(157, 215, 162, 0.3) 11%, rgba(165, 198, 230, 0.29) 104%, rgba(143, 168, 166, 0.14) 104%);
+    color:#6B8A88
+  }
   .solution{
     &:hover{
       .solutionDetail{

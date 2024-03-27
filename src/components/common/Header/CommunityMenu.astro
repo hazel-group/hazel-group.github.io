@@ -193,7 +193,7 @@ const posts = (await getEntries(simplifiedPosts as any)) || [];
                     width="254"
                     height="185"
                   />
-                  <p class="w-[15.875rem] text-lg line-clamp-2 mt-3 text-link">
+                  <p class="w-[15.875rem] text-lg line-clamp-2 mt-3 text-neutral">
                     {blogDescrip[index] || item.data.title}
                   </p>
                   <Button class="rounded-3xl w-[8.5rem] h-[2.5rem] absolute bottom-2" theme="moss" href={`/${item.collection}/${item.slug}/?source=${categoryMap[item.data.category]}`} text={t("commmon.header.comm.shortcut")} />

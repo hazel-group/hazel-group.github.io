@@ -76,7 +76,7 @@ const route = generateRouteData({
 
 	// 对文档情况进行重定向
 	if (pathname.includes('docs')) {
-		const regexs = /\/docs\/(latest|ebook|next|v[0-9]\.[0-9]\.[0-9]|v[0-9]\.[0-9]|v[0-9]|[0-9]\.[0-9]\.[0-9]|[0-9]\.[0-9]|[0-9])\/.+/;
+		const regexs =/\/docs\/([^/]+)\//;
 		const match = regexs.exec(pathname)
 		if (!match) {
 			const [lang, rest] = pathname.split('/docs');

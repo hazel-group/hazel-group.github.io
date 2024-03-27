@@ -4,6 +4,7 @@ import Fork from "../icon/Fork.astro";
 import Button from "@components/common/Button.astro";
 import sendFetch from "@/utils/sendFetch";
 import { SITE } from "@utils/config";
+import { LinkButton } from "@serverless-cd/goat-ui"
 
 const relativePath = SITE.githubUrl.split("https://github.com/")[1];
 const data = await sendFetch(`https://api.github.com/repos/${relativePath}`);
@@ -12,24 +13,23 @@ const { stargazers_count: startCount = 0, forks_count: forkCount = 0 } =
 ---
 
 <star-and-fork class="shortcut flex">
-  <Button
-    size="large"
-    class="rounded-3xl mr-4"
-    href={SITE.githubUrl}
-    target="_blank"
-  >
-    <Star classes="fill-link"/>
-    <span class="text-[0.875rem] leading-4 ml-2">{startCount}</span>
-  </Button>
-
-  <Button
-    size="large"
-    type="primary"
-    class="rounded-3xl"
-    href="https://github.com/alibaba/nacos/fork"
-    target="_blank"
-  >
-    <Fork classes="fill-base-100" />
-    <span class="ml-2">{forkCount}</span>
-  </Button>
+  <LinkButton  
+    href={SITE.githubUrl}    
+    text={startCount}    
+    theme="secondary"    
+    textTheme="neutral"    
+    useIcon="star"
+    classes={{title: "font-medium"}}
+  />
+  <LinkButton
+    href="https://github.com/alibaba/nacos/fork"    
+    text={forkCount}    
+    theme="primary"    
+    textTheme="base-100"    
+    useIcon="fork"
+    classes={{
+      container:'ml-4',
+      title:'font-medium'
+    }}
+  />
 </star-and-fork>

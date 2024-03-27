@@ -14,16 +14,6 @@ export default [
       activePath: ['/docs'],
   },
   {
-      label: "企业版 NACOS",
-      translations: {
-          en: "NACOS CLOUD"
-      },
-      trigger: "click", 
-      route: "/cloud/",
-      target: "_self",
-      activePath: ['/cloud'],
-  },
-  {
       label: "社区",
       translations: {
           en: "COMMUNITY"
@@ -34,12 +24,23 @@ export default [
       activePath: ['/news', '/activity', '/blog', '/docs/ebook/', '/download'],
   },
   {
-      label: "控制台样例",
-      translations: {
-          en: "DEMO"
-      },
-      trigger: "click", 
-      target: "_blank",
-      route: "http://console.nacos.io/nacos/index.html"
-  }
+    label: "学习",
+    translations: {
+        en: "LEARN"
+    },
+    trigger: "hover",
+    slot: CommunityMenu,
+    position: "fixed",
+    activePath: ['/learn'],
+    },
+    {
+        label: "解决方案",
+        translations: {
+            en: "SOLUTIONS"
+        },
+        trigger: "hover",
+        slot: CommunityMenu,
+        position: "fixed",
+        activePath: ['solutions'],
+    },
 ]

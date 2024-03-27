@@ -36,7 +36,7 @@ const t = useTranslations(Astro);
                   </div>
                   {item.keyword.map((it) => {
                     return (
-                      <span class="item-keyword opacity-0 border border-accent rounded-[2.25rem] h-8 px-6 py-2 text-xs text-base-100 mr-3 inline-block mb-4">
+                      <span class="item-keyword opacity-0 border border-secondary rounded-[2.25rem] h-8 px-6 py-2 text-xs text-base-100 mr-3 inline-block mb-4">
                         {t(it)}
                       </span>
                     );
@@ -62,7 +62,7 @@ const t = useTranslations(Astro);
         return (
           <div class="solutions-mobile-card mx-auto h-[14rem] overflow-hidden flex flex-col justify-between cursor-pointer p-4 rounded-3xl">
             <div class="flex align-center flex-nowrap w-full">
-              <div class="mx-auto text-xs font-normal text-link tracking-wider">
+              <div class="mx-auto text-xs font-normal text-neutral tracking-wider">
                 {t("home.solutions.about")}
               </div>
             </div>

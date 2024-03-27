@@ -36,7 +36,7 @@ export async function getStaticPaths() {
 
 const categorySidebar = (await import.meta.glob("../../../src/content/**/_sidebar.json", { eager: true }));
 
-const regex = /\/content\/docs\/(latest|ebook|next|v[0-9]\.[0-9]\.[0-9]|v[0-9]\.[0-9]|v[0-9]|[0-9]\.[0-9]\.[0-9]|[0-9]\.[0-9]|[0-9]).*/;
+const regex = /\/content\/docs\/([^/]+)\//;
 const categories = {}
 _.each(categorySidebar,(item, key) => {
 	const match = regex.exec(key);

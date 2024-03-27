@@ -47,7 +47,7 @@ ui:
     # 主按钮颜色，一般为主色中间的颜色
     primary: "#61B867" # green-08
     # 次按钮的颜色，一般为灰色调最浅颜色
-    secondary: "#F4F4F6" #gray-01
+    secondary: "#F6F8F8" #moss-01
     # 强调色。"Header"中的联系我们
     accent: "#418B47" #green-10
     # 中性色。作为大标题的字体颜色
@@ -65,4 +65,4 @@ ui:
     # 静音 companiesfeedback中的isLight的背景颜色
     muted: "#D6EAD8" #green-03
     # 搜索/语言切换组件的文字颜色
-    link: "#121717" #moss-14
+    link: "#DDE4E4" #moss-03

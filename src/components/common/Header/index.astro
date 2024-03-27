@@ -41,22 +41,23 @@ let height,
 >
   <!-- 方便控制header宽度 -->
   <div class="header-content flex items-center justify-between">
-    <div class="left-content h-full flex items-center">
+    <div class="left-content h-full flex flex-1 items-center after:content-[''] after:grow after:invisible">
       <a class="no-underline" href="/">
         <img class="logo" src={SITE.logoUrl} alt=`${SITE.name}-logo` />
       </a>
       <MobileNavbar top={height} class="mobile-navbar h-full ml-4" />
     </div>
 
-    <div class="center-content h-full">
+    <div class="center-content justify-center flex-2 h-full">
       <Navbar top={height} class="pc-navbar h-full" />
     </div>
 
-    <div class="right-content flex items-center md:gap-4">
-      <LanguageToggle id="pc-toggle" defaultValue="zh-cn" theme="error"/>
+    <div class="right-content flex flex-1 items-center md:gap-4  before:content-[''] before:grow before:invisible">
+      <LanguageToggle id="pc-toggle" lang={lang} theme="error"/>
       <SearchComp />
     </div>
   </div>
+  
 </my-layout>
 
 <script>
@@ -86,7 +87,7 @@ let height,
 <style define:vars={{ width, height, xpadding }}>
   my-layout {
     --header-content-width: var(--width);
-    --logo-width: 96px;
+    --logo-height: 1.125rem;
     --header-height: var(--height);
     --header-xl-padding: var(--xpadding);
   }
@@ -99,7 +100,7 @@ let height,
 
   .left-content .logo {
     vertical-align: sub;
-    width: var(--logo-width);
+    height: var(--logo-height);;
   }
 
   .left-content .mobile-navbar {
