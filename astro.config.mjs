@@ -96,10 +96,8 @@ export default defineConfig({
 	},
 	// TODO: 梳理redirects
 	redirects: {
-		'/zh-cn/': '/',
 		'/en-us/': '/en/',
 		'/[...slug].html': '/[...slug]',
-		'/zh-cn/[...slug]': '/[...slug]',
 		'/docs/': '/docs/latest/what-is-nacos/',
 	}
 });

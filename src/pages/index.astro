@@ -5,8 +5,10 @@ import HomeIntroduce from "@components/home/HomeIntroduce.astro";
 import ChooseReason from "@components/home/ChooseReason.astro";
 import CompaniesFeedback from "@components/home/CompaniesFeedback.astro";
 import HomeSolutionsCard from "@components/home/HomeSolutionsCard.astro";
+import Overview from "@components/home/Overview.astro";
+
 import HomeFooter from "@components/common/Footer.astro";
-import { OverViewImage } from "../components/OverViewImage";
+
 
 const t = useTranslations(Astro);
 ---
@@ -15,7 +17,7 @@ const t = useTranslations(Astro);
   <HomeIntroduce />
   <ChooseReason />
   <CompaniesFeedback />
-  <OverViewImage client:load colors={{panelColor:"#F6F8F8",arrowColor:"#61B867"}}/>
+  <Overview />
   <HomeFooter>
     <HomeSolutionsCard slot="after-footer" />
   </HomeFooter>
