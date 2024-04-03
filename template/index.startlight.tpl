@@ -38,7 +38,30 @@ const categorySidebar = (await import.meta.glob("../../../src/content/**/_sideba
 
 const regex = /\/content\/docs\/([^/]+)\//;
 const categories = {}
-_.each(categorySidebar,(item, key) => {
+
+const _each = (collection, iteratee) => {
+	if (Array.isArray(collection)) {
+		for (let i = 0; i < collection.length; i++) {
+			iteratee(collection[i], i, collection);
+		}
+	} else if (collection !== null && typeof collection === 'object') {
+		for (const key in collection) {
+			if (Object.prototype.hasOwnProperty.call(collection, key)) {
+				iteratee(collection[key], key, collection);
+			}
+		}
+	}
+};
+
+const _join = (array, separator = ',') => {
+  if (!Array.isArray(array)) {
+    throw new Error('First argument must be an array.');
+  }
+
+  return array.join(separator);
+};
+
+_each(categorySidebar,(item, key) => {
 	const match = regex.exec(key);
 	if(match && match[1]) {
 		const version = match[1];

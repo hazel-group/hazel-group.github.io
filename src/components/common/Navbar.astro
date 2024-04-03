@@ -1,9 +1,9 @@
 ---
 import Toggle from "@components/common/Toggle.astro";
 import { isChinese } from "@i18n/util";
-import _ from "lodash";
+import cloneDeep from "lodash.clonedeep";
 import dataSource from "@components/common/Header/navbar.ts";
-import { DOCS_ITEM } from "@/constant";
+import { DOCS_ITEM } from "@/constant"
 const ifzh = isChinese(Astro);
 
 interface Props {
@@ -14,7 +14,7 @@ const { top = "4rem" } = Astro.props;
 
 // 修改 文档 菜单显示逻辑
 const lastIdx = dataSource.length - 1;
-let _dataSource = _.cloneDeep(dataSource);
+let _dataSource = cloneDeep(dataSource);
 
 (() => {
   const pathname = Astro.url.pathname;
@@ -23,6 +23,7 @@ let _dataSource = _.cloneDeep(dataSource);
   if (!ifzh && !pathname.startsWith("/en/docs/")) return;
   if (!ifzh && pathname.startsWith("/en/docs/ebook")) return;
 
+  // TODO: 设置config
   const regex = ifzh
     ? /\/docs\/(?!what-is-nacos)([^\/]+)/
     : /\/en\/docs\/(?!what-is-nacos)([^\/]+)/;
@@ -75,72 +76,68 @@ const ifactive = (toggle) => {
 };
 ---
 
-<navbar-component class="navbar-component h-full">
-  <div class=`pc-navbar ${Astro.props?.class || ''}`>
-    {
-      _dataSource.map(async (toggle, index) => {
-        const {
-          label,
-          translations,
-          trigger,
-          route,
-          slot,
-          position = "absolute",
-          target = "_self",
-        } = toggle;
-        // const component = slot && await import(slot);
-        const active = ifactive(toggle);
-        return (
-          <Toggle
-            title={ifzh ? label : translations?.en}
-            route={route}
-            trigger={trigger}
-            active={active}
-            slot={slot}
-            target={target}
-            position={position}
-            top={top}
-            class={`item ${index === lastIdx ? "item-last-child" : ""}`}
-          />
-        );
-      })
+<span class="navbar-wrapper">
+  <navbar-component class="navbar-component h-full">
+    <div class=`pc-navbar ${Astro.props?.class || ''}`>
+      {
+        _dataSource.map(async (toggle, index) => {
+          const {
+            label,
+            translations,
+            trigger,
+            route,
+            slot,
+            position = "absolute",
+            target = "_self",
+            relativePosition='parent'
+          } = toggle;
+          // const component = slot && await import(slot);
+          const active = ifactive(toggle);
+          return (
+            <Toggle
+              title={ifzh ? label : translations?.en}
+              route={route}
+              trigger={trigger}
+              active={active}
+              slot={slot}
+              target={target}
+              position={position}
+              top={top}
+              relativePosition = {relativePosition}
+              class={`item ${index === lastIdx ? "item-last-child" : ""}`}
+            ></Toggle>
+          );
+        })
+      }
+    </div>
+  </navbar-component>
+</span>
+
+<style is:global>
+  .navbar-wrapper {
+    navbar-component {
+      --navbar-line-bgd: theme("colors.success");
     }
-  </div>
-</navbar-component>
 
-<script>
-  class Navbar extends HTMLElement {
-    constructor() {
-      super();
+    .navbar-component {
+      display: inline-block;
+      /* 防止换行和空白间隙 2px 默认值 外部不用修改*/
+      font-size: 0.125rem;
     }
-  }
-  customElements.define("navbar-component", Navbar);
-</script>
 
-<style>
-  navbar-component {
-    --navbar-line-bgd: theme("colors.success");
-  }
+    .navbar-component .item::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 100%;
+      width: 1px;
+      height: 16px;
+      background-color: var(--navbar-line-bgd);
+    }
 
-  .navbar-component {
-    display: inline-block;
-    /* 防止换行和空白间隙 2px 默认值 外部不用修改*/
-    font-size: 0.125rem;
-  }
-
-  .navbar-component .item::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 100%;
-    width: 1px;
-    height: 16px;
-    /* height: calc(100% - 20px); */
-    background-color: var(--navbar-line-bgd);
-  }
-
-  .navbar-component .item-last-child::after {
-    display: none;
+    .navbar-component .item-last-child::after {
+      display: none;
+    }
   }
 </style>

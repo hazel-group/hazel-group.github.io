@@ -3,7 +3,7 @@ title: Spring Cloud Alibaba 系列教程
 keywords: [Spring Cloud Alibaba]
 description: Spring Cloud Alibaba 系列教程
 author: xx
-date: 2024-01-27
+date: "2024-01-27"
 category: spring-cloud-alibaba
 ---
 
@@ -345,7 +345,7 @@ https://github.com/oracle/graalvm-reachability-metadata/pull/321
 7. 如果使用虚拟机测试，注意虚拟机网络连接配置 
 8. 测试通过示例： 
 
-![image-20230627112831601.png](../../../static/img/blog/image.png)
+![image-20230627112831601.png](/img/blog/image.png)
 
 **值得一提的是，graalvm 不怎么 review 外部 pr，除非你主动催！！Oracle Labs 是经典的四天工作制，周五，周六，周日基本找不到人的！**
 

@@ -1,4 +1,5 @@
 import type { Customer, Solution, ChooseReason, CommunityLink, ContributeLink } from "@/types"
+import { getEntries } from "astro:content";
 
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
@@ -7,6 +8,14 @@ export const ALGOLIA = {
   appId: '1QV814950M',
   apiKey: '7445da3dec050d45d29f3fe93ed45af3',
   indexName: 'nacos'
+}
+
+// 文档根据版本区分的提示banner
+export const DOCS_BANNER = {
+  latest: '',
+  next:'',
+  v1: '',
+  v2:'',
 }
 
 // 文档Header数据
@@ -334,6 +343,26 @@ export const HEADER_ACTIVITY_CARD = [
   }
 ];
 
+export const HEADER_LEARN_CARD = [
+  {
+    collection: "blog",
+    slug: "release-nacos110",
+    description: "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    imageUrl:
+      "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png",
+  },
+];
+
+export const HEADER_SOLUTIONS_CARD = [
+  {
+    collection: "blog",
+    slug: "release-nacos110",
+    description: "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    imageUrl:
+      "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png",
+  },
+];
+
 export const BLOG_IMAGE_SOURCE = [
   "https://img.alicdn.com/imgextra/i1/O1CN0114MKuq1qKyZ0heOq7_!!6000000005478-2-tps-304-179.png",
   "https://img.alicdn.com/imgextra/i2/O1CN01E4YfjD1WmBmWymUJC_!!6000000002830-2-tps-608-358.png",
@@ -354,4 +383,176 @@ export const MICROSERVICE_SOLUTION = [
   { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-5.jpg', detailTitle: 'home.introduction.detailTitle.5', detail: 'home.introduction.detail.5' },
   { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-6.jpg', detailTitle: 'home.introduction.detailTitle.6', detail: 'home.introduction.detail.6' },
   { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-7.jpg', detailTitle: 'home.introduction.detailTitle.7', detail: 'home.introduction.detail.7' },
+];
+
+export const categoryMap = {
+  article: "blog_article",
+  case: "blog_case",
+  ecosystem: "blog_ecosystem",
+  release: "news_release",
+  committer: "news_personnel",
+  announcement: "news_announcement",
+  cooperate: "news_cooperate",
+  "activity-preview": "activity_activity-preview",
+  "activity-detail": "activity_activity-preview",
+};
+
+//获取顶部导航悬浮层 博客列表信息
+export const getBlogContentList = async (blogList = []) => {
+
+  const simplifiedPosts = blogList.map((item) => ({
+    collection: item.collection,
+    slug: item.slug,
+  }));
+  const blogDescrip = blogList.map((item) => item.description);
+
+  const blogImgs = blogList.map((item) => item.imageUrl);
+  const posts = (await getEntries(simplifiedPosts as any)) || [];
+
+  return {
+    blogDescrip,
+    blogImgs,
+    posts,
+  };
+}
+
+export const COMMUNITY_MENU_LIST = [
+  {
+    label: "社区",
+    translations: {
+      en: "COMMUNITY",
+    },
+    children: [
+      {
+        label: "报告文档问题",
+        target: "_blank",
+        link: "https://github.com/nacos-group/nacos-group.github.io/issues",
+        translations: {
+          en: "Report a doc issue",
+        },
+      },
+      {
+        label: "贡献社区",
+        target: "_blank",
+        link: "https://github.com/alibaba/nacos/pulls",
+        translations: {
+          en: "Contribute community",
+        },
+      },
+      {
+        label: "贡献者",
+        target: "_blank",
+        link: "https://github.com/alibaba/nacos/graphs/contributors",
+        translations: {
+          en: "Contributors",
+        },
+      },
+    ],
+  },
+  {
+    label: "事件",
+    translations: {
+      en: "Events",
+    },
+    children: [
+      {
+        label: "新闻",
+        target: "_self",
+        link: "/news/",
+        translations: {
+          en: "News",
+        },
+      },
+      {
+        label: "活动",
+        target: "_self",
+        link: "/activity/",
+        translations: {
+          en: "Activity",
+        },
+      },
+    ],
+  },
+  {
+    label: "资源",
+    translations: {
+      en: "Resources",
+    },
+    children: [
+      {
+        label: "博客",
+        target: "_self",
+        link: "/blog/",
+        translations: {
+          en: "Blog",
+        },
+      },
+      {
+        label: "电子书",
+        target: "_self",
+        link: "/docs/ebook/kbyo6n/",
+        translations: {
+          en: "E-book",
+        },
+      },
+      {
+        label: "版本下载",
+        target: "_self",
+        link: "/download/nacos-server/",
+        translations: {
+          en: "Download",
+        },
+      },
+    ],
+  },
+];
+
+export const LEARN_CARD_LIST= [
+  {
+    title: "Spring Tutorial",
+    description: "From no experience to actually build stuff",
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
+  {
+    title: "Spring Boot Tutorial",
+    description: "From no experience to actually build stuff",
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
+  {
+    title: "Spring Cloud Alibaba Tutorial",
+    description: "Alibaba's one-stop microservice solution",
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
+  {
+    title: "MSE E-Book",
+    description: "Learn how to build scalable, resillent microservices",
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
+];
+
+export const SOLUTIONS_CARD_LIST = [
+  {
+    title: "Microservices Engine",
+    description:
+      "Fully managed Nacos and Zookeeper for registration and configuration",
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
+  {
+    title: "Cloud-native Gateway",
+    description:
+      "Fully managed microservices API gateway that complies with the Kubernetes Ingress standard.",
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
+  {
+    title: "Microservices Governance",
+    description:
+      "Rich features like canary release, zero traffic loss deployment and authentication.",
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
+  {
+    title: "Application Real-Time Monitoring Service (ARMS)",
+    description:
+      "A full-stack performance monitoring and end-to-end tracing platform",
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
 ];

@@ -3,7 +3,7 @@ title: Spring Boot 单体应用升级 Spring Cloud 微服务最佳实践
 keywords: ["Spring Boot", "SpringBoot", "Spring Boot 升级为 Spring Cloud"]
 description: Spring Boot 单体应用升级 Spring Cloud & Spring Cloud Alibaba 微服务最佳实践。
 author: 刘军
-date: 2023-11-07
+date: "2023-11-07"
 category: case
 ---
 
@@ -18,7 +18,7 @@ category: case
 
 在示例中，我们有如下基于 Spring Boot 开发的应用架构：
 
-![spring boot](../../../static/img/best-practice/spring-boot.png)
+![spring boot](/img/best-practice/spring-boot.png)
 
 我们这里列出来的只是一种示例架构。基于 Spring Boot 构建的应用架构变化多样，比如可能如下一些常用的架构，但不论哪种架构，升级 Spring Cloud 的大致改造方式都是类似的（都可以转为基于 Nacos 注册中心的地址发现与负载均衡）。
 
@@ -30,7 +30,7 @@ category: case
 
 我们将以上示例全部改造为 Spring Cloud 应用，改造后的架构如下：
 
-![spring cloud](../../../static/img/best-practice/spring-cloud.png)
+![spring cloud](/img/best-practice/spring-cloud.png)
 
 新架构基于 Spring Cloud Service Discovery 机制实现地址自动发现与负载均衡，使用 Nacos 作为注册中心。
 
@@ -38,7 +38,7 @@ category: case
 
 示例包含 spring-boot-A（service-a） 和 spring-boot-B（service-b）两个应用（微服务），应用之间依赖 dns 域名完成互相调用。
 
-![spring boot](../../../static/img/best-practice/spring-boot.png)
+![spring boot](/img/best-practice/spring-boot.png)
 
 因此，要完整的运行示例，我们首先需要在本地 `/etc/hosts` 配置域名映射：
 
@@ -56,7 +56,7 @@ Get result from service B.
 
 ## 示例 Spring Cloud 应用
 
-![spring cloud](../../../static/img/best-practice/spring-cloud.png)
+![spring cloud](/img/best-practice/spring-cloud.png)
 
 接下来，我们分步骤将 Spring Boot A 应用和 Spring Boot B 应用改造为 Spring Cloud 应用。
 

@@ -3,7 +3,7 @@ title: Spring Cloud Alibaba 最佳实践
 keywords: [Spring Cloud Alibaba,Docker,kubetnetes,helm]
 description: Spring Cloud Alibaba 最佳实践
 author: 牧生
-date: 2024-01-27
+date: "2024-01-27"
 category: case
 ---
 
@@ -26,7 +26,7 @@ SCA的项目的最佳实践，是整合了SCA相关组件（Nacos，Sentinel，S
 
 下图为SCA最佳实践项目结构示意图：
 
-![image.png](../../../static//img/best-practice/image0.png)
+![image.png](/img/best-practice/image0.png)
 
 ### 组件详细说明
 
@@ -111,17 +111,17 @@ SCA的项目的最佳实践，是整合了SCA相关组件（Nacos，Sentinel，S
 - 用户下单的商品编号为1号
 - 此次订单购买的商品个数为1个
 
-![image.png](../../../static//img/best-practice/image1.png)
+![image.png](/img/best-practice/image1.png)
 
 在本 Demo 示例中，为了便于演示，每件商品的单价都为2。
 而在初始化业务数据库表的时候新建了一个用户，用户的userId为admin，余额为 3 元；同时新建了一个编号为 1 号的商品，库存为 100 件。
 因此通过上述的操作，应用会创建一个订单，扣减对应商品编号为 1 号的库存个数(100-1=99)，扣减 admin 用户的余额(3-2=1)。
 
-![image.png](../../../static//img/best-practice/image2.png)
+![image.png](/img/best-practice/image2.png)
 
 如果再次请求相同的接口，同样是先扣减库存(99-1=98)，但是会因为 admin 用户余额不足而抛出异常，并被 Seata 捕获，执行分布式事务二阶段提交，回滚事务。
 
-![image.png](../../../static//img/best-practice/image3.png)
+![image.png](/img/best-practice/image3.png)
 
 可以看到数据库中库存的记录因为回滚之后仍然为 99 件。
 
@@ -140,7 +140,7 @@ SCA的项目的最佳实践，是整合了SCA相关组件（Nacos，Sentinel，S
 
 访问 `http://integrated-frontend:30080/sentinel` 体验对应场景。
 
-![image.png](../../../static//img/best-practice/image4.png)
+![image.png](/img/best-practice/image4.png)
 
   网关路由点赞服务的限流规则为 5，而在前端通过异步处理模拟了 10 次并发请求。
   因此可以看到 Sentinel 在 Gateway 侧针对多出的流量进行了服务熔断返回 fallback 给客户端，同时数据库的点赞数进行了更新(+5)。
@@ -149,12 +149,12 @@ SCA的项目的最佳实践，是整合了SCA相关组件（Nacos，Sentinel，S
 
 访问 `http://integrated-frontend:30080/rocketmq` 体验对应场景。 
 
-![image.png](../../../static//img/best-practice/image5.png)
+![image.png](/img/best-practice/image5.png)
 
 由于之前在 Nacos 中配置了`integrated-praise-consumer`消费者模块的消费速率以及间隔，在点击按钮时应用将会模拟 1000 个点赞请求，针对 1000 个点赞请求，`integrated-praise-provider` 会将 1000 次请求都向 Broker 投递消息，而在消费者模块中会根据配置的消费速率进行消费，向数据库更新点赞的商品数据，模拟大流量下 RocketMQ 削峰填谷的特性。
     可以看到数据库中点赞的个数正在动态更新。
 
-![image.png](../../../static//img/best-practice/image6.png)
+![image.png](/img/best-practice/image6.png)
 
 #### 服务容器停止
 

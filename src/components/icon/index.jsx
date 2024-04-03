@@ -6,6 +6,8 @@ import Star from "./Star.astro";
 import TimeTested from "./TimeTested.astro";
 import UpDown from "./UpDown.astro";
 import UpRight from "./UpRight.astro";
+import Ding from './Ding.astro';
+import Email from './Email.astro';
 import Variety from "./Variety.astro";
 import Lock from './Lock.astro'
 import Arrow from './Arrow.astro'
@@ -18,7 +20,9 @@ export {
 	Star,
 	TimeTested,
 	UpDown,
+	Email,
 	UpRight,
+	Ding,
 	Variety,
 	Lock,
 	Arrow

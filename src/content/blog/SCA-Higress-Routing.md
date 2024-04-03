@@ -3,7 +3,7 @@ title: 基于网关实现 Spring Cloud 服务发现与路由
 keywords: [网关, 路由, 服务发现, Higress]
 description: 演示如何基于 Higress 网关实现 Spring Cloud 服务发现与路由
 author: 赵炳堃（秉钧）
-date: 2023-08-31
+date: "2023-08-31"
 category: ecosystem
 ---
 

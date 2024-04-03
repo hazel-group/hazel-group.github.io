@@ -3,7 +3,7 @@ title: 应用如何平滑迁移至IPv6？
 keywords: [IPv6, IP协议栈平滑迁移]
 description: 介绍Spring Cloud Alibaba应用如何平滑迁移至IPv6
 author: 铖朴
-date: 2023-03-30
+date: "2023-03-30"
 category: article
 ---
 

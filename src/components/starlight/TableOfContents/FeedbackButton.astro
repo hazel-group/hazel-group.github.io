@@ -9,10 +9,12 @@ export interface Props {}
 ---
 
 <feedback-form>
-	<button data-open-modal class="btn btn-secondary btn-sm mt-4 rounded-2xl text-xs">
+	<button
+		data-open-modal
+		class="btn btn-secondary btn-sm mt-4 rounded-2xl text-xs"
+	>
 		<UIString key="feedback.button" />
 	</button>
-
 
 	<dialog style="padding:0" aria-label={t("feedback.a11yLabel")}>
 		<div class="dialog-frame">
@@ -209,103 +211,103 @@ export interface Props {}
 	customElements.define("feedback-form", FeedbackForm);
 </script>
 
-<style>
+<style is:global>
 	feedback-form {
 		--feedback-form-padding: 1rem;
 		--feedback-form-close-icon-size: 1.5rem;
-	}
 
-	dialog {
-		font-size: 1rem;
-		margin: 1.5rem auto auto;
-		border: 1px solid theme("colors.muted");
-		border-radius: 0.5rem;
-		width: 32rem;
-		background-color: theme("colors.base-100");
-		/* box-shadow: 0 0.75rem 1rem var(--theme-backdrop-overlay); */
-	}
-
-	@media (max-width: 50rem) {
 		dialog {
-			width: 26rem;
+			font-size: 1rem;
+			margin: 1.5rem auto auto;
+			border: 1px solid theme("colors.muted");
+			border-radius: 0.5rem;
+			width: 32rem;
+			background-color: theme("colors.base-100");
+			/* box-shadow: 0 0.75rem 1rem var(--theme-backdrop-overlay); */
 		}
-	}
 
-	@media (min-width: 30em) {
-		dialog {
-			margin-top: 4rem;
+		@media (max-width: 50rem) {
+			dialog {
+				width: 26rem;
+			}
 		}
-	}
 
-	dialog::backdrop {
-		background-color: rgba(0, 0, 0, 0.5);
-	}
+		@media (min-width: 30em) {
+			dialog {
+				margin-top: 4rem;
+			}
+		}
 
-	dialog * {
-		margin: 0;
-	}
+		dialog::backdrop {
+			background-color: rgba(0, 0, 0, 0.5);
+		}
 
-	dialog header {
-		display: grid;
-		grid-template-columns: 1fr auto 1fr;
-		gap: 1rem;
-	}
+		dialog * {
+			margin: 0;
+		}
 
-	.dialog-frame {
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-		padding: var(--feedback-form-padding);
-		background-color: theme("colors.error");
-	}
+		dialog header {
+			display: grid;
+			grid-template-columns: 1fr auto 1fr;
+			gap: 1rem;
+		}
 
-	form {
-		display: contents;
-	}
-
-	fieldset {
-		border: 0;
-		padding: 0;
-	}
-
-	.category-options {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 0.75rem;
-	}
-
-	@media (max-width: 50em) {
-		.submit-buttons {
+		.dialog-frame {
+			display: flex;
 			flex-direction: column;
-			align-items: stretch;
+			text-align: center;
+			padding: var(--feedback-form-padding);
+			background-color: theme("colors.error");
 		}
-	}
 
-	form:invalid a[type="submit"] {
-		opacity: 0.5;
-	}
+		form {
+			display: contents;
+		}
 
-	.success-pane {
-		padding: 2rem;
-	}
+		fieldset {
+			border: 0;
+			padding: 0;
+		}
 
-	button[data-close-modal] {
-		position: absolute;
-		top: var(--feedback-form-padding);
-		right: var(--feedback-form-padding);
-		display: flex;
-		border: 0;
-		padding: 0.125rem;
-		background-color: transparent;
-		justify-self: flex-end;
-		cursor: pointer;
-	}
+		.category-options {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 0.75rem;
+		}
 
-	[hidden] {
-		display: none;
-	}
+		@media (max-width: 50em) {
+			.submit-buttons {
+				flex-direction: column;
+				align-items: stretch;
+			}
+		}
 
-	button:focus-visible {
-		outline: none;
+		form:invalid a[type="submit"] {
+			opacity: 0.5;
+		}
+
+		.success-pane {
+			padding: 2rem;
+		}
+
+		button[data-close-modal] {
+			position: absolute;
+			top: var(--feedback-form-padding);
+			right: var(--feedback-form-padding);
+			display: flex;
+			border: 0;
+			padding: 0.125rem;
+			background-color: transparent;
+			justify-self: flex-end;
+			cursor: pointer;
+		}
+
+		[hidden] {
+			display: none;
+		}
+
+		button:focus-visible {
+			outline: none;
+		}
 	}
 </style>

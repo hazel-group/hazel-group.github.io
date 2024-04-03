@@ -13,7 +13,7 @@ const { data: postData } = post;
 postData.date = new Date(postData.date);
 ---
 
-<div class:list={[...classList]}>
+<div class:list={[...classList, "new-card-wrapper"]}>
   <div
     class="new_card_container flex flex-row bg-primary/[0.9] text-secondary rounded-3xl"
   >
@@ -75,78 +75,79 @@ postData.date = new Date(postData.date);
   </div>
 </div>
 
-<style>
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  .poster {
-    position: relative;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .new_card_container {
-    min-height: 420px;
-    transition:
-      transform 0.2s,
-      box-shadow 0.2s;
-  }
-  .new_card_container:hover {
-    transition:
-      transform 0.2s,
-      box-shadow 0.2s;
-    transform: translateY(-4px);
-    box-shadow:
-      4px 4px 8px rgba(0, 0, 0, 0.1),
-      -4px -4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-
-  .title {
-    font-size: 1.25em; /* 调整为合适的大小 */
-    text-align: center;
-    z-index: 5;
-    line-height: 1.5em;
-  }
-
-  .info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  .logo {
-    width: 40px;
-    height: auto;
-  }
-
-  .card-bottom {
-    border-top: 1px solid theme("colors.secondary");
-  }
-
-  /* 小于50rem  小于 800px */
-  @media (max-width: 50rem) {
+<style is:global>
+  .new-card-wrapper {
+    a {
+      text-decoration: none;
+    }
     .poster {
-      height: 200px;
-    }
-    .new_card_container {
+      position: relative;
+      background-size: cover;
+      display: flex;
       flex-direction: column;
-      height: auto;
-      /* margin: 0 1rem; */
+      justify-content: center;
+      align-items: center;
     }
-  }
-  /* 大于50rem 小于 72rem  800px < width < 1152 */
-  @media (min-width: 50rem) and (max-width: 72rem) {
+
+    .new_card_container {
+      min-height: 420px;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    }
+    .new_card_container:hover {
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+      transform: translateY(-4px);
+      box-shadow:
+        4px 4px 8px rgba(0, 0, 0, 0.1),
+        -4px -4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .title {
+      font-size: 1.25em; /* 调整为合适的大小 */
+      text-align: center;
+      z-index: 5;
+      line-height: 1.5em;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .logo {
+      width: 40px;
+      height: auto;
+    }
+
+    .card-bottom {
+      border-top: 1px solid theme("colors.secondary");
+    }
+
+    /* 小于50rem  小于 800px */
+    @media (max-width: 50rem) {
+      .poster {
+        height: 200px;
+      }
+      .new_card_container {
+        flex-direction: column;
+        height: auto;
+        /* margin: 0 1rem; */
+      }
+    }
+    /* 大于50rem 小于 72rem  800px < width < 1152 */
+    @media (min-width: 50rem) and (max-width: 72rem) {
+    }
   }
 </style>

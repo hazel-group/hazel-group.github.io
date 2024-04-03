@@ -1,7 +1,7 @@
 import { SITE } from "@utils/config"
 export default {
 	// website
-	'commmon.header.menu.cloud': '企业版 SCA',
+	'commmon.header.menu.cloud': '企业版 NACOS',
 	'commmon.header.menu.comm': '社区',
 	'commmon.header.menu.demo': '控制台样例',
 	'commmon.header.docs.docs': '文档',
@@ -33,7 +33,7 @@ export default {
 	'commmon.base.page.nextLink':'下一篇',
 	
 	'commmon.footer.title': '愿景',
-	'commmon.footer.description':'Spring Cloud Alibaba 为分布式应用开发提供一站式解决方案。它包含开发分布式应用程序所需的所有组件，使您可以轻松地使用 Spring Cloud 微服务框架开发应用程序。',
+	'commmon.footer.description':'Nacos 通过提供简单易用的动态服务发现、服务配置、服务共享与管理等服务基础设施，帮助用户在云原生时代，在私有云、混合云或者公有云等所有云环境中，更好的构建、交付、管理自己的微服务平台，更快的复用和组合业务服务，更快的交付商业创新的价值，从而为用户赢得市场。',
 	'commmon.footer.subscribe': '提供易于使用的服务基础设施，如动态服务发现、服务配置、服务共享和管理等等。',
 	'commmon.footer.email.placeholder': '请输入电子邮件地址...',
 	'commmon.footer.actions.subscribe': '订阅',
@@ -50,9 +50,9 @@ export default {
 	'commmon.actions.download': '下载',
 
 	'home.title': `${SITE.name}官网 | ${SITE.name} 官方社区 | ${SITE.name} 下载`,
-	'home.description': 'Spring Cloud Alibaba 为分布式应用开发提供一站式解决方案。它包含开发分布式应用程序所需的所有组件，使您可以轻松地使用 Spring Cloud 微服务框架开发应用程序。',
+	'home.description': 'Nacos 通过提供简单易用的动态服务发现、服务配置、服务共享与管理等服务基础设施，帮助用户在云原生时代，在私有云、混合云或者公有云等所有云环境中，更好的构建、交付、管理自己的微服务平台，更快的复用和组合业务服务，更快的交付商业创新的价值，从而为用户赢得市场。',
 	'home.introduce.about': `关于 ${SITE.name}`,
-	'home.introduce.title': ' 致力于提供微服务开发的一站式解决方案!',
+	'home.introduce.title': ' 一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台',
 	'home.introduce.nacos.code': '前往 GitHub',
 	'home.introduce.nacos.manual': '手册',
 	'home.introduce.nacos.notes': '发布于2023年11月30日',
@@ -112,20 +112,20 @@ export default {
 	'home.contributors.community.stars': '贡献之星',
 	'home.contributors.learn.more': '更多',
 
-	'home.introduction.detailTitle.1':'Nacos',
-	'home.introduction.detail.1':'Spring Cloud Alibaba Nacos，为 Spring Cloud 微服务提供服务注册发现、配置管理等能力。',
-	'home.introduction.detailTitle.2':'Sentinel',
-	'home.introduction.detail.2':'Spring Cloud Alibaba Sentinel，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。',
-	'home.introduction.detailTitle.3':'Seata',
-	'home.introduction.detail.3':'Spring Cloud Alibaba Seata，保证分布式系统中的数据一致性。',
-	'home.introduction.detailTitle.4':'AI',
-	'home.introduction.detail.4':'Spring Cloud Alibaba AI，通过适配阿里通义系列 AI 服务，加速 AI 应用开发。',
-	'home.introduction.detailTitle.5':'RocketMQ',
-	'home.introduction.detail.5':'Spring Cloud Alibaba RocketMQ，为应用提供低延时、高可靠的消息发布与订阅服务，构建基于消息的微服务体系。',
-	'home.introduction.detailTitle.6':'Spring',
-	'home.introduction.detail.6':'Spring 最佳实践。',
-	'home.introduction.detailTitle.7':'Spring Boot',
-	'home.introduction.detail.7':'Spring Boot 最佳实践。',
+	'home.introduction.detailTitle.1':'关于Spring Boot',
+	'home.introduction.detail.1':'加速单体、微服务应用开发、打包与部署',
+	'home.introduction.detailTitle.2':'详细标题2',
+	'home.introduction.detail.2':'详细介绍2',
+	'home.introduction.detailTitle.3':'详细标题3',
+	'home.introduction.detail.3':'详细介绍3',
+	'home.introduction.detailTitle.4':'详细标题4',
+	'home.introduction.detail.4':'详细介绍4',
+	'home.introduction.detailTitle.5':'详细标题5',
+	'home.introduction.detail.5':'详细介绍5',
+	'home.introduction.detailTitle.6':'详细标题6',
+	'home.introduction.detail.6':'详细介绍6',
+	'home.introduction.detailTitle.7':'详细标题7',
+	'home.introduction.detail.7':'详细介绍7',
 	
 
 	'cloud.title': 'Nacos Cloud',
@@ -166,7 +166,7 @@ export default {
 	'cloud.introduce.regular.link': '点击订阅',
 
 	'cloud.feedback.about': '我们的客户',
-	'cloud.feedback.title': "使用 Spring Cloud Alibaba 开发微服务应用",
+	'cloud.feedback.title': "使用 Nacos Cloud 提升效率",
 	'cloud.feedback.soul.name': 'Soul',
 	'cloud.feedback.soul.description': "我们通过 MSE 云原生网关，将流量、安全、微服务网关三合一，大幅降低请求链路条数、降低架构复杂度、运维和故障排查成本，例如降低整个链路 RT 峰值从 500ms 下降至峰值 50ms ，服务发布期间 502 降为 0，499 平均降低 10% 等。",
 	'cloud.feedback.laidian.name': '来电科技',
