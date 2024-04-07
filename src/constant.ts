@@ -253,7 +253,8 @@ export const i18nMap = {
   },
   "learn": {
     'spring': 'learn.spring.title',
-    'spring-boot': 'learn.spring-boot.title'
+    'spring-boot': 'learn.spring-boot.title',
+    'all': 'learn.all.title'
   }
 };
 
@@ -292,6 +293,11 @@ export const LEARN_CATEGORY = [
     type: 'spring-boot',
     title: 'Spring Boot',
     href: '/learn/spring-boot/'
+  },
+  {
+    type: 'all',
+    title: '全部文章',
+    href: '/learn/all/'
   },
 ];
 
