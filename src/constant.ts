@@ -254,6 +254,8 @@ export const i18nMap = {
   "learn": {
     'spring': 'learn.spring.title',
     'spring-boot': 'learn.spring-boot.title',
+    'spring-cloud': 'learn.spring-cloud.title',
+    'spring-cloud-alibaba': 'learn.spring-cloud-alibaba.title',
     'all': 'learn.all.title'
   }
 };
@@ -293,6 +295,16 @@ export const LEARN_CATEGORY = [
     type: 'spring-boot',
     title: 'Spring Boot',
     href: '/learn/spring-boot/'
+  },
+  {
+    type: 'spring-cloud',
+    title: 'Spring Cloud',
+    href: '/learn/spring-cloud/'
+  },
+  {
+    type: 'spring-cloud-alibaba',
+    title: 'Spring Cloud Alibaba',
+    href: '/learn/spring-cloud-alibaba/'
   },
   {
     type: 'all',
@@ -468,15 +480,15 @@ export const LEARN_CARD_LIST= [
     href: "/learn/spring-boot/",
   },
   {
-    title: "Spring Cloud Alibaba Tutorial",
-    description: "Alibaba's one-stop microservice solution",
-    href: "/blog/release-nacos132/?source=blog_article",
+    title: "Spring Cloud Tutorial",
+    description: "Spring Cloud's one-stop microservice solution",
+    href: "/learn/spring-cloud/",
   },
   {
-    title: "MSE E-Book",
-    description: "Learn how to build scalable, resillent microservices",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
+    title: "Spring Cloud Alibaba Tutorial",
+    description: "Alibaba's one-stop microservice solution",
+    href: "/learn/spring-cloud-alibaba/",
+  }
 ];
 
 export const SOLUTIONS_CARD_LIST = [

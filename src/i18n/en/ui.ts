@@ -240,6 +240,8 @@ export default {
 	'blog.article.ecosystem.articles': 'Ecological Articles',
 	'learn.spring.title': 'Spring',
 	'learn.spring-boot.title': 'Spring Boot',
+	'learn.spring-cloud.title': 'Spring Cloud',
+	'learn.spring-cloud-alibaba.title': 'Spring Cloud Alibaba',
 	'learn.all.title': 'All Articles',
 	'commmon.header.comm.learn': 'Learn',
 	'page.blog.news.all':'All News',
@@ -249,9 +251,11 @@ export default {
 	"themeSelect.accessibleLabel": "Select theme",
 	'learn.article.spring':'Spring',
 	'learn.article.spring-boot':'Spring Boot',
+	'learn.article.spring-cloud':'Spring Cloud',
+	'learn.article.spring-cloud-alibaba':'Spring Cloud Alibaba',
 	'page.blog.card.sca': 'SCA Blog',
 	'learn.activity.explore': 'Explore the SCA Learning section to learn about a one-stop solution for microservice development.',
-	'page.learn.card.sca':'SCA Learn',
+	'page.learn.card.sca':'SCA Learna',
 
 
 	"page.team.introduction": 'Team Introduction',
