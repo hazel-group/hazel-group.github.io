@@ -2,7 +2,7 @@
 import { LinkText } from "@serverless-cd/goat-ui";
 import { isChinese } from "@i18n/util";
 const { menuData = {} } = Astro.props;
-const { comt, events, resources } = menuData;
+const { comt, resources } = menuData;
 const ifzh = isChinese(Astro);
 ---
 
@@ -41,24 +41,6 @@ const ifzh = isChinese(Astro);
     ]}
   >
     <span class="text-xs text-warning mb-2"
-      >{ifzh ? events.label : events.translations?.en}</span
-    >
-    {
-      events.children.map((menu) => {
-        const { label, translations, link, target = "_self" } = menu;
-        return (
-          <LinkText
-            href={link}
-            theme="neutral"
-            class="text-sm mt-3"
-            target={target}
-          >
-            {ifzh ? label : translations?.en}
-          </LinkText>
-        );
-      })
-    }
-    <span class="text-xs text-warning mb-2 mt-10"
       >{ifzh ? resources.label : resources.translations?.en}</span
     >
     {

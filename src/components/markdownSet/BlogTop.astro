@@ -9,10 +9,12 @@ const t = useTranslations(Astro);
 
 const { source, title = "", type = "home", category } = Astro.props;
 
+// FIXME: fix
 const backIconMap = {
   "blog-sub": "/blog",
   "news-sub": "/news",
-  "activity-sub": "/activity",
+  "activity-sub": "/activity/",
+  "learn-sub": "/learn/",
 };
 ---
 
@@ -49,7 +51,7 @@ const backIconMap = {
             <span class="ml-1">BACK</span>
           </Button>
         )
-      }
+      } 
     </div>
   </BaseContainer>
 </div>

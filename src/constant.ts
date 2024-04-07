@@ -250,6 +250,10 @@ export const i18nMap = {
     'activity-detail': 'blog.activity.detail.event',
     'all': 'blog.activity.all.event'
 
+  },
+  "learn": {
+    'spring': 'learn.spring.title',
+    'spring-boot': 'learn.spring-boot.title'
   }
 };
 
@@ -277,55 +281,18 @@ export const BLOG_CATEGORY = [
   },
 ];
 
-export const NEWS_CATEGORY = [
+export const LEARN_CATEGORY = [
   {
-    type: 'announcement',
-    title: '社区公告',
-    href: '/news/announcement'
+    type: 'spring',
+    title: 'Spring',
+    href: '/learn/spring/'
   },
-  {
-    type: 'release',
-    title: '发布声明',
-    href: '/news/release'
-  },
-  {
-    type: 'committer',
-    title: '人员晋升',
-    href: '/news/committer'
-  },
-  {
-    type: 'cooperate',
-    title: '社区合作',
-    href: '/news/cooperate'
-  },
-  {
-    type: 'all',
-    title: '全部新闻',
-    href: '/news/all'
-  }
-];
 
-export const ACTIVITY_CATEGORY = [
   {
-    type: 'announcement',
-    title: '社区公告',
-    href: '/activity/announcement'
+    type: 'spring-boot',
+    title: 'Spring Boot',
+    href: '/learn/spring-boot/'
   },
-  {
-    type: 'activity-preview',
-    title: '活动预告',
-    href: '/activity/activity-preview'
-  },
-  {
-    type: 'activity-detail',
-    title: '活动详情',
-    href: '/activity/activity-detail'
-  },
-  {
-    type: 'all',
-    title: '全部活动',
-    href: '/activity/all'
-  }
 ];
 
 export const HEADER_ACTIVITY_CARD = [
@@ -445,30 +412,6 @@ export const COMMUNITY_MENU_LIST = [
         link: "https://github.com/alibaba/nacos/graphs/contributors",
         translations: {
           en: "Contributors",
-        },
-      },
-    ],
-  },
-  {
-    label: "事件",
-    translations: {
-      en: "Events",
-    },
-    children: [
-      {
-        label: "新闻",
-        target: "_self",
-        link: "/news/",
-        translations: {
-          en: "News",
-        },
-      },
-      {
-        label: "活动",
-        target: "_self",
-        link: "/activity/",
-        translations: {
-          en: "Activity",
         },
       },
     ],

@@ -1,5 +1,5 @@
 ---
-title: Spring 系列教程
+title: Spring Boot 系列教程
 keywords: [Spring Cloud Alibaba,Spring Boot]
 description: Spring 系列教程
 author: 牧生
