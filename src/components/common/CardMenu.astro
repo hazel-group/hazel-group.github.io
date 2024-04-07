@@ -8,10 +8,10 @@ const { cardData = [] } = Astro.props;
 >
   {
     cardData.map((item) => {
-      const { title, description, herf = "/" } = item;
+      const { title, description, href } = item;
       return (
         <a
-          href={herf}
+          href={href}
           class={
             "card group no-underline bg-error h-[9.5rem] rounded-2xl pt-6 pb-6 pl-6 pr-9 hover:shadow-xl transition ease-in-out hover:scale-[102%] cursor-pointer"
           }

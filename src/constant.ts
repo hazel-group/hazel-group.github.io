@@ -454,12 +454,12 @@ export const LEARN_CARD_LIST= [
   {
     title: "Spring Tutorial",
     description: "From no experience to actually build stuff",
-    href: "/blog/release-nacos132/?source=blog_article",
+    href: "/learn/spring/",
   },
   {
     title: "Spring Boot Tutorial",
     description: "From no experience to actually build stuff",
-    href: "/blog/release-nacos132/?source=blog_article",
+    href: "/learn/spring-boot/",
   },
   {
     title: "Spring Cloud Alibaba Tutorial",
