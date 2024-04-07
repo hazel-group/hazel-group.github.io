@@ -27,6 +27,15 @@ export default [
     activePath: ["/news", "/activity", "/blog", "/docs/ebook/", "/download"],
   },
   {
+    label: "博客",
+    translations: {
+      en: "BLOG",
+    },
+    trigger: "click",
+    target: "_self",
+    route: "/blog/",
+  },
+  {
     label: "学习",
     translations: {
       en: "LEARN",
