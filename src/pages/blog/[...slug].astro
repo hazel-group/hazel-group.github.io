@@ -7,6 +7,7 @@ import Button from "@components/common/Button.astro";
 import { Icon } from "@astrojs/starlight/components";
 import Sidebar from "@components/starlight/Sidebar.astro";
 import { useTranslations } from "@i18n/util";
+import {SITE} from "@utils/config";
 import Pagination from "@astrojs/starlight/components/Pagination.astro";
 
 const t = useTranslations(Astro);
@@ -73,7 +74,7 @@ const next = articlePosts[0].entries[currentIndex + 1];
 ---
 
 <span class="blog-slug-wrapper">
-	<BaseLayout align="docs" title="Nacos Blog">
+	<BaseLayout align="docs" title={`${SITE.name} Blog`}>
 		<div>
 			<div
 				class="w-[20%] sidebar-content fixed overflow-auto h-full hidden 2xl:inline-block xl:inline-block lg:inline-block md:inline-block"

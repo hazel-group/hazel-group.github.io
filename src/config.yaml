@@ -1,5 +1,5 @@
 site:
-  name: SCA
+  name: Spring Cloud Alibaba
   site: 'https://hazel-group.github.io/'
   base: '/'
   trailingSlash: 'always'

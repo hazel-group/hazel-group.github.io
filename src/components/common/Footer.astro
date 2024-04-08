@@ -2,6 +2,7 @@
 import { useTranslations } from "@i18n/util";
 const t = useTranslations(Astro);
 import Button from "@components/common/Button.astro";
+import { SITE } from "@utils/config";
 ---
 
 <footer-layout
@@ -25,7 +26,7 @@ import Button from "@components/common/Button.astro";
       <Button
         size="large"
         class="rounded-3xl font-semibold"
-        href="https://github.com/alibaba/nacos"
+        href={SITE.githubUrl}
         target="_blank"
       >
         GitHub
@@ -75,6 +76,7 @@ import Button from "@components/common/Button.astro";
         </p>
         <ul class="list-none w-full h-4 ps-0 text-warning">
           <li>
+            <!-- TODO: 下载页面 -->
             <a
               href="/download/nacos-server/"
               class="text-[.875rem] font-medium leading-5 tracking-normal mb-4 no-underline"
@@ -91,6 +93,7 @@ import Button from "@components/common/Button.astro";
             </a>
           </li>
           <li>
+            <!-- TODO: 企业版链接 -->
             <a
               href="https://www.aliyun.com/product/aliware/mse?spm=nacos.io.topbar.0.0.0"
               target="_blank"
@@ -108,6 +111,7 @@ import Button from "@components/common/Button.astro";
     class="w-[85.125rem] self-center divider divider-vertical bg-muted mt-10 mb-0 h-[0.05rem]"
   >
   </div>
+  <!-- TODO: 底部水印 -->
   <div
     class="bottom_watermark text-[.875rem] text-info leading-6 text-center tracking-normal lg:pb-1 lg:pt-8"
   >

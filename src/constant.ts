@@ -4,6 +4,7 @@ import { getEntries } from "astro:content";
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
+// TODO: 配置algolia
 export const ALGOLIA = {
   appId: '1QV814950M',
   apiKey: '7445da3dec050d45d29f3fe93ed45af3',
@@ -18,7 +19,7 @@ export const DOCS_BANNER = {
   v2:'',
 }
 
-// 文档Header数据
+// TODO: 文档Header数据
 export const DOCS_ITEM = [
   {
     key: "2022",
@@ -56,24 +57,24 @@ export const DOCS_ITEM = [
 // 主要特性
 export const CHOOSE_REASON_LIST: ChooseReason[] = [
   {
-    title: "home.nacos.edge.1.title",
+    title: "home.website.edge.1.title",
     svgKey: "easy",
-    description: "home.nacos.edge.1.description",
+    description: "home.website.edge.1.description",
   },
   {
-    title: "home.nacos.edge.2.title",
+    title: "home.website.edge.2.title",
     svgKey: "adaptive",
-    description: "home.nacos.edge.2.description",
+    description: "home.website.edge.2.description",
   },
   {
-    title: "home.nacos.edge.3.title",
+    title: "home.website.edge.3.title",
     svgKey: "timeTested",
-    description: "home.nacos.edge.3.description",
+    description: "home.website.edge.3.description",
   },
   {
-    title: "home.nacos.edge.4.title",
+    title: "home.website.edge.4.title",
     svgKey: "variety",
-    description: "home.nacos.edge.4.description",
+    description: "home.website.edge.4.description",
   },
 ]
 
@@ -249,7 +250,6 @@ export const i18nMap = {
     'activity-preview': 'blog.activity.preview.event',
     'activity-detail': 'blog.activity.detail.event',
     'all': 'blog.activity.all.event'
-
   },
   "learn": {
     'spring': 'learn.spring.title',

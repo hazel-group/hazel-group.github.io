@@ -1,11 +1,6 @@
 /* 集成的默认注入的 base.css 文件 */
 @tailwind base;
 
-/* 适配safari的文档样式 */
-:root {
-	overflow-y: scroll; /* 总是显示垂直滚动条，防止页面抖动 */
-}
-
 .sl-markdown-content img,
 .sl-markdown-content picture,
 .sl-markdown-content video,
@@ -17,7 +12,6 @@
 	max-width: 100%;
 	height: auto;
 }
-
 @tailwind components;
 @tailwind utilities;
 

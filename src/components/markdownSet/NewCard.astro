@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { useTranslations } from "@i18n/util";
 import { format } from "date-fns";
 import { Button } from "@serverless-cd/goat-ui";
+import {SITE} from "@utils/config"
 
 const t = useTranslations(Astro);
 
@@ -37,7 +38,7 @@ postData.date = new Date(postData.date);
               <div class="text-2xl text-error leading-8">{postData.title}</div>
               <div class="text-secondary text-xs mt-6 leading-5">
                 by
-                <span class="ml-1.5"> {postData.author || "nacos"}</span>
+                <span class="ml-1.5"> {postData.author || SITE.name}</span>
                 <span class=" ml-1.5">
                   {t("blog.card.author.alibaba.Cloud.engineer")}
                 </span>
@@ -58,9 +59,9 @@ postData.date = new Date(postData.date);
                 </div>
                 <div class="h-2">
                   <Image
-                    src="/nacos_white.png"
-                    alt=""
-                    class="h-3 w-14"
+                    src="/logo_white.svg"
+                    alt={`${SITE.name} logo`}
+                    class="h-8"
                     width={100}
                     height="200"
                   />
