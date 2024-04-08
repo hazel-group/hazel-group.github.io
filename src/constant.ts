@@ -456,14 +456,6 @@ export const COMMUNITY_MENU_LIST = [
           en: "E-book",
         },
       },
-      {
-        label: "版本下载",
-        target: "_self",
-        link: "/download/nacos-server/",
-        translations: {
-          en: "Download",
-        },
-      },
     ],
   },
 ];
