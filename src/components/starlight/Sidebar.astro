@@ -23,15 +23,15 @@ class StarlightThemeSelect extends HTMLElement {
 	constructor() {
 		super();
 		this[key] = 'starlight-theme';
-		this.onThemeChange(this.loadTheme());
+		this.onThemeChange('light');
 	}
 
 	parseTheme(theme) {
-		if (theme === 'auto' || theme === 'dark' || theme === 'light') {
-			return theme;
-		} else {
-			return 'auto';
-		}
+		// if (theme === 'auto' || theme === 'dark' || theme === 'light') {
+		// 	return theme;
+		// } else {
+		// 	return 'auto';
+		// }
 	}
 
 	getPreferredColorScheme() {

@@ -15,7 +15,7 @@ const flattenSidebar = (sidebar) => {
 	);
 };
 ---
-
+<span class="sidebar-sublist-wrapper">
 <ul class:list={{ "top-level": !nested }}>
 	{
 		sublist.map((entry) => (
@@ -60,7 +60,7 @@ const flattenSidebar = (sidebar) => {
 							) || !entry.collapsed
 						}
 					>
-						<summary>
+						 <summary>
 							<div class="group-label">
 								<span class="large">{entry.label}</span>
 								{entry.badge && (
@@ -86,8 +86,10 @@ const flattenSidebar = (sidebar) => {
 		))
 	}
 </ul>
+</span>
 
-<style>
+<style is:global>
+	.sidebar-sublist-wrapper {
 	ul {
 		--sl-sidebar-item-padding-inline: 0.5rem;
 		list-style: none;
@@ -132,7 +134,7 @@ const flattenSidebar = (sidebar) => {
 		transition: transform 0.2s ease-in-out;
 		flex-shrink: 0;
 	}
-	:global([dir="rtl"]) .caret {
+	[dir="rtl"] .caret {
 		transform: rotateZ(180deg);
 	}
 	[open] > summary .caret {
@@ -180,4 +182,5 @@ const flattenSidebar = (sidebar) => {
 			font-size: var(--sl-text-sm);
 		}
 	}
+}
 </style>

@@ -318,13 +318,13 @@ export const HEADER_ACTIVITY_CARD = [
     "collection": "blog",
     "slug": "release-nacos132",
     "description": "Nacos 两周年献礼，Nacos 1.3.2 + Go SDK 1.0.0发布",
-    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01bGnAVW1pFeLFnlaQL_!!6000000005331-2-tps-508-370.png"
+    "imageUrl": "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   },
   {
     "collection": "blog",
     "slug": "release-nacos110",
     "description": "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
-    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png"
+    "imageUrl": "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   }
 ];
 
@@ -334,7 +334,7 @@ export const HEADER_LEARN_CARD = [
     slug: "release-nacos110",
     description: "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
     imageUrl:
-      "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png",
+      "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   },
 ];
 
@@ -344,7 +344,7 @@ export const HEADER_SOLUTIONS_CARD = [
     slug: "release-nacos110",
     description: "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
     imageUrl:
-      "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png",
+      "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   },
 ];
 

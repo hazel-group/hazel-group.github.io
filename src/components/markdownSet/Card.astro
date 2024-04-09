@@ -32,7 +32,7 @@ const { data: postData } = post;
 postData.date = new Date(postData.date);
 ---
 
-<div class="card h-[420px] bg-error shadow-none w-full">
+<div class="card h-[420px] bg-error shadow-none w-full markdown-card-wrapper">
   <div class="mt-3 px-2 h-2/5 w-full">
     <img
       src={index
@@ -60,26 +60,28 @@ postData.date = new Date(postData.date);
   </div>
 </div>
 
-<style>
-  .card {
-    transition:
-      transform 0.2s,
-      box-shadow 0.2s;
-  }
-  .card:hover {
-    transition:
-      transform 0.2s,
-      box-shadow 0.2s;
-    transform: translateY(-4px);
-    box-shadow:
-      4px 4px 8px rgba(0, 0, 0, 0.1),
-      -4px -4px 8px rgba(0, 0, 0, 0.1);
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  h2 {
-    min-height: 3rem;
+<style is:global>
+  .markdown-card-wrapper {
+    .card {
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    }
+    .card:hover {
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+      transform: translateY(-4px);
+      box-shadow:
+        4px 4px 8px rgba(0, 0, 0, 0.1),
+        -4px -4px 8px rgba(0, 0, 0, 0.1);
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    h2 {
+      min-height: 3rem;
+    }
   }
 </style>

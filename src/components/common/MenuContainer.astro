@@ -6,7 +6,7 @@ const t = useTranslations(Astro);
 ---
 
 <menu-container
-  class="dropdown-docs w-screen h-screen flex flex-col justify-start items-center"
+  class="menu-container dropdown-docs w-screen h-screen flex flex-col justify-start items-center"
 >
   <div class="bg-secondary p-10 w-full flex justify-center">
     <div class="w-fit">
@@ -80,18 +80,21 @@ const t = useTranslations(Astro);
   customElements.define("menu-container", MenuContainer);
 </script>
 
-<style>
-  .primary-fill {
-    fill: theme("colors.primary");
+<style is:global>
+  .menu-container{
+    .primary-fill {
+      fill: theme("colors.primary");
+    }
+    .toggle-dropdown-notactive {
+      display: none;
+    }
+    .hoverable:hover img {
+      display: block;
+      z-index: 1;
+    }
+    .card-link-icon {
+      transition: width 0.3s ease;
+    }
   }
-  .toggle-dropdown-notactive {
-    display: none;
-  }
-  .hoverable:hover img {
-    display: block;
-    z-index: 1;
-  }
-  .card-link-icon {
-    transition: width 0.3s ease;
-  }
+  
 </style>

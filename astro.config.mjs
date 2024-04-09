@@ -26,7 +26,7 @@ const whenExternalScripts = (items = []) =>
 
 // https://astro.build/config
 export default defineConfig({
-	site: SITE.site,
+	site: process.env.DEPLOY_SITE || SITE.site,
 	base: SITE.base,
 	trailingSlash: SITE.trailingSlash,
 	image: {
@@ -36,9 +36,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: SITE.site,
-			social: {
-				github: 'https://github.com/withastro/starlight'
-			},
+			favicon: '/img/spring_cloud_alibaba_colorful.png',
 			expressiveCode: {
 				themes: ['github-dark'], //TODO: 待调研
 			},
@@ -101,12 +99,12 @@ export default defineConfig({
 			setLinkReferrer
 		]
 	},
-	// vite: {
-	// 	build: {
-	// 	  target: "chrome68",
-	// 	},
-	// 	plugins: [topLevelAwait()],
-	// },
+	vite: {
+		build: {
+		  target: "chrome68",
+		},
+		plugins: [topLevelAwait()],
+	},
 	// TODO: 梳理redirects
 	redirects: {
 		'/en-us/': '/en/',

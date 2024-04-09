@@ -34,7 +34,7 @@ const categoryPosts = BLOG_CATEGORY.map((item) => ({
   title={t("page.blog.card.website")}
   description={t("blog.activity.explore")}
 >
-  <div class="w-full flex flex-col items-center">
+  <div class="w-full flex flex-col items-center blog-wrapper">
     <!-- 博客观察：在云原生时代导航微服务。 -->
     <BlogTop
       title="Blog Insights:Navigating Microservices in the Cloud-Native Era."
@@ -51,8 +51,8 @@ const categoryPosts = BLOG_CATEGORY.map((item) => ({
     <Footer />
   </div>
 </BaseLayout>
-<style>
-  main {
+<style is:global>
+  .blog-wrapper main {
     width: 960px;
   }
 </style>

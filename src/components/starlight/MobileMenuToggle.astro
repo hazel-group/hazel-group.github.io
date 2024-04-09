@@ -16,7 +16,7 @@ const { labels } = Astro.props;
 
 <script>
   class StarlightMenuButton extends HTMLElement {
-    btn : Element | null = null;
+    btn: Element | null = null;
 
     constructor() {
       super();
@@ -51,46 +51,46 @@ const { labels } = Astro.props;
   customElements.define("starlight-menu-button", StarlightMenuButton);
 </script>
 
-<style>
-  button {
-    position: fixed;
-    top: calc((var(--sl-nav-height) - var(--sl-menu-button-size)) / 2);
-    inset-inline-end: var(--sl-nav-pad-x);
-    z-index: var(--sl-z-index-navbar);
-    border: 0;
-    border-radius: 50%;
-    width: var(--sl-menu-button-size);
-    height: var(--sl-menu-button-size);
-    padding: 0.5rem;
-    background-color: var(--sl-color-white);
-    color: var(--sl-color-black);
-    box-shadow: var(--sl-shadow-md);
-    cursor: pointer;
-  }
-
-  [aria-expanded="true"] button {
-    background-color: var(--sl-color-gray-2);
-    box-shadow: none;
-  }
-
-  :global([data-theme="light"]) button {
-    background-color: var(--sl-color-black);
-    color: var(--sl-color-white);
-  }
-
-  :global([data-theme="light"]) [aria-expanded="true"] button {
-    background-color: var(--sl-color-gray-5);
-  }
-</style>
-
 <style is:global>
-  [data-mobile-menu-expanded] {
-    overflow: hidden;
-  }
+  starlight-menu-button {
+    button {
+      position: fixed;
+      top: calc((var(--sl-nav-height) - var(--sl-menu-button-size)) / 2);
+      inset-inline-end: var(--sl-nav-pad-x);
+      z-index: var(--sl-z-index-navbar);
+      border: 0;
+      border-radius: 50%;
+      width: var(--sl-menu-button-size);
+      height: var(--sl-menu-button-size);
+      padding: 0.5rem;
+      background-color: var(--sl-color-white);
+      color: var(--sl-color-black);
+      box-shadow: var(--sl-shadow-md);
+      cursor: pointer;
+    }
 
-  @media (min-width: 50rem) {
+    [aria-expanded="true"] button {
+      background-color: var(--sl-color-gray-2);
+      box-shadow: none;
+    }
+
+    [data-theme="light"] button {
+      background-color: var(--sl-color-black);
+      color: var(--sl-color-white);
+    }
+
+    [data-theme="light"] [aria-expanded="true"] button {
+      background-color: var(--sl-color-gray-5);
+    }
+
     [data-mobile-menu-expanded] {
-      overflow: auto;
+      overflow: hidden;
+    }
+
+    @media (min-width: 50rem) {
+      [data-mobile-menu-expanded] {
+        overflow: auto;
+      }
     }
   }
 </style>

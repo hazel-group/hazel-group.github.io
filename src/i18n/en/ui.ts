@@ -253,7 +253,7 @@ export default {
 	'learn.article.spring-boot':'Spring Boot',
 	'learn.article.spring-cloud':'Spring Cloud',
 	'learn.article.spring-cloud-alibaba':'Spring Cloud Alibaba',
-	'page.blog.card.sca': 'SCA Blog',
+	'page.blog.card.website': 'SCA Blog',
 	'learn.activity.explore': 'Explore the SCA Learning section to learn about a one-stop solution for microservice development.',
 	'page.learn.card.sca':'SCA Learn',
 
