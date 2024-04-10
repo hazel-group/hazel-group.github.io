@@ -1,0 +1,113 @@
+---
+title: 3.9 线上故障紧急诊断、排查与恢复
+keywords: [ SCA ]
+description: B 站崩溃，让年轻人无心睡觉...富途证券服务中断，创始人发 2000 字硬核长文解释技术故障...西安“一码通”半个月崩溃两次...百年不遇的故障，一年三次。诸如此类的大型 IT 系统故障每隔一段时间都会出来一个。概述当前大型互联网系统架构日趋复杂，稳定性风险也在升高，系统中一定会有一些黑天...
+---
+
+B 站崩溃，让年轻人无心睡觉...<br />富途证券服务中断，创始人发 2000 字硬核长文解释技术故障...<br />西安“一码通”半个月崩溃两次...
+
+百年不遇的故障，一年三次。诸如此类的大型 IT 系统故障每隔一段时间都会出来一个。
+<a name="bwmm4"></a>
+# 概述
+当前大型互联网系统架构日趋复杂，稳定性风险也在升高，系统中一定会有一些黑天鹅潜伏着，只是还没被发现。然而墨菲定律告诉我们“该出错的终究会出错”。因此需要有更有效的方式避免线上故障，在不可避免发生故障情况下，希望能够快速修复，减少线上影响，基于此提出了1-5-10的快恢目标， 1-5-10 的目标是要我们对于线上问题能够做到1分钟定位，5分钟定位，10分钟修复。
+<a name="wkYBG"></a>
+# 1分钟发现
+<a name="lyr2O"></a>
+## 监控
+监控的作用一句话概括就是：发现应用中的问题，并将问题及时告警给技术人员进行处理。监控类型可以分为系统问题的监控与业务问题的监控，系统问题：常见的软硬件相关问题，比如程序异常，内存fullGC等，由于没有业务特征，监控策略可适用于各个应用。业务问题：在特定业务场景下定义的问题，比如商品无优惠券，权益超发问题等，需要根据业务特征来定制监控策略。 
+
+阿里云实时应用监控服务ARMS能够自动发现和监控应用代码中常见的Web框架和RPC框架，并统计接口的调用量、响应时间、错误数等指标。同时可以进一步获取接口的慢SQL、MQ堆积分析报表或者异常分类报表，对错、慢等常见问题进行更细致的分析。
+
+ARMS还提供了业务监控的能力，以代码无侵入的方式，可视化定义业务请求，提供贴合业务的丰富性能指标与诊断能力。从业务视角衡量应用性能和稳定性的新方式，对业务的关键交易进行全链路的监控。业务监控通过追踪并采集应用程序中的业务信息，实时展现业务级的指标，例如业务的响应时长、次数和错误率，解决了应用程序和业务表现之间无法映射关联的难题。
+
+对于监控的要求有以下三点。实时： 要求对问题的发现和预警是实时的，缩短问题产生和发现的时延；准确： 要求监控和预警是准确的，包括对监控问题的定义，对预警阀值，预警等级，责任人的配置，避免误报；全面： 要求预警信息是全面的，能够帮助排查和解决问题。
+
+“不论应用出现任何问题，ARMS都可以清楚地展示问题出在哪一行代码。ARMS对于我们非常重要，大大缩短了修复故障的时间，显著提升了用户体验。自从用了ARMS，我们能及时发现和修复问题，再也不会被用户投诉所困扰。”  -- 华润万家
+
+<a name="Hf4OJ"></a>
+## 告警
+当监控发现有问题的时候，就需要通过不同等级的告警将问题及时告警给技术人员进行处理。ARMS告警管理能从以下几点来提升系统的运维效率。
+
+- 集成事件后管理更高效。
+   - 告警管理默认支持一键化集成阿里云常见的监控工具，并支持更多的监控工具手动接入，方便统一维护。
+   - 事件接入模块稳定，能提供7x24小时的无间断事件处理服务。
+   - 处理海量事件数据时可以保证低延时。
+- 及时准确地将告警通知给联系人。
+   - 配置通知规则，对事件合并后再发送告警通知，减少运维人员出现通知疲劳的情况。
+   - 根据告警的紧急程度选择邮件、短信、电话、钉钉等不同的通知方式，来提醒联系人处理告警。
+   - 通过升级通知对长时间没有处理的告警进行多次提醒，保证告警及时解决。
+- 帮助您快速便捷地管理告警。
+   - 联系人能通过钉钉随时处理告警。
+   - 使用通用告警格式，联系人能更好的分析告警。
+   - 多个联系人通过钉钉协同处理。
+- 统计告警数据，实时分析处理情况，改进告警处理效率。
+<a name="dNWuO"></a>
+# 5分钟定位故障
+<a name="CcyAp"></a>
+## Offline 一键保留现场
+当问题发生的时候，我们可以通过在某个Pod上执行Offline命令将该微服务进程从注册中心中进行地址下线，从而实现停止微服务流量的作用，使得流量不再访问执行过Offline的实例，从而一键保留现场，使得我们排查问题的过程中不会影响线上的正常流量。
+<a name="IOkk0"></a>
+## Arthas 诊断
+Arthas是诊断Java领域线上问题的利器，利用字节码增强技术，可以在不重启JVM进程的情况下，查看程序的运行情况。
+<a name="opZHd"></a>
+### JVM概览
+JVM概览支持查看应用的JVM相关信息，包括JVM内存、操作系统信息、变量信息等，帮助我们了解JVM的总体情况。
+
+- JVM内存：JVM内存的相关信息，包括堆内存使用情况、非堆内存使用情况、GC情况等。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893530143-a34aa97b-82d5-4677-ab6f-618acc7d66c4.png#clientId=udb27c2ca-924f-4&from=paste&id=uf0b21d95&originHeight=223&originWidth=1676&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u2e5e8125-c74b-4461-8025-b011e0b4b7c&title=)
+- 操作系统信息：操作系统的相关信息，包括平均负载情况，操作系统名称、操作系统版本、Java版本等。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893530137-955e1e05-7022-40bf-8d25-7b7da481927a.png#clientId=udb27c2ca-924f-4&from=paste&id=u2dc3e944&originHeight=389&originWidth=1674&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u6d6fd8ca-46b7-4f21-835f-52475ee8236&title=)
+- 变量信息：变量的相关信息，包括系统变量和环境变量。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893530105-6135397c-1887-4b44-b52a-da82712e3114.png#clientId=udb27c2ca-924f-4&from=paste&id=u2726ddbb&originHeight=406&originWidth=1674&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u1129d845-f3ab-4d5f-9e0a-c64fef6b75a&title=)
+<a name="uPN8R"></a>
+### 线程耗时分析
+线程耗时分析支持显示该应用的所有线程和查看线程的堆栈信息，帮助我们快速定位耗时较高的线程。
+
+1. 线程耗时分析页签会实时获取当前JVM进程的线程耗时情况，并将相似线程聚合。可以查看线程的ID、CPU使用率和状态。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893599719-05a49046-08f1-4438-8cc8-34b86c46cf59.png#clientId=u7c4c41b4-373c-4&from=paste&id=uc89775f7&originHeight=672&originWidth=1675&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u2e452402-76e9-492a-a659-919da669056&title=)
+2. 我们可以在目标线程右侧的操作列，单击查看实时堆栈。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893599725-0c0fadc2-5401-4617-b191-8b4d68ba63e5.png#clientId=u7c4c41b4-373c-4&from=paste&id=u422c2bf2&originHeight=338&originWidth=854&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u5c0bbfc1-989a-4df0-bed0-d3d5b88edf3&title=)
+<a name="odkcF"></a>
+### 方法执行分析
+方法执行分析支持抓取方法的某一次执行的耗时、入参、返回值等信息和钻入，帮助您快速定位导致慢调用的根本原因，以及问题线下无法复现或日志缺失等场景。<br />![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893599721-e1622f64-1d36-49c2-9265-7de0fccdeca7.png#clientId=u7c4c41b4-373c-4&from=paste&id=u0d07beb4&originHeight=1122&originWidth=2333&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u8359cc82-a4e0-46ba-a0e9-6bbb968bd8f&title=)
+
+- 如下图所示，每一次内部方法的执行耗时都会以注释的方式显示在源代码中。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893599707-a54bb252-f7ab-4736-8473-17128ee9a711.png#clientId=u7c4c41b4-373c-4&from=paste&id=uca831958&originHeight=849&originWidth=1346&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u91fb9e7f-7e06-48fd-96c6-b8c57fdf655&title=)
+<a name="izSXc"></a>
+### 对象查看器
+对象查看器用于查看一些单例对象当前的状态，用于排查应用状态异常问题，例如应用配置、黑白名单、成员变量等。<br />![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893600235-71cb4cf9-cc63-464f-949a-863e3ff3f0b8.png#clientId=u7c4c41b4-373c-4&from=paste&id=ue21d66f9&originHeight=687&originWidth=1695&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=uad3ac292-2209-452d-bd0b-7dd4eea15ad&title=)
+<a name="Isigt"></a>
+### 实时看板
+实时看板用于查看系统中用到的关键组件的实时状态，例如查看数据库连接池的使用情况、HTTP连接池的使用情况等，有利于排查资源类型的问题。
+
+1. 如下图显示为一个Druid连接池的实时状态信息，包括基础配置、连接池状态、执行耗时分布等。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893600284-ff5175c4-8941-4939-b339-b9105190481d.png#clientId=u7c4c41b4-373c-4&from=paste&id=syRnk&originHeight=576&originWidth=1683&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u5651c298-d3a0-45a4-b9b3-be3e6403b4a&title=)
+<a name="TbqUF"></a>
+### 性能分析
+性能分析支持对CPU耗时、内存分配等对象进行一定时间的采样并生成相应的火焰图，帮助您快速定位应用的性能瓶颈。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893728929-1056d344-4cea-489a-b25c-85d8f933c25e.png#clientId=u7c4c41b4-373c-4&from=paste&height=560&id=u7325634d&originHeight=560&originWidth=1197&originalType=binary&ratio=1&rotation=0&showTitle=false&size=106871&status=done&style=none&taskId=u6f911d2e-54de-453c-a337-ebbd7eb9861&title=&width=1197)
+<a name="TYkFB"></a>
+## 内存快照
+JVM监控可以直观展示指定时间段内的多项内存指标，虽然图表能体现出内存使用量过大的情况，但无法显示具体信息，因此不能帮助您排查问题产生的原因。我们可以通过创建内存快照，通过详细的日志查看内存占用的详细信息，从而进一步排查内存泄漏和内存浪费等内存问题。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644893428852-91a61656-90b0-462f-a2d0-4e7a5116aa50.png#clientId=udb27c2ca-924f-4&from=paste&height=860&id=u79e36aae&originHeight=860&originWidth=892&originalType=binary&ratio=1&rotation=0&showTitle=false&size=53033&status=done&style=none&taskId=u0e824b0a-443a-435a-b162-d68fed5c196&title=&width=892)
+<a name="jPVr1"></a>
+# 10分钟恢复
+<a name="nMISv"></a>
+## 离群实例摘除
+在微服务架构中，当服务提供者的应用的某些实例出现异常，而服务消费者无法感知时会影响服务的正常调用，并影响消费者的服务性能甚至可用性。离群实例摘除功能会检测应用实例的可用性并进行动态调整，以保证服务成功调用，从而提升业务的稳定性和服务质量。
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1644894030976-b574f1cd-8eea-4825-87f1-dab211937a57.png#clientId=u657c425f-85d3-4&from=paste&height=309&id=u638c4056&originHeight=309&originWidth=535&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29175&status=done&style=none&taskId=u5663ab82-86c3-4c7b-9d6d-f1aa4e2fdf5&title=&width=535)
+<a name="jRhcI"></a>
+## 服务降级
+当应用遇到业务高峰期，发现下游的服务提供者遇到性能瓶颈，甚至即将影响业务时。我们可以对部分的服务消费者进行服务降级操作，让不重要的业务方不进行真实地调用，直接返回Mock的结果或甚至异常返回，将宝贵的下游服务提供者资源保留给重要的业务调用方使用，从而提升整体服务的稳定性。我们把这个过程叫做：服务降级。当应用依赖的下游服务出现不可用的情况，导致业务流量损失。您可以通过配置服务降级能力，当下游服务出现异常时，服务降级使流量可以在调用端 "fail fast"，有效防止雪崩。
+
+离群实例摘除与服务降级主要是体现在两点：
+
+1. 自动完成：服务降级是一种运维动作，需要通过控制台进行配置，并且指定对应的服务名才能做到相应的效果；而离群实例摘除能力是会主动探测上游节点的存活情况，在这条链路上整体做降级。
+2. 摘除粒度：服务降级降级的是（服务+节点IP），以 Dubbo 举例子，一个进程会发布以服务接口名（Interface）为服务名的微服务，如果触发到这个服务的降级，下次将不再调用这个节点的此服务，但是还是会调用其他服务。但是离群实例摘除是整个节点都不会去尝试调用。
+
+<a name="omN1X"></a>
+## 基于同可用区优先的一键切流
+同城的特点是 RT 一般处在一个比较底的延迟（< 3ms 以内），所以在默认情况下，我们可以基于同城的不同可用区搭建起来一个大的局域网，然后把我们应用跨可用区分布在多个可用区中，以此来应对单可用区出现故障时可以更好地控制故障的影响面。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1655373976211-d4b10904-fa69-4281-851a-1411d5809dce.png#clientId=u7b127b77-1084-4&from=paste&height=392&id=xS4Vk&originHeight=784&originWidth=1560&originalType=binary&ratio=1&rotation=0&showTitle=false&size=126902&status=done&style=none&taskId=uffbeb7ae-d455-4dde-813d-d2f637692b6&title=&width=780)<br />MSE 服务治理在服务框架层面提供了同机房优先路由的能力，如果目标服务和自己所在可用区相同，则优先将流量路由至和当前同可用区的节点。当某个可用区出现不可用的情况，我们只需在网关对流量进行切流，将出故障可用区的流量隔离，即马上可恢复我们的业务。
+
+<a name="w2sEC"></a>
+## 限流、扩容、重启、回滚
+
+- 限流：根据流量、并发线程数、响应时间等指标，把随机到来的流量调整成合适的形状，即流量塑形。避免应用被瞬时的流量高峰冲垮，从而保障应用的高可用性。
+- 扩容：水平横向扩容提升集群可用性
+- 重启：重新启动JVM进程，从而暂时消除长时间运行累积的问题如内存泄露等
+- 回滚：消除变更引入的问题
+<a name="pqg35"></a>
+# 尾
+1-5-10 故障快恢，故障1分钟响应、5分钟定位、10分钟恢复；只有不断地面向失败地设计、基于故障应急方式演练，那么在真正遇到线上故障的时候我们才可以更加从容地面对故障。我们希望新一代的云原生微服务能更多地具备系统自愈能力，微服务架构内部可以自动感知外部组件的失效，自动切换至备用链路，真正地把故障扼杀在摇篮之中。

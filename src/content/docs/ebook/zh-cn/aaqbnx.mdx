@@ -1,0 +1,131 @@
+---
+title: 3.4 微服务应用配置解决方案
+keywords: [ SCA ]
+description: 背景介绍微服务架构之应用配置应用配置可解决的问题主要包括以下方面：问题项问题描述本地静态配置采用本地静态配置，导致运行时无法动态修改配置格式不统一散乱，难以管理，有的用XML格式，有的用properties，有的用DB等生产事故容易将非生产配置带到生产环境，引发事故配置修改困难部署多台节点时，...
+---
+<a name="eUtWC"></a>
+# 背景介绍
+<a name="q9X2r"></a>
+## 微服务架构之应用配置
+应用配置可解决的问题主要包括以下方面：
+
+| 问题项 | 问题描述 |
+| --- | --- |
+| 本地静态配置 | 采用本地静态配置，导致运行时无法动态修改 |
+| 配置格式不统一 | 散乱，难以管理，有的用XML格式，有的用properties，有的用DB等 |
+| 生产事故 | 容易将非生产配置带到生产环境，引发事故 |
+| 配置修改困难 | 部署多台节点时，修改配置费时费力，周期长 |
+| 缺少安全审计和版本控制能力 | 无法追溯责任人，无法得知修改内容，无法确定修改时间，无法及时回滚 |
+
+针对上述问题，阿里云产品应用配置中心应运而生，下面介绍微服务应用配置典型使用场景。
+
+<a name="LIjwC"></a>
+## 典型使用场景
+
+<a name="Q9Pak"></a>
+### 动态调整日志级别
+此为开箱即用功能。
+
+在特定的场景下，您可以针对性地动态调整日志级别，以便输出更多的日志信息排查线上问题，或是减少日志打印带来的性能消耗。功能开关提供了在应用运行时动态修改日志级别的功能，在不同的应用场景下，您可以随时调整日志的级别，得到更有效的日志信息。
+
+在开发Java程序时，我们经常会用到各种各样的日志框架。为了避免在程序正常运行时输出不必要的信息，我们在使用日志框架时会设置默认的日志级别。而程序在线上运行时，我们需要在特定的场景下针对性地动态调整日志级别。
+
+进入目标应用的**开关列表**页面。在**开关列表**页面搜索到** SYSTEM_LOG_CONFIG** 开关，即日志级别开关。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/340872/1647308132774-69f455fe-1d5a-42f2-bb4b-2c8d0d9da66d.png#clientId=u6908818b-1507-4&from=paste&height=426&id=UqbK3&originHeight=426&originWidth=1648&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112020&status=done&style=none&taskId=u03eb7785-5439-4fc7-afc6-8a2d66a75d0&title=&width=1648)<br />单击**操作**列的**全局推送**或**单机推送**，按照** <loggerName,loggerLevel>** 格式填写日志运行的配置，然后单击**全局推送**或**单机推送**。即可修改全部机器或是单台机器的日志运行级别。<br />推送值格式：**Key** 为 **LoggerName**，**Value** 为日志级别。如需修改全局日志级别，**LoggerName** 为 **root**，如下所示。
+```
+{
+ "root": "ERROR"
+}
+```
+
+注：支持的日志框架：Log4j、Log4j2、Logback。
+
+<a name="F1xKO"></a>
+### 配置项组合更新
+可按不同场景批量更新组合配置项，所谓组合配置项指具有一组相互关联业务语义的配置项，如页面公告中时间、标题、内容等，商品特殊优惠配置中价格、优惠折扣等。<br />下图以'商品优惠配置'为例进行说明。<br />'商品优惠配置'在不同场景下优惠对象、优惠折扣及价格等各不相同，将'商品优惠配置'涉及的配置项组合，在不同场景下设置不同内容，可在不同场景下快速切换，同时省去繁琐校验过程，避免出错。<br />![第四节_3-4-1 第三章第四节第一张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648210670059-c6c76be1-58b0-459a-b57d-cc2a0d1c6faf.png#clientId=u5f1fb7b9-47db-4&from=ui&id=ub4a69179&originHeight=205&originWidth=614&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18922&status=done&style=none&taskId=u35f7dc8f-8739-4a3b-b889-aa81b426d2d&title=)
+
+<a name="RT3OB"></a>
+### 开关驱动开发
+以开关方式控制代码执行逻辑，用于新功能快速验证，在出现问题时可及时回退。相比复杂的系统发布，投入成本较低，可结合DevOps机制进行实践。<br />如下图所示，当执行逻辑触发时访问对应的开关配置查看配置是否打开，从而决定是否执行新功能。<br />可用于A/B测试、环境隔离等场景。
+
+![第四节_3-4-2 第三章第四节第二张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648210681385-5294957c-0edc-4ece-a1dc-8c965aa784de.png#clientId=u5f1fb7b9-47db-4&from=ui&id=u81afa49e&originHeight=205&originWidth=614&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11993&status=done&style=none&taskId=u0046be52-0ead-48e7-90e8-c6ae2fcbc1c&title=)
+
+<a name="IVmbb"></a>
+### 金丝雀(灰度)发布
+通过配置项控制应用接收流量，在灰度验证后，可及时回退或全线切流。
+
+![第四节_3-4-3 第三章第四节第三张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648210695873-30aa703d-a6c0-46de-86b0-c81daddf0401.png#clientId=u5f1fb7b9-47db-4&from=ui&id=u664d3e7d&originHeight=155&originWidth=614&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8903&status=done&style=none&taskId=u29df528b-b451-4616-92a2-6531b14ffa5&title=)
+
+<a name="Z1IIr"></a>
+## 
+
+<a name="A4yv9"></a>
+# 应用配置解决方案介绍
+用户在无需改变MSE使用习惯前提下，通过新应用接入或版本升级方式即可使用应用配置能力。<br />MSE后端与应用配置服务(ahas-switch)整合而复用应用配置相关功能，解耦应用配置具体实现。控制台推送配置项由应用配置服务处理，配置项通过ACM组件持久化，应用重启或扩容阶段可读取持久化配置。<br />![第四节_3-4-4 第三章第四节第四张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648210706708-b4c11c4b-ec5f-410f-a33a-5f817d3f02b3.png#clientId=u5f1fb7b9-47db-4&from=ui&id=u1fb45ae2&originHeight=287&originWidth=614&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19308&status=done&style=none&taskId=u3a7a00bc-c483-43d0-bc6d-c24fc894125&title=)<br />下文首先通过对比现有产品，分析竞品优势与劣势，进而引出本应用配置解决方案核心设计要点，突出差异化优势，为用户提供优秀的应用配置解决方案。
+<a name="W5FRJ"></a>
+## 现有产品对比分析
+选取较为有代表性且具有一定市场规模的产品进行对比，分析产品的适用场景，为用户产品选型及AHAS功能开关应用配置推广提供依据。<br />1.开源组件：
+
+- [Togglz](https://www.togglz.org/documentation/overview.html)
+- [Switch 社区版本](https://github.com/alibaba/switch-config)
+- [Apollo](https://github.com/apolloconfig/apollo)
+
+2.商业化产品：
+
+- [AWS AppConfig: Configure, validate, and deploy application configuration](https://aws.amazon.com/systems-manager/features/appconfig) 
+
+产品对比分析如下表所示：
+
+| 产品 | Switch 社区版 | Togglz | AWS AppConfig | Apollo | AHAS 功能开关<br />（MSE 应用配置） |
+| --- | --- | --- | --- | --- | --- |
+| 配置时效性 | 动态配置，需自行实现可靠推送 | 动态配置，需自行实现可靠推送 | 动态配置，实时生效 | 动态配置，实时生效 | 动态配置，开箱即用，可靠推送，实时生效 |
+| 配置覆盖能力 | 仅支持单机推送 | 需自行实现持久化 | 多节点覆盖 | 多节点覆盖 | 快速覆盖上千服务实例 |
+| 配置灰度能力 | 不支持 | 支持 | 支持 | 支持 | 支持 |
+| 简单配置（文本、开关） | 支持 | 场景有限，仅可以当做 bool 类型的开关 | 支持 | 支持 | 支持 |
+| 复杂类型的业务配置 | 支持 | 不支持 | 均需通过文本方式配置，代码自行解析需要的类型 | 支持，但不完善，如List类型要使用逗号分隔且需调整注解 | typed-config，支持各种基本类型和复杂类型（List, Map, Set, 自定义对象），自动解析并保障类型安全 |
+| 配置格式校验 | 支持 | 不支持 | 需用户手写规则校验，使用成本高 | 不支持 | 自动校验，保证类型安全 |
+| 可观测能力 | 无控制台，不支持 | 支持弱 | 弱，业务生效的实时值无法直接观测 | 支持 | 白屏化观测能力，控制台可观测各接入节点的实时生效值和分布情况 |
+| 微服务生态支持 | 无直接支持 | 无开箱即用支持 | 无直接支持 | 支持SpringCloud微服务家族配置项 | 开箱即用的 Spring Cloud @Value 及@ConfigurationProperties 配置动态管理能力 |
+| 开箱即用的运维管控能力 | 不支持 | 不支持 | 不支持 | 支持 | 支持，如动态日志级别调整 |
+| 代码侵入性 | 有侵入 | 有侵入 | 有侵入 | SDK 方式低侵入；Java Agent 方式无侵入，但功能存在问题 | Java Agent 方式无侵入，SDK 方式低侵入 |
+
+综合比较可得出结论：在应用配置领域，AHAS提供的应用配置支持的场景及功能完备性方面，相对而言，对用户使用更加友好。
+
+<a name="Ni7aJ"></a>
+## 核心设计要点
+
+- 应用接入
+
+应用通过Agent方式接入MSE，连接应用配置服务，无需对应用做任何改造，真正做到无侵入。
+
+- 配置推送
+
+在MSE控制台即可对应用配置进行管理，按需推送配置项，支持按节点推送与全局推送方式。
+
+- 配置持久化
+
+应用配置服务通过ACM组件持久化配置项，保障配置项高可靠性。应用在重启或扩容阶段可读取持久化配置。
+
+<a name="Cvpxf"></a>
+## 差异化优势
+在产品对比分析基础上，对AHAS功能开关具备的差异化能力简要概括为以下三点：
+
+- 强类型校验
+
+用户无需在业务层面对接收到的配置进行类型及格式的校验，校验工作由平台承担，应用仅需关注业务
+
+- 无侵入式接入
+
+对SpringCloud应用支持一键接入，自动识别应用中配置项，可通过控制台实时修改并进行持久化等操作
+
+- 复杂配置项支持
+
+在复杂数据类型支持方面较为完善，无需遵守较为繁琐的配置项规则
+
+- 开箱即用功能
+
+支持日志级别动态调整，获取不同级别日志，方便问题分析、故障定位
+
+
+
+
+

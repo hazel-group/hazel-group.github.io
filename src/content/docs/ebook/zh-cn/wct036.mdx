@@ -1,0 +1,260 @@
+---
+title: 4.8 如何快速构建服务发现的高可用能力
+keywords: [ SCA ]
+description: 背景本文是阿里云微服务引擎MSE在服务发现高可用的最佳实践介绍。演示的应用架构是由后端的微服务应用实例（Spring Cloud）构成。具体的后端调用链路有Spring Cloud Consumer调用Spring Cloud Provider，这些应用中的服务之间通过Nacos注册中心实现服...
+---
+<a name="v4AOZ"></a>
+# 背景
+本文是阿里云微服务引擎MSE在服务发现高可用的最佳实践介绍。演示的应用架构是由后端的微服务应用实例（Spring Cloud）构成。具体的后端调用链路有Spring Cloud Consumer调用Spring Cloud Provider，这些应用中的服务之间通过Nacos注册中心实现服务注册与发现。
+<a name="K9ka0"></a>
+# 动手实践
+<a name="zo4SJ"></a>
+## 前提条件
+
+- 已创建Kubernetes集群，请参见[创建Kubernetes托管版集群](https://help.aliyun.com/document_detail/95108.htm#task-skz-qwk-qfb)。
+- 已开通MSE微服务治理专业版，请参见[开通MSE微服务治理](https://help.aliyun.com/document_detail/347625.htm#task-2140253)。
+<a name="zs7da"></a>
+## 准备工作
+<a name="JOIt9"></a>
+### 开启MSE微服务治理
+
+1. 开通微服务治理专业版：
+   1. 单击[开通MSE微服务治理](https://common-buy.aliyun.com/?commodityCode=mse_basic_public_cn)。
+   2. 微服务治理**版本**选择**专业版**，选中**服务协议**，然后单击**立即开通**。关于微服务治理的计费详情，请参见[价格说明](https://help.aliyun.com/document_detail/170443.htm#concept-2519524)。
+2. 安装MSE微服务治理组件：
+   1. 在[容器服务控制台](https://cs.console.aliyun.com/)左侧导航栏中，选择**市场 > 应用目录**。
+   2. 在**应用目录**页面搜索框中输入ack-mse-pilot，单击搜索图标，然后单击组件。
+   3. 在**详情**页面选择开通该组件的**集群**，然后单击**创建**。安装完成后，在命名空间**mse-pilotmse-pilot-ack-mse-pilot**应用，表示安装成功。
+3. 为应用开启微服务治理：
+   1. 登录[MSE治理中心控制台](https://mse.console.aliyun.com/?spm=a2c4g.11186623.2.13.f90a6a60WiEx0N#/msc/home)。
+   2. 在左侧导航栏选择**微服务治理中心 > K8s集群列表**。
+   3. 在**K8s集群列表**页面搜索目标集群，单击搜索图标，然后单击目标集群**操作**列下方的**管理**。
+   4. 在**集群详情**页面命名空间列表区域，单击目标命名空间**操作**列下方的**开启微服务治理**。
+   5. 在**开启微服务治理**对话框中单击**确认**。
+
+---
+
+<a name="Hw57G"></a>
+### 部署 Demo 应用程序
+
+1. 在[容器服务控制台](https://cs.console.aliyun.com/)左侧导航栏中，单击**集群**。
+2. 在**集群列表**页面中，单击目标集群名称或者目标集群右侧**操作**列下的**详情**。
+3. 在集群管理页左侧导航栏中，选择**工作负载 > 无状态**。
+4. 在**无状态**页面选择**命名空间**，然后单击**使用YAML创建资源**。
+5. 对模板进行相关配置，完成配置后单击**创建**。本文示例中部署sc-consumer、sc-consumer-empty、sc-provider，使用的是开源的Nacos。
+
+<a name="YPlSq"></a>
+#### 部署示例应用（springcloud）
+YAML：
+```yaml
+# 开启推空保护的 sc-consumer
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sc-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sc-consumer
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: sc-consumer
+      labels:
+        app: sc-consumer
+    spec:
+      containers:
+      - env:
+        - name: JAVA_HOME
+          value: /usr/lib/jvm/java-1.8-openjdk/jre
+        - name: spring.cloud.nacos.discovery.server-addr
+          value: nacos-server:8848
+        - name: profiler.micro.service.registry.empty.push.reject.enable
+          value: "true"
+        image: registry.cn-hangzhou.aliyuncs.com/mse-demo-hz/demo:sc-consumer-0.1
+        imagePullPolicy: Always
+        name: sc-consumer
+        ports:
+        - containerPort: 18091
+        livenessProbe:
+          tcpSocket:
+            port: 18091
+          initialDelaySeconds: 10
+          periodSeconds: 30
+# 无推空保护的sc-consumer-empty
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sc-consumer-empty
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sc-consumer-empty
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: sc-consumer-empty
+      labels:
+        app: sc-consumer-empty
+    spec:
+      containers:
+      - env:
+        - name: JAVA_HOME
+          value: /usr/lib/jvm/java-1.8-openjdk/jre
+        - name: spring.cloud.nacos.discovery.server-addr
+          value: nacos-server:8848
+        image: registry.cn-hangzhou.aliyuncs.com/mse-demo-hz/demo:sc-consumer-0.1
+        imagePullPolicy: Always
+        name: sc-consumer-empty
+        ports:
+        - containerPort: 18091
+        livenessProbe:
+          tcpSocket:
+            port: 18091
+          initialDelaySeconds: 10
+          periodSeconds: 30
+# sc-provider
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sc-provider
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sc-provider
+  strategy:
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: sc-provider
+      labels:
+        app: sc-provider
+    spec:
+      containers:
+      - env:
+        - name: JAVA_HOME
+          value: /usr/lib/jvm/java-1.8-openjdk/jre
+        - name: spring.cloud.nacos.discovery.server-addr
+          value: nacos-server:8848
+        image: registry.cn-hangzhou.aliyuncs.com/mse-demo-hz/demo:sc-provider-0.3
+        imagePullPolicy: Always
+        name: sc-provider
+        ports:
+        - containerPort: 18084
+        livenessProbe:
+          tcpSocket:
+            port: 18084
+          initialDelaySeconds: 10
+          periodSeconds: 30
+# Nacos Server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nacos-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nacos-server
+  template:
+    metadata:
+      labels:
+        app: nacos-server
+    spec:
+      containers:
+      - env:
+        - name: MODE
+          value: standalone
+        image: nacos/nacos-server:latest
+        imagePullPolicy: Always
+        name: nacos-server
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+
+# Nacos Server Service 配置
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nacos-server
+spec:
+  ports:
+  - port: 8848
+    protocol: TCP
+    targetPort: 8848
+  selector:
+    app: nacos-server
+  type: ClusterIP
+
+```
+
+我们只需在Consumer增加一个环境变量`profiler.micro.service.registry.empty.push.reject.enable=true`，开启注册中心的推空保护（无需升级注册中心的客户端版本，无关注册中心的实现，支持MSE 的 nacos、eureka以及自建的nacos、eureka、console）
+
+<a name="hDK6J"></a>
+#### 分别给Consumer应用增加SLB用于公网访问
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642564505529-4758ad19-9159-420e-8e0b-0af7d2f2f83b.png#clientId=u4c7cd78c-6759-4&from=paste&height=501&id=u9a82f4c8&originHeight=501&originWidth=1701&originalType=binary&ratio=1&rotation=0&showTitle=false&size=147459&status=done&style=none&taskId=u9b5958f3-ecf9-4b3e-9561-e7008babca6&title=&width=1701)<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642564487860-c12ea122-794f-42e5-add3-f5d6b271297f.png#clientId=u4c7cd78c-6759-4&from=paste&height=531&id=u0bf4cea3&originHeight=531&originWidth=1706&originalType=binary&ratio=1&rotation=0&showTitle=false&size=161697&status=done&style=none&taskId=u6180de73-80a3-43a6-be53-06eb5114f3c&title=&width=1706)
+
+以下分别使用{sc-consumer-empty}代表sc-consumer-empty应用的slb的公网地址，{sc-consumer}代表sc-consumer应用的slb的公网地址
+<a name="zbzSP"></a>
+## 应用场景
+下面通过上述准备的Demo来分别实践以下场景<br />![架构图_4-8-1 第四章第八节第一张图.jpg](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/54319/1648133088248-6234a2ea-e397-4569-a420-091409c50197.jpeg#clientId=u9f033a94-f74f-4&from=ui&id=uf5f30aec&originHeight=1623&originWidth=3308&originalType=binary&ratio=1&rotation=0&showTitle=false&size=285371&status=done&style=none&taskId=ue205b877-a82a-4d5a-9395-be897391d93&title=)
+
+- 编写测试脚本
+
+`vi curl.sh`
+```shell
+while :
+do
+        result=`curl $1 -s`
+        if [[ "$result" == *"500"* ]]; then
+                echo `date +%F-%T` $result
+        else
+                echo `date +%F-%T` $result
+        fi
+
+        sleep 0.1
+done
+```
+
+- 测试，分别开两个命令行，执行如下脚本，显示如下
+
+`% sh curl.sh {sc-consumer-empty}:18091/user/rest`<br />2022-01-19-11:58:12 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:12 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:12 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:13 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:13 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:13 Hello from [18084]10.116.0.142!
+
+`% sh curl.sh {sc-consumer}:18091/user/rest`<br />2022-01-19-11:58:13 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:13 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:13 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:14 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:14 Hello from [18084]10.116.0.142!<br />2022-01-19-11:58:14 Hello from [18084]10.116.0.142!
+
+并保持脚本一直在调用，观察mse控制台分别看到如下情况
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642564899835-17cbbe77-dee0-42e6-b20b-acb7e7f341d0.png#clientId=u4c7cd78c-6759-4&from=paste&height=422&id=u0dcd87c1&originHeight=422&originWidth=1913&originalType=binary&ratio=1&rotation=0&showTitle=false&size=142879&status=done&style=none&taskId=u66a3275a-e097-4467-99cc-05227a5a22c&title=&width=1913)
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642564888063-aa8fe6b8-d9c9-4b0c-bdc7-4d183c2cd92c.png#clientId=u4c7cd78c-6759-4&from=paste&height=414&id=u170adcff&originHeight=414&originWidth=1911&originalType=binary&ratio=1&rotation=0&showTitle=false&size=149000&status=done&style=none&taskId=ud9ead07a-bd76-4d5b-a708-d694abd5835&title=&width=1911)
+
+
+- 将coredns组件缩容至数量 0，模拟 dns 网络解析异常场景
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/198743/1640698298066-6b993809-afb6-498b-8ae1-2566c0c8ad8f.png#clientId=ueb599a42-5309-4&from=paste&height=506&id=udebdcf9c&originHeight=1012&originWidth=2944&originalType=binary&ratio=1&rotation=0&showTitle=false&size=670091&status=done&style=none&taskId=u6f9e1dc7-ca74-4f81-9567-208dd1cc992&title=&width=1472)<br />发现实例与nacos的连接断开且服务列表为空<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642568424654-a4384c4e-f899-4c1f-b185-1c62183d562b.png#clientId=ua25a2f5a-b8e0-4&from=paste&height=296&id=u3f3068ed&originHeight=296&originWidth=1727&originalType=binary&ratio=1&rotation=0&showTitle=false&size=130120&status=done&style=none&taskId=u1116dfbd-a4fb-4626-9855-d017e0f6127&title=&width=1727)
+
+- 模拟dns服务恢复，将其扩容回数量2
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/198743/1640698338991-7e84c0a9-8426-4d77-8abd-0ff702eeb59c.png#clientId=ueb599a42-5309-4&from=paste&height=62&id=uc01cfede&originHeight=124&originWidth=2876&originalType=binary&ratio=1&rotation=0&showTitle=false&size=84266&status=done&style=none&taskId=ud273e80b-de6c-4af4-9cbb-1ae70761f00&title=&width=1438)
+
+
+<a name="Rmo6A"></a>
+### 结果验证
+
+在以上过程中保持持续的业务流量，我们发现 sc-consumer-empty 服务出现大量且持续的报错<br />2022-01-19-12:02:37 {"timestamp":"2022-01-19T04:02:37.597+0000","status":500,"error":"Internal Server Error","message":"com.netflix.client.ClientException: Load balancer does not have available server for client: mse-service-provider","path":"/user/feign"}<br />2022-01-19-12:02:37 {"timestamp":"2022-01-19T04:02:37.799+0000","status":500,"error":"Internal Server Error","message":"com.netflix.client.ClientException: Load balancer does not have available server for client: mse-service-provider","path":"/user/feign"}<br />2022-01-19-12:02:37 {"timestamp":"2022-01-19T04:02:37.993+0000","status":500,"error":"Internal Server Error","message":"com.netflix.client.ClientException: Load balancer does not have available server for client: mse-service-provider","path":"/user/feign"}<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642565027232-f28d240e-5ee1-4565-8169-2ee51be31101.png#clientId=u4c7cd78c-6759-4&from=paste&height=414&id=u5bd3cffc&originHeight=414&originWidth=1905&originalType=binary&ratio=1&rotation=0&showTitle=false&size=166282&status=done&style=none&taskId=ub45033a4-fb88-47f5-8599-4fa2678b771&title=&width=1905)
+
+相比之下，sc-consumer 应用全流程没有任何报错<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642565039042-29331d55-2baa-4e23-9f75-72a0a14d8261.png#clientId=u4c7cd78c-6759-4&from=paste&height=446&id=u59d26d4a&originHeight=446&originWidth=1918&originalType=binary&ratio=1&rotation=0&showTitle=false&size=182563&status=done&style=none&taskId=ud15e5e2b-c769-4cc4-bd6f-3933062a0c0&title=&width=1918)
+
+- 只有重启了Provider，sc-consumer-empty 才恢复正常
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642565244970-243e9011-2160-45c9-9a64-3ff72da69dd9.png#clientId=ua4aa2876-da76-4&from=paste&height=406&id=u68e55626&originHeight=406&originWidth=1497&originalType=binary&ratio=1&rotation=0&showTitle=false&size=162962&status=done&style=none&taskId=u76dcbbe8-ce11-4d5f-bc69-536a6634e87&title=&width=1497)<br />相比之下，sc-consumer 应用全流程没有任何报错<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642565257466-92b5fb44-9df0-4738-829a-2b7c49a96307.png#clientId=ua4aa2876-da76-4&from=paste&height=412&id=u92dbf3ee&originHeight=412&originWidth=1502&originalType=binary&ratio=1&rotation=0&showTitle=false&size=145818&status=done&style=none&taskId=u53e08297-4513-4008-b08a-4708fc309b3&title=&width=1502)
+
+<a name="o5O4n"></a>
+# 尾
+保障云上业务的永远在线，是 MSE 一直在追求的目标，本文通过面向失败设计的服务发现高可用能力的分享，以及MSE的服务治理能力快速构建起服务发现高可用能力的演示，模拟了线上不可预期的服务发现相关异常发生时的影响以及我们如何预防的手段，展示了一个简单的开源微服务应用应该如何构建起服务发现高可用能力。

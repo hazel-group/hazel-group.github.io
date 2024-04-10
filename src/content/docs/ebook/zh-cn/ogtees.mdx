@@ -1,0 +1,346 @@
+---
+title: 4.6 微服务敏捷开发最佳实践
+keywords: [ SCA ]
+description: 如何低成本玩转敏捷开发什么是 MSE 开发环境隔离，简单地说就是将 feature 环境的隔离方式从简单的物理隔离转为逻辑隔离。借助于 MSE 提供的逻辑隔离，您只需要维护一套完整的基线环境，在增加 feature 环境时，只需要单独部署这个 feature 所涉及到改动的应用即可，而不需要在...
+---
+
+<a name="xCEGK"></a>
+### 如何低成本玩转敏捷开发
+
+什么是 MSE 开发环境隔离，简单地说就是将 feature 环境的隔离方式从简单的物理隔离转为逻辑隔离。借助于 MSE 提供的逻辑隔离，您只需要维护一套完整的基线环境，在增加 feature 环境时，只需要单独部署这个 feature 所涉及到改动的应用即可，而不需要在每个 feature 环境都部署整套的微服务应用及其配套设施。
+
+我们称之这唯一的一套完整的环境为基线环境。基线环境包含了所有微服务应用，也包含了服务注册中心、域名、SLB、网关 等其他设施，而 feature 环境中只包含了这个 feature 中需要修改的应用。这样维护 n 套 feature 环境的成本，就变成了加法，而不是原来的乘法，由 n × m 变成了  n ＋  m。**差不多相当于零成本增加 feature 环境，这样我们就可以放心地扩容出多套 feature 环境，每个开发小哥哥都可以轻松拥有属于自己的独立环境，尽情地享受微服务敏捷开发。**<br />![架构图_4-6-1 第四章第六节第一张图.jpg](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/54319/1648207236200-4f3a510f-5262-449a-a22f-95d3ad9324bb.jpeg#clientId=ude73ab61-b4c0-4&from=ui&id=u61417056&originHeight=1844&originWidth=3308&originalType=binary&ratio=1&rotation=0&showTitle=false&size=265374&status=done&style=none&taskId=ub1c69d35-fb40-417f-a87e-ea1dd1b5e64&title=)
+
+
+从上图中我们可以看到，feature1 对应的流量，在发现 feature1 中存在 A1 应用时，一定会去往 A1 节点，A1在调用B的时候发现 feature1 环境中不存在 B1 ，则会将请求发到 基线版本的 B 中；B在调用C时，发现 feature1 环境存在 C1 应用，又会返回到 feature1 环境中，依次类推，确保了流量会在 feature1 环境中闭环。<br />**这里我们也可以计算一下这套方案的成本，10个节点使用 mse 专业版，一年的成本是 0.4 * 24 * 365 * 10 = 3504，总成本就是16800 + 3504，差不多是2万元，使用 MSE 能节省 4 万多的成本，而且你的开发环境和应用越多，节省的成本越多。**<br />**而且，在这个过程中，您不需要修改任何代码和配置，直接接入 MSE 微服务治理即可使用，不会给您增加任何开发成本。**
+
+<a name="HIO9P"></a>
+## 如何使用 MSE **开发环境隔离**
+
+<a name="hUfGd"></a>
+### 场景分析
+
+在描述如何使用开发环境隔离之前，我们先分析一下目前常用的开发环境具体的场景，这里选了三种典型的场景。
+
+**场景一**<br />所有的开发环境都在本地，或者说公司内自建的 IDC ，这类场景下开发环境的所有应用都部署在本地的机房。
+
+**场景二**<br />公司通过专线打通了办公网与阿里云上的 VPC ，两边的网络实现了互联互通。<br />开发、测试环境主要部署在阿里云，但是正在开发的工程，有一部分是跑在本地办公网的，甚至是直接跑在开发同事的个人电脑上。
+
+**场景三**<br />公司内并没有专线来打通了办公网与阿里云上的 VPC。<br />但是希望能让本地启动的应用，连接上阿里云上的开发测试集群，并且实现精准的流量隔离。
+
+
+首先说一下结论，这上面的三个场景，目前都是可以完整的支持的。其中场景一和场景二都不涉及到网络打通这部分的内容，其实只需要根据基本的 MSE 接入方式和 MSE 打标方式即可直接使用起来。<br />场景三比场景一和场景二多了一个网络打通的功能，所以会多一个端云互联的步骤，这里面会要求注册中心需要使用 MSE 提供的 Nacos。<br />在这个最佳实践中，我们会以场景三来实操。如果您的使用场景不是场景三，那么您可以忽略，同时也不需要关注端云互联相关的操作。
+
+<a name="xZ6ol"></a>
+### 一 开通 MSE 微服务治理专业版
+
+
+<a name="nVspD"></a>
+#### 开通  MSE 治理
+
+登录[MSE治理中心控制台](https://mse.console.aliyun.com/#/msc/home)，如果您尚未开通 MSE 微服务治理，请根据提示开通专业版。如果您已经开通了MSE 微服务治理基础版，请根据概览页中右侧的提示，升级到 专业版。
+
+<a name="dEvu1"></a>
+### 二  完成基线环境接入
+<a name="BvbAE"></a>
+#### 1. 接入 MSE 治理
+首先，您需要将基线环境的所有应用接入到 MSE 中，接入方式与您开发环境中应用部署环境有关。这里我们使用的是阿里云容器服务 ACK。更多接入场景请参考 MSE 帮助文档 [MSE 微服务治理快速入门](https://help.aliyun.com/document_detail/277398.html)。
+
+1. 在ACK中安装MSE治理中心组件
+   1. 登录[容器服务控制台](https://cs.console.aliyun.com/)。
+   2. 在左侧导航栏单击**市场 > 应用目录**。
+   3. 在**应用目录**页面搜索并单击ack-mse-pilot。
+   4. 在**ack-mse-pilot**页面右侧**集群**列表中选择集群，然后单击**创建**。
+
+      ![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/54319/1637225399935-456b8be9-1a48-436c-a3d0-b11aef7a5579.png#clientId=ucea8df43-288c-4&from=paste&id=ue3f0802b&originHeight=382&originWidth=523&originalType=binary&ratio=1&rotation=0&showTitle=false&size=13526&status=done&style=none&taskId=u6076a379-4d3b-4f77-a8a6-f63f538c82c&title=)<br />安装MSE微服务治理组件大约需要2分钟，请耐心等待。<br />创建成功后，会自动跳转到目标集群的**发布**页面，检查安装结果。如果出现以下页面，展示相关资源，则说明安装成功。
+
+2. 为ACK命名空间中的应用开启MSE微服务治理
+   1. 登录[MSE治理中心控制台](https://mse.console.aliyun.com/?spm=a2c4g.11186623.2.13.f90a6a60WiEx0N#/msc/home)。
+   2. 在左侧导航栏选择**微服务治理中心 > K8s集群列表**。
+   3. 在**K8s集群列表**页面搜索框列表中选择**集群名称**或**集群ID**，然后输入相应的关键字，单击 🔍 图标。
+   4. 单击目标集群**操作**列的**管理**。
+   5. 在**集群详情**页面命名空间列表区域，单击目标命名空间**操作**列下的**开启微服务治理**。(如果您的基线环境部署在 default 这个 namespace 中，则目标命名空间为 default)
+   6. 在**开启微服务治理**对话框中单击**确认**
+<a name="uON4T"></a>
+#### 
+<a name="v6K2e"></a>
+#### 2. 部署基线应用
+首先，我们将分别部署  spring-cloud-zuul、spring-cloud-a、spring-cloud-b、spring-cloud-c  这四个业务应用，模拟出一个真实的调用链路。
+
+	Demo 应用的结构图下图，应用之间的调用，既包含了 Spring Cloud 的调用，也包含了 Dubbo 的调用，覆盖了当前市面上最常用的两种微服务框架。这些应用都是最简单的 Spring Cloud 、 Dubbo 的标准用法，您也可以直接在 [https://github.com/aliyun/alibabacloud-microservice-demo/tree/master/mse-simple-demo](https://github.com/aliyun/alibabacloud-microservice-demo/tree/master/mse-simple-demo) 项目上查看源码。
+
+![架构图_4-6-2 第四章第六节第二张图 .jpg](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/54319/1648132973277-73337f29-e69a-4641-b6c8-0fdaf7d7bc45.jpeg#clientId=ue91281b7-abdd-4&from=ui&id=u8b863f88&originHeight=515&originWidth=3308&originalType=binary&ratio=1&rotation=0&showTitle=false&size=74781&status=done&style=none&taskId=u531c3812-d001-4fa3-9f28-d933bacad6d&title=)
+
+您可以使用 kubectl 或者直接使用 ACK 控制台来部署应用。部署所使用的 yaml 文件如下。<br />注意，上文中提到，使用端云互联的前提是注册中心使用的是 MSE 中的 Nacos，所以请您在部署之前修改 yaml 文件中的 spring.cloud.nacos.discovery.server-addr 和 dubbo.registry.address 为您自己购买的 MSE Nacos 地址，否则应用是无法正常运行的。若您使用的是 MSE Nacos 域名为公网域名，还需要确保开启了白名单。
+
+```yaml
+# 部署业务应用
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-zuul
+spec:
+  selector:
+    matchLabels:
+      app: spring-cloud-zuul
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: spring-cloud-zuul
+      labels:
+        app: spring-cloud-zuul
+    spec:
+      containers:
+        - env:
+            - name: JAVA_HOME
+              value: /usr/lib/jvm/java-1.8-openjdk/jre
+            - name: spring.cloud.nacos.discovery.server-addr
+              value: 'mse-xxxxxxx-nacos-ans.mse.aliyuncs.com:8848'
+          image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-zuul:1.0.0
+          imagePullPolicy: Always
+          name: spring-cloud-zuul
+          ports:
+            - containerPort: 20000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-spec: slb.s1.small
+    service.beta.kubernetes.io/alicloud-loadbalancer-address-type: internet
+  name: zuul-slb
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 20000
+  selector:
+    app: spring-cloud-zuul
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-a
+spec:
+  selector:
+    matchLabels:
+      app: spring-cloud-a
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: spring-cloud-a
+      labels:
+        app: spring-cloud-a
+    spec:
+      containers:
+        - env:
+            - name: JAVA_HOME
+              value: /usr/lib/jvm/java-1.8-openjdk/jre
+            - name: spring.cloud.nacos.discovery.server-addr
+              value: 'mse-xxxxxxx-nacos-ans.mse.aliyuncs.com:8848'
+            - name: dubbo.registry.address
+              value: 'nacos://mse-xxxxxxx-nacos-ans.mse.aliyuncs.com:8848'
+          image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-a:1.0.0
+          imagePullPolicy: Always
+          name: spring-cloud-a
+          ports:
+            - containerPort: 20001
+          livenessProbe:
+            tcpSocket:
+              port: 20001
+            initialDelaySeconds: 10
+            periodSeconds: 30
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-b
+spec:
+  selector:
+    matchLabels:
+      app: spring-cloud-b
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: spring-cloud-b
+      labels:
+        app: spring-cloud-b
+    spec:
+      containers:
+        - env:
+            - name: JAVA_HOME
+              value: /usr/lib/jvm/java-1.8-openjdk/jre
+            - name: spring.cloud.nacos.discovery.server-addr
+              value: 'mse-xxxxxxx-nacos-ans.mse.aliyuncs.com:8848'
+            - name: dubbo.registry.address
+              value: 'nacos://mse-xxxxxxx-nacos-ans.mse.aliyuncs.com:8848'
+          image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-b:1.0.0
+          imagePullPolicy: Always
+          name: spring-cloud-b
+          ports:
+            - containerPort: 20002
+          livenessProbe:
+            tcpSocket:
+              port: 20002
+            initialDelaySeconds: 10
+            periodSeconds: 30
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-c
+spec:
+  selector:
+    matchLabels:
+      app: spring-cloud-c
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: spring-cloud-c
+      labels:
+        app: spring-cloud-c
+    spec:
+      containers:
+        - env:
+            - name: JAVA_HOME
+              value: /usr/lib/jvm/java-1.8-openjdk/jre
+            - name: spring.cloud.nacos.discovery.server-addr
+              value: 'mse-xxxxxxx-nacos-ans.mse.aliyuncs.com:8848'
+            - name: dubbo.registry.address
+              value: 'nacos://mse-xxxxxxx-nacos-ans.mse.aliyuncs.com:8848'
+          image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-c:1.0.0
+          imagePullPolicy: Always
+          name: spring-cloud-c
+          ports:
+            - containerPort: 20003
+          livenessProbe:
+            tcpSocket:
+              port: 20003
+            initialDelaySeconds: 10
+            periodSeconds: 30
+```
+ 
+<a name="b7jTM"></a>
+#### 3. 验证基线环境接入成功
+完成上述步骤后，您的基线环境就已经部署好了。您可以在 MSE 控制台中找到对应的 Region 查看应用列表，以及应用详情页的节点情况。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641370551978-e8f37a81-bf17-4aa3-9049-99485373f931.png#clientId=u92402ae8-cbbb-4&from=paste&height=409&id=MQ0qc&originHeight=818&originWidth=3414&originalType=binary&ratio=1&rotation=0&showTitle=false&size=403125&status=done&style=none&taskId=uf0da5bca-9087-41ab-ab6a-8c18764efa0&title=&width=1707)
+
+
+在本地配置好 K8s 集群对应的 kubeconfig 文件，执行命令，结果如下
+```yaml
+➜  ~ kubectl get svc,deploy
+NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)        AGE
+service/kubernetes   ClusterIP      192.168.0.1     <none>         443/TCP        7d
+service/zuul-slb     LoadBalancer   192.168.87.95   47.94.143.53   80:31983/TCP   9m30s
+
+NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/spring-cloud-a      1/1     1            1           9m30s
+deployment.apps/spring-cloud-b      1/1     1            1           9m30s
+deployment.apps/spring-cloud-c      1/1     1            1           9m30s
+deployment.apps/spring-cloud-zuul   1/1     1            1           9m30s
+```
+在这里我们执行一下 curl  http://47.94.143.53:80/A/a 发起调用，并查看返回结果
+```yaml
+➜  ~ curl http://47.94.143.53:80/A/a
+A[10.242.0.90] -> B[10.242.0.91] -> C[10.242.0.152]%
+```
+<a name="aa3l2"></a>
+### 
+<a name="CAQfc"></a>
+### 三  IDEA 启动的应用接入 feature 环境
+
+在这一步中，我们将演示如何在网络没有打通的情况下，将你本机启动的应用接入到 feature 环境。首先您需要将您 K8s 集群的 kubeconfig 文件保存到本机，并进行如下操作。
+<a name="dpjtb"></a>
+#### 
+<a name="mdCX1"></a>
+#### 1. 下载源码
+本工程所有源码都在 [https://github.com/aliyun/alibabacloud-microservice-demo](https://github.com/aliyun/alibabacloud-microservice-demo) 中，将代码 git clone 到本地，并且找到 mse-simple-demo 文件夹中的 A、B、C、gateway 四个应用，就是本次最佳实践所使用的公测。
+<a name="rxs1G"></a>
+#### 
+<a name="U6S2L"></a>
+#### 2. 安装 CloudToolkit 插件
+安装最新版本的 Cloud Toolkit，安装详情请参考官网 [https://www.aliyun.com/product/cloudtoolkit](https://www.aliyun.com/product/cloudtoolkit)。
+
+<a name="RGZLs"></a>
+#### 3. 填写阿里云 AK、SK
+由于使用端云互联功能的时候，需要访问您 MSE 的资源，所以这里需要您填写您的 AK、SK，并确保此 AK、SK拥有访问 MSE 资源的权限。<br />点击 IDEA 的 **Tools** 中找到 **Preference** ，找到 **Alibaba Cloud Toolkit **中 **Accounts** ，配置 Access Key ID 和 Access Key Secret 信息，并点击保存。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641374899698-25640370-36e1-41c0-8c46-4fb34a1f3937.png#clientId=u52a028a7-bec8-4&from=paste&height=392&id=p2htT&originHeight=784&originWidth=2326&originalType=binary&ratio=1&rotation=0&showTitle=false&size=516079&status=done&style=none&taskId=u7e8f56b3-b7df-4dd3-a1b6-c3f7251b6fe&title=&width=1163)<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641371194368-1d0b54f3-305a-4110-bc45-296940e8c4cd.png#clientId=u92402ae8-cbbb-4&from=paste&height=708&id=bU3YU&originHeight=1416&originWidth=1964&originalType=binary&ratio=1&rotation=0&showTitle=false&size=582367&status=done&style=none&taskId=ub446f650-b333-4b8a-8ef5-1b94006ce88&title=&width=982)
+<a name="avibi"></a>
+#### 4. 配置 MSE 参数
+
+点击 IDEA 的 **Tools** 中找到 **Preference** ，找到 **Alibaba Cloud Toolkit **中 **Microservice** 下的 **MSE** ，点击 **开启微服务治理**，并安装下图的方式进行配置即可。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641371375176-19d09a8d-843d-44dc-8e7d-f33d884e3dc6.png#clientId=u92402ae8-cbbb-4&from=paste&height=708&id=QFENt&originHeight=1416&originWidth=1964&originalType=binary&ratio=1&rotation=0&showTitle=false&size=617769&status=done&style=none&taskId=u70a8823f-8672-4fea-9420-ee8a6aeb050&title=&width=982)<br />**对图中的几个参数做一下说明**
+
+1. **LicenseKey**
+
+您阿里云账号对应的 MSE 产品的 LicenseKey ，请在[https://mse.console.aliyun.com/#/msc/app/accessType](https://mse.console.aliyun.com/#/msc/app/accessType)  中的选择 ECS 集群，在 **安装 MSE Agent** 章节找到 LicenseKey 的值。<br />注意：请您做好 LicenseKey 的保密工作。<br />注意：各个 Region 的 LicenseKey 值可能不一致，请选择对应的 Region，并和基线环境接入的 Region 保持一致。
+
+2. **App Name**
+
+应用在接入 MSE 时所使用的应用名，请根据实际业务情况进行配置，注意这个值需要和本次所启动的应用保持一致。
+
+3. **Tag**
+
+此应用所属的环境 Tag，基线不用填，其他请根据实际业务情况进行填写。如果此应用属于 feature1 环境，请填写 feature1。
+
+4. **Agent 地址**
+
+选择自己应用所在的地域，需要和 LienseKey 所在的地域、以及基线环境接入的地域 都保持一致。
+
+5. **开启 RPC 灰度  ✅**
+
+支持对 Spring Cloud 和 Dubbo 近5年内的所有版本的流量进行精准控制。默认情况下请开启，除非您明确知道关闭此选项的使用场景，否则请勿关闭此选项。
+
+6. **开启标签染色  ✅**
+
+推荐开启，开启后经过此应用的流量就只会在对应的 Tag 环境中流转。
+
+7. **开启消息灰度  ✅**
+
+请根据业务实际情况选择是否开启，目前仅支持 RocketMQ 4.5 及以上版本。更多消息灰度相关的信息，请参考全链路灰度，消息部分。
+
+<a name="GGkn4"></a>
+#### 5. 配置端云互联参数
+我们已经知道，在网络未打通的时候，联通本机环境和云上 K8s 集群需要使用 端云互联功能，所以这里我们需要配置一下端云互联。<br />首先需要配置一下代理模式为 K8s，点击 IDEA 的 **Tools** 中找到 **Preference** ，找到 **Alibaba Cloud Toolkit **中 **Microservice** 下的 **Proxy** ，点击 **AddProfile **增加一个名称为 k8s 的代理。然后点击右侧的 **Add** 按钮，选择**代理类型 **为 Kubernetes，并选择正确的** 配置文件地址** 和 **命名空间**。![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641371737460-ea4a8c7a-7eb6-4785-aa51-801fc66cd560.png#clientId=u92402ae8-cbbb-4&from=paste&height=708&id=QSYks&originHeight=1416&originWidth=1964&originalType=binary&ratio=1&rotation=0&showTitle=false&size=892009&status=done&style=none&taskId=ue8e62ff0-61df-46fb-af6b-43e1dcf99ad&title=&width=982)<br /> 	然后，点击 IDEA 的 **Tools** 中找到 **Preference** ，找到 **Alibaba Cloud Toolkit **中 **Microservice** 下的 **MicroService** ，找到 **端云互联** 功能打 ✅。选择产品为 **微服务引擎 MSE**，并选择与上面部署时一致的 **Region** 、 **实例** 和 **命名空间** ，代理选择刚刚配置好的 **k8s**，如果您的应用是 Spring Cloud 应用，还必须在  **本地 Spring Cloud 服务端口**中 配置 Tomcat 的启动端口。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641371923502-7d334e10-aa47-43cb-9728-f026202dd36a.png#clientId=u92402ae8-cbbb-4&from=paste&height=708&id=DwXtc&originHeight=1416&originWidth=1964&originalType=binary&ratio=1&rotation=0&showTitle=false&size=970492&status=done&style=none&taskId=u79c70c08-6008-4925-9b91-9b5ed4bb245&title=&width=982)<br /> 
+<a name="KC79L"></a>
+### 四 启动应用，轻松开始联调和测试
+
+<a name="TUAIo"></a>
+#### 1. 验证接入成功
+完成上述配置之后，我们启动应用。首先，启动应用的时候，您会看到这两个提示，证明端云互联功能已经生效。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641372220843-f96c8300-c06d-4bf2-a42a-81b8bdc46c19.png#clientId=u92402ae8-cbbb-4&from=paste&height=141&id=YXncV&originHeight=282&originWidth=740&originalType=binary&ratio=1&rotation=0&showTitle=false&size=64402&status=done&style=none&taskId=u150cdbb4-b6fa-4a97-a32c-2f91df702b7&title=&width=370)![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641372445060-8be06c8f-1ff0-4eab-858e-3776b0d8d3f7.png#clientId=u92402ae8-cbbb-4&from=paste&height=73&id=Q7MOG&originHeight=146&originWidth=784&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33421&status=done&style=none&taskId=u81bf50b3-c679-4d56-90ce-6981bc71f35&title=&width=392)<br />同时为了验证 MSE 微服务治理是否接入成功，我们可以登录 MSE 控制台的应用列表界面进行查看。在控制台中我们也可以看到，我的本机应用已经成功接入到 MSE ，并且成功打上了 feature1 的标签。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641372744971-d2ef6dd2-0ec5-43e3-a2bf-aaa8656b433d.png#clientId=u92402ae8-cbbb-4&from=paste&height=952&id=tp7nk&originHeight=1904&originWidth=3420&originalType=binary&ratio=1&rotation=0&showTitle=false&size=921369&status=done&style=none&taskId=u908f94c3-271c-4d6d-8e6d-ba40a54ee4d&title=&width=1710)
+
+
+<a name="y3fqH"></a>
+#### 2. 发起流量调用
+假设我们发往网关的请求是 http 请求，希望这个请求再 feature1 中完成闭环，只需要在请求的 header 中添加 x-mse-tag=feature1 即可，流量会自动在 feature1 环境内完成闭环。注意这里的 key 为 x-mse-tag 为固定值，feature1 则需要和环境的标签(即上文中配置的 alicloud.service.tag)保持一致。<br />如果您的请求来源为 Dubbo，则需要在 RpcContext 中增加 Attachment ，内容也是 x-mse-tag=feature1。
+```yaml
+➜  ~ curl http://47.94.143.53:80/A/a
+A[10.242.0.90] -> B[10.242.0.91] -> C[10.242.0.152]%
+➜  ~ curl http://47.94.143.53:80/A/a
+A[10.242.0.90] -> B[10.242.0.91] -> C[10.242.0.152]%
+➜  ~ curl -H"x-mse-tag:feature1" http://47.94.143.53:80/A/a
+Afeature1[xx.xxx.12.118] -> B[10.242.0.91] -> C[10.242.0.152]%
+➜  ~ curl -H"x-mse-tag:feature1" http://47.94.143.53:80/A/a
+Afeature1[xx.xxx.12.118] -> B[10.242.0.91] -> C[10.242.0.152]%
+➜  ~ curl -H"x-mse-tag:feature1" http://47.94.143.53:80/A/a
+Afeature1[xx.xxx.12.118] -> B[10.242.0.91] -> C[10.242.0.152]%
+```
+如果您不方便在请求中增加 header 的话，还可以在 MSE 控制台配置规则，比如设置成 name=xiaohong 或 xiaohua 的流量进入到 feature1 环境。如下图所示。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1641373987989-b94330ee-198b-4de0-9571-497ff37f2d85.png#clientId=u92402ae8-cbbb-4&from=paste&height=1010&id=zWevW&originHeight=2020&originWidth=3424&originalType=binary&ratio=1&rotation=0&showTitle=false&size=873306&status=done&style=none&taskId=ua5dba94b-6148-4eb6-88a5-9d6eab2c9e2&title=&width=1712)
+
+开启流量规则之后，我们继续验证，可以看到，满足条件的请求会被转发到 feature1 环境。
+```yaml
+➜  ~ curl http://47.94.143.53:80/A/a
+A[10.242.0.90] -> B[10.242.0.91] -> C[10.242.0.152]%
+➜  ~ curl http://47.94.143.53:80/A/a\?name\=xiaohong
+Afeature1[30.225.12.118] -> B[10.242.0.91] -> C[10.242.0.152]%
+➜  ~ curl http://47.94.143.53:80/A/a\?name\=xiaohua
+Afeature1[30.225.12.118] -> B[10.242.0.91] -> C[10.242.0.152]%
+```
+
+特别地，如果您的网关应用不属于 Java 体系，则需要在网关层配置一下规则，目前已经支持 MSE云原生网关，Nginx，K8s Ingress 等，详细的接入方式可以参考 [MSE 全链路灰度配置]() 。

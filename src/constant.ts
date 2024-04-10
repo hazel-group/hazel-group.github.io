@@ -451,7 +451,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "电子书",
         target: "_self",
-        link: "/docs/ebook/kbyo6n/",
+        link: "/docs/ebook/srekog/",
         translations: {
           en: "E-book",
         },

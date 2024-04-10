@@ -1,0 +1,106 @@
+---
+title: 4.9 如何在Serverless模式下快速使用服务治理能力
+keywords: [ SCA ]
+description: 背景        Serverless应用引擎（SAE）是面向应用的Serverless PaaS平台，帮助PaaS层用户免运维IaaS、按量计费、低门槛微服务上云，并且提供了开箱即用的历经双11考验的微服务治理能力，将Serverless架构和微服务架构的完美结合。本文是SAE服务治理相关...
+---
+<a name="LvDYw"></a>
+# 背景
+        Serverless应用引擎（SAE）是面向应用的Serverless PaaS平台，帮助PaaS层用户免运维IaaS、按量计费、低门槛微服务上云，并且提供了开箱即用的历经双11考验的微服务治理能力，将Serverless架构和微服务架构的完美结合。本文是SAE服务治理相关的最佳实践介绍，详细描述了Spring Cloud微服务应用如何部署在阿里云Serverless应用引擎 SAE 上，并且使用 SAE 提供的一些服务治理能力。
+<a name="ZT6De"></a>
+# 准备工作
+<a name="do74W"></a>
+## 前提条件
+
+- 开通MSE微服务治理专业版，请参见[开通MSE微服务治理](https://help.aliyun.com/document_detail/347625.htm#task-2140253)
+- 开通SAE服务，请参见 [开通SAE](https://help.aliyun.com/document_detail/120435.html)
+<a name="xn4d4"></a>
+## Demo应用
+
+Demo代码：<br />服务提供者： 请参见[nacos-service-provider](https://github.com/aliyun/alibabacloud-microservice-demo/tree/master/microservice-doc-demo/spring-cloud-simplest-demo/nacos-service-provider?spm=a2c4g.11186623.0.0.515059d7zJ2Qiv)<br />服务消费者： 请参见[nacos-service-consumer](https://github.com/aliyun/alibabacloud-microservice-demo/tree/master/microservice-doc-demo/spring-cloud-simplest-demo/nacos-service-consumer)
+
+<a name="Iz5Fb"></a>
+## SAE上部署应用
+在本地完成应用的开发和测试后，便可将应用打包并部署到SAE。具体步骤，请参见[部署应用到SAE](https://help.aliyun.com/document_detail/110386.html)
+
+1. 登录[SAE控制台](https://sae.console.aliyun.com/)。
+2. 在左侧导航栏单击**应用列表**，在顶部菜单栏选择地域，单击**创建应用**。
+3. 在**应用基本信息**页签，设置应用相关信息，配置完成后单击**下一步：应用部署配置**。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647384443461-5ed7d6e4-1cd4-4153-8d50-3f9fe02f7ecf.png#clientId=u892b74eb-eaa9-4&from=paste&id=ue3c73107&originHeight=865&originWidth=1649&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u2ddecbd1-85da-470d-b897-ea83e9c856a&title=)
+4. 在**应用部署配置**页签，配置相关参数。
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647384653540-735ab5be-339e-46dc-8a80-12f2892bdbe4.png#clientId=u892b74eb-eaa9-4&from=paste&id=u094301c3&originHeight=779&originWidth=1650&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ued73bb08-952a-425e-88a7-2551d3db600&title=)
+<a name="xGn1Q"></a>
+## 验证部署是否成功
+您可以通过提供者和消费者的服务列表页面判断部署是否成功。
+
+1. 登录[SAE控制台](https://sae.console.aliyun.com/)。
+2. 在顶部菜单栏，选择地域。
+3. 在左侧导航栏单击**应用列表**，在顶部菜单栏选择地域，单击具体应用名称。
+4. 在左侧导航栏选择**微服务治理 > 服务列表**，查看服务信息。
+   - 提供者应用：如果**发布的服务**页签上可看到提供者所发布的服务，则说明提供者应用部署成功。
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647400942531-5277e874-8db6-4642-bc5a-45edaa61bce1.png#clientId=ud9c2410b-5f60-4&from=paste&height=380&id=ubc5ba659&originHeight=380&originWidth=1064&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51883&status=done&style=none&taskId=u07650efa-a0de-4f04-bd98-f6ecd11b704&title=&width=1064)
+
+   - 如果**消费的服务**页签上可看到提供者所发布的服务，则说明消费者应用部署成功。
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647400916522-1f552c80-8daa-4ee5-bb72-d44b188f1007.png#clientId=ud9c2410b-5f60-4&from=paste&height=385&id=uf8711bbd&originHeight=385&originWidth=1050&originalType=binary&ratio=1&rotation=0&showTitle=false&size=63469&status=done&style=none&taskId=ud16fe8cc-1611-4a9b-9934-bf668f9a34a&title=&width=1050)
+<a name="K9ka0"></a>
+# 动手实践 - 灰度发布
+灰度发布流程显意图：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647988442834-78ef8620-d270-4d6c-b00b-9443b2cf5a97.png?x-oss-process=image/format,png#clientId=udb934da5-2a10-4&from=paste&height=1033&id=ub5dd1bc4&originHeight=2066&originWidth=2481&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15382416&status=done&style=none&taskId=uce131868-f6d4-46b5-be8d-0a9669ca64a&title=&width=1240.5)
+<a name="zo4SJ"></a>
+## 步骤一：创建灰度规则
+
+1. 登录[SAE控制台](https://sae.console.aliyun.com/)。
+2. 在左侧导航栏单击**应用列表**，在顶部菜单栏选择地域，单击具体应用名称。
+3. 在左侧导航栏，选择**微服务治理 > 灰度规则**。
+4. 在**灰度规则**页面，单击**新建灰度规则**。
+5. 在**新建灰度规则**面板，执行以下操作，然后单击**确定**。
+6. 按需配置以下参数。
+| **参数** | **说明** |
+| --- | --- |
+| **规则名称** | 灰度规则的名称。支持以小写字母开头，以数字或小写字母结尾，仅可包含小写字母、中文字符、数字及短划线（-）。不超过64个字符。 |
+| **规则描述** | 灰度规则的描述信息。不超过64个字符。 |
+| **框架类型** | 配置灰度规则应用的框架类型，支持以下框架：<br />   - **Spring Cloud**：需要设置**Path**。<br />   - **Dubbo**：需要选择**服务方法**。<br /> |
+| **条件模式** | 选择**同时满足下列条件**或**满足下列任一条件**。 |
+
+7. 单击**添加新的规则条件**，按需配置灰度规则条件。
+| **参数** | **说明** |
+| --- | --- |
+| **条件列表** | <br />   - **Spring Cloud**：根据**Cookie**、**Header**或**Parameter**参数类型，设置相应的**参数**、**条件**以及**值**。<br />   - **Dubbo**：根据应用实际情况，设置**参数**、**参数值获取表达式**、**条件**以及**值**。<br /> |
+
+8. **可选：**单击**新建流量规则**创建多个入口流量规则，多个规则可以同时生效。以Spring Cloud应用灰度规则示例![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647382501286-e921a33f-82b5-482d-88ed-c0a1e8ee2cb0.png#clientId=u892b74eb-eaa9-4&from=paste&id=u9d7bbfe9&originHeight=936&originWidth=846&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u2334d664-d5c1-4f7f-a53d-c8be1a27608&title=)在本示例中，**参数类型**选择**Header**。
+
+创建成功后，您将在**灰度规则**页面查看到刚创建的灰度规则。同时，**新建灰度规则**按钮已置灰。
+
+
+<a name="zbzSP"></a>
+## 步骤二：查看规则详情
+
+1. 登录[SAE控制台](https://sae.console.aliyun.com/)。
+2. 在左侧导航栏单击**应用列表**，在顶部菜单栏选择地域，单击具体应用名称。
+3. 在左侧导航栏，选择**微服务治理 > 灰度规则**。
+4. 在**灰度规则**页面，找到您需查看的灰度规则，单击规则名称。
+5. 在**灰度规则详情**面板，查看规则内容。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647382670195-8c5c3769-8c24-4c82-a4cc-2799f271aef1.png#clientId=u892b74eb-eaa9-4&from=paste&id=u2380075b&originHeight=376&originWidth=891&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u7da8a440-cf69-486f-aa1b-4efb9c7bc96&title=)
+<a name="nNzfv"></a>
+## 步骤三：配置灰度发布策略
+
+1. 登录[SAE控制台](https://sae.console.aliyun.com/)。
+2. 在左侧导航栏单击**应用列表**，在顶部菜单栏选择地域，单击具体应用名称。
+3. 在**基本信息**页面的右上角，单击**部署应用**。
+4. 配置部署参数。<br />在**发布策略设置**区域内配置灰度发布参数。灰度发布参数说明如下：
+| **配置** | **是否必选** | **说明** |
+| --- | --- | --- |
+| 发布策略 | 是 | 选择**灰度发布**。 |
+| 灰度数量 | 是 | 设置首先需要进行灰度发布的应用实例数量。 |
+| 灰度后剩余批次 | 是 | 灰度发布后，剩余的应用实例按照设定的批次完成发布。 |
+| 最小存活实例数 | 是 | 每次滚动升级最小存活的实例数。<br />   - **按个数**：输入最小存活实例数。您也可以选中**使用系统推荐值**，SAE将根据您的需求为应用设置合理的最小存活实例数。<br />   - **按比例**：输入百分比。向上取整。例如设置为50%，如果当前为5个实例，则最小存活实例数为3。<br /> |
+| 启用微服务灰度规则 | 否 | 您为Spring Cloud或Dubbo应用创建的灰度规则。 |
+
+**说明** 每次滚动部署最小存活的实例数建议≥1，保证业务不中断。如果设置为0，应用在升级过程中将会中断业务。
+
+<a name="QzdXh"></a>
+## 步骤四：结果验证
+
+- 在应用**基本信息**页面的**实例部署信息**页签查看实例的运行状态。如果**执行状态**显示为**Running**，且实例的**版本**已变更，表示应用部署成功。![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647382951962-b0d9d8dd-fda6-4d9a-be7e-b8a6c2394977.png#clientId=u892b74eb-eaa9-4&from=paste&id=u32457c9f&originHeight=759&originWidth=1729&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u4a8a23c0-ad77-4ca1-9e3c-46bcabf5fd8&title=)
+- 通过请求Consumer应用访问Provider应用，验证流量灰度发布到了指定实例。具体操作，请参见[使用Webshell诊断应用](https://help.aliyun.com/document_detail/123414.htm#task-123414-zh)。
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/251990/1647382799407-6242f5ca-50aa-4d56-836d-c66dfc97ef06.png#clientId=u892b74eb-eaa9-4&from=paste&height=671&id=u7e538ada&originHeight=671&originWidth=1656&originalType=binary&ratio=1&rotation=0&showTitle=false&size=509710&status=done&style=none&taskId=u53311a2a-eb18-46f2-9cf7-012cb7fff92&title=&width=1656)

@@ -12,6 +12,7 @@ export interface SiteConfig {
   githubUrl?: string;
   websiteGithubUrl?: string;
   logoUrl?: string;
+  downloadEbooks?: string;
 }
 export interface MetaDataConfig extends Omit<MetaData, 'title'> {
   title?: {
