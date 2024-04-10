@@ -30,7 +30,7 @@ description: 背景介绍微服务架构之应用配置应用配置可解决的�
 
 在开发Java程序时，我们经常会用到各种各样的日志框架。为了避免在程序正常运行时输出不必要的信息，我们在使用日志框架时会设置默认的日志级别。而程序在线上运行时，我们需要在特定的场景下针对性地动态调整日志级别。
 
-进入目标应用的**开关列表**页面。在**开关列表**页面搜索到** SYSTEM_LOG_CONFIG** 开关，即日志级别开关。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/340872/1647308132774-69f455fe-1d5a-42f2-bb4b-2c8d0d9da66d.png#clientId=u6908818b-1507-4&from=paste&height=426&id=UqbK3&originHeight=426&originWidth=1648&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112020&status=done&style=none&taskId=u03eb7785-5439-4fc7-afc6-8a2d66a75d0&title=&width=1648)<br />单击**操作**列的**全局推送**或**单机推送**，按照** <loggerName,loggerLevel>** 格式填写日志运行的配置，然后单击**全局推送**或**单机推送**。即可修改全部机器或是单台机器的日志运行级别。<br />推送值格式：**Key** 为 **LoggerName**，**Value** 为日志级别。如需修改全局日志级别，**LoggerName** 为 **root**，如下所示。
+进入目标应用的**开关列表**页面。在**开关列表**页面搜索到** SYSTEM_LOG_CONFIG** 开关，即日志级别开关。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/340872/1647308132774-69f455fe-1d5a-42f2-bb4b-2c8d0d9da66d.png#clientId=u6908818b-1507-4&from=paste&height=426&id=UqbK3&originHeight=426&originWidth=1648&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112020&status=done&style=none&taskId=u03eb7785-5439-4fc7-afc6-8a2d66a75d0&title=&width=1648)<br />单击**操作**列的**全局推送**或**单机推送**，按照** \<loggerName,loggerLevel>** 格式填写日志运行的配置，然后单击**全局推送**或**单机推送**。即可修改全部机器或是单台机器的日志运行级别。<br />推送值格式：**Key** 为 **LoggerName**，**Value** 为日志级别。如需修改全局日志级别，**LoggerName** 为 **root**，如下所示。
 ```
 {
  "root": "ERROR"
