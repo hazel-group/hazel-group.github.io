@@ -1,0 +1,53 @@
+---
+title: 4.4 微服务限流降级最佳实践
+keywords: [ SCA ]
+description: 以WEB流量防护场景为例说明限流降级最佳实践。快速玩转 AHAS Web 场景防护应用接入第一步，我们将 Web 服务接入 AHAS 流量防护。可参考https://help.aliyun.com/document_detail/131232.html，AHAS 提供多种快速便捷的无侵入接入手...
+---
+以WEB流量防护场景为例说明限流降级最佳实践。
+<a name="ef40bdb0"></a>
+## 快速玩转 AHAS Web 场景防护
+
+<a name="UDF9d"></a>
+### 应用接入
+第一步，我们将 Web 服务接入 AHAS 流量防护。可参考[https://help.aliyun.com/document_detail/131232.html](https://help.aliyun.com/document_detail/131232.html)，AHAS 提供多种快速便捷的无侵入接入手段：
+
+
+![架构图_4-4-1 第四章第四节第一张图.jpg](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/54319/1648132882453-03b4fd66-79a6-4af0-9a5b-af075494198e.jpeg#clientId=ue4a5c8f9-2461-4&from=ui&id=ud2c9224e&originHeight=1623&originWidth=3308&originalType=binary&ratio=1&rotation=0&showTitle=false&size=522369&status=done&style=none&taskId=u782fafbe-7d14-4ad0-a3a5-93bb4d62517&title=)
+
+以普通 Spring Boot Web 服务为例，接入 AHAS 成功后，只要触发服务调用/接口访问，即可在 [AHAS 控制台](https://ahas.console.aliyun.com/) 看到自己的服务，并可以在 Web 场景页面看到自己的 Web 接口。默认 Spring Boot 应用接入会提取 controller 中的 URL path 作为资源名称：
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/47688/1642061164133-9ee2cbdf-28aa-40ff-9327-6bc111f26420.png#id=WBRlD&originHeight=1108&originWidth=3560&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+我们可以在监控页面非常直观地观测各个接口的实时流量与响应时间情况，以便于我们评估系统的稳定性。
+<a name="N9YJr"></a>
+### 配置防护规则
+第二步，我们给其中一个接口配置 [Web 流控规则](https://help.aliyun.com/document_detail/337922.html)。在我们的示例中，我们针对 `/hello` 这个 API，配置热点参数流控。流控的请求属性为 `name` 这个请求参数（URL params），流控策略为每个热点参数分别限制每秒访问量最多 1 次。AHAS 会自动提取每个 `/hello` 请求中的 `name` 参数对应的值，自动分析出其中 top K 频次的热点值，然后分别对每个热点值进行控制，不超过规则中的访问次数。
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/47688/1642061598371-5f63ff0c-72b8-4ebf-91e9-71984a4c32a6.png#id=IUf9t&originHeight=1350&originWidth=1840&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+效果示例：假设请求中有许多针对 `/hello` 接口的访问，其中 `/hello?name=A` 和 `/hello?name=B` 两个 name 参数的访问频次非常高，被 AHAS 统计统计为热点值。那么上面的流控规则会针对 `name=A` 和 `name=B` 这两个参数值的请求，分别限制每秒访问量不超过 1 次。
+<a name="Tjh5A"></a>
+### 绑定行为
+第三步，我们给上面的 Web 流控规则绑定一个 [fallback 行为](https://help.aliyun.com/document_detail/201863.html)，即指定触发该规则后，Web 接口的返回内容。我们可以在页面中自定义 Web 返回行为。以下是一个返回 429 状态码的 JSON 返回配置示例：
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/47688/1642063856855-0dd78c30-af2a-48f6-9432-2b9de4b4a9b2.png#id=bSKox&originHeight=1320&originWidth=1742&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/47688/1642063713691-c013553e-c4d3-45e9-b9c9-631f5e4ebc59.png#id=xhvCg&originHeight=1348&originWidth=1424&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+配置完成后，我们可以在流程页面选择我们创建的 fallback 行为，然后保存，这样我们的规则就会实时生效了。
+<a name="YERZ0"></a>
+### 流控效果
+第四步，我们发起针对 `/hello` 接口的流量，并给 name 参数带上不同的值，可以从控制台的监控上面看到请求触发了流控：
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/47688/1642075913024-c9409165-f5d2-4d98-aa63-08f241df582b.png#id=bfPo4&originHeight=1786&originWidth=3572&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+同时被流控的热点请求返回值也与我们在控制台定义的 fallback 返回相对应：
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/47688/1642075384513-c7495777-5d3e-499e-be8f-8bcec3596134.png#id=e1oaq&originHeight=360&originWidth=2016&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+<a name="l7mpF"></a>
+### 热点防护
+在生产环境，我们这些参数的值可能非常多，比如商品 ID 可能有上千万个。在热点请求被流控后，我们通常希望能够知道有哪些 top 参数被限制，方便我们了解业务的请求情况。AHAS 近期新上线热点监控功能，提供热点参数可观测的能力，结合 top 参数热力图，可以非常直观地在控制台了解实时业务情况：
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/47688/1642075939465-8e67f797-d2af-457c-81fd-f9320a997647.png#id=QNiED&originHeight=1364&originWidth=3566&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+以上就是一个简单的 Spring Boot Web 场景流控的示例，欢迎大家在 AHAS 控制台体验，有关 Web 场景防护的更多信息可以参考文档：[https://help.aliyun.com/document_detail/337922.html](https://help.aliyun.com/document_detail/337922.html)

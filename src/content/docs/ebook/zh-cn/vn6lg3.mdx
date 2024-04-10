@@ -1,0 +1,86 @@
+---
+title: 3.8 微服务无缝迁移上云解决方案
+keywords: [ SCA ]
+description: 背景介绍微服务系统架构之注册中心相比于传统的单体应用，使用微服务系统架构虽然能带来如各微服务之间可独立开发、运行以及部署等优势。但如何对一个微服务系统中的众多微服务进行注册与管理是微服务系统设计过程中的核心内容之一。当前主流的微服务架构中，主要通过设计一个叫作注册中心的组件来实现对系统中所有服...
+---
+<a name="oPaWD"></a>
+# 背景介绍
+<a name="PZTGT"></a>
+## 微服务系统架构之注册中心
+相比于传统的单体应用，使用微服务系统架构虽然能带来如各微服务之间可独立开发、运行以及部署等优势。但如何对一个微服务系统中的众多微服务进行注册与管理是微服务系统设计过程中的核心内容之一。当前主流的微服务架构中，主要通过设计一个叫作注册中心的组件来实现对系统中所有服务进行状态注册与发现。注册中心本质上是一个数据库，其需要实时存储系统中所有服务有关状态以及对应的实例列表信息，由于应用在分布式系统中，其还需要提供一定容错、高可用等相关能力。下图是微服务之间通过服务注册中心来提供服务注册与发现能力实现服务调用的流程图。<br />![第八节_3-8-1 第三章第八节第一张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1648515597436-bba14c7b-618e-454b-bd64-2213ab1c6980.png#clientId=u6fb991fc-398b-4&from=ui&id=uabe54bd6&originHeight=325&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15260&status=done&style=none&taskId=u2b0434f5-f99c-4f14-8fae-1a80ae7af2a&title=)<br />**图 1.基于注册中心的微服务系统调用**<br />如上图所示，在微服务系统中，所有的微服务实例启动时都会根据配置信息将服务有关的如服务名称，服务地址以及端口号等信息发送到系统的注册中心保存，注册中心后续过程中也会实时通过心跳等机制探测服务实例的健康程度并及时更新服务状态。服务注册后，调用方通过服务标识到注册中心中获取对应服务的可用实例列表。最后再根据特定的客户端负载均衡机制从服务实例列表中选取特定实例发起服务调用。<br />当前业界较为知名的注册中心主要有ZooKeeper、Eureka、Consul以及Nacos等。
+<a name="aaab7"></a>
+#### ZooKeeper
+ZooKeeper由雅虎公司基于Google的Chubby论文[1]进行实现。ZooKeeper集群采用Master/Slave架构，利用原子广播（Zookeeper Atomic Broadcast，ZAB）协议来进行Master选举与保证数据强一致性同步。在被广泛应用于服务注册与发现之前，其主要应用在为大型分布式系统提供服务配置管理和分布式协同等能力。
+<a name="NyN7a"></a>
+#### Eureka
+Eureka 由 Netflix 开源[2]，作为一款Spring Cloud官方推荐使用的注册中心，其是一款较早并与 Spring Cloud 结合较好的注册中心组件。Eureka集群采用非Master/Slave架构，集群中所有节点角色一致，数据写入集群任意一个节点后，再由该节点向集群内其他节点进行复制实现弱一致性同步。
+<a name="A3n06"></a>
+#### Consul
+Consul是一款由HashiCorp公司开源的基于Go语言实现的注册中心组件，提供了服务发现、配置和分段等功能[3]。其也是采用Master/Slave架构来进行集群节点管理，底层基于Raft协议来实现Master节点选举与数据强一致性同步。
+<a name="IaOeB"></a>
+#### Nacos
+Nacos 是一款由阿里巴巴在 2018 年 7 月开源的微服务注册中心组件[4]，除了正常注册中心所具备的核心功能外，其还提供了微服务配置中心的相关能力。Nacos集群架构也属于非Master/Slave模型，采用了阿里巴巴内部自研的 Distro 协议来实现数据弱一致性同步。其中所有节点都将存储集群内所有服务元数据，因此都可以提供数据读取服务，但每个节点只负责一部分客户端的数据写服务。<br />由以上介绍可知，以上各注册中心的特性如下：
+
+| <br /> | **ZooKeeper** | **Eureka** | **Consul** | **Nacos** |
+| --- | --- | --- | --- | --- |
+| **集群架构** | Master/Slave | 非Master/Slave | Master/Slave | 非Master/Slave |
+| **一致性协议** | ZAB | ~ | Raft | Distro+Raft |
+| **CAP模型** | CP | AP | CP | AP |
+| **雪崩保护** | 无 | 有 | 无 | 有 |
+| **协议访问** | TCP | HTTP | HTTP/DNS | HTTP/DNS |
+| **SpringCloud集成** | 支持 | 支持 | 支持 | 支持 |
+| **Dubbo集成** | 支持 | 不支持 | 不支持 | 支持 |
+
+<a name="z4FWj"></a>
+## 注册中心迁移上云
+得益于过去一二十年的互联网技术的飞速发展，业界出现了适用于不同场景具备不同特性的多种注册中心可供用户选择。但因为各种注册中心架构以及形态各异应用的场景不一，不管系统在设计之初采用什么注册中心解决方案，随着系统业务的发展演进，或多或少都可能遭遇原有注册中心难以继续满足当前系统对注册中心服务能力的要求，以下是一些常见的注册中心迁移原因：
+
+1. 早期注册中心技术方案有缺陷，例如注册中心的可用性要求强于一致性，因此早先配合Dubbo框架使用较多的强一致性注册中心ZooKeeper后来被证实并不适合作为大规模微服务系统的注册中心解决方案。相关分析可参见文章[5]。
+2. 技术前瞻性不够，随着系统业务流量快速增长，早期采用的注册中心解决方案所能提供的注册服务实例数有限，制约了系统未来的发展。
+
+除了以上技术设计造成的原因外，对于广大中小企业来说，自建注册中心技术难度大、成本高、稳定性得不到保障等诸多原因近年来促使一大批中小企业放弃了自建注册中心的想法，转而采用了云厂商所提供的免运维、免托管、性能好、稳定性强以及成本低的云注册中心方案。
+
+<a name="dpFKE"></a>
+# 注册中心方案介绍
+要想完成微服务应用迁移上云，注册中心迁移上云是其中的关键。目前业界主流的注册中心迁移上云方案主要分为停机迁移和非停机迁移两大类：
+
+- **停机迁移**
+
+停机迁移是最容易想到、最朴素的一种实现注册中心迁移上云的方案，其是指将应用进行停机，然后逐个将应用中的自建注册中心配置修改成云上注册中心配置，最后通过对应用进行重新发布以实现注册中心的迁移上云。该种方式特点简单，但所带来的劣势是工作量大、涉及人员较多、流程繁琐耗时，导致注册中心迁移成本高、难度大、影响面广。
+
+- **非停机迁移**
+
+非停机迁移是相对于停机迁移的一种方案，其在注册中心迁移过程中不要求应用立即停机修改代码，通过切流迁移、自建注册中心与云上注册中心数据实时同步或者双注册双订阅的方式来实现在不影响业务正常运行的过程中心注册中心的平滑迁移。<br />接下来，本章主要对业界主流的几种非停机注册中心迁移方案进行介绍；
+<a name="wzEQb"></a>
+## 切流迁移
+切流迁移作为非停机迁移中较为容易实现的一种方式，其主要通过开发一套新的应用，在应用中使用新注册中心，然后通过SLB和域名配置来进行线上切流。该方案虽然能保证迁移过程的用户无感知，但需要重新部署一套已有系统，代价较高。
+<a name="LJBFH"></a>
+## Nacos Sync
+Nacos Sync 是 Nacos 社区提供了一种注册中心迁移方案，可以从一个注册中心服务端，同步注册数据到另一个服务端。Nacos Sync 注册中心迁移方案原理图如图2 所示：<br />![第八节_3-8-2 第三章第八节第二张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1648515616383-06e4a19d-d615-493d-9e07-59e41208577d.png#clientId=u6fb991fc-398b-4&from=ui&id=u012ef171&originHeight=450&originWidth=911&originalType=binary&ratio=1&rotation=0&showTitle=false&size=35869&status=done&style=none&taskId=u5193c840-7e88-4ffe-824d-71f1a6b6c35&title=)<br />**图 2.Nacos Sync注册中心迁移原理图**<br />下图是 Nacos Sync 系统的概念图，Nacos Sync 通过从各个注册中心拉取注册的服务实例数据同步到 Nacos，左右两边是不同的注册中心，绿色代表目前是可以进行双向同步的，蓝色代表暂时只能进行单向同步。在启动完数据库，并配置好数据库连接串并启动 Nacos Sync 之后，该方案的整体的使用流程如图3所示：<br />![第八节_3-8-3 第三章第八节第三张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1648515658711-461f8c64-e0a5-4d98-8136-441538a99324.png#clientId=u6fb991fc-398b-4&from=ui&id=u5fb25933&originHeight=498&originWidth=998&originalType=binary&ratio=1&rotation=0&showTitle=false&size=43258&status=done&style=none&taskId=u044321fe-073f-4f64-9940-3e15b43057d&title=)<br />**图 3.Nacos Sync概念图**<br />使用Nacos Sync进行注册中心迁移的步骤如下：
+
+1. 通过 Web 控制台添加相关注册中心，一般都必须配置两个注册中心，一个源注册中心，另外一个是目标注册中心，注册中心相关数据会写入到数据库进行持久化存储；
+2. 添加完注册中心后，需要增加一个同步任务来添加需要同步的服务(对于 Dubbo 来说就是 RPC 接口)；
+3. Nacos Sync 会每隔 3s 从数据库捞取同步任务，并通过异步事件的方式进行发布；
+4. 同步服务管理组件监听到定时任务发布的事件，目前有同步/删除这两种事件；
+5. 同步服务管理根据不同的策略选择相关的同步服务进行真正同步逻辑处理；
+
+总结来说，在使用该方案进行注册中心迁移过程中，首先需要部署 Nacos Sync 应用，并配置数据库连接串相关信息，然后将需要同步的服务一个个输入到控制台，才能实现注册中心同步迁移。从该方案使用流程可知，其存在以下不足：
+
+1. 需要一个独立的数据库，以及启动一个 Nacos Sync 进程，对资源的消耗比较大。
+2. 需要一个个输入服务名，才能使劲服务的同步，操作起来复杂繁琐，注册中心迁移工作量大。
+3. 同步的时效性不好，只能控制在 秒 级别。 
+<a name="VYWYc"></a>
+## 双注册双订阅
+双注册双订阅非停机迁移注册中心方案是通过一些技术手段，如给应用动态注入Sidecar或者利用字节码技术动态修改应用代码，在应用中动态加入新注册中心依赖包和配置信息，使其在仅需要一次重启就能实现对自建注册中心和云上注册中心的双注册以及双订阅，该方案典型代表是阿里云微服务治理团队提出的基于Java Agent技术的注册中心迁移[6]。该方案原理图如图4 所示：<br />![第八节_3-8-3 第三章第八节第三张图 副本.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1648515673716-d56e01d8-9afc-4020-9578-31a71b3a5f3c.png#clientId=u6fb991fc-398b-4&from=ui&height=403&id=u26ec1472&originHeight=529&originWidth=850&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27166&status=done&style=none&taskId=ubb5bd916-2b4c-4782-a496-f91f4b6f03b&title=&width=648)<br />**图 4.双注册双订阅实现注册中心迁移上云**
+
+无论是通过SideCar还是字节码技术实现双注册双订阅来实现注册中心迁移其基本步骤如下：
+
+1. 快速重启应用挂载Sidecar或者Agent来实现应用的双注册和双订阅。
+2. 将系统中下次需要进行发布升级的应用中的自建注册中心地址改成新注册中心地址，然后发布上线。尽管新发布的应用不会注册或者订阅老注册中心，但因为其他服务在新注册中心都有注册或者订阅一次，所以不影响其订阅其他服务或者被其他服务消费。
+3. 随着一段时间后，系统中的所有应用都完成了注册中心地址修改，即可下线老注册中心以完成整个系统的注册中心全部迁移工作。
+
+由上述方案介绍内容可知，基于双注册双订阅的非停机注册中心迁移方案具有迁移过程便捷、迁移成本低等诸多优势。
+
+<a name="r3Jgr"></a>
+## 参考资料
+[1] Mike Burrows . The Chubby Lock Service for Distributed Systems. <br />[https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/chubby-osdi06.pdf](https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/chubby-osdi06.pdf)<br />[2] [https://github.com/Netflix/eureka](https://github.com/Netflix/eureka)<br />[3] [https://www.consul.io/docs/intro](https://www.consul.io/docs/intro)<br />[4] [https://nacos.io/zh-cn/docs/what-is-nacos.html](https://nacos.io/zh-cn/docs/what-is-nacos.html)<br />[5] 阿里巴巴为什么不用 ZooKeeper 做服务发现？ [https://developer.aliyun.com/article/601745](https://developer.aliyun.com/article/601745)<br />[6] 注册中心迁移：[https://help.aliyun.com/document_detail/314237.html](https://help.aliyun.com/document_detail/314237.html)

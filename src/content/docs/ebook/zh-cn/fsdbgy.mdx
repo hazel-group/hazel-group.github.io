@@ -1,0 +1,47 @@
+---
+title: 5.1 菜鸟 Cpaas 平台微服务治理实践
+keywords: [ SCA ]
+description: 背景CPaaS（cainiao platform as a service）是以公有云为基座，结合先进的云原生理建设的企业级DevOps的PaaS平台，CPaaS主要目前主要支持的场景：菜鸟生态的云上研发运维、菜鸟公有云SaaS化的能力透出、菜鸟商业化输出支撑，部署到客户的公有云、专有云环境。...
+---
+<a name="ru1Ta"></a>
+### 背景
+CPaaS（cainiao platform as a service）是以公有云为基座，结合先进的云原生理建设的企业级DevOps的PaaS平台，CPaaS主要目前主要支持的场景：菜鸟生态的云上研发运维、菜鸟公有云SaaS化的能力透出、菜鸟商业化输出支撑，部署到客户的公有云、专有云环境。<br />在服务了菜鸟多家生态公司及部分商业化输出的产品过程中，深入客户业务场景，解决业务研发及部署痛点的过程中，积累了一些宝贵的经验。这里我们主要对规范云上研发流程，提升研发效率为目标建设的环境治理（云上项目环境）及减少线上版本发布风而险建设的灰度平台的实现过程进行展开介绍。
+<a name="VbcjI"></a>
+### 目标
+1、通过项目环境，为多分支并行开发场景提供流量隔离及快速联调的能力。<br />2、生产环境实现服务灰度发布（金丝雀发布），降低变更风险。<br />3、微服务应用具备优雅上下线能力，避免启停过程中带来的服务调用出错问题。
+<a name="d2Rem"></a>
+### 调研阶段
+<a name="zA89H"></a>
+#### 微服务流量管控
+我们首先调研了开源自建的方案。在调研时我们发现，开发和维护开源 SDK方案的成本非常大。需要对 Spring Cloud 和 Dubbo 这些微服务框架以及 RockeMQ 这类消息中间件非常了解，才能准确地找到各个框架的增强点进行定制化开发。<br />除此之外，业务方使用的微服务框架版本也是跨度很大，维护这些不同版本的微服务框架适配，也需要投入大量的精力。<br />最重要的一点是，使用开源 SDK 自建的方案，开发业务的同事，需要在应用的开发和部署运维的流程都感知到 SDK 的存在，对开发、构建、运维的侵入性很大，很难进行推广。<br />后来我们也找到了阿里集团负责中间件的同事寻求支持，了解到中间件团队已经推出了一款面向公有云的微服务治理产品 MSE，于是我们进行了调研。<br />MSE作为公有云的微服务治理产品，具备云上的**服务管控、微服务测试、标签路由、离群摘除、优雅上下线等**能力，与我们的诉求完全吻合，并且通过agent方式实现，对应用代码无侵入，更适合PaaS平台对业务应用增加扩展。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/242866/1645168333884-8af9ea40-05e2-4b19-ab0e-792df281514d.png#clientId=ud2f28ccc-c0f9-4&from=paste&height=221&id=u6d1f389d&originHeight=664&originWidth=1626&originalType=binary&ratio=1&rotation=0&showTitle=false&size=461123&status=done&style=none&taskId=ue569930b-f386-4369-9fa2-237ed3b6008&title=&width=542)<br />（图 1.1）
+
+经过与MSE团队同时的几次电话和会议沟通之后，逐渐对MSE产品有了一些功能上的认知。其中在微服务治理中，我们结合实际的业务需求，落地实现了下面MSE的部分能力。
+
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/242866/1645168540767-1cab3952-f334-47e4-b8c8-46b4a96807a5.png#clientId=ud2f28ccc-c0f9-4&from=paste&height=367&id=u30249cb2&originHeight=1160&originWidth=1942&originalType=binary&ratio=1&rotation=0&showTitle=false&size=496154&status=done&style=none&taskId=ud7010a47-f54d-4b70-981f-b9006466d9a&title=&width=614)<br />（图 1.2）
+
+<a name="d9E2e"></a>
+### 落地场景
+<a name="WpPmX"></a>
+#### 项目环境
+在多分支开发的场景下，我们通常需要同时部署多个分支。但是多个分支同时部署之后，如何将开发自测流量与日常环境的测试流量分开，以及如何让各个分支拥有自己独立的流量，都是需要解决的问题。
+<a name="IGa9v"></a>
+##### 流量隔离
+调研和验证MSE的标签路由的能力之后，实现思路：通过标签路由能力，将流量进行隔离。<br />相同应用的不同分支，使用不同的deployment实现对版本和容器标签的管理。图2.1中core应用项目环境c1和项目环境c2均使用独立于日常环境的容器单独部署，各自的路由标签为joint1和joint2。通过对流量携带流量标记的方式，完成项目环境流量的控制。<br />接入层应用则通过K8S-Ingress实现流量路由，只需要在请求流量的请求头中携带 x-mse-tag的标签，则可以将流量路由到对应标签的入口层应用。入口应用设置标签传递的开发，可将流经此容器的流量打标传递到上有服务。如此反复，则实现流量在整个调用链路的封闭。<br />![服务治理架构图_5-1-1 第五章第一节第一张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648133618020-ff35a77c-2258-4939-8fc6-16b0f3684f3d.png#clientId=u474efb8a-d1a3-4&from=ui&id=ud99f6ce5&originHeight=1668&originWidth=2668&originalType=binary&ratio=1&rotation=0&showTitle=false&size=91497&status=done&style=none&taskId=uf563b367-6398-4c8c-bf68-078d4727129&title=)<br />（图 2.1）
+<a name="Vhcv7"></a>
+##### 服务测试
+在研发过程中，除了分支之间的相互干扰需要隔离之外，还需要从业务侧研发的角度解决服务测试的效率问题。MSE平台提供了微服务测试平台，可以快速的帮助开发者实现服务自测，并且我们通过集成方式集成到自身的paas平台中，免去自身重建的痛苦。<br />测试平台支持按照服务提供者IP的维度进行服务测试，刚好与流量隔离相互契合，可以对自身关注的项目环	境的应用容器发起服务测试完成服务自测。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/242866/1645169788318-98e86abc-a82e-46fc-a929-41d4052aa2d8.png#clientId=ud2f28ccc-c0f9-4&from=paste&height=278&id=ud1c5d86d&originHeight=1120&originWidth=2568&originalType=binary&ratio=1&rotation=0&showTitle=false&size=213792&status=done&style=none&taskId=u83f04e3f-447e-4ab0-97dc-2e987f0b45b&title=&width=637)<br />图（2.2）
+<a name="C0il0"></a>
+#### 灰度环境
+灰度环境的目的是为了降低线上应用版本发布的风险，减小问题爆炸半径。同样可以通过MSE提供的标签路由功能基础上完成对流量灰度的实现。
+
+![架构图_4-2-8 第四章第二节第八张图.jpg](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/54319/1648133664580-4621a5e5-fc43-428b-a141-644a8d35e594.jpeg#clientId=u474efb8a-d1a3-4&from=ui&id=u5f6c7bbb&originHeight=1624&originWidth=3308&originalType=binary&ratio=1&rotation=0&showTitle=false&size=277040&status=done&style=none&taskId=u078786de-8c85-4ac0-848f-30f6aa8d3f5&title=)<br />想要流量实现灰度，那么需要对流量的所有入口实现流量路由。通常我们所感知的流量入口包括：HTTP接入层、RPC下游调用、MQ服务消费、Task任务调度。当前在MSE的灰度能力支持范围内，微服务云网关、金丝雀发布、MQ灰度均可以组合实现。<br />当然，这里我们只实现了HTTP接入层+RPC的灰度能力，因为历史的原因，在接入层使用了另一个接入层（MSHA的MSFE，本质上是一个tengine）实现接入层的灰度。但这里丝毫不影响与MSE的灰度能力完成流量的串联，这得益于mse产品自身拥有良好的对其他产品的兼容性。我们只需要在入口层的应用上设置流量经过此容器时带标，即可完成灰度流量的传递。
+
+![服务治理架构图_5-1-2 第五章第一节第二张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648133639048-8e2216f1-5b7a-4d07-b472-e6befef1b1ae.png#clientId=u474efb8a-d1a3-4&from=ui&id=ue12d401f&originHeight=1668&originWidth=2668&originalType=binary&ratio=1&rotation=0&showTitle=false&size=71024&status=done&style=none&taskId=u23b8cc7f-73c1-4e7e-88de-7ec64728dbc&title=)<br />（图 2.3）<br />在实际的业务灰度场景中，我们总结了常见的四种灰度场景，均通过MSE完成并实现。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/242866/1645170680875-248462b0-e794-44a9-833b-0d757063e7ca.png#clientId=ud2f28ccc-c0f9-4&from=paste&height=852&id=u8b9cf684&originHeight=1704&originWidth=3548&originalType=binary&ratio=1&rotation=0&showTitle=false&size=658962&status=done&style=none&taskId=u1229102e-568c-457c-921e-ae5d94db066&title=&width=1774)<br />（图 2.4）
+
+<a name="ytBqV"></a>
+### 未来规划
+在使用mse的云产品之后，对paas平台层来说，避免很多重复功能的建设。在我们业务侧实际落地的远不止如上列举的场景，比如：服务优雅停机、注册中心等能力，均解决了业务侧的微服务治理上的难点问题。<br />在实现了对项目环境及灰度发布的能力开发之后，我们接下来对服务离群摘除、应用服务列表透出、服务鉴权、本地联调部署等能力做重点关注，在降低业务侧服务运维成本、微服务可观测、服务可用性方面与MSE团队加强合作，帮助业务侧解决微服务治理中的痛点。
+
+
+
+

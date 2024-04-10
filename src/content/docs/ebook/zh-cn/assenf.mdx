@@ -1,0 +1,491 @@
+---
+title: 4.1 线上发布稳定性解决方案最佳实践
+keywords: [ SCA ]
+description: 本文是阿里云微服务引擎MSE在应用发布时提供的无损上下线和服务预热能力最佳实践介绍。假设应用的架构由Zuul网关以及后端的微服务应用实例（Spring Cloud）构成。具体的后端调用链路有购物车应用A，交易中心应用B，库存中心应用C，这些应用中的服务之间通过Nacos注册中心实现服务注册与发...
+---
+本文是阿里云微服务引擎MSE在应用发布时提供的无损上下线和服务预热能力最佳实践介绍。假设应用的架构由Zuul网关以及后端的微服务应用实例（Spring Cloud）构成。具体的后端调用链路有购物车应用A，交易中心应用B，库存中心应用C，这些应用中的服务之间通过Nacos注册中心实现服务注册与发现。
+
+<a name="ZGNOr"></a>
+### 前提条件
+<a name="qW5xN"></a>
+#### 开启 MSE 微服务治理
+
+- 已创建Kubernetes集群，请参见[创建Kubernetes托管版集群](https://help.aliyun.com/document_detail/95108.htm#task-skz-qwk-qfb)。
+- 已开通MSE微服务治理专业版，请参见[开通MSE微服务治理](https://help.aliyun.com/document_detail/347625.htm#task-2140253)。
+
+<a name="iRllu"></a>
+### 背景信息
+很多用户量大并发度高的应用系统为了避免发布过程中的流量有损一般选择在流量较小的半夜发布，虽然这样做有效果，但不可控导致背后的研发运维人员经常因为发布问题时常搞得半夜胆战心惊，心力疲惫。基于此，阿里云微服务引擎MSE通过在应用发布过程中，通过应用下线主动实时注销，应用上线健康就绪检查与生命周期对齐以及服务预热等技术手段所提供的微服务应用无损上下线发布功能，让研发运维人员即使是在白天发布应用，也能风轻云淡。
+
+<a name="HJzdy"></a>
+### 准备工作
+
+<a name="H2IN3"></a>
+#### 应用部署流量架构图
+
+![架构图_4-1-1 第四章第一节第一张图.jpg](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/54319/1648130509313-c5bda522-542d-471f-8abd-2763d8211df3.jpeg#clientId=u36f946cb-2d31-4&from=ui&id=u5055ee01&originHeight=1734&originWidth=3308&originalType=binary&ratio=1&rotation=0&showTitle=false&size=268263&status=done&style=none&taskId=ucac10048-9a45-411c-94d5-a338124987d&title=)
+
+
+<a name="R7QJo"></a>
+#### 流量压力来源
+在 `spring-cloud-zuul`应用中，每个 pod 具备并发为 10 的访问本地 zuul 端口的 `127.0.0.1:20000:/A/a `的http请求流量。可以通过环境变量 `demo.qps` 配置并发数。
+
+
+<a name="ySgsq"></a>
+#### 部署 Demo 应用程序
+将下面的内容保存到一个文件中，假设取名为 `mse-demo.yaml`，并执行 `kubectl apply -f mse-demo.yaml` 以部署应用到提前创建好的Kubernetes集群中（注意因为demo中有CronHPA任务，所以请先在集群中安装 `ack-kubernetes-cronhpa-controller` 组件，具体在容器服务-Kubernetes->市场->应用目录中搜索组件在测试集群中进行安装），这里我们将要部署 Zuul，A, B 和 C 三个应用，其中 A、B 两个应用分别部署一个基线版本和一个灰度版本，B应用的基线版本关闭了无损下线能力，灰度版本开启了无损下线能力。C应用开启了服务预热能力，其中预热时长为120秒。
+
+```yaml
+# Nacos Server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nacos-server
+  name: nacos-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nacos-server
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: nacos-server
+        msePilotAutoEnable: "on"
+      labels:
+        app: nacos-server
+    spec:
+      containers:
+      - env:
+        - name: MODE
+          value: standalone
+        image: registry.cn-shanghai.aliyuncs.com/yizhan/nacos-server:latest
+        imagePullPolicy: Always
+        name: nacos-server
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+
+# Nacos Server Service 配置
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nacos-server
+spec:
+  ports:
+  - port: 8848
+    protocol: TCP
+    targetPort: 8848
+  selector:
+    app: nacos-server
+  type: ClusterIP
+
+#入口 zuul 应用
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-zuul
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-cloud-zuul
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: spring-cloud-zuul
+        msePilotAutoEnable: "on"
+      labels:
+        app: spring-cloud-zuul
+    spec:
+      containers:
+        - env:
+            - name: JAVA_HOME
+              value: /usr/lib/jvm/java-1.8-openjdk/jre
+            - name: LANG
+              value: C.UTF-8
+          image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-zuul:1.0.1
+          imagePullPolicy: Always
+          name: spring-cloud-zuul
+          ports:
+            - containerPort: 20000
+
+# A 应用 base 版本,开启按照机器纬度全链路透传
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-cloud-a
+  name: spring-cloud-a
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-cloud-a
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: spring-cloud-a
+        msePilotAutoEnable: "on"
+      labels:
+        app: spring-cloud-a
+    spec:
+      containers:
+      - env:
+        - name: LANG
+          value: C.UTF-8
+        - name: JAVA_HOME
+          value: /usr/lib/jvm/java-1.8-openjdk/jre
+        - name: profiler.micro.service.tag.trace.enable
+          value: "true"
+        image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-a:0.1-SNAPSHOT
+        imagePullPolicy: Always
+        name: spring-cloud-a
+        ports:
+        - containerPort: 20001
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        livenessProbe:
+          tcpSocket:
+            port: 20001
+          initialDelaySeconds: 10
+          periodSeconds: 30
+      
+# A 应用 gray 版本,开启按照机器纬度全链路透传
+---            
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-cloud-a-gray
+  name: spring-cloud-a-gray
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-cloud-a-gray
+  strategy:
+  template:
+    metadata:
+      annotations:
+        alicloud.service.tag: gray
+        msePilotCreateAppName: spring-cloud-a
+        msePilotAutoEnable: "on"
+      labels:
+        app: spring-cloud-a-gray
+    spec:
+      containers:
+      - env:
+        - name: LANG
+          value: C.UTF-8
+        - name: JAVA_HOME
+          value: /usr/lib/jvm/java-1.8-openjdk/jre
+        - name: profiler.micro.service.tag.trace.enable
+          value: "true"
+        image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-a:1.0.0
+        imagePullPolicy: Always
+        name: spring-cloud-a-gray
+        ports:
+        - containerPort: 20001
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        livenessProbe:
+          tcpSocket:
+            port: 20001
+          initialDelaySeconds: 10
+          periodSeconds: 30
+            
+# B 应用 base 版本，关闭无损下线能力
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-cloud-b
+  name: spring-cloud-b
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-cloud-b
+  strategy:
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: spring-cloud-b
+        msePilotAutoEnable: "on"
+      labels:
+        app: spring-cloud-b
+    spec:
+      containers:
+      - env:
+        - name: LANG
+          value: C.UTF-8
+        - name: JAVA_HOME
+          value: /usr/lib/jvm/java-1.8-openjdk/jre
+        - name: micro.service.shutdown.server.enable
+          value: "false"
+        - name: profiler.micro.service.http.server.enable
+          value: "false"
+        image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-b:1.0.0
+        imagePullPolicy: Always
+        name: spring-cloud-b
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        livenessProbe:
+          tcpSocket:
+            port: 20002
+          initialDelaySeconds: 10
+          periodSeconds: 30
+            
+# B 应用 gray 版本,默认开启无损下线功能
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-cloud-b-gray
+  name: spring-cloud-b-gray
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-cloud-b-gray
+  template:
+    metadata:
+      annotations:
+        alicloud.service.tag: gray
+        msePilotCreateAppName: spring-cloud-b
+        msePilotAutoEnable: "on"
+      labels:
+        app: spring-cloud-b-gray
+    spec:
+      containers:
+      - env:
+        - name: LANG
+          value: C.UTF-8
+        - name: JAVA_HOME
+          value: /usr/lib/jvm/java-1.8-openjdk/jre
+        image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-b:1.0.0
+        imagePullPolicy: Always
+        name: spring-cloud-b-gray
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/sh
+                  - '-c'
+                  - >-
+                    wget http://127.0.0.1:54199/offline 2>/tmp/null;sleep
+                    30;exit 0
+        livenessProbe:
+          tcpSocket:
+            port: 20002
+          initialDelaySeconds: 10
+          periodSeconds: 30
+            
+# C 应用 base 版本
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-cloud-c
+  name: spring-cloud-c
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-cloud-c
+  template:
+    metadata:
+      annotations:
+        msePilotCreateAppName: spring-cloud-c
+        msePilotAutoEnable: "on"
+      labels:
+        app: spring-cloud-c
+    spec:
+      containers:
+      - env:
+        - name: LANG
+          value: C.UTF-8
+        - name: JAVA_HOME
+          value: /usr/lib/jvm/java-1.8-openjdk/jre
+        image: registry.cn-shanghai.aliyuncs.com/yizhan/spring-cloud-c:1.0.0
+        imagePullPolicy: Always
+        name: spring-cloud-c
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        livenessProbe:
+          tcpSocket:
+            port: 20003
+          initialDelaySeconds: 10
+          periodSeconds: 30
+
+#HPA 配置
+---
+apiVersion: autoscaling.alibabacloud.com/v1beta1
+kind: CronHorizontalPodAutoscaler
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: spring-cloud-b
+spec:
+   scaleTargetRef:
+      apiVersion: apps/v1beta2
+      kind: Deployment
+      name: spring-cloud-b
+   jobs:
+   - name: "scale-down"
+     schedule: "0 0/5 * * * *"
+     targetSize: 1
+   - name: "scale-up"
+     schedule: "10 0/5 * * * *"
+     targetSize: 2
+---
+apiVersion: autoscaling.alibabacloud.com/v1beta1
+kind: CronHorizontalPodAutoscaler
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: spring-cloud-b-gray
+spec:
+   scaleTargetRef:
+      apiVersion: apps/v1beta2
+      kind: Deployment
+      name: spring-cloud-b-gray
+   jobs:
+   - name: "scale-down"
+     schedule: "0 0/5 * * * *"
+     targetSize: 1
+   - name: "scale-up"
+     schedule: "10 0/5 * * * *"
+     targetSize: 2
+---
+apiVersion: autoscaling.alibabacloud.com/v1beta1
+kind: CronHorizontalPodAutoscaler
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: spring-cloud-c
+spec:
+   scaleTargetRef:
+      apiVersion: apps/v1beta2
+      kind: Deployment
+      name: spring-cloud-c
+   jobs:
+   - name: "scale-down"
+     schedule: "0 2/5 * * * *"
+     targetSize: 1 
+   - name: "scale-up"
+     schedule: "10 2/5 * * * *"
+     targetSize: 2
+
+
+# zuul 网关开启 SLB 暴露展示页面   
+---     
+apiVersion: v1
+kind: Service
+metadata:
+  name: zuul-slb
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 20000
+  selector:
+    app: spring-cloud-zuul
+  type: ClusterIP
+
+# a 应用暴露 k8s service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-cloud-a-base
+spec:
+  ports:
+    - name: http
+      port: 20001
+      protocol: TCP
+      targetPort: 20001
+  selector:
+    app: spring-cloud-a
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-cloud-a-gray
+spec:
+  ports:
+    - name: http
+      port: 20001
+      protocol: TCP
+      targetPort: 20001
+  selector:
+    app: spring-cloud-a-gray
+
+# Nacos Server SLB Service 配置
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nacos-slb
+spec:
+  ports:
+  - port: 8848
+    protocol: TCP
+    targetPort: 8848
+  selector:
+    app: nacos-server
+  type: LoadBalancer
+```
+<a name="f5lMi"></a>
+#### 
+
+<a name="MPOM6"></a>
+### 结果验证一：无损下线功能
+由于我们对spring-cloud-b跟spring-cloud-b-gray应用均开启了定时HPA，模拟每5分钟进行一次定时的扩缩容。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1644827543054-b4abb2df-5c5b-4a84-bcba-946e7029fe37.png#clientId=ueb5e136b-ab91-4&from=paste&height=128&id=u128fbd55&originHeight=256&originWidth=2538&originalType=binary&ratio=1&rotation=0&showTitle=false&size=134470&status=done&style=none&taskId=u9c38e011-f57a-4103-b3a8-41354ba821a&title=&width=1269)<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1644831665110-312300ef-a442-414b-84d3-13efcc1f2046.png#clientId=u44c6e427-9e9c-4&from=paste&height=131&id=u3c016013&originHeight=262&originWidth=2546&originalType=binary&ratio=1&rotation=0&showTitle=false&size=135278&status=done&style=none&taskId=u3427e451-c4cb-4701-b7a2-08f00e08f3f&title=&width=1273)
+
+登录MSE控制台，进入微服务治理中心->应用列表->spring-cloud-a->应用详情，从应用监控曲线，我们可以看到spring-cloud-a应用的流量数据：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1644827506379-a1934831-2b51-4a9f-b3a4-01ca15566486.png#clientId=ueb5e136b-ab91-4&from=paste&height=355&id=udf8bd995&originHeight=710&originWidth=1834&originalType=binary&ratio=1&rotation=0&showTitle=false&size=202022&status=done&style=none&taskId=ucc29a714-1bbf-48cb-8df0-caa1c719848&title=&width=917)<br />gray版本的流量在pod扩缩容的过程中请求错误数为0，无流量损失。未打标的版本由于关闭了无损下线功能，在pod扩缩容的过程中有20个从spring-cloud-a发到spring-cloud-b的请求出现报错，发生了请求流量损耗。
+
+<a name="FWqCX"></a>
+### 结果验证二：服务预热功能
+
+我们在 `spring-cloud-c` 应用开启了定时HPA 模拟应用启动的过程，每隔5分钟做一次伸缩，在第2分钟第0秒缩容到1个节点，在第2分钟第10秒扩容到2个节点。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1644829949765-71148c58-c570-408b-b8d6-c009dde146ba.png#clientId=u44c6e427-9e9c-4&from=paste&height=135&id=u7f04404d&originHeight=270&originWidth=2538&originalType=binary&ratio=1&rotation=0&showTitle=false&size=131048&status=done&style=none&taskId=uf3a4b25b-4fda-4397-ab6b-3f87cc89cbd&title=&width=1269)
+
+在预热应用的服务提供端 `spring-cloud-c`开启服务预热功能。预热时长配置为 120 秒。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1644827775077-280e1b39-1a2b-405c-922c-a0140d4f9d87.png#clientId=ueb5e136b-ab91-4&from=paste&height=590&id=u0ead526d&originHeight=1180&originWidth=2520&originalType=binary&ratio=1&rotation=0&showTitle=false&size=471793&status=done&style=none&taskId=uad808afe-143a-4b1f-8318-d9ad24bb153&title=&width=1260)
+
+观察节点的流量，发现节点流量缓慢上升。并且能看到节点的预热开始和结束时间，以及相关的事件。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/21257183/1644827812219-c41d6fa5-1b6e-4f64-8d14-cc5c48a1cac2.png#clientId=ueb5e136b-ab91-4&from=paste&height=814&id=u355d136b&originHeight=1628&originWidth=3272&originalType=binary&ratio=1&rotation=0&showTitle=false&size=785519&status=done&style=none&taskId=u52faa517-cb42-4c30-8cbb-1ee2a2f3992&title=&width=1636)<br />从上图可以看到开启预热功能的应用重启后的流量会随时间缓慢增加，在一些应用启动过程中需要预建连接池和缓存等资源的慢启动场景，开启服务预热能有效保护应用启动过程中缓存资源有序创建保障应用安全启动并做到流量无损。
