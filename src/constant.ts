@@ -22,6 +22,16 @@ export const DOCS_BANNER = {
 // TODO: 文档Header数据
 export const DOCS_ITEM = [
   {
+    key: "2023",
+    label: "2023.0.0.0-RC1",
+    target: "_self",
+    link: "/docs/2023/overview/what-is-sca/",
+    translations: {
+      en: "2023.0.0.0",
+      link: "/en/docs/2023/overview/what-is-sca/",
+    }
+  },
+  {
     key: "2022",
     label: "2022.0.0.0",
     target: "_self",
@@ -32,26 +42,25 @@ export const DOCS_ITEM = [
     }
   },
   {
-    key: "latest",
-    label: "最新版（Latest）",
+    key: "2021",
+    label: "2021.0.5.0",
     target: "_self",
-    link: "/docs/latest/what-is-nacos/",
+    link: "/docs/2021/overview/what-is-sca/",
     translations: {
-      en: "Latest",
-      link: "/en/docs/latest/what-is-nacos/",
+      en: "2021.0.5.0",
+      link: "/en/docs/2021/overview/what-is-sca/",
     }
   },
   {
-    key: "next",
-    label: "预览版（Next）",
+    key: "2.2.x",
+    label: "2.2.x",
     target: "_self",
-    link: "/docs/next/what-is-nacos/",
+    link: "/docs/2.2.x/overview/what-is-sca/",
     translations: {
-      en: "Next",
-      link: "/en/docs/next/what-is-nacos/",
+      en: "2023.0.0.0",
+      link: "/en/docs/2.2.x/overview/what-is-sca/",
     }
   },
-
 ];
 
 // 主要特性
@@ -317,13 +326,13 @@ export const HEADER_ACTIVITY_CARD = [
   {
     "collection": "blog",
     "slug": "release-nacos132",
-    "description": "Nacos 两周年献礼，Nacos 1.3.2 + Go SDK 1.0.0发布",
+    "description": "Spring Cloud Alibaba 编程之夏报名启动！",
     "imageUrl": "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   },
   {
     "collection": "blog",
     "slug": "release-nacos110",
-    "description": "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    "description": "参加社区双周会！",
     "imageUrl": "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   }
 ];
@@ -332,7 +341,7 @@ export const HEADER_LEARN_CARD = [
   {
     collection: "blog",
     slug: "release-nacos110",
-    description: "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    description: "最全面的 Spring 中文系列教程，从这里开启你的 Spring 应用开发之旅！",
     imageUrl:
       "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   },
@@ -342,7 +351,7 @@ export const HEADER_SOLUTIONS_CARD = [
   {
     collection: "blog",
     slug: "release-nacos110",
-    description: "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    description: "阿里云 MSE 微服务引擎",
     imageUrl:
       "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   },
@@ -361,13 +370,13 @@ export const BLOG_IMAGE_SOURCE = [
 ];
 
 export const MICROSERVICE_SOLUTION = [
-  { title: 'Spring Cloud Alibaba SEATA', image: '/assets/2-1.jpg', detailTitle: "home.introduction.detailTitle.1", detail: 'home.introduction.detail.1' },
-  { title: 'Spring Cloud Alibaba Sentinel', image: '/assets/2-2.jpg', detailTitle: 'home.introduction.detailTitle.2', detail: 'home.introduction.detail.2' },
-  { title: 'Spring', image: '/assets/2-3.jpg', detailTitle: 'home.introduction.detailTitle.3', detail: 'home.introduction.detail.3' },
-  { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-4.jpg', detailTitle: 'home.introduction.detailTitle.4', detail: 'home.introduction.detail.4' },
-  { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-5.jpg', detailTitle: 'home.introduction.detailTitle.5', detail: 'home.introduction.detail.5' },
-  { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-6.jpg', detailTitle: 'home.introduction.detailTitle.6', detail: 'home.introduction.detail.6' },
-  { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-7.jpg', detailTitle: 'home.introduction.detailTitle.7', detail: 'home.introduction.detail.7' },
+  { title: 'Nacos', image: '/assets/2-1.jpg', detailTitle: "home.introduction.detailTitle.1", detail: 'home.introduction.detail.1' },
+  { title: 'Sentinel', image: '/assets/2-2.jpg', detailTitle: 'home.introduction.detailTitle.2', detail: 'home.introduction.detail.2' },
+  { title: 'Seata', image: '/assets/2-3.jpg', detailTitle: 'home.introduction.detailTitle.3', detail: 'home.introduction.detail.3' },
+  { title: 'RocketMQ', image: '/assets/2-4.jpg', detailTitle: 'home.introduction.detailTitle.4', detail: 'home.introduction.detail.4' },
+  { title: 'AI', image: '/assets/2-5.jpg', detailTitle: 'home.introduction.detailTitle.5', detail: 'home.introduction.detail.5' },
+  { title: 'Spring Boot', image: '/assets/2-6.jpg', detailTitle: 'home.introduction.detailTitle.6', detail: 'home.introduction.detail.6' },
+  { title: 'Spring', image: '/assets/2-7.jpg', detailTitle: 'home.introduction.detailTitle.7', detail: 'home.introduction.detail.7' },
 ];
 
 export const categoryMap = {
@@ -462,50 +471,50 @@ export const COMMUNITY_MENU_LIST = [
 
 export const LEARN_CARD_LIST= [
   {
-    title: "Spring Tutorial",
-    description: "From no experience to actually build stuff",
+    title: "Spring 教程",
+    description: "零基础学习 Spring Framework 核心概念，包括依赖注入、AOP、REST 等。",
     href: "/learn/spring/",
   },
   {
-    title: "Spring Boot Tutorial",
-    description: "From no experience to actually build stuff",
+    title: "Spring Boot 教程",
+    description: "快速掌握构建生产级别应用，覆盖自动配置、数据库交互、微服务构建等。",
     href: "/learn/spring-boot/",
   },
   {
-    title: "Spring Cloud Tutorial",
-    description: "Spring Cloud's one-stop microservice solution",
+    title: "Spring Cloud 教程",
+    description: "学习微服务地址发现、配置管理、路由、负载均衡、断路器和分布式消息传递",
     href: "/learn/spring-cloud/",
   },
   {
-    title: "Spring Cloud Alibaba Tutorial",
-    description: "Alibaba's one-stop microservice solution",
-    href: "/learn/spring-cloud-alibaba/",
+    title: "微服务治理教程",
+    description: "阿里巴巴等企业实践总结，涵盖灰度发布、限流降级、流量管控等高阶微服务治理能力。",
+    href: "/docs/ebook/srekog/",
   }
 ];
 
 export const SOLUTIONS_CARD_LIST = [
   {
-    title: "Microservices Engine",
+    title: "注册配置中心高可用最佳实践",
     description:
       "Fully managed Nacos and Zookeeper for registration and configuration",
-    href: "/blog/release-nacos132/?source=blog_article",
+    href: "https://help.aliyun.com/zh/mse/use-cases/implement-high-availability-capabilities-of-mse-microservices-registry?spm=a2c4g.11186623.0.0.102a27e0juv8vG",
   },
   {
-    title: "Cloud-native Gateway",
+    title: "云原生网关如何实现安全防护能力",
     description:
       "Fully managed microservices API gateway that complies with the Kubernetes Ingress standard.",
-    href: "/blog/release-nacos132/?source=blog_article",
+    href: "https://developer.aliyun.com/article/1265016?spm=5176.21213303.J_qCOwPWspKEuWcmp8qiZNQ.10.c89e2f3dQa2WtF&scm=20140722.S_community@@%E6%96%87%E7%AB%A0@@1265016._.ID_community@@%E6%96%87%E7%AB%A0@@1265016-RL_%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E8%83%BD%E5%8A%9B-LOC_llm-OR_ser-V_3-RK_rerank-P0_2",
   },
   {
-    title: "Microservices Governance",
+    title: "全链路灰度与优雅上下线",
     description:
       "Rich features like canary release, zero traffic loss deployment and authentication.",
-    href: "/blog/release-nacos132/?source=blog_article",
+    href: "https://help.aliyun.com/zh/mse/use-cases/implement-an-end-to-end-canary-release-by-using-mse-cloud-native-gateways?spm=a2c4g.11186623.0.i3",
   },
   {
-    title: "Application Real-Time Monitoring Service (ARMS)",
+    title: "应用实时监控",
     description:
       "A full-stack performance monitoring and end-to-end tracing platform",
-    href: "/blog/release-nacos132/?source=blog_article",
+    href: "https://help.aliyun.com/zh/arms/?spm=5176.8140086.J_5253785160.8.3e87be45mtM0kX",
   },
 ];
