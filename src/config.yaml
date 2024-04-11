@@ -11,12 +11,12 @@ site:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: G-NP3B57ZGEF # or "G-XXXXXXXXXX"
     baiduAnalytics:
-      id: 
+      id: 8d45b13e5afb579f4083ee89048f70ac
       verification: code-wzq5sw7io3
     aesAnalytics:
-      pid: e7WQkK
+      pid: b3kPns
     clarityAlalytics:
       id: l4jzj6wbhh
 
@@ -46,7 +46,7 @@ metadata:
 ui:
   colors:
     # 主按钮颜色，一般为主色中间的颜色
-    primary: "#61B867" # green-08
+    primary: "#5DC07E" # green-08
     # 次按钮的颜色，一般为灰色调最浅颜色
     secondary: "#F6F8F8" #moss-01
     # 强调色。"Header"中的联系我们

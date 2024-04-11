@@ -7,7 +7,10 @@ import { createHead } from "@starlight/utils/head";
 import { localizedUrl } from "@starlight/utils/localizedUrl";
 import type { Props } from "@starlight/props";
 import get from 'lodash.get';
+import { ANALYTICS } from "@utils/config";
 import { ViewTransitions } from "astro:transitions";
+
+const {googleAnalytics,baiduAnalytics,aesAnalytics,clarityAlalytics} = ANALYTICS.vendors;
 
 const { entry, lang } = Astro.props;
 const { data } = entry;
@@ -65,7 +68,7 @@ const headDefaults: z.input<ReturnType<typeof HeadConfigSchema>> = [
     },
     {
         tag: "meta",
-        attrs: { name: "baidu-site-verification", content: "code-wzq5sw7io3" },
+        attrs: { name: "baidu-site-verification", content: baiduAnalytics.verification },
     },
 ];
 
@@ -137,6 +140,9 @@ const head = createHead(headDefaults, config.head, data.head);
 
 <!--初始化SDK-->
 <script>
+    import { ANALYTICS, SITE } from "@utils/config";
+    const {googleAnalytics,baiduAnalytics,aesAnalytics,clarityAlalytics} = ANALYTICS.vendors;
+    
     (function (w, d, s, q, i) {
         w[q] = w[q] || [];
         var f = d.getElementsByTagName(s)[0],
@@ -160,7 +166,7 @@ const head = createHead(headDefaults, config.head, data.head);
             "//g.alicdn.com/aes/??tracker/3.3.4/index.js,tracker-plugin-pv/3.0.5/index.js,tracker-plugin-event/3.0.0/index.js,tracker-plugin-autolog/3.0.3/index.js,tracker-plugin-survey/3.0.3/index.js,tracker-plugin-jserror/3.0.3/index.js,tracker-plugin-resourceError/3.0.3/index.js";
         t.onload = function () {
             // TODO: 设置aem sdk环境
-            if (window.location.hostname !== "nacos.io") {
+            if (window.location.hostname !== new URL(SITE.site).hostname) {
                 return;
             }
             window.AES_CONFIG = window.AES_CONFIG || {
@@ -168,7 +174,7 @@ const head = createHead(headDefaults, config.head, data.head);
                 env: "prod",
             };
             window.aes = new AES({
-                pid: "e7WQkK",
+                pid: aesAnalytics.pid,
                 user_type: 6,
             });
             window.AESPluginAutologConfig = { exposure: "auto" };
@@ -195,6 +201,8 @@ const head = createHead(headDefaults, config.head, data.head);
 
 <!--初始化Clarity SDK-->
 <script type="text/javascript">
+import { ANALYTICS, SITE } from "@utils/config";
+const { clarityAlalytics } = ANALYTICS.vendors;
 (function (c, l, a, r, i, t, y) {
     c[a] =
         c[a] ||
@@ -206,21 +214,24 @@ const head = createHead(headDefaults, config.head, data.head);
     t.src = "https://www.clarity.ms/tag/" + i;
     y = l.getElementsByTagName(r)[0];
     y.parentNode.insertBefore(t, y);
-})(window, document, "clarity", "script", "l4jzj6wbhh");
+})(window, document, "clarity", "script", clarityAlalytics.id);
 </script>
 
 <script>
+    import { ANALYTICS } from "@utils/config";
+    const {baiduAnalytics} = ANALYTICS.vendors;
+
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e3a5cec56ef8619cf9d7c2abebd509e3";
+        hm.src = "https://hm.baidu.com/hm.js?" + baiduAnalytics.id;
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0YDFJ7LX7F"
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NP3B57ZGEF"
 ></script>
 
 <script>
@@ -229,6 +240,6 @@ const head = createHead(headDefaults, config.head, data.head);
         dataLayer.push(arguments);
     }
     gtag("js", new Date());
-
+// FIXME: 待调研
     gtag("config", "G-0YDFJ7LX7F");
 </script>

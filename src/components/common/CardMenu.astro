@@ -13,17 +13,17 @@ const { cardData = [] } = Astro.props;
         <a
           href={href}
           class={
-            "card group no-underline bg-error h-[9.5rem] rounded-2xl pt-6 pb-6 pl-6 pr-9 hover:shadow-xl transition ease-in-out hover:scale-[102%] cursor-pointer"
+            "card group no-underline bg-error h-[9.5rem] rounded-2xl pt-6 pb-6 pl-6 pr-14 hover:shadow-xl transition ease-in-out hover:scale-[102%] cursor-pointer"
           }
         >
-          <div class={"card-body text-sm p-0 text-[#1D2525] font-normal"}>
-            <div class={"card-title line-clamp-2"}>
+          <div class={"card-body text-sm p-0 font-normal"}>
+            <div class={"card-title line-clamp-2 text-neutral"}>
               {title}
               <UpRight
-                classes="card-link-icon group-hover:ml-2 absolute top-7 right-4 group-hover:opacity-100 group-hover:w-[16px] group-hover:translate-x-[3px] opacity-0 w-0 duration-200 ease-in-out"
+                classes="card-link-icon group-hover:ml-2 absolute top-8 right-8 group-hover:opacity-100 group-hover:w-[16px] group-hover:translate-x-[3px] opacity-0 w-0 duration-200 ease-in-out"
               />
             </div>
-            <div class="line-clamp-3">{description}</div>
+            <div class="line-clamp-3 text-neutral/50">{description}</div>
           </div>
         </a>
       );
