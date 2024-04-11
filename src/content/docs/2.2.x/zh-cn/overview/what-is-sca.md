@@ -16,7 +16,7 @@ Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。�
 Spring Cloud 是分布式微服务架构的一站式解决方案，它提供了一套简单易用的编程模型，使我们能在 Spring Boot 的基础上轻松地实现微服务系统的构建。
 **Spring Cloud 提供以微服务为核心的分布式系统构建标准。**
 
-![spring-cloud](../../../../../static/img/overview-doc-img/spring-cloud-img.png)
+![spring-cloud](/img/overview-doc-img/spring-cloud-img.png)
 
 Spring Cloud 本身并不是一个开箱即用的框架，它是一套微服务规范，共有两代实现。
 
@@ -25,7 +25,7 @@ Spring Cloud 本身并不是一个开箱即用的框架，它是一套微服务�
 
 ## Spring Cloud Alibaba 定位
 
-![spring-cloud](../../../../../static/img/overview-doc-img/spring-cloud-alibaba-img.png)
+![spring-cloud](/img/overview-doc-img/spring-cloud-alibaba-img.png)
 
 Spring Cloud Alibaba 是阿里巴巴结合自身丰富的微服务实践而推出的微服务开发的一站式解决方案，是 Spring Cloud 第二代实现的主要组成部分。吸收了 Spring Cloud Netflix 微服务框架的核心架构思想，并进行了高性能改进。自 Spring Cloud Netflix 进入停更维护后，Spring Cloud Alibaba 逐渐代替它成为主流的微服务框架。
 

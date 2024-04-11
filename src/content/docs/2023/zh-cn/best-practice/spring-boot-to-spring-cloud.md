@@ -182,10 +182,10 @@ public interface EchoService {
 
 在此，我们以 DNS 自定义域名架构为例，提供了一个 Spring Boot 到 Spring Cloud 升级改造的完整示例，升级前后的应用架构图如下。具体可参见 [Github 源码链接](https://github.com/spring-cloud-alibaba-group/springboot-transfer-to-springcloud)。
 
-![spring boot](../../../../../static/img/best-practice/spring-boot.png)
+![spring boot](/img/best-practice/spring-boot.png)
 _升级前 SpringBoot 架构 👆_
 
-![spring cloud](../../../../../static/img/best-practice/spring-cloud.png)
+![spring cloud](/img/best-practice/spring-cloud.png)
 _升级后 SpringCloud 架构 _👆
 
 ### Spring Boot 与 Spring Cloud Alibaba 版本对应关系

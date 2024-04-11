@@ -31,6 +31,16 @@ export interface AnalyticsConfig {
       id?: string;
       partytown?: boolean;
     };
+    baiduAnalytics: {
+      id?: string;
+      verification?: string;
+    };
+    aesAnalytics: {
+      pid?: string;
+    };
+    clarityAlalytics: {
+      id?: string;
+    }
   };
 }
 

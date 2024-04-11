@@ -23,7 +23,7 @@ SCA 的项目的最佳实践，是整合了 SCA 相关组件（Nacos，Sentinel�
 
 下图为 SCA 最佳实践项目结构示意图：
 
-![项目结构示意图](../../../../../static/img/best-practice/1.png)
+![项目结构示意图](/img/best-practice/1.png)
 
 ## 组件详细说明
 
@@ -196,7 +196,7 @@ bin\seata-server.bat
    - 此次订单购买的商品个数为 1 个
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/2.png"/>
+       <img src="/img/best-practice/2.png"/>
    </div>
 
    在本 Example 示例中，为了便于演示，每件商品的单价都为 2。
@@ -206,13 +206,13 @@ bin\seata-server.bat
    因此通过上述的操作，应用会创建一个订单，扣减对应商品编号为 1 号的库存个数（100 - 1 = 99），扣减 admin 用户的余额（3 - 2 = 1）。
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/3.png"/>
+       <img src="/img/best-practice/3.png"/>
    </div>
 
    如果再次请求相同的接口，同样是先扣减库存（99 - 1 = 98），但是会因为 admin 用户余额不足而抛出异常，并被 Seata 捕获，执行分布式事务二阶段提交，回滚事务。
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/4.png"/>
+       <img src="/img/best-practice/4.png"/>
    </div>
 
    可以看到数据库中库存的记录因为回滚之后仍然为 99 件。
@@ -235,7 +235,7 @@ bin\seata-server.bat
    访问 `http://integrated-frontend:8080/sentinel` 体验对应场景。
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/5.png"/>
+       <img src="/img/best-practice/5.png"/>
    </div>
 
    网关路由点赞服务的限流规则为 5，而在前端通过异步处理模拟了 10 次并发请求。
@@ -243,7 +243,7 @@ bin\seata-server.bat
    因此可以看到 Sentinel 在 Gateway 侧针对多出的流量进行了服务熔断返回 fallback 给客户端，同时数据库的点赞数进行了更新（+5）。
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/6.png"/>
+       <img src="/img/best-practice/6.png"/>
    </div>
 
    **RocketMQ 进行流量削峰填谷**
@@ -255,7 +255,7 @@ bin\seata-server.bat
    可以看到数据库中点赞的个数正在动态更新。
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/7.png"/>
+       <img src="/img/best-practice/7.png"/>
    </div>
 
 ### Docker Compose 部署

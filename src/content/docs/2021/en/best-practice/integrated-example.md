@@ -23,7 +23,7 @@ The best practice for SCA projects is the example project that integrates SCA-re
 
 The following figure is a schematic diagram of the SCA best practice project structure:
 
-![Project Structure Diagram](../../../../../static/img/best-practice/1.png)
+![Project Structure Diagram](/img/best-practice/1.png)
 
 ## Component Details
 
@@ -198,7 +198,7 @@ First, you need to start the integrated-frontend and integrated-gateway microser
    - The number of products purchased in this order is 1
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/2.png"/>
+       <img src="/img/best-practice/2.png"/>
    </div>
 
    In this example, for the sake of demonstration, the unit price of each item is 2.
@@ -208,13 +208,13 @@ First, you need to start the integrated-frontend and integrated-gateway microser
    Therefore, through the above operations, the application will create an order, deduct the number of inventory corresponding to item number 1 (100-1=99), and deduct the balance of the admin user (3-2=1).
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/3.png"/>
+       <img src="/img/best-practice/3.png"/>
    </div>
 
    If the same interface is requested again, the inventory is also deducted first (99-1=98), but an exception will be thrown due to insufficient balance of the admin user, which will be caught by Seata, perform a two-phase commit of the distributed transaction, and roll back the transaction.
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/4.png"/>
+       <img src="/img/best-practice/4.png"/>
    </div>
 
    You can see the record of inventory in the database because it is still 99 pieces after the rollback.
@@ -237,7 +237,7 @@ First, you need to start the integrated-frontend and integrated-gateway microser
    Visit `http://integrated-frontend:8080/sentinel` to experience the corresponding scene.
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/5.png"/>
+       <img src="/img/best-practice/5.png"/>
    </div>
 
    The flow-limiting rule of the gateway routing thumbs-up service is 5, and 10 concurrent requests are simulated through asynchronous processing on the front end.
@@ -245,7 +245,7 @@ First, you need to start the integrated-frontend and integrated-gateway microser
    Therefore, it can be seen that Sentinel has performed a service fuse on the Gateway side for the excess traffic and returned a fallback to the client, and at the same time the number of likes in the database has been updated (+5).
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/6.png"/>
+       <img src="/img/best-practice/6.png"/>
    </div>
 
    **RocketMQ performs traffic peak-shaving and valley-filling**
@@ -257,7 +257,7 @@ First, you need to start the integrated-frontend and integrated-gateway microser
    You can see that the number of likes in the database is being dynamically updated.
 
    <div align="center">
-       <img src="../../../../../static/img/best-practice/7.png"/>
+       <img src="/img/best-practice/7.png"/>
    </div>
 
 ### Docker Compose deploy

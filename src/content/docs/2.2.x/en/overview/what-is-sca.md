@@ -16,7 +16,7 @@ In addition, Ali Cloud also provides [Spring Cloud Alibaba enterprise version mi
 Spring Cloud is a one-stop solution for distributed microservices architecture, providing an easy-to-use programming model that makes it easy to build microservices on top of Spring Boot.
 **Spring Cloud provides standards for building distributed systems with microservices at the core. **
 
-![spring-cloud](../../../../../static/img/overview-doc-img/spring-cloud-img.png)
+![spring-cloud](/img/overview-doc-img/spring-cloud-img.png)
 
 Spring Cloud itself is not an out-of-the-box framework; it is a set of microservices specifications with two generations of implementations.
 
@@ -25,7 +25,7 @@ Spring Cloud itself is not an out-of-the-box framework; it is a set of microserv
 
 ## Spring Cloud Alibaba positioning
 
-![spring-cloud](../../../../../static/img/overview-doc-img/spring-cloud-alibaba-img.png)
+![spring-cloud](/img/overview-doc-img/spring-cloud-alibaba-img.png)
 
 Spring Cloud Alibaba is a one-stop solution for micro-service development launched by Alibaba in combination with its own rich micro-service practice, and is a major part of the second generation of Spring Cloud implementation. It has absorbed the core architecture ideas of Spring Cloud Netflix microservice framework and improved its performance. Since Spring Cloud Netflix entered the outage maintenance, Spring Cloud Alibaba gradually replaced it as the mainstream microservice framework.
 
