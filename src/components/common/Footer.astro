@@ -1,7 +1,7 @@
 ---
 import { useTranslations } from "@i18n/util";
 const t = useTranslations(Astro);
-import Button from "@components/common/Button.astro";
+import { LinkButton } from "@serverless-cd/goat-ui"
 import { SITE } from "@utils/config";
 ---
 
@@ -23,14 +23,14 @@ import { SITE } from "@utils/config";
       >
         {t("commmon.footer.description")}
       </p>
-      <Button
-        size="large"
-        class="rounded-3xl font-semibold"
-        href={SITE.githubUrl}
-        target="_blank"
-      >
-        GitHub
-      </Button>
+      <div class="flex">
+        <LinkButton  
+          href={SITE.githubUrl}
+          text="GitHub"    
+          theme="secondary"    
+          textTheme="neutral" 
+        />
+       </div>
     </div>
     <div
       class="footer-right grid grid-cols-2 gap-2 flex text-left mt-9 ml-[9.625rem]"
@@ -52,7 +52,7 @@ import { SITE } from "@utils/config";
           </li>
           <li>
             <a
-              href="/docs/v2/quickstart/quick-start/"
+              href="/docs/2023/user-guide/nacos/quick-start//"
               class="text-[.875rem] font-medium leading-5 tracking-normal mb-4 no-underline"
             >
               {t("commmon.footer.actions.start")}
@@ -76,15 +76,6 @@ import { SITE } from "@utils/config";
         </p>
         <ul class="list-none w-full h-4 ps-0 text-warning">
           <li>
-            <!-- TODO: 下载页面 -->
-            <a
-              href="/download/nacos-server/"
-              class="text-[.875rem] font-medium leading-5 tracking-normal mb-4 no-underline"
-            >
-              {t("commmon.footer.actions.distribution")}
-            </a>
-          </li>
-          <li>
             <a
               href="/docs/ebook/srekog/"
               class="text-[.875rem] font-medium leading-5 tracking-normal mb-4 no-underline"
@@ -95,7 +86,7 @@ import { SITE } from "@utils/config";
           <li>
             <!-- TODO: 企业版链接 -->
             <a
-              href="https://www.aliyun.com/product/aliware/mse?spm=nacos.io.topbar.0.0.0"
+              href="https://www.aliyun.com/product/aliware/mse?spm=sca.io.topbar.0.0.0"
               target="_blank"
               class="text-[.875rem] font-medium leading-5 tracking-normal mb-4 no-underline"
             >
