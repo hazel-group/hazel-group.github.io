@@ -379,6 +379,51 @@ export const MICROSERVICE_SOLUTION = [
   { title: 'Spring', image: '/assets/2-7.jpg', detailTitle: 'home.introduction.detailTitle.7', detail: 'home.introduction.detail.7' },
 ];
 
+export const ProductDisplayCardData = [
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01k1amBw1U0RHtPPlvH_!!6000000002455-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring",
+    body: "home.introduction.card.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i3/O1CN01WxXILZ1C0I4pkZUyD_!!6000000000018-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Boot",
+    body: "home.introduction.card.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i4/O1CN01ye2eKa1obLWDSsIiE_!!6000000005243-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba",
+    body: "home.introduction.card.sca.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01psWBwW1tzgeAxapCz_!!6000000005973-0-tps-2448-3672.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba Nacos",
+    body: "home.introduction.card.Nacos.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01HzKXZY29J7h0UIGJ5_!!6000000008046-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba Sentinel",
+    body: "home.introduction.card.Sentinel.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i3/O1CN01bJroU81BzNHfeB3jN_!!6000000000016-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba Seata",
+    body: "home.introduction.card.Seata.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01l9eXcR1LJN7PxX79e_!!6000000001278-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba RocketMQ",
+    body: "home.introduction.card.RocketMQ.des",
+  },
+];
+
 export const categoryMap = {
   article: "blog_article",
   case: "blog_case",
