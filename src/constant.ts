@@ -210,7 +210,7 @@ export const getCommunityLinkList = (t: Function): CommunityLink[] => [
     icon: "basil:document-outline",
   },
   {
-    href: "https://github.com/nacos-group/nacos-group.github.io/tree/develop-astro-nacos/src/content/docs",
+    href: 'https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/blob/main/src/content/docs',
     text: t("rightSidebar.github"),
     icon: "ant-design:github-filled",
   },
@@ -420,7 +420,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "报告文档问题",
         target: "_blank",
-        link: "https://github.com/nacos-group/nacos-group.github.io/issues",
+        link: "https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/issues",
         translations: {
           en: "Report a doc issue",
         },
@@ -428,7 +428,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "贡献社区",
         target: "_blank",
-        link: "https://github.com/alibaba/nacos/pulls",
+        link: 'https://github.com/alibaba/spring-cloud-alibaba/pulls',
         translations: {
           en: "Contribute community",
         },
@@ -436,7 +436,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "贡献者",
         target: "_blank",
-        link: "https://github.com/alibaba/nacos/graphs/contributors",
+        link: 'https://github.com/alibaba/spring-cloud-alibaba/graphs/contributors',
         translations: {
           en: "Contributors",
         },
