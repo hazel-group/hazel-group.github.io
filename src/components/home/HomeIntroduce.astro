@@ -1,7 +1,7 @@
 ---
 import { useTranslations, isChinese } from "@i18n/util";
 import StarAndFork from "./StarAndFork.astro";
-import Solution from "@components/home/Solution.astro";
+import ProductDisplayCard from "@components/home/ProductDisplayCard.astro";
 
 const t = useTranslations(Astro);
 const ifzh = isChinese(Astro);
@@ -9,9 +9,9 @@ const ifzh = isChinese(Astro);
 
 <div class="home-introduce-wrapper">
 <home-introduce
-  class="introduce flex flex-col justify-center items-center bg-muted/[0.8]"
+  class="introduce flex flex-col justify-center items-center bg-muted/[0.8] "
 >
-  <div class="top-section flex flex-col relative">
+  <div class="top-section flex flex-col relative mb-[111px]">
     <div class="introduce_about pt-6 pb-4 text-warning text-xs mt-[2.375rem]">
       {t("home.introduce.about")}
     </div>
@@ -21,9 +21,9 @@ const ifzh = isChinese(Astro);
       {t("home.introduce.title")}
     </div>
     <StarAndFork />
-    <Solution />
   </div>
 </home-introduce>
+<ProductDisplayCard />
 </div>
 
 <style is:global>
@@ -32,9 +32,9 @@ const ifzh = isChinese(Astro);
       text-decoration: inherit;
       color: theme("colors.accent");
     }
-    .introduce {
+    
       min-height: calc(100vh - 4rem);
-    }
+    
     .top-section {
       width: 85.125rem;
       overflow: hidden;
