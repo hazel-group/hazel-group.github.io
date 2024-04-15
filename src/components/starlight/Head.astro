@@ -163,7 +163,7 @@ const head = createHead(headDefaults, config.head, data.head);
             "//g.alicdn.com/aes/??tracker/3.3.4/index.js,tracker-plugin-pv/3.0.5/index.js,tracker-plugin-event/3.0.0/index.js,tracker-plugin-autolog/3.0.3/index.js,tracker-plugin-survey/3.0.3/index.js,tracker-plugin-jserror/3.0.3/index.js,tracker-plugin-resourceError/3.0.3/index.js";
         t.onload = function () {
             // TODO: 设置aem sdk环境
-            if (window.location.hostname !== "nacos.io") {
+            if (window.location.hostname !== "sca.aliyun.com") {
                 return;
             }
             window.AES_CONFIG = window.AES_CONFIG || {
@@ -171,7 +171,7 @@ const head = createHead(headDefaults, config.head, data.head);
                 env: "prod",
             };
             window.aes = new AES({
-                pid: "e7WQkK",
+                pid: "b3kPns",
                 user_type: 6,
             });
             window.AESPluginAutologConfig = { exposure: "auto" };
@@ -197,7 +197,7 @@ const head = createHead(headDefaults, config.head, data.head);
 </script>
 
 <!--初始化Clarity SDK-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 (function (c, l, a, r, i, t, y) {
     c[a] =
         c[a] ||
@@ -210,20 +210,20 @@ const head = createHead(headDefaults, config.head, data.head);
     y = l.getElementsByTagName(r)[0];
     y.parentNode.insertBefore(t, y);
 })(window, document, "clarity", "script", "l4jzj6wbhh");
-</script>
+</script> -->
 
 <script>
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e3a5cec56ef8619cf9d7c2abebd509e3";
+        hm.src = "https://hm.baidu.com/hm.js?8d45b13e5afb579f4083ee89048f70ac";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0YDFJ7LX7F"
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NP3B57ZGEF"
 ></script>
 
 <script>
