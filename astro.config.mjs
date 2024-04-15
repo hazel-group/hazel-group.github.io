@@ -6,7 +6,7 @@ import { autoImportComponents } from "@serverless-cd/goat-ui/src/utils";
 import locales from './src/i18n/languages';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-// import compress from 'astro-compress';
+import preact from "@astrojs/preact";
 import rehypeExternalLinks from 'rehype-external-links'
 
 import { remarkRemoveMdLinks, remarkRemovePlainLanguageCode, remarkRemoveRepeatHeader, addPrefixImageLink, setLinkReferrer } from './src/utils/frontmatter.mjs';
@@ -36,7 +36,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: SITE.site,
-			favicon: '/img/spring_cloud_alibaba_colorful.png',
+			favicon: '/sca-icon.svg',
 			expressiveCode: {
 				themes: ['github-dark'], //TODO: 待调研
 			},
@@ -78,6 +78,7 @@ export default defineConfig({
 				}
 			}
 		},
+		preact({ compat: true }),
 		...whenExternalScripts(() =>
 		partytown({
 		  config: { forward: ['dataLayer.push'] },

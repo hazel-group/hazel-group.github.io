@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.6",
     "@astrojs/partytown": "^2.0.4",
+    "@astrojs/preact": "^3.2.0",
     "@astrojs/starlight": "^0.20.1",
     "@astrojs/starlight-tailwind": "^2.0.1",
     "@astrojs/tailwind": "^5.1.0",
@@ -20,7 +21,7 @@
     "@iconify-json/ant-design": "^1.1.15",
     "@iconify-json/basil": "^1.1.5",
     "@iconify-json/tabler": "^1.1.108",
-    "@serverless-cd/goat-ui": "^0.0.27-beta.1",
+    "@serverless-cd/goat-ui": "^0.0.27-beta.3",
     "astro": "^4.3.5",
     "astro-compress": "^2.2.11",
     "date-fns": "^3.4.0",
