@@ -127,6 +127,13 @@ export default {
 	'home.introduction.detail.6':'Spring 中文站点，跟随教程学习从入门到开发生产级应用。',
 	'home.introduction.detailTitle.7':'Spring Boot',
 	'home.introduction.detail.7':'Spring Boot 中文站点，跟随教程学习从入门到开发生产级应用。',
+
+	'home.introduction.card.des':'加速单体、微服务应用开发、打包与部署',
+	'home.introduction.card.sca.des':'微服务应用开发与治理一站式解决方案',
+	'home.introduction.card.Nacos.des':'服务发现与配置自动同步',
+	'home.introduction.card.Sentinel.des':'限流降级为应用保驾护航',
+	'home.introduction.card.Seata.des':'分布式事务保证数据一致性',
+	'home.introduction.card.RocketMQ.des':'异步消息削峰填谷',
 	
 
 	'cloud.title': 'Spring Cloud Alibaba',
