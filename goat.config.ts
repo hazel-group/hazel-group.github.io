@@ -41,7 +41,7 @@ const replaceNavigation = async () => {
 		sideBarRegex,
 		`export function getSidebar(pathname: string, locale: string | undefined, categories: any): SidebarEntry[] {
 		const routes = getLocaleRoutes(locale);
-		const versionRegex = /\\/docs\\/([^/]+)\\//;
+		const versionRegex = /\\/docs\\/(${docsFile.join('|')})\\//;
 		const match = versionRegex.exec(pathname);
 		const version = match ? match[1] : 'latest';
 		if(categories && categories[version]){
@@ -75,7 +75,7 @@ const replaceNavigation = async () => {
 	const localeDirRegex = /const localeDir = locale \? locale \+ \'\/\' \+ directory \: directory\;/;
 	const localeDirContent = sideBarLinkContent.replace(
 		localeDirRegex,
-		`const regex =  /\\docs\\/([^/]+)\\/(en|zh-cn)/;
+		`const regex =  /(${docsFile.join('|')})\\/(en|zh-cn)/;
 		const localeDir = locale ? locale + '/' + directory.replace(regex, "$1/"+locale) : directory;`
 	);
 
