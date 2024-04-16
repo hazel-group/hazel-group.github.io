@@ -3,7 +3,6 @@ import type { InferGetStaticPropsType } from 'astro';
 import { generateRouteData } from './utils/route-data';
 import { paths } from './utils/routing';
 import Page from './components/Page.astro';
-import _ from 'lodash';
 
 export async function getStaticPaths() {
 	const currentPath = paths.filter((item) => {
@@ -37,9 +36,7 @@ export async function getStaticPaths() {
 const categorySidebar = (await import.meta.glob("../../../src/content/**/_sidebar.json", { eager: true }));
 
 const regex = /\/content\/docs\/(DOCSREGEX)/;
-const categories = {};
-
-const docsRegex = /DOCSREGEX/;
+const categories = {}
 
 const _each = (collection, iteratee) => {
 	if (Array.isArray(collection)) {
@@ -75,6 +72,7 @@ _each(categorySidebar,(item, key) => {
 });
 
 function makeTranslate(list: any[], version: string) {
+	const regex =/DOCSREGEX/;
 	for (const item of list) {
 		if(!item['translations']) {
 			item['translations'] = {
@@ -82,20 +80,19 @@ function makeTranslate(list: any[], version: string) {
 			};
 		}
 		if(item['autogenerate']) {
-			const [curVersion, ...rest] = _.split(item['autogenerate']['directory'], '/');
-			 const match = docsRegex.exec(curVersion);
-			 console.log("---------", curVersion,match,item)
-			 if(!match) {
-				 item['autogenerate']['directory'] = `${version}/zh-cn/${item['autogenerate']['directory']}`
-			 }
-			 console.log("==============",version,item)
+			const [curVersion, ...rest] = item['autogenerate']['directory'].split('/');
+			const match = regex.exec(curVersion);
+			if(!match) {
+				item['autogenerate']['directory'] = `${version}/zh-cn/${item['autogenerate']['directory']}`
+			}
+
 		}
 		if(item['link']) {
-			const [_docs, ...rest] = _.split(item['link'], '/');
-			 const match = docsRegex.exec(rest[0]);
-			 if(!match) {
-				 item['link'] = `${_docs}/${version}/${_.join(rest, '/')}`
-			 }
+			const [_docs, ...rest] = item['link'].split('/');
+			const match = regex.exec(rest[0]);
+			if(!match) {
+				item['link'] = `${_docs}/${version}/${_join(rest, '/')}`
+			}
 		}
 		if(item['items']) {
 			makeTranslate(item['items'], version);

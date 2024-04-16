@@ -6,6 +6,10 @@ const curDirname = path.dirname(curFilename);
 
 const starlightPath = path.join(curDirname, 'node_modules/@astrojs/starlight');
 
+// 获取docs目录下的一级文件夹
+let docsFile = await fs.readdir('src/content/docs');
+docsFile = docsFile.filter((item) => item !== '.DS_Store')
+
 /**
  * @description: 替换 utils/route-data.ts
  * 传递 categories 参数
@@ -56,7 +60,7 @@ const replaceNavigation = async () => {
 	const sideBarLinkContent = sideBarContent.replace(
 		sideBarLinkRegex,
 		`href = formatPath(href);
-		const regex = /\\docs\\/([^/]+)\\/(en|zh-cn)/;
+		const regex = /\\/(${docsFile.join('|')})\\/(en|zh-cn)/;
 		href = href.replace(regex, '/docs/$1');
 		}`
 	);
@@ -87,7 +91,11 @@ const replaceNavigation = async () => {
 const replaceIndexAstro = async () => {
 	const originFile = path.join(starlightPath, "index.astro");
 	const replacedContent = await fs.readFile('./template/index.startlight.tpl');
-	await fs.writeFile(originFile, replacedContent.toString());
+	const updateContent =replacedContent.toString().replaceAll(
+		'DOCSREGEX',
+		`${docsFile.join('|')}`
+	)
+	await fs.writeFile(originFile, updateContent);
 }
 
 /**
