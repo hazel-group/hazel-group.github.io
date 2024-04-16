@@ -36,8 +36,10 @@ export async function getStaticPaths() {
 
 const categorySidebar = (await import.meta.glob("../../../src/content/**/_sidebar.json", { eager: true }));
 
-const regex = /\/content\/docs\/([^/]+)\//;
-const categories = {}
+const regex = /\/content\/docs\/(DOCSREGEX)/;
+const categories = {};
+
+const docsRegex = /DOCSREGEX/;
 
 const _each = (collection, iteratee) => {
 	if (Array.isArray(collection)) {
@@ -73,7 +75,6 @@ _each(categorySidebar,(item, key) => {
 });
 
 function makeTranslate(list: any[], version: string) {
-	const regex = /latest|next|ebook|v[0-9]\.[0-9]\.[0-9]|v[0-9]\.[0-9]|v[0-9]|[0-9]\.[0-9]\.[0-9]|[0-9]\.[0-9]|[0-9]/;
 	for (const item of list) {
 		if(!item['translations']) {
 			item['translations'] = {
@@ -82,17 +83,19 @@ function makeTranslate(list: any[], version: string) {
 		}
 		if(item['autogenerate']) {
 			const [curVersion, ...rest] = _.split(item['autogenerate']['directory'], '/');
-			const match = regex.exec(curVersion);
-			if(!match) {
-				item['autogenerate']['directory'] = `${version}/zh-cn/${item['autogenerate']['directory']}`
-			}
+			 const match = docsRegex.exec(curVersion);
+			 console.log("---------", curVersion,match,item)
+			 if(!match) {
+				 item['autogenerate']['directory'] = `${version}/zh-cn/${item['autogenerate']['directory']}`
+			 }
+			 console.log("==============",version,item)
 		}
 		if(item['link']) {
 			const [_docs, ...rest] = _.split(item['link'], '/');
-			const match = regex.exec(rest[0]);
-			if(!match) {
-				item['link'] = `${_docs}/${version}/${_.join(rest, '/')}`
-			}
+			 const match = docsRegex.exec(rest[0]);
+			 if(!match) {
+				 item['link'] = `${_docs}/${version}/${_.join(rest, '/')}`
+			 }
 		}
 		if(item['items']) {
 			makeTranslate(item['items'], version);
