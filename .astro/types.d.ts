@@ -249,359 +249,707 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
-"docs test": {
-"2022/en/best-practice/integrated-example.md": {
-	id: "2022/en/best-practice/integrated-example.md";
-  slug: "2022/en/best-practice/integrated-example";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/best-practice/spring-boot-to-spring-cloud.md": {
-	id: "2022/en/best-practice/spring-boot-to-spring-cloud.md";
-  slug: "2022/en/best-practice/spring-boot-to-spring-cloud";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/overview/faq.md": {
-	id: "2022/en/overview/faq.md";
-  slug: "2022/en/overview/faq";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2022/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "2022/en/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/overview/roadmap/service-governance/service-governance.md": {
-	id: "2022/en/overview/roadmap/service-governance/service-governance.md";
-  slug: "2022/en/overview/roadmap/service-governance/service-governance";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/overview/version-explain.md": {
-	id: "2022/en/overview/version-explain.md";
-  slug: "2022/en/overview/version-explain";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/overview/what-is-sca.md": {
-	id: "2022/en/overview/what-is-sca.md";
-  slug: "2022/en/overview/what-is-sca";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/graalvm/overview.md": {
-	id: "2022/en/user-guide/graalvm/overview.md";
-  slug: "2022/en/user-guide/graalvm/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/graalvm/quick-start.md": {
-	id: "2022/en/user-guide/graalvm/quick-start.md";
-  slug: "2022/en/user-guide/graalvm/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/nacos/advanced-guide.md": {
-	id: "2022/en/user-guide/nacos/advanced-guide.md";
-  slug: "2022/en/user-guide/nacos/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/nacos/overview.md": {
-	id: "2022/en/user-guide/nacos/overview.md";
-  slug: "2022/en/user-guide/nacos/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/nacos/quick-start.md": {
-	id: "2022/en/user-guide/nacos/quick-start.md";
-  slug: "2022/en/user-guide/nacos/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/rocketmq/advanced-guide.md": {
-	id: "2022/en/user-guide/rocketmq/advanced-guide.md";
-  slug: "2022/en/user-guide/rocketmq/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/rocketmq/overview.md": {
-	id: "2022/en/user-guide/rocketmq/overview.md";
-  slug: "2022/en/user-guide/rocketmq/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/rocketmq/quick-start.md": {
-	id: "2022/en/user-guide/rocketmq/quick-start.md";
-  slug: "2022/en/user-guide/rocketmq/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/seata/advanced-guide.md": {
-	id: "2022/en/user-guide/seata/advanced-guide.md";
-  slug: "2022/en/user-guide/seata/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/seata/overview.md": {
-	id: "2022/en/user-guide/seata/overview.md";
-  slug: "2022/en/user-guide/seata/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/seata/quick-start.md": {
-	id: "2022/en/user-guide/seata/quick-start.md";
-  slug: "2022/en/user-guide/seata/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/sentinel/advanced-guide.md": {
-	id: "2022/en/user-guide/sentinel/advanced-guide.md";
-  slug: "2022/en/user-guide/sentinel/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/sentinel/overview.md": {
-	id: "2022/en/user-guide/sentinel/overview.md";
-  slug: "2022/en/user-guide/sentinel/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/sentinel/quick-start.md": {
-	id: "2022/en/user-guide/sentinel/quick-start.md";
-  slug: "2022/en/user-guide/sentinel/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/sidecar/advanced-guide.md": {
-	id: "2022/en/user-guide/sidecar/advanced-guide.md";
-  slug: "2022/en/user-guide/sidecar/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/sidecar/overview.md": {
-	id: "2022/en/user-guide/sidecar/overview.md";
-  slug: "2022/en/user-guide/sidecar/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/en/user-guide/sidecar/quick-start.md": {
-	id: "2022/en/user-guide/sidecar/quick-start.md";
-  slug: "2022/en/user-guide/sidecar/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/best-practice/integrated-example.md": {
-	id: "2022/zh-cn/best-practice/integrated-example.md";
-  slug: "2022/zh-cn/best-practice/integrated-example";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/best-practice/spring-boot-to-spring-cloud.md": {
-	id: "2022/zh-cn/best-practice/spring-boot-to-spring-cloud.md";
-  slug: "2022/zh-cn/best-practice/spring-boot-to-spring-cloud";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/overview/faq.md": {
-	id: "2022/zh-cn/overview/faq.md";
-  slug: "2022/zh-cn/overview/faq";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2022/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "2022/zh-cn/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/overview/roadmap/service-governance/service-governance.md": {
-	id: "2022/zh-cn/overview/roadmap/service-governance/service-governance.md";
-  slug: "2022/zh-cn/overview/roadmap/service-governance/service-governance";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/overview/version-explain.md": {
-	id: "2022/zh-cn/overview/version-explain.md";
-  slug: "2022/zh-cn/overview/version-explain";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/overview/what-is-sca.md": {
-	id: "2022/zh-cn/overview/what-is-sca.md";
-  slug: "2022/zh-cn/overview/what-is-sca";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/graalvm/overview.md": {
-	id: "2022/zh-cn/user-guide/graalvm/overview.md";
-  slug: "2022/zh-cn/user-guide/graalvm/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/graalvm/quick-start.md": {
-	id: "2022/zh-cn/user-guide/graalvm/quick-start.md";
-  slug: "2022/zh-cn/user-guide/graalvm/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/nacos/advanced-guide.md": {
-	id: "2022/zh-cn/user-guide/nacos/advanced-guide.md";
-  slug: "2022/zh-cn/user-guide/nacos/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/nacos/overview.md": {
-	id: "2022/zh-cn/user-guide/nacos/overview.md";
-  slug: "2022/zh-cn/user-guide/nacos/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/nacos/quick-start.md": {
-	id: "2022/zh-cn/user-guide/nacos/quick-start.md";
-  slug: "2022/zh-cn/user-guide/nacos/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/rocketmq/advanced-guide.md": {
-	id: "2022/zh-cn/user-guide/rocketmq/advanced-guide.md";
-  slug: "2022/zh-cn/user-guide/rocketmq/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/rocketmq/overview.md": {
-	id: "2022/zh-cn/user-guide/rocketmq/overview.md";
-  slug: "2022/zh-cn/user-guide/rocketmq/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/rocketmq/quick-start.md": {
-	id: "2022/zh-cn/user-guide/rocketmq/quick-start.md";
-  slug: "2022/zh-cn/user-guide/rocketmq/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/seata/advanced-guide.md": {
-	id: "2022/zh-cn/user-guide/seata/advanced-guide.md";
-  slug: "2022/zh-cn/user-guide/seata/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/seata/overview.md": {
-	id: "2022/zh-cn/user-guide/seata/overview.md";
-  slug: "2022/zh-cn/user-guide/seata/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/seata/quick-start.md": {
-	id: "2022/zh-cn/user-guide/seata/quick-start.md";
-  slug: "2022/zh-cn/user-guide/seata/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/sentinel/advanced-guide.md": {
-	id: "2022/zh-cn/user-guide/sentinel/advanced-guide.md";
-  slug: "2022/zh-cn/user-guide/sentinel/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/sentinel/overview.md": {
-	id: "2022/zh-cn/user-guide/sentinel/overview.md";
-  slug: "2022/zh-cn/user-guide/sentinel/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/sentinel/quick-start.md": {
-	id: "2022/zh-cn/user-guide/sentinel/quick-start.md";
-  slug: "2022/zh-cn/user-guide/sentinel/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/sidecar/advanced-guide.md": {
-	id: "2022/zh-cn/user-guide/sidecar/advanced-guide.md";
-  slug: "2022/zh-cn/user-guide/sidecar/advanced-guide";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/sidecar/overview.md": {
-	id: "2022/zh-cn/user-guide/sidecar/overview.md";
-  slug: "2022/zh-cn/user-guide/sidecar/overview";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"2022/zh-cn/user-guide/sidecar/quick-start.md": {
-	id: "2022/zh-cn/user-guide/sidecar/quick-start.md";
-  slug: "2022/zh-cn/user-guide/sidecar/quick-start";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"latest/en/what-is-nacos.md": {
-	id: "latest/en/what-is-nacos.md";
-  slug: "latest/en/what-is-nacos";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-"latest/zh-cn/what-is-nacos.md": {
-	id: "latest/zh-cn/what-is-nacos.md";
-  slug: "latest/zh-cn/what-is-nacos";
-  body: string;
-  collection: "docs test";
-  data: any
-} & { render(): Render[".md"] };
-};
 "docs": {
+"2.2.x/en/best-practice/integrated-example.md": {
+	id: "2.2.x/en/best-practice/integrated-example.md";
+  slug: "22x/en/best-practice/integrated-example";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/best-practice/spring-boot-to-spring-cloud.md": {
+	id: "2.2.x/en/best-practice/spring-boot-to-spring-cloud.md";
+  slug: "22x/en/best-practice/spring-boot-to-spring-cloud";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/overview/faq.md": {
+	id: "2.2.x/en/overview/faq.md";
+  slug: "22x/en/overview/faq";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
+	id: "2.2.x/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
+  slug: "22x/en/overview/roadmap/rocketmq-500/rocketmq-500";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/overview/roadmap/service-governance/service-governance.md": {
+	id: "2.2.x/en/overview/roadmap/service-governance/service-governance.md";
+  slug: "22x/en/overview/roadmap/service-governance/service-governance";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/overview/version-explain.md": {
+	id: "2.2.x/en/overview/version-explain.md";
+  slug: "22x/en/overview/version-explain";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/overview/what-is-sca.md": {
+	id: "2.2.x/en/overview/what-is-sca.md";
+  slug: "22x/en/overview/what-is-sca";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/nacos/advanced-guide.md": {
+	id: "2.2.x/en/user-guide/nacos/advanced-guide.md";
+  slug: "22x/en/user-guide/nacos/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/nacos/overview.md": {
+	id: "2.2.x/en/user-guide/nacos/overview.md";
+  slug: "22x/en/user-guide/nacos/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/nacos/quick-start.md": {
+	id: "2.2.x/en/user-guide/nacos/quick-start.md";
+  slug: "22x/en/user-guide/nacos/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/rocketmq/advanced-guide.md": {
+	id: "2.2.x/en/user-guide/rocketmq/advanced-guide.md";
+  slug: "22x/en/user-guide/rocketmq/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/rocketmq/overview.md": {
+	id: "2.2.x/en/user-guide/rocketmq/overview.md";
+  slug: "22x/en/user-guide/rocketmq/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/rocketmq/quick-start.md": {
+	id: "2.2.x/en/user-guide/rocketmq/quick-start.md";
+  slug: "22x/en/user-guide/rocketmq/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/seata/advanced-guide.md": {
+	id: "2.2.x/en/user-guide/seata/advanced-guide.md";
+  slug: "22x/en/user-guide/seata/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/seata/overview.md": {
+	id: "2.2.x/en/user-guide/seata/overview.md";
+  slug: "22x/en/user-guide/seata/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/seata/quick-start.md": {
+	id: "2.2.x/en/user-guide/seata/quick-start.md";
+  slug: "22x/en/user-guide/seata/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/sentinel/advanced-guide.md": {
+	id: "2.2.x/en/user-guide/sentinel/advanced-guide.md";
+  slug: "22x/en/user-guide/sentinel/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/sentinel/overview.md": {
+	id: "2.2.x/en/user-guide/sentinel/overview.md";
+  slug: "22x/en/user-guide/sentinel/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/sentinel/quick-start.md": {
+	id: "2.2.x/en/user-guide/sentinel/quick-start.md";
+  slug: "22x/en/user-guide/sentinel/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/service-governance/service-security/advanced-guide.md": {
+	id: "2.2.x/en/user-guide/service-governance/service-security/advanced-guide.md";
+  slug: "22x/en/user-guide/service-governance/service-security/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/service-governance/service-security/overview.md": {
+	id: "2.2.x/en/user-guide/service-governance/service-security/overview.md";
+  slug: "22x/en/user-guide/service-governance/service-security/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/service-governance/service-security/quick-start.md": {
+	id: "2.2.x/en/user-guide/service-governance/service-security/quick-start.md";
+  slug: "22x/en/user-guide/service-governance/service-security/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/service-governance/traffic-management/advanced-guide.md": {
+	id: "2.2.x/en/user-guide/service-governance/traffic-management/advanced-guide.md";
+  slug: "22x/en/user-guide/service-governance/traffic-management/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/service-governance/traffic-management/overview.md": {
+	id: "2.2.x/en/user-guide/service-governance/traffic-management/overview.md";
+  slug: "22x/en/user-guide/service-governance/traffic-management/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/service-governance/traffic-management/quick-start.md": {
+	id: "2.2.x/en/user-guide/service-governance/traffic-management/quick-start.md";
+  slug: "22x/en/user-guide/service-governance/traffic-management/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/sidecar/advanced-guide.md": {
+	id: "2.2.x/en/user-guide/sidecar/advanced-guide.md";
+  slug: "22x/en/user-guide/sidecar/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/sidecar/overview.md": {
+	id: "2.2.x/en/user-guide/sidecar/overview.md";
+  slug: "22x/en/user-guide/sidecar/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/en/user-guide/sidecar/quick-start.md": {
+	id: "2.2.x/en/user-guide/sidecar/quick-start.md";
+  slug: "22x/en/user-guide/sidecar/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/best-practice/integrated-example.md": {
+	id: "2.2.x/zh-cn/best-practice/integrated-example.md";
+  slug: "22x/zh-cn/best-practice/integrated-example";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/best-practice/spring-boot-to-spring-cloud.md": {
+	id: "2.2.x/zh-cn/best-practice/spring-boot-to-spring-cloud.md";
+  slug: "22x/zh-cn/best-practice/spring-boot-to-spring-cloud";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/overview/faq.md": {
+	id: "2.2.x/zh-cn/overview/faq.md";
+  slug: "22x/zh-cn/overview/faq";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
+	id: "2.2.x/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
+  slug: "22x/zh-cn/overview/roadmap/rocketmq-500/rocketmq-500";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/overview/roadmap/service-governance/service-governance.md": {
+	id: "2.2.x/zh-cn/overview/roadmap/service-governance/service-governance.md";
+  slug: "22x/zh-cn/overview/roadmap/service-governance/service-governance";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/overview/version-explain.md": {
+	id: "2.2.x/zh-cn/overview/version-explain.md";
+  slug: "22x/zh-cn/overview/version-explain";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/overview/what-is-sca.md": {
+	id: "2.2.x/zh-cn/overview/what-is-sca.md";
+  slug: "22x/zh-cn/overview/what-is-sca";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/nacos/advanced-guide.md": {
+	id: "2.2.x/zh-cn/user-guide/nacos/advanced-guide.md";
+  slug: "22x/zh-cn/user-guide/nacos/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/nacos/overview.md": {
+	id: "2.2.x/zh-cn/user-guide/nacos/overview.md";
+  slug: "22x/zh-cn/user-guide/nacos/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/nacos/quick-start.md": {
+	id: "2.2.x/zh-cn/user-guide/nacos/quick-start.md";
+  slug: "22x/zh-cn/user-guide/nacos/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/rocketmq/advanced-guide.md": {
+	id: "2.2.x/zh-cn/user-guide/rocketmq/advanced-guide.md";
+  slug: "22x/zh-cn/user-guide/rocketmq/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/rocketmq/overview.md": {
+	id: "2.2.x/zh-cn/user-guide/rocketmq/overview.md";
+  slug: "22x/zh-cn/user-guide/rocketmq/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/rocketmq/quick-start.md": {
+	id: "2.2.x/zh-cn/user-guide/rocketmq/quick-start.md";
+  slug: "22x/zh-cn/user-guide/rocketmq/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/seata/advanced-guide.md": {
+	id: "2.2.x/zh-cn/user-guide/seata/advanced-guide.md";
+  slug: "22x/zh-cn/user-guide/seata/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/seata/overview.md": {
+	id: "2.2.x/zh-cn/user-guide/seata/overview.md";
+  slug: "22x/zh-cn/user-guide/seata/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/seata/quick-start.md": {
+	id: "2.2.x/zh-cn/user-guide/seata/quick-start.md";
+  slug: "22x/zh-cn/user-guide/seata/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/sentinel/advanced-guide.md": {
+	id: "2.2.x/zh-cn/user-guide/sentinel/advanced-guide.md";
+  slug: "22x/zh-cn/user-guide/sentinel/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/sentinel/overview.md": {
+	id: "2.2.x/zh-cn/user-guide/sentinel/overview.md";
+  slug: "22x/zh-cn/user-guide/sentinel/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/sentinel/quick-start.md": {
+	id: "2.2.x/zh-cn/user-guide/sentinel/quick-start.md";
+  slug: "22x/zh-cn/user-guide/sentinel/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/service-governance/service-security/advanced-guide.md": {
+	id: "2.2.x/zh-cn/user-guide/service-governance/service-security/advanced-guide.md";
+  slug: "22x/zh-cn/user-guide/service-governance/service-security/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/service-governance/service-security/overview.md": {
+	id: "2.2.x/zh-cn/user-guide/service-governance/service-security/overview.md";
+  slug: "22x/zh-cn/user-guide/service-governance/service-security/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/service-governance/service-security/quick-start.md": {
+	id: "2.2.x/zh-cn/user-guide/service-governance/service-security/quick-start.md";
+  slug: "22x/zh-cn/user-guide/service-governance/service-security/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/service-governance/traffic-management/advanced-guide.md": {
+	id: "2.2.x/zh-cn/user-guide/service-governance/traffic-management/advanced-guide.md";
+  slug: "22x/zh-cn/user-guide/service-governance/traffic-management/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/service-governance/traffic-management/overview.md": {
+	id: "2.2.x/zh-cn/user-guide/service-governance/traffic-management/overview.md";
+  slug: "22x/zh-cn/user-guide/service-governance/traffic-management/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/service-governance/traffic-management/quick-start.md": {
+	id: "2.2.x/zh-cn/user-guide/service-governance/traffic-management/quick-start.md";
+  slug: "22x/zh-cn/user-guide/service-governance/traffic-management/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/sidecar/advanced-guide.md": {
+	id: "2.2.x/zh-cn/user-guide/sidecar/advanced-guide.md";
+  slug: "22x/zh-cn/user-guide/sidecar/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/sidecar/overview.md": {
+	id: "2.2.x/zh-cn/user-guide/sidecar/overview.md";
+  slug: "22x/zh-cn/user-guide/sidecar/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2.2.x/zh-cn/user-guide/sidecar/quick-start.md": {
+	id: "2.2.x/zh-cn/user-guide/sidecar/quick-start.md";
+  slug: "22x/zh-cn/user-guide/sidecar/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/best-practice/integrated-example.md": {
+	id: "2021/en/best-practice/integrated-example.md";
+  slug: "2021/en/best-practice/integrated-example";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/best-practice/spring-boot-to-spring-cloud.md": {
+	id: "2021/en/best-practice/spring-boot-to-spring-cloud.md";
+  slug: "2021/en/best-practice/spring-boot-to-spring-cloud";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/overview/faq.md": {
+	id: "2021/en/overview/faq.md";
+  slug: "2021/en/overview/faq";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
+	id: "2021/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
+  slug: "2021/en/overview/roadmap/rocketmq-500/rocketmq-500";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/overview/roadmap/service-governance/service-governance.md": {
+	id: "2021/en/overview/roadmap/service-governance/service-governance.md";
+  slug: "2021/en/overview/roadmap/service-governance/service-governance";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/overview/version-explain.md": {
+	id: "2021/en/overview/version-explain.md";
+  slug: "2021/en/overview/version-explain";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/overview/what-is-sca.md": {
+	id: "2021/en/overview/what-is-sca.md";
+  slug: "2021/en/overview/what-is-sca";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/nacos/advanced-guide.md": {
+	id: "2021/en/user-guide/nacos/advanced-guide.md";
+  slug: "2021/en/user-guide/nacos/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/nacos/overview.md": {
+	id: "2021/en/user-guide/nacos/overview.md";
+  slug: "2021/en/user-guide/nacos/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/nacos/quick-start.md": {
+	id: "2021/en/user-guide/nacos/quick-start.md";
+  slug: "2021/en/user-guide/nacos/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/rocketmq/advanced-guide.md": {
+	id: "2021/en/user-guide/rocketmq/advanced-guide.md";
+  slug: "2021/en/user-guide/rocketmq/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/rocketmq/overview.md": {
+	id: "2021/en/user-guide/rocketmq/overview.md";
+  slug: "2021/en/user-guide/rocketmq/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/rocketmq/quick-start.md": {
+	id: "2021/en/user-guide/rocketmq/quick-start.md";
+  slug: "2021/en/user-guide/rocketmq/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/seata/advanced-guide.md": {
+	id: "2021/en/user-guide/seata/advanced-guide.md";
+  slug: "2021/en/user-guide/seata/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/seata/overview.md": {
+	id: "2021/en/user-guide/seata/overview.md";
+  slug: "2021/en/user-guide/seata/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/seata/quick-start.md": {
+	id: "2021/en/user-guide/seata/quick-start.md";
+  slug: "2021/en/user-guide/seata/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/sentinel/advanced-guide.md": {
+	id: "2021/en/user-guide/sentinel/advanced-guide.md";
+  slug: "2021/en/user-guide/sentinel/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/sentinel/overview.md": {
+	id: "2021/en/user-guide/sentinel/overview.md";
+  slug: "2021/en/user-guide/sentinel/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/sentinel/quick-start.md": {
+	id: "2021/en/user-guide/sentinel/quick-start.md";
+  slug: "2021/en/user-guide/sentinel/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/sidecar/advanced-guide.md": {
+	id: "2021/en/user-guide/sidecar/advanced-guide.md";
+  slug: "2021/en/user-guide/sidecar/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/sidecar/overview.md": {
+	id: "2021/en/user-guide/sidecar/overview.md";
+  slug: "2021/en/user-guide/sidecar/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/en/user-guide/sidecar/quick-start.md": {
+	id: "2021/en/user-guide/sidecar/quick-start.md";
+  slug: "2021/en/user-guide/sidecar/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/best-practice/integrated-example.md": {
+	id: "2021/zh-cn/best-practice/integrated-example.md";
+  slug: "2021/zh-cn/best-practice/integrated-example";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/best-practice/spring-boot-to-spring-cloud.md": {
+	id: "2021/zh-cn/best-practice/spring-boot-to-spring-cloud.md";
+  slug: "2021/zh-cn/best-practice/spring-boot-to-spring-cloud";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/overview/faq.md": {
+	id: "2021/zh-cn/overview/faq.md";
+  slug: "2021/zh-cn/overview/faq";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
+	id: "2021/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
+  slug: "2021/zh-cn/overview/roadmap/rocketmq-500/rocketmq-500";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/overview/roadmap/service-governance/service-governance.md": {
+	id: "2021/zh-cn/overview/roadmap/service-governance/service-governance.md";
+  slug: "2021/zh-cn/overview/roadmap/service-governance/service-governance";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/overview/version-explain.md": {
+	id: "2021/zh-cn/overview/version-explain.md";
+  slug: "2021/zh-cn/overview/version-explain";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/overview/what-is-sca.md": {
+	id: "2021/zh-cn/overview/what-is-sca.md";
+  slug: "2021/zh-cn/overview/what-is-sca";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/nacos/advanced-guide.md": {
+	id: "2021/zh-cn/user-guide/nacos/advanced-guide.md";
+  slug: "2021/zh-cn/user-guide/nacos/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/nacos/overview.md": {
+	id: "2021/zh-cn/user-guide/nacos/overview.md";
+  slug: "2021/zh-cn/user-guide/nacos/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/nacos/quick-start.md": {
+	id: "2021/zh-cn/user-guide/nacos/quick-start.md";
+  slug: "2021/zh-cn/user-guide/nacos/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/rocketmq/advanced-guide.md": {
+	id: "2021/zh-cn/user-guide/rocketmq/advanced-guide.md";
+  slug: "2021/zh-cn/user-guide/rocketmq/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/rocketmq/overview.md": {
+	id: "2021/zh-cn/user-guide/rocketmq/overview.md";
+  slug: "2021/zh-cn/user-guide/rocketmq/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/rocketmq/quick-start.md": {
+	id: "2021/zh-cn/user-guide/rocketmq/quick-start.md";
+  slug: "2021/zh-cn/user-guide/rocketmq/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/seata/advanced-guide.md": {
+	id: "2021/zh-cn/user-guide/seata/advanced-guide.md";
+  slug: "2021/zh-cn/user-guide/seata/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/seata/overview.md": {
+	id: "2021/zh-cn/user-guide/seata/overview.md";
+  slug: "2021/zh-cn/user-guide/seata/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/seata/quick-start.md": {
+	id: "2021/zh-cn/user-guide/seata/quick-start.md";
+  slug: "2021/zh-cn/user-guide/seata/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/sentinel/advanced-guide.md": {
+	id: "2021/zh-cn/user-guide/sentinel/advanced-guide.md";
+  slug: "2021/zh-cn/user-guide/sentinel/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/sentinel/overview.md": {
+	id: "2021/zh-cn/user-guide/sentinel/overview.md";
+  slug: "2021/zh-cn/user-guide/sentinel/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/sentinel/quick-start.md": {
+	id: "2021/zh-cn/user-guide/sentinel/quick-start.md";
+  slug: "2021/zh-cn/user-guide/sentinel/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/sidecar/advanced-guide.md": {
+	id: "2021/zh-cn/user-guide/sidecar/advanced-guide.md";
+  slug: "2021/zh-cn/user-guide/sidecar/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/sidecar/overview.md": {
+	id: "2021/zh-cn/user-guide/sidecar/overview.md";
+  slug: "2021/zh-cn/user-guide/sidecar/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2021/zh-cn/user-guide/sidecar/quick-start.md": {
+	id: "2021/zh-cn/user-guide/sidecar/quick-start.md";
+  slug: "2021/zh-cn/user-guide/sidecar/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
 "2022/en/best-practice/integrated-example.md": {
 	id: "2022/en/best-practice/integrated-example.md";
   slug: "2022/en/best-practice/integrated-example";
@@ -934,6 +1282,433 @@ declare module 'astro:content' {
 "2022/zh-cn/user-guide/sidecar/quick-start.md": {
 	id: "2022/zh-cn/user-guide/sidecar/quick-start.md";
   slug: "2022/zh-cn/user-guide/sidecar/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/best-practice/integrated-example.md": {
+	id: "2023/en/best-practice/integrated-example.md";
+  slug: "2023/en/best-practice/integrated-example";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/best-practice/spring-boot-to-spring-cloud.md": {
+	id: "2023/en/best-practice/spring-boot-to-spring-cloud.md";
+  slug: "2023/en/best-practice/spring-boot-to-spring-cloud";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/overview/faq.md": {
+	id: "2023/en/overview/faq.md";
+  slug: "2023/en/overview/faq";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/overview/roadmap/doc/doc.md": {
+	id: "2023/en/overview/roadmap/doc/doc.md";
+  slug: "2023/en/overview/roadmap/doc/doc";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/overview/roadmap/graalvm-adapter/graalvm.md": {
+	id: "2023/en/overview/roadmap/graalvm-adapter/graalvm.md";
+  slug: "2023/en/overview/roadmap/graalvm-adapter/graalvm";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
+	id: "2023/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
+  slug: "2023/en/overview/roadmap/rocketmq-500/rocketmq-500";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/overview/roadmap/service-governance/service-governance.md": {
+	id: "2023/en/overview/roadmap/service-governance/service-governance.md";
+  slug: "2023/en/overview/roadmap/service-governance/service-governance";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/overview/version-explain.md": {
+	id: "2023/en/overview/version-explain.md";
+  slug: "2023/en/overview/version-explain";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/overview/what-is-sca.md": {
+	id: "2023/en/overview/what-is-sca.md";
+  slug: "2023/en/overview/what-is-sca";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/graalvm/overview.md": {
+	id: "2023/en/user-guide/graalvm/overview.md";
+  slug: "2023/en/user-guide/graalvm/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/graalvm/quick-start.md": {
+	id: "2023/en/user-guide/graalvm/quick-start.md";
+  slug: "2023/en/user-guide/graalvm/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/nacos/advanced-guide.md": {
+	id: "2023/en/user-guide/nacos/advanced-guide.md";
+  slug: "2023/en/user-guide/nacos/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/nacos/overview.md": {
+	id: "2023/en/user-guide/nacos/overview.md";
+  slug: "2023/en/user-guide/nacos/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/nacos/quick-start.md": {
+	id: "2023/en/user-guide/nacos/quick-start.md";
+  slug: "2023/en/user-guide/nacos/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/rocketmq/advanced-guide.md": {
+	id: "2023/en/user-guide/rocketmq/advanced-guide.md";
+  slug: "2023/en/user-guide/rocketmq/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/rocketmq/overview.md": {
+	id: "2023/en/user-guide/rocketmq/overview.md";
+  slug: "2023/en/user-guide/rocketmq/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/rocketmq/quick-start.md": {
+	id: "2023/en/user-guide/rocketmq/quick-start.md";
+  slug: "2023/en/user-guide/rocketmq/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/seata/advanced-guide.md": {
+	id: "2023/en/user-guide/seata/advanced-guide.md";
+  slug: "2023/en/user-guide/seata/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/seata/overview.md": {
+	id: "2023/en/user-guide/seata/overview.md";
+  slug: "2023/en/user-guide/seata/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/seata/quick-start.md": {
+	id: "2023/en/user-guide/seata/quick-start.md";
+  slug: "2023/en/user-guide/seata/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/sentinel/advanced-guide.md": {
+	id: "2023/en/user-guide/sentinel/advanced-guide.md";
+  slug: "2023/en/user-guide/sentinel/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/sentinel/overview.md": {
+	id: "2023/en/user-guide/sentinel/overview.md";
+  slug: "2023/en/user-guide/sentinel/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/sentinel/quick-start.md": {
+	id: "2023/en/user-guide/sentinel/quick-start.md";
+  slug: "2023/en/user-guide/sentinel/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/sidecar/advanced-guide.md": {
+	id: "2023/en/user-guide/sidecar/advanced-guide.md";
+  slug: "2023/en/user-guide/sidecar/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/sidecar/overview.md": {
+	id: "2023/en/user-guide/sidecar/overview.md";
+  slug: "2023/en/user-guide/sidecar/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/en/user-guide/sidecar/quick-start.md": {
+	id: "2023/en/user-guide/sidecar/quick-start.md";
+  slug: "2023/en/user-guide/sidecar/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/best-practice/integrated-example.md": {
+	id: "2023/zh-cn/best-practice/integrated-example.md";
+  slug: "2023/zh-cn/best-practice/integrated-example";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/best-practice/spring-boot-to-spring-cloud.md": {
+	id: "2023/zh-cn/best-practice/spring-boot-to-spring-cloud.md";
+  slug: "2023/zh-cn/best-practice/spring-boot-to-spring-cloud";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/overview/faq.md": {
+	id: "2023/zh-cn/overview/faq.md";
+  slug: "2023/zh-cn/overview/faq";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/overview/roadmap/doc/doc.md": {
+	id: "2023/zh-cn/overview/roadmap/doc/doc.md";
+  slug: "2023/zh-cn/overview/roadmap/doc/doc";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/overview/roadmap/graalvm-adapter/graalvm.md": {
+	id: "2023/zh-cn/overview/roadmap/graalvm-adapter/graalvm.md";
+  slug: "2023/zh-cn/overview/roadmap/graalvm-adapter/graalvm";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
+	id: "2023/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
+  slug: "2023/zh-cn/overview/roadmap/rocketmq-500/rocketmq-500";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/overview/roadmap/service-governance/service-governance.md": {
+	id: "2023/zh-cn/overview/roadmap/service-governance/service-governance.md";
+  slug: "2023/zh-cn/overview/roadmap/service-governance/service-governance";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/overview/version-explain.md": {
+	id: "2023/zh-cn/overview/version-explain.md";
+  slug: "2023/zh-cn/overview/version-explain";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/overview/what-is-sca.md": {
+	id: "2023/zh-cn/overview/what-is-sca.md";
+  slug: "2023/zh-cn/overview/what-is-sca";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/graalvm/advanced-guide.md": {
+	id: "2023/zh-cn/user-guide/graalvm/advanced-guide.md";
+  slug: "2023/zh-cn/user-guide/graalvm/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/graalvm/overview.md": {
+	id: "2023/zh-cn/user-guide/graalvm/overview.md";
+  slug: "2023/zh-cn/user-guide/graalvm/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/graalvm/quick-start.md": {
+	id: "2023/zh-cn/user-guide/graalvm/quick-start.md";
+  slug: "2023/zh-cn/user-guide/graalvm/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/nacos/advanced-guide.md": {
+	id: "2023/zh-cn/user-guide/nacos/advanced-guide.md";
+  slug: "2023/zh-cn/user-guide/nacos/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/nacos/overview.md": {
+	id: "2023/zh-cn/user-guide/nacos/overview.md";
+  slug: "2023/zh-cn/user-guide/nacos/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/nacos/quick-start.md": {
+	id: "2023/zh-cn/user-guide/nacos/quick-start.md";
+  slug: "2023/zh-cn/user-guide/nacos/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/rocketmq/advanced-guide.md": {
+	id: "2023/zh-cn/user-guide/rocketmq/advanced-guide.md";
+  slug: "2023/zh-cn/user-guide/rocketmq/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/rocketmq/overview.md": {
+	id: "2023/zh-cn/user-guide/rocketmq/overview.md";
+  slug: "2023/zh-cn/user-guide/rocketmq/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/rocketmq/quick-start.md": {
+	id: "2023/zh-cn/user-guide/rocketmq/quick-start.md";
+  slug: "2023/zh-cn/user-guide/rocketmq/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/seata/advanced-guide.md": {
+	id: "2023/zh-cn/user-guide/seata/advanced-guide.md";
+  slug: "2023/zh-cn/user-guide/seata/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/seata/overview.md": {
+	id: "2023/zh-cn/user-guide/seata/overview.md";
+  slug: "2023/zh-cn/user-guide/seata/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/seata/quick-start.md": {
+	id: "2023/zh-cn/user-guide/seata/quick-start.md";
+  slug: "2023/zh-cn/user-guide/seata/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/sentinel/advanced-guide.md": {
+	id: "2023/zh-cn/user-guide/sentinel/advanced-guide.md";
+  slug: "2023/zh-cn/user-guide/sentinel/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/sentinel/overview.md": {
+	id: "2023/zh-cn/user-guide/sentinel/overview.md";
+  slug: "2023/zh-cn/user-guide/sentinel/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/sentinel/quick-start.md": {
+	id: "2023/zh-cn/user-guide/sentinel/quick-start.md";
+  slug: "2023/zh-cn/user-guide/sentinel/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/sidecar/advanced-guide.md": {
+	id: "2023/zh-cn/user-guide/sidecar/advanced-guide.md";
+  slug: "2023/zh-cn/user-guide/sidecar/advanced-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/sidecar/overview.md": {
+	id: "2023/zh-cn/user-guide/sidecar/overview.md";
+  slug: "2023/zh-cn/user-guide/sidecar/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/sidecar/quick-start.md": {
+	id: "2023/zh-cn/user-guide/sidecar/quick-start.md";
+  slug: "2023/zh-cn/user-guide/sidecar/quick-start";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/en/contributor-guide/file-write-guide_dev.md": {
+	id: "developer/en/contributor-guide/file-write-guide_dev.md";
+  slug: "developer/en/contributor-guide/file-write-guide_dev";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/en/contributor-guide/new-contributor-guide_dev.md": {
+	id: "developer/en/contributor-guide/new-contributor-guide_dev.md";
+  slug: "developer/en/contributor-guide/new-contributor-guide_dev";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/en/contributor-guide/reporting-security-issues_dev.md": {
+	id: "developer/en/contributor-guide/reporting-security-issues_dev.md";
+  slug: "developer/en/contributor-guide/reporting-security-issues_dev";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/en/developers_dev.md": {
+	id: "developer/en/developers_dev.md";
+  slug: "developer/en/developers_dev";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/zh-cn/contributor-guide/file-write-guide_dev.md": {
+	id: "developer/zh-cn/contributor-guide/file-write-guide_dev.md";
+  slug: "developer/zh-cn/contributor-guide/file-write-guide_dev";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/zh-cn/contributor-guide/new-contributor-guide_dev.md": {
+	id: "developer/zh-cn/contributor-guide/new-contributor-guide_dev.md";
+  slug: "developer/zh-cn/contributor-guide/new-contributor-guide_dev";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/zh-cn/contributor-guide/reporting-security-issues_dev.md": {
+	id: "developer/zh-cn/contributor-guide/reporting-security-issues_dev.md";
+  slug: "developer/zh-cn/contributor-guide/reporting-security-issues_dev";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/zh-cn/developers_dev.md": {
+	id: "developer/zh-cn/developers_dev.md";
+  slug: "developer/zh-cn/developers_dev";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -1232,20 +2007,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"latest/en/what-is-nacos.md": {
-	id: "latest/en/what-is-nacos.md";
-  slug: "latest/en/what-is-nacos";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"latest/zh-cn/what-is-nacos.md": {
-	id: "latest/zh-cn/what-is-nacos.md";
-  slug: "latest/zh-cn/what-is-nacos";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
 };
 "download": {
 };

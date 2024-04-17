@@ -343,7 +343,7 @@ export const HEADER_LEARN_CARD = [
     slug: "release-nacos110",
     description: "最全面的 Spring 中文系列教程，从这里开启你的 Spring 应用开发之旅！",
     imageUrl:
-      "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
+      "https://img.alicdn.com/imgextra/i1/O1CN01xDVfHk1El7oBMjL3p_!!6000000000391-2-tps-1083-721.png",
   },
 ];
 
@@ -353,7 +353,7 @@ export const HEADER_SOLUTIONS_CARD = [
     slug: "release-nacos110",
     description: "阿里云 MSE 微服务引擎",
     imageUrl:
-      "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
+      "https://img.alicdn.com/imgextra/i2/O1CN011815Q71wQpLpuKYeC_!!6000000006303-0-tps-1284-721.jpg",
   },
 ];
 
