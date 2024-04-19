@@ -11,17 +11,16 @@ export const PopupContent = ({ image, title, labels, links, direction = 'top',da
 
   if (direction === 'bottom') {
     // hover弹框在下面,箭头在上面
-    setArrow("after:absolute after:bottom-full after:left-2/4 after:ml-[-5px] after:border-[5px] after:border-b-white after:border-x-transparent after:border-t-transparent  after:content-['']")
+    setArrow("after:absolute after:bottom-full after:left-2/4 after:ml-[-5px] after:border-[5px] after:border-b-base-100 after:border-x-transparent after:border-t-transparent  after:content-['']")
   } else {
     // hover弹框在上面，箭头在下面
-    setArrow("after:absolute after:top-full after:left-2/4 after:ml-[-5px] after:border-[5px] after:border-t-white after:border-x-transparent after:border-b-transparent  after:content-['']")
+    setArrow("after:absolute after:top-full after:left-2/4 after:ml-[-5px] after:border-[5px] after:border-t-base-100 after:border-x-transparent after:border-b-transparent  after:content-['']")
   }
   return (
     <div
-      className={`relative bg-white p-6 rounded-xl backdrop-opacity-96 shadow-lg min-w-[400px] max-w-md mx-auto ${arrow}`}
-      style={"background:white ;border-color:white"}
+      className={`relative bg-base-100 text-base-100 p-6 rounded-xl backdrop-opacity-96 shadow-lg min-w-[400px] max-w-md mx-auto ${arrow}`}
     >
-      <div className="flex items-center justify-between border-b border-gray mb-4 pb-4">
+      <div className="flex items-center justify-between border-b border-success mb-4 pb-4">
         {/* <div className="flex-1 flex justify-start items-center"> */}
         <img src={image} alt="logo" className="max-h-16 max-w-[130px] " />
         {/* </div> */}
@@ -38,7 +37,7 @@ export const PopupContent = ({ image, title, labels, links, direction = 'top',da
         </div>
       </div>
       <div>
-        <div className="text-sm text-gray-500 mb-4 ">{title}</div>
+        <div className="text-sm text-success mb-4 ">{title}</div>
         {Object.entries(links).map(
           (
             [key, { link }],
@@ -47,7 +46,7 @@ export const PopupContent = ({ image, title, labels, links, direction = 'top',da
             <div key={idx} className="mb-2 flex justify-between">
               <div
                 className={twMerge(
-                  "text-gray-500 text-sm mb-1",
+                  "text-success text-sm mb-1",
                 )}
               >
                 {key}:
