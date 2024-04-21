@@ -41,5 +41,5 @@ Binding 在消息中间件与应用程序提供的 Provider 和 Consumer 之间�
 下图是 Spring Cloud Stream 的架构设计:
 
 <p align="center">
-  <img src="https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/images/SCSt-with-binder.png" />
+  <img src="/img/user/rocketmq/mq-1.png" />
 </p>

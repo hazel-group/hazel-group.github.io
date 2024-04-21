@@ -27,7 +27,7 @@ Spring Boot 3.0 本次带来最大的改动就是 GraalVM 原生镜像的支持�
 以下是社区对目前所支持的服务注册与发现模块相关示例应用在升级为 Spring Boot 3.0 以后，使用 GraalVM 构建原生应用镜像做的在启动速度和运行时占用内容相关的测试（测试过程在 macOS 11.4，2.6 GHz 6-Core Intel Core i7 处理器，16G 内存环境下分别模拟 3 次取平均值测得）：
 
 <p align="center">
-<img src="https://sca-storage.oss-cn-hangzhou.aliyuncs.com/website/graalvm_performance.jpg" />
+<img src="/img/user/graalvm/performance.png" />
 </p>
 
 从上述对比可发现，最新支持 Spring Boot 3.0 基于 GraalVM 的 Spring Cloud Alibaba 应用会在启动速度、运行时内存占用和应用包大小方面得到大幅度降低，例如，其中服务注册消费应用启动速度提升了近 10 倍，运行时内存占用比原来降低了近乎 2/3，效果非常明显。这给云原生时代，托管在云上的应用带来了显著优势，让其可以更快地进行弹性扩缩容以及降低企业整体用云成本！

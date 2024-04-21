@@ -20,7 +20,7 @@ For details, refer to the official website of [Nacos](https://nacos.io/zh-cn/).
 
 After Nacos Server is started successfully, enter http://ip:8848/nacos in the browser address bar to view Nacos console (default account name and password are nacos/nacos) :
 
-![nacos-server-start](https://sca-storage.oss-cn-hangzhou.aliyuncs.com/website/docs/zh/nacos/nacos-server-start.png)
+![nacos-server-start](/img/user/quickstart/nacos/nacos-config-dashboard.png)
 
 For more Nacos Server version, can from [release](https://github.com/alibaba/nacos/releases) page to download the latest version.
 

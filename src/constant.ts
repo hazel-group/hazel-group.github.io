@@ -381,46 +381,46 @@ export const MICROSERVICE_SOLUTION = [
 
 export const ProductDisplayCardData = [
   {
-    cover: "https://img.alicdn.com/imgextra/i2/O1CN01k1amBw1U0RHtPPlvH_!!6000000002455-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "Spring",
-    body: "home.introduction.card.des",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i3/O1CN01WxXILZ1C0I4pkZUyD_!!6000000000018-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "Spring Boot",
-    body: "home.introduction.card.des",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i4/O1CN01ye2eKa1obLWDSsIiE_!!6000000005243-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "Spring Cloud Alibaba",
-    body: "home.introduction.card.sca.des",
-  },
-  {
     cover: "https://img.alicdn.com/imgextra/i2/O1CN01psWBwW1tzgeAxapCz_!!6000000005973-0-tps-2448-3672.jpg",
     coverPosition: "bottom",
-    title: "Spring Cloud Alibaba Nacos",
+    title: "Nacos",
     body: "home.introduction.card.Nacos.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01l9eXcR1LJN7PxX79e_!!6000000001278-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "RocketMQ",
+    body: "home.introduction.card.RocketMQ.des",
   },
   {
     cover: "https://img.alicdn.com/imgextra/i2/O1CN01HzKXZY29J7h0UIGJ5_!!6000000008046-0-tps-1000-1500.jpg",
     coverPosition: "bottom",
-    title: "Spring Cloud Alibaba Sentinel",
+    title: "Sentinel",
     body: "home.introduction.card.Sentinel.des",
   },
   {
     cover: "https://img.alicdn.com/imgextra/i3/O1CN01bJroU81BzNHfeB3jN_!!6000000000016-0-tps-1000-1500.jpg",
     coverPosition: "bottom",
-    title: "Spring Cloud Alibaba Seata",
-    body: "home.introduction.card.Seata.des",
+    title: "Seata",
+    body: "home.introduction.card.Nacos.des",
   },
   {
-    cover: "https://img.alicdn.com/imgextra/i2/O1CN01l9eXcR1LJN7PxX79e_!!6000000001278-0-tps-1000-1500.jpg",
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01HzKXZY29J7h0UIGJ5_!!6000000008046-0-tps-1000-1500.jpg",
     coverPosition: "bottom",
-    title: "Spring Cloud Alibaba RocketMQ",
-    body: "home.introduction.card.RocketMQ.des",
+    title: "Spring AI",
+    body: "home.introduction.card.AI.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01k1amBw1U0RHtPPlvH_!!6000000002455-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Boot",
+    body: "home.introduction.card.Boot.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i3/O1CN01WxXILZ1C0I4pkZUyD_!!6000000000018-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud",
+    body: "home.introduction.card.Cloud.des",
   },
 ];
 
@@ -541,25 +541,25 @@ export const SOLUTIONS_CARD_LIST = [
   {
     title: "注册配置中心高可用最佳实践",
     description:
-      "Fully managed Nacos and Zookeeper for registration and configuration",
+      "提供 Nacos/ZooKeeper/Eureka 的商业化托管服务。",
     href: "https://help.aliyun.com/zh/mse/use-cases/implement-high-availability-capabilities-of-mse-microservices-registry?spm=a2c4g.11186623.0.0.102a27e0juv8vG",
   },
   {
     title: "云原生网关如何实现安全防护能力",
     description:
-      "Fully managed microservices API gateway that complies with the Kubernetes Ingress standard.",
+      "提供符合 K8s Ingress 标准的下一代网关，将流量网关、微服务网关和 WAF 安全网关三合一。",
     href: "https://developer.aliyun.com/article/1265016?spm=5176.21213303.J_qCOwPWspKEuWcmp8qiZNQ.10.c89e2f3dQa2WtF&scm=20140722.S_community@@%E6%96%87%E7%AB%A0@@1265016._.ID_community@@%E6%96%87%E7%AB%A0@@1265016-RL_%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E8%83%BD%E5%8A%9B-LOC_llm-OR_ser-V_3-RK_rerank-P0_2",
   },
   {
     title: "全链路灰度与优雅上下线",
     description:
-      "Rich features like canary release, zero traffic loss deployment and authentication.",
+      "原生支持 Spring Cloud/Dubbo/Sentinel，提供丰富的流量治理和流量防护功能。",
     href: "https://help.aliyun.com/zh/mse/use-cases/implement-an-end-to-end-canary-release-by-using-mse-cloud-native-gateways?spm=a2c4g.11186623.0.i3",
   },
   {
     title: "应用实时监控",
     description:
-      "A full-stack performance monitoring and end-to-end tracing platform",
+      "作为云原生可观测平台，ARMS 提供全栈性能监控告警与端到端追踪诊断能力。",
     href: "https://help.aliyun.com/zh/arms/?spm=5176.8140086.J_5253785160.8.3e87be45mtM0kX",
   },
 ];

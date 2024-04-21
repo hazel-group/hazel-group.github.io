@@ -1,6 +1,6 @@
 export default {
 	// website
-	'commmon.header.menu.cloud': 'NACOS CLOUD',
+	'commmon.header.menu.cloud': 'SPRING CLOUD ALIBABA',
 	'commmon.header.menu.comm': 'COMMUNITY',
 	'commmon.header.menu.demo': 'DEMO',
 	'commmon.header.docs.docs': 'Documentation',
@@ -134,11 +134,19 @@ export default {
 	'home.introduction.card.Seata.des':'Distributed transactions ensure data consistency',
 	'home.introduction.card.RocketMQ.des':'Asynchronous message peak shaving and valley filling',
 
-	'cloud.title': 'Nacos Cloud',
-	'cloud.description': 'Nacos Cloud is specifically designed for cloud-native applications, providing powerful features for service discovery, dynamic configuration management, and service management. It supports efficient application development and operations.',
+	'home.introduction.card.Boot.des':'Learning Spring Boot from no experience to actually build stuff',
+	'home.introduction.card.Cloud.des':'One-stop solution for microservice application development and governance',
+	'home.introduction.card.AI.des':'Spring AI with Alibaba Tongyi AI to accelerate AI application development',
+	'home.introduction.card.Nacos.des':'Automatic synchronization of service discovery and configuration',
+	'home.introduction.card.Sentinel.des':'Current limiting downgraded to application protection',
+	'home.introduction.card.Seata.des':'Distributed transactions ensure data consistency',
+	'home.introduction.card.RocketMQ.des':'Asynchronous message peak shaving and valley filling',
+
+	'cloud.title': 'Spring Cloud Alibaba',
+	'cloud.description': 'Spring Cloud Alibaba is specifically designed for cloud-native applications, providing powerful features for service discovery, dynamic configuration management, and service management. It supports efficient application development and operations.',
 	'cloud.introduce.about': 'About Nacos',
-	'cloud.introduce.title': 'Nacos Cloud',
-	'cloud.introduce.invite': 'One click to start your Nacos Cloud journey！',
+	'cloud.introduce.title': 'Spring Cloud Alibaba',
+	'cloud.introduce.invite': 'One click to start your Spring Cloud Alibaba journey！',
 	'cloud.introduce.free.pkg': 'Freetier',
 	'cloud.introduce.free.desc': '',
 	'cloud.introduce.free.price': 'Free',
