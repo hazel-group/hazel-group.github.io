@@ -642,3 +642,9 @@ JSR-107兼容的缓存也可用于Spring的缓存抽象。JCache实现在`org.sp
 ### [](#cache-specific-config)5.7. 我可以如何设置TTL/TTI/Eviction policy/XXX特性?
 
 直接通过缓存提供程序。 缓存抽象是抽象，而不是缓存实现。 您正在使用的解决方案可能支持不同的数据策略和不同的拓扑结构，而其他解决方案不会这样做(例如，JDK `ConcurrentHashMap` - 暴露在缓存抽象中将是无用的，因为没有后端支持)。应该通过后端缓存（配置时）或通过其本机API直接控制此类功能。
+
+> Rod Johnson, Juergen Hoeller, Keith Donald, Colin Sampaleanu, Rob Harrop, Thomas Risberg, Alef Arendsen, Darren Davison, Dmitriy Kopylenko, Mark Pollack, Thierry Templier, Erwin Vervaet, Portia Tung, Ben Hale, Adrian Colyer, John Lewis, Costin Leau, Mark Fisher, Sam Brannen, Ramnivas Laddad, Arjen Poutsma, Chris Beams, Tareq Abedrabbo, Andy Clement, Dave Syer, Oliver Gierke, Rossen Stoyanchev, Phillip Webb, Rob Winch, Brian Clozel, Stephane Nicoll, Sebastien Deleuze, Jay Bryant, Mark Paluch
+
+> Copyright © 2002 - 2024 VMware, Inc. All Rights Reserved.
+
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.

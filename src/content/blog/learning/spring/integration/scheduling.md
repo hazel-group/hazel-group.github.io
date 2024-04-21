@@ -582,3 +582,9 @@ Triggers也需要被调度。Spring提供`SchedulerFactoryBean`来公开一些�
 ```
 
 更多的属性你可以通过`SchedulerFactoryBean`来设置，例如job details使用的日期， 用来订制Quartz的一些属性以及其它相关信息。 你可以查阅[`SchedulerFactoryBean`](https://docs.spring.io/spring-framework/docs/5.1.3.RELEASE/javadoc-api/org/springframework/scheduling/quartz/SchedulerFactoryBean.html)的Javadoc。
+
+> Rod Johnson, Juergen Hoeller, Keith Donald, Colin Sampaleanu, Rob Harrop, Thomas Risberg, Alef Arendsen, Darren Davison, Dmitriy Kopylenko, Mark Pollack, Thierry Templier, Erwin Vervaet, Portia Tung, Ben Hale, Adrian Colyer, John Lewis, Costin Leau, Mark Fisher, Sam Brannen, Ramnivas Laddad, Arjen Poutsma, Chris Beams, Tareq Abedrabbo, Andy Clement, Dave Syer, Oliver Gierke, Rossen Stoyanchev, Phillip Webb, Rob Winch, Brian Clozel, Stephane Nicoll, Sebastien Deleuze, Jay Bryant, Mark Paluch
+
+> Copyright © 2002 - 2024 VMware, Inc. All Rights Reserved.
+
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.

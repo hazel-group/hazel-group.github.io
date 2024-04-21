@@ -241,3 +241,10 @@ HttpServiceProxyFactory factory = HttpServiceProxyFactory
 ```
 
 有关更多详细信息和选项，例如 suppressing 错误状态代码，请参阅 WebClient.Builder 中 defaultStatusHandler 的 Javadoc。
+
+> Rod Johnson, Juergen Hoeller, Keith Donald, Colin Sampaleanu, Rob Harrop, Thomas Risberg, Alef Arendsen, Darren Davison, Dmitriy Kopylenko, Mark Pollack, Thierry Templier, Erwin Vervaet, Portia Tung, Ben Hale, Adrian Colyer, John Lewis, Costin Leau, Mark Fisher, Sam Brannen, Ramnivas Laddad, Arjen Poutsma, Chris Beams, Tareq Abedrabbo, Andy Clement, Dave Syer, Oliver Gierke, Rossen Stoyanchev, Phillip Webb, Rob Winch, Brian Clozel, Stephane Nicoll, Sebastien Deleuze, Jay Bryant, Mark Paluch
+
+> Copyright © 2002 - 2024 VMware, Inc. All Rights Reserved.
+
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.
+

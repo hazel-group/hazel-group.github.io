@@ -160,3 +160,7 @@ Spring Cloud具有`Environment`预处理器，用于在本地解密属性值。�
 *   `/actuator/pause`和`/actuator/resume`用于调用`Lifecycle`方法（`ApplicationContext`中的`stop()`和`start()`）。
 
 > 如果禁用`/actuator/restart`端点，则`/actuator/pause`和`/actuator/resume`端点也将被禁用，因为它们只是`/actuator/restart`的特例。
+
+> Copyright © 2002 - 2024 VMware, Inc. All Rights Reserved.
+
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.

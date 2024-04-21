@@ -2123,3 +2123,9 @@ Apache Tomcat 6.0+支持多个上下文位置:
 _Eclipse AspectJ_的书Eclipse AspectJ (Addison-Wesley, 2005) 提供了详尽的有关AspectJ语言的介绍
 
 _AspectJ in Action_, 一书的第二版由Ramnivas Laddad（Manning，2009)出版，也是强烈推荐的。这本书的重点是AspectJ，但也在一定的深度上探讨了普通的AOP主题。
+
+> Rod Johnson, Juergen Hoeller, Keith Donald, Colin Sampaleanu, Rob Harrop, Thomas Risberg, Alef Arendsen, Darren Davison, Dmitriy Kopylenko, Mark Pollack, Thierry Templier, Erwin Vervaet, Portia Tung, Ben Hale, Adrian Colyer, John Lewis, Costin Leau, Mark Fisher, Sam Brannen, Ramnivas Laddad, Arjen Poutsma, Chris Beams, Tareq Abedrabbo, Andy Clement, Dave Syer, Oliver Gierke, Rossen Stoyanchev, Phillip Webb, Rob Winch, Brian Clozel, Stephane Nicoll, Sebastien Deleuze, Jay Bryant, Mark Paluch
+
+> Copyright © 2002 - 2024 VMware, Inc. All Rights Reserved.
+
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.

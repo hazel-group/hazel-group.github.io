@@ -399,3 +399,7 @@ spring:
       useOnlySiteLocalInterfaces: true
 
 有关构成站点本地地址的详细信息，请参见[Inet4Address.html.isSiteLocalAddress（）](https://docs.oracle.com/javase/8/docs/api/java/net/Inet4Address.html#isSiteLocalAddress--)。
+
+> Copyright © 2002 - 2024 VMware, Inc. All Rights Reserved.
+
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.

@@ -4382,3 +4382,7 @@ Spring Boot 还通过导入 Kotlin Coroutines BOM 管理 Coroutines 依赖的版
 如果您想了解本节中讨论的任何类目的更多信息,可以查看 [Spring Boot API 文档](https://docs.spring.io/spring-boot/docs/3.0.0/api) ,也可以直接浏览 [源代码](https://github.com/spring-projects/spring-boot/tree/main) . 如果您有具体问题,请查看 [how-to](howto.html#howto) 部分.
 
 如果您对 Spring Boot 的核心功能感到满意,可以继续阅读有关t [生产就绪功能](actuator.html#actuator)的内容.
+
+> Copyright © 2002 - 2024 VMware, Inc. All Rights Reserved.
+
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.

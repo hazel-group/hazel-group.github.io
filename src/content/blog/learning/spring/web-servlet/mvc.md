@@ -5325,3 +5325,9 @@ public class MyPostProcessor implements BeanPostProcessor {
 Servlet 4容器需要支持HTTP/2，Spring Framework 5与Servlet API 4兼容。从编程模型的角度来看，应用程序不需要特定的任何操作。 但是，存在与服务器配置相关的注意事项。 有关更多详细信息，请参阅 [HTTP/2 wiki 页面。](https://github.com/spring-projects/spring-framework/wiki/HTTP-2-support)
 
 Servlet API确实公开了一个与HTTP/2相关的构造。 您可以使用`javax.servlet.http.PushBuilder` 主动将资源推送到客户端，并且它被支持作为 `@RequestMapping`方法的[方法参数](#mvc-ann-arguments)。
+
+> Rod Johnson, Juergen Hoeller, Keith Donald, Colin Sampaleanu, Rob Harrop, Thomas Risberg, Alef Arendsen, Darren Davison, Dmitriy Kopylenko, Mark Pollack, Thierry Templier, Erwin Vervaet, Portia Tung, Ben Hale, Adrian Colyer, John Lewis, Costin Leau, Mark Fisher, Sam Brannen, Ramnivas Laddad, Arjen Poutsma, Chris Beams, Tareq Abedrabbo, Andy Clement, Dave Syer, Oliver Gierke, Rossen Stoyanchev, Phillip Webb, Rob Winch, Brian Clozel, Stephane Nicoll, Sebastien Deleuze, Jay Bryant, Mark Paluch
+
+> Copyright © 2002 - 2024 VMware, Inc. All Rights Reserved.
+
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.
