@@ -1,74 +1,9 @@
 ---
 title: 3.10 微服务注册发现高可用解决方案
 keywords: [ SCA ]
-description: 背景注册中心作为承担服务注册发现的核心组件，是微服务架构中必不可少的一环。在 CAP 的模型中，注册中心可以牺牲一点点数据一致性（C），即同一时刻每一个节点拿到的服务地址允许短暂的不一致，但必须要保证的是可用性（A）。因为一旦由于某些问题导致注册中心不可用，或者服务连不上注册中心，那么想要连接...
+description: SCA Eook
 ---
-<a name="v4AOZ"></a>
-# 背景
 
-注册中心作为承担服务注册发现的核心组件，是微服务架构中必不可少的一环。在 CAP 的模型中，注册中心可以牺牲一点点数据一致性（C），即同一时刻每一个节点拿到的服务地址允许短暂的不一致，但必须要保证的是可用性（A）。因为一旦由于某些问题导致注册中心不可用，或者服务连不上注册中心，那么想要连接他的节点可能会因为无法获取服务地址而对整个系统出现灾难性的打击。
+import Lock from "@components/common/EbookLock.astro";
 
-<a name="UAFkf"></a>
-## 一个真实的案例
-本文从一个真实的案例说起，某客户在阿里云上使用K8s集群部署了许多自己的微服务，由于某台 ECS 的网卡发生了异常，虽然网卡异常很快恢复了，但是却出现了大面积持续的服务不可用，业务受损。
-
-我们来看一下这个问题链是如何形成的？
-
-1. ECS故障节点上运行着K8s集群的核心基础组件CoreDNS的所有Pod，且低版本K8s集群缺少NodeLocal DNSCache的特性，导致集群 DNS 解析出现问题。
-2. 该客户的服务发现使用了有缺陷的客户端版本（nacos-client的1.4.1版本），这个版本的缺陷就是跟DNS有关——心跳请求在域名解析失败后，会导致进程后续不会再续约心跳，只有重启才能恢复。
-3. 这个缺陷版本实际上是已知问题，阿里云在5月份推送了nacos-client 1.4.1存在严重bug的公告，但客户研发未收到通知，进而在生产环境中使用了这个版本。
-
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/526/1640236892897-c3c728a8-c1bf-4aac-af5c-8534f8c4330b.png#clientId=u7b6a443b-53bb-4&from=paste&height=154&id=u0ec65ed4&originHeight=492&originWidth=2304&originalType=binary&ratio=1&rotation=0&showTitle=false&size=258753&status=done&style=none&taskId=u9d088203-99a7-46f6-a241-db60b6645ab&title=&width=719)<br />![第十节_3-10-1 第三章第十节第一张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211384847-46c3408c-1e5f-417e-8303-e37b96c1c25a.png#clientId=u8adb79f4-4e78-4&from=ui&id=udecffcb1&originHeight=106&originWidth=614&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12749&status=done&style=none&taskId=uc10a7924-7666-4df0-af98-9ec479a19e1&title=)<br />**风险环环相扣，缺一不可。**
-
-最终导致故障的原因是服务无法调用下游，可用性降低，业务受损。下图示意的是客户端缺陷导致问题的根因：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/526/1640237179929-953782fa-c9ac-49b0-942a-82c54ab9e5fc.png#clientId=u7b6a443b-53bb-4&from=paste&height=409&id=ufd50abfe&originHeight=1288&originWidth=1796&originalType=binary&ratio=1&rotation=0&showTitle=false&size=483661&status=done&style=none&taskId=u6fb1885a-f2da-4c81-9a41-5977d1e2b74&title=&width=570)<br />![第十节_3-10-2 第三章第十节第二张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211398233-f5c9de58-1408-4194-8258-faa84be497da.png#clientId=u8adb79f4-4e78-4&from=ui&id=u86e9be92&originHeight=308&originWidth=614&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32239&status=done&style=none&taskId=u55f2154a-c526-4603-84cb-1944650657e&title=)
-
-1. Provider客户端在心跳续约时发生DNS异常；
-2. 心跳线程未能正确地处理这个DNS异常，导致线程意外退出了；
-3. 注册中心的正常机制是，心跳不续约，30秒后自动下线。由于CoreDNS影响的是整个K8S集群的DNS解析，所以Provider的所有实例都遇到相同的问题，整个服务所有实例都被下线；
-4. 在Consumer这一侧，收到推送的空列表后，无法找到下游，那么调用它的上游（比如网关）就会发生异常。
-
-**回顾整个案例，每一环每个风险看起来发生概率都很小，但是一旦发生就会造成恶劣的影响。服务发现高可用是微服务体系中很重要的一环，当然也是我们时常忽略的点。在阿里内部的故障演练中，这一直是必不可少的一个环节。**
-
-<a name="ZR0ym"></a>
-# 面向失败的设计
-由于网络环境的抖动比如CoreDns的异常，或者是由于某些因素导致我们的注册中心不可用等情况，经常会出现服务批量闪断的情况，但这种情况其实不是业务服务的不可用，如果我们的微服务可以识别到这是一种异常情况（批量闪断或地址变空时），应该采取一种保守的策略，以免误推从而导致全部服务出现"no provider"的问题，会导致所有的微服务不可用的故障，并且持续较长时间难以恢复。
-
-站在微服务角度上考虑，我们如何可以切段以上的问题链呢？以上的案例看起来是Nacos-client低版本造成的问题，但是如果我们用的是zookeeper、eureka等注册中心呢？我们能拍着胸脯说，不会发生以上的问题吗？面向失败的设计原则告诉我们，如果注册中心挂掉了，或者我们的服务连不上注册中心了，我们需要有一个方式保证我们的服务正常调用，线上的业务持续不断。
-
-本文介绍的是服务发现过程中的高可用的机制，从服务框架层面思考如何彻底解决以上的问题。
-
-<a name="hiTy0"></a>
-# 服务发现过程中的高可用原理解析
-
-<a name="gd4lu"></a>
-## 服务发现高可用-推空保护
-面向失败的设计告诉我们，服务并不能完全相信注册中心的通知的地址，当注册中心的推送地址为空时候，服务调用肯定会出no provider错误，那么我们就忽略此次推送的地址变更。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642560439254-2b2430c6-3d5c-49eb-a688-a3c281a12d95.png#clientId=u3e5a073b-f3da-4&from=paste&height=452&id=u27a76276&originHeight=452&originWidth=464&originalType=binary&ratio=1&rotation=0&showTitle=false&size=61801&status=done&style=none&taskId=u9841a0d5-aa76-472c-b5d2-b16a15a37e4&title=&width=464)<br />![第十节_3-10-3 第三章第十节第三张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211416948-42c215af-2df3-447d-9143-398b2926f29b.png#clientId=u8adb79f4-4e78-4&from=ui&id=ua6f72176&originHeight=522&originWidth=582&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32207&status=done&style=none&taskId=u3697329a-5b50-4896-a5de-bca792d9d07&title=)
-
-**微服务治理中心**提供推空保护能力
-
-- 默认无侵入支持市面上近五年来的Spring Cloud与Dubbo框架
-- 无关注册中心实现，无需升级client版本
-<a name="UyCrl"></a>
-## 服务发现高可用-离群实例摘除
-<br />心跳续约是注册中心感知实例可用性的基本途径。但是在特定情况下，心跳存续并不能完全等同于服务可用。<br />因为仍然存在心跳正常，但服务不可用的情况，例如：
-
-- Request处理的线程池满
-- 依赖的RDS连接异常或慢SQL
-
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198743/1642561200241-536c3aa6-2299-4f17-b7fe-b349e5a510da.png#clientId=u3e5a073b-f3da-4&from=paste&height=317&id=u06578167&originHeight=616&originWidth=902&originalType=binary&ratio=1&rotation=0&showTitle=false&size=136580&status=done&style=none&taskId=u547a7028-6546-4c7d-9219-4d503fcfd8f&title=&width=464)<br />![第十节_3-10-4 第三章第十节第四张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211436667-86d67f9c-ea2e-452d-b15c-ccb444c905d9.png#clientId=u8adb79f4-4e78-4&from=ui&id=ucfca9f4e&originHeight=216&originWidth=379&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10970&status=done&style=none&taskId=ub058e57c-2cc9-498e-b20f-e2742294c04&title=)<br />此时服务并不能完全相信注册中心的通知的地址，推送的地址中，可能存在一些服务质量低下的服务提供者，因此客户端需要自己根据调用的结果来判断服务地址的可用性与提供服务质量的好坏，来定向忽略某些地址。
-
-**微服务治理中心**提供离群实例摘除
-
-- 基于异常检测的摘除策略：包含网络异常和网络异常 + 业务异常（HTTP 5xx）
-- 设置异常阈值、QPS下限、摘除比例下限
-- 摘除事件通知、钉钉群告警
-
-离群实例摘除的能力是一个补充，根据特定接口的调用异常特征，来衡量服务的可用性。
-
-<a name="TKn30"></a>
-# 尾
-没有任何系统是百分百没有问题的，风险是无处不在的，尽管有很多发生概率很小很小，却都无法完全避免，所以面对失败（风险）的设计是必不可少的。
-
-服务发现的高可用是我们时常容易忽视的点，但是它又是非常关键的点，一旦我们的系统出现大面积服务发现的问题，并且由于微服务依赖的复杂度，导致相关的问题也很难快速恢复。为了避免对整个系统出现灾难性的打击，我们需要对服务发现进行面向失败的设计与演练，才能做到心中有数。
-
-
+<Lock />

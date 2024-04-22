@@ -131,7 +131,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/aaqbnx/"
+        "link": "docs/ebook/aaqbnx/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.5 微服务限流降级解决方案",
@@ -139,7 +142,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/ipeble/"
+        "link": "docs/ebook/ipeble/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.6 微服务开发测试提效解决方案",
@@ -147,7 +153,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/me0tbz/"
+        "link": "docs/ebook/me0tbz/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.7 微服务敏捷开发解决方案",
@@ -155,7 +164,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/wh4qgy/"
+        "link": "docs/ebook/wh4qgy/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.8 微服务无缝迁移上云解决方案",
@@ -163,7 +175,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/vn6lg3/"
+        "link": "docs/ebook/vn6lg3/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.9 线上故障紧急诊断、排查与恢复",
@@ -171,7 +186,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/ggmmft/"
+        "link": "docs/ebook/ggmmft/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.10 微服务注册发现高可用解决方案",
@@ -179,7 +197,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/tdbw3b/"
+        "link": "docs/ebook/tdbw3b/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.11 微服务应用安全解决方案",
@@ -187,7 +208,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/pz5pqr/"
+        "link": "docs/ebook/pz5pqr/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.12 异构微服务互通解决方案",
@@ -195,7 +219,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/euq2fi/"
+        "link": "docs/ebook/euq2fi/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "3.13 微服务 Serverless PaaS解决方案",
@@ -203,7 +230,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/hzzzd9/"
+        "link": "docs/ebook/hzzzd9/",
+        "attrs": {
+          "lock": true
+        }
       }
     ]
   },
@@ -219,7 +249,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/assenf/"
+        "link": "docs/ebook/assenf/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.2 从Ingress网关到全链路灰度",
@@ -227,7 +260,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/xqk29p/"
+        "link": "docs/ebook/xqk29p/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.2.1 Ingress-nginx 全链路灰度",
@@ -235,7 +271,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/gbup3a/"
+        "link": "docs/ebook/gbup3a/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.2.2 为 Spring Cloud Zuul 和 Spring Cloud Gateway 配置全链路金丝雀发布",
@@ -243,7 +282,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/svayai/"
+        "link": "docs/ebook/svayai/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.2.3 MSE 云原生网关全链路灰度",
@@ -251,7 +293,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/muynvi/"
+        "link": "docs/ebook/muynvi/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.2.4 全链路灰度之 RocketMQ 灰度",
@@ -259,7 +304,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/dtdnyy/"
+        "link": "docs/ebook/dtdnyy/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.2.5 使用 Jenkins CI/CD 实现金丝雀发布",
@@ -267,7 +315,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/ck6xf6/"
+        "link": "docs/ebook/ck6xf6/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.3 微服务应用配置最佳实践",
@@ -275,7 +326,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/rv9pn1/"
+        "link": "docs/ebook/rv9pn1/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.4 微服务限流降级最佳实践",
@@ -283,7 +337,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/utfh8i/"
+        "link": "docs/ebook/utfh8i/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.5 微服务开发测试提效最佳实践",
@@ -291,7 +348,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/gg3fvw/"
+        "link": "docs/ebook/gg3fvw/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.6 微服务敏捷开发最佳实践",
@@ -299,7 +359,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/ogtees/"
+        "link": "docs/ebook/ogtees/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.7 微服务无缝迁移上云实践",
@@ -307,7 +370,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/wh1hoh/"
+        "link": "docs/ebook/wh1hoh/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.8 如何快速构建服务发现的高可用能力",
@@ -315,7 +381,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/wct036/"
+        "link": "docs/ebook/wct036/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "4.9 如何在Serverless模式下快速使用服务治理能力",
@@ -323,7 +392,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/pd0f3u/"
+        "link": "docs/ebook/pd0f3u/",
+        "attrs": {
+          "lock": true
+        }
       }
     ]
   },
@@ -339,7 +411,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/fsdbgy/"
+        "link": "docs/ebook/fsdbgy/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "5.2 提升线上稳定性｜来电科技微服务治理实践",
@@ -347,7 +422,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/cdkqhk/"
+        "link": "docs/ebook/cdkqhk/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "5.3 云小蜜：从迁移阿里云云上到流量治理",
@@ -355,7 +433,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/su8w58/"
+        "link": "docs/ebook/su8w58/",
+        "attrs": {
+          "lock": true
+        }
       },
       {
         "label": "5.4 游戏客户广州小迈微服务治理最佳实践",
@@ -363,7 +444,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/gamvyg/"
+        "link": "docs/ebook/gamvyg/",
+        "attrs": {
+          "lock": true
+        }
       }
     ]
   },
@@ -379,7 +463,10 @@
           "en": ""
         },
         "items": [],
-        "link": "docs/ebook/uimxlk/"
+        "link": "docs/ebook/uimxlk/",
+        "attrs": {
+          "lock": true
+        }
       }
     ]
   }

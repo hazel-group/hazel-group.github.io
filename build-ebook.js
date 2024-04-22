@@ -37,7 +37,7 @@ const slugList = [
     // 第三章
     "somsth", "akszh2", "on0vzt", 
     // 开放到 3.3 小节。以下需要锁定
-    "aaqbnx",
+    // "aaqbnx",
     // "ipeble", "me0tbz", "wh4qgy", "vn6lg3", "ggmmft", "tdbw3b", "pz5pqr", 
     // "euq2fi", "hzzzd9", "assenf", "xqk29p", "gbup3a", "svayai", "muynvi", 
     // "dtdnyy", "ck6xf6", "rv9pn1", "utfh8i", "gg3fvw", "ogtees", "wh1hoh",

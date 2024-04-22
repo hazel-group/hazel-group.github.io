@@ -222,7 +222,7 @@ export const getCommunityLinkList = (t: Function): CommunityLink[] => [
 export const getContributeLinkList = (lang: string, editHref: string, feedbackUrl: string, t: Function): ContributeLink[] => [
   {
     // href: `/${lang}/v2/contribution/contributing`,
-    href: '/docs/developer/zh-cn/contributor-guide/new-contributor-guide_dev/',
+    href: '/docs/developer/contributor-guide/new-contributor-guide_dev/',
     text: t("rightSidebar.contributorGuides"),
     depth: 2,
     icon: "tabler:book",

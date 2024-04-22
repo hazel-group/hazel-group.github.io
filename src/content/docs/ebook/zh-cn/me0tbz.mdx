@@ -1,64 +1,9 @@
 ---
 title: 3.6 微服务开发测试提效解决方案
 keywords: [ SCA ]
-description: 前言随着云原生时代的到来，越来越多的应用生在云上，长在云上，且随着越来越多的企业开始上云，云原生也是企业落地微服务的最佳伴侣。但云上应用易测性受到了很大的挑战，如何提高云上应用易测性，增强DevOps能力，是微服务测试要解决的核心问题。在详细讲述微服务测试之前，先给大家讲一个场景。上图是一个典...
+description: SCA Eook
 ---
-<a name="FUuwZ"></a>
-# 前言
 
-随着云原生时代的到来，越来越多的应用生在云上，长在云上，且随着越来越多的企业开始上云，云原生也是企业落地微服务的最佳伴侣。但云上应用易测性受到了很大的挑战，如何提高云上应用易测性，增强DevOps能力，是微服务测试要解决的核心问题。
+import Lock from "@components/common/EbookLock.astro";
 
-在详细讲述微服务测试之前，先给大家讲一个场景。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2020/png/83415/1607401987256-c72b3029-91b5-457d-8752-901fa2b5872c.png#height=288&id=iDs8V&originHeight=1368&originWidth=2804&originalType=binary&ratio=1&rotation=0&showTitle=false&size=179287&status=done&style=none&title=&width=590)<br />![第六节_3-6-1 第三章第六节第一张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648210970139-4c0fa25c-8134-46ae-aff5-a962968e7e29.png#clientId=uaa862745-87fc-4&from=ui&id=u00901a5a&originHeight=284&originWidth=723&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21213&status=done&style=none&taskId=u2ec481a6-44cb-497e-831e-6ecc6f1b329&title=)<br />上图是一个典型的企业微服务应用架构图，为了考虑安全性，云上应用通常部署在云上虚拟局域网内，统一通过网关对外暴露服务。对于负责 Product Service 应用的同学来说，我只想测试一下该应用对应的服务是否可用，他会怎么做呢？<br />方案一
-
-> 进入该应用部署所在的机器（ECS）或者容器（Pod），通过 curl 命令验证该服务是否可用
-
-方案二
-
-> 将该应用暴露给公网访问，通过本地命令行工具或者 Postman 工具验证该服务是否可用
-
-方案三
-
-> 拉一条网络专线，打通云上专有网络VPC与办公网网络，通过本地命令行工具或者 Postman 工具验证该服务是否可用
-
-
-从以上场景，我们可以总结出云上微服务测试几点问题：
-
-- **云上网络拓扑复杂**
-- **暴露公网访问，会出现黑客攻击，引发安全风险**
-- **拉一条网络专线，浪费资源成本**
-
-明明只想要一个简单的测试能力，成本却如此之高。**上述场景还仅仅是一个简单的调试功能，如果是压测、自动化回归、巡检、服务Mock等其他测试及稳定性保障手段，不仅仅要解决上述场景遇到的问题，还需要自建工具，脑补一下，都觉得成本太高。**
-<a name="pV2WG"></a>
-# 云原生时代下微服务开发测试
-<a name="bwj65"></a>
-#### 
-<a name="LUGwT"></a>
-#### 测试策略
-
-> 以API为测试对象，进行开发自测，功能回归，性能测试，线上巡检等测试活动，完成高质量交付。
-
-
-![测试策略.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/83415/1644831447546-a8fda4eb-c76c-4b5a-a1ae-3e579a5c80a3.png#clientId=ud90baeeb-d27a-4&from=paste&height=768&id=sYoHd&originHeight=768&originWidth=1368&originalType=binary&ratio=1&rotation=0&showTitle=false&size=104576&status=done&style=none&taskId=u321139be-40e9-4ee4-9087-067e05c2325&title=&width=1368)<br />![第六节_3-6-2 第三章第六节第二张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648210984001-9401a462-268d-4ff9-9316-d5dd12837293.png#clientId=uaa862745-87fc-4&from=ui&id=u02dbca35&originHeight=315&originWidth=648&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21771&status=done&style=none&taskId=uf79b8c18-0a78-4dd5-a4dd-5275f8cda04&title=)<br />微服务应用测试，主要以API测试为主，占比达60%-80%。微服务应用的测试策略，以API为测试载体，进行冒烟测试，回归测试，压力测试等，同时根据业务功能，对多个API进行编排，实现自动化测试，提高回归测试的效率，尤其在DevOps文化盛行下，成为持续交付的质量保障利器。
-
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2020/png/83415/1607408595255-6ea1e03e-e089-4f75-a3b2-b37c7c170065.png#height=768&id=Pa9hU&originHeight=768&originWidth=5724&originalType=binary&ratio=1&rotation=0&showTitle=false&size=197508&status=done&style=none&title=&width=5724)<br />![第六节_3-6-3 第三章第六节第三张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211115318-804d988e-80a0-461d-90bb-21172e9683b0.png#clientId=uaa862745-87fc-4&from=ui&id=u1ddf8620&originHeight=213&originWidth=992&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27185&status=done&style=none&taskId=u23632e57-93cb-4fb5-ab1a-ae21a0bec8d&title=)<br />试想一下，研发同学提交代码并部署，可以使用测试工具，验证服务逻辑正确性；可以使用压测工具，验证服务性能指标；验证通过后，开始进行冒烟测试，可以使用自动化回归工具，编写冒烟用例；冒烟通过后，开始进行历史功能回归，可以使用自动化回归工具，编写回归用例；回归通过后，提交测试验收，测试只需要验证新功能，新功能验证通过后，即可提交发布。发布后，进行线上环境验证，需要回归历史功能主流程，可以使用自动化回归工具，编写主流程回归用例，新功能手工验证；主流程回归通过且新功能验证通过，代表发布完成；研发同学，可以使用巡检工具，配置线上巡检；一旦巡检告警，即可先于用户发现问题，并解决问题。云原生时代，我们希望有一个围绕API测试展开的测试工具，提高测试效率。
-<a name="wa1J2"></a>
-#### 
-<a name="QOoSo"></a>
-#### 网络方案
-
-> 安全可靠，拥有在办公网下的测试体验；开箱即用，无需关注专有网络VPC下的网络拓扑。
-
-
-试想一下，企业为了安全隔离，研发环境、测试环境、预发环境、生产环境部署在不同的专有网络VPC内，如果用户自建测试工具，需要解决测试工具到不同环境的网络互通问题，企业IT人员明明只想要一个简单的测试工具，却因为上云之后，要解决复杂的云上网络拓扑，远远没有结束，为了能够在办公网使用该测试工具，还需要保证该测试工具能够被办公网访问，此时又面临着网络安全的考验。云原生时代，我们希望有一个能够开箱即用且安全可靠的方案，能够让上云的企业IT人员拥有在办公网测试体验的测试工具。<br />![网络模型2.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/83415/1644892489652-73f43620-06d9-4dca-a990-addc4eba1af3.png#clientId=ud90baeeb-d27a-4&from=paste&height=844&id=ue38fd8dd&originHeight=844&originWidth=2324&originalType=binary&ratio=1&rotation=0&showTitle=false&size=100807&status=done&style=none&taskId=ufc7616dd-36eb-4baf-916c-bc6014e5453&title=&width=2324)<br />![第六节_3-6-4 第三章第六节第四张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211146189-8924b929-33a2-4985-8c87-ec3507fd7673.png#clientId=uaa862745-87fc-4&from=ui&id=u43736d4e&originHeight=228&originWidth=536&originalType=binary&ratio=1&rotation=0&showTitle=false&size=14293&status=done&style=none&taskId=ua3987f5f-fda9-40ae-94e7-3e9b7124c42&title=)
-<a name="jWZod"></a>
-#### 
-<a name="DkNeb"></a>
-#### 测试能力
-
-> 一方面借助云原生的能力，降本增效，另一方面为云原生应用测试提供基础能力，简单易用。
-
-
-![API测试能力.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/83415/1644895958472-0834bd91-453a-4115-8313-d25f2a4f3078.png#clientId=ud90baeeb-d27a-4&from=paste&height=2368&id=u92adea14&originHeight=2368&originWidth=3284&originalType=binary&ratio=1&rotation=0&showTitle=false&size=479552&status=done&style=none&taskId=u126b34af-eb95-4334-9e69-90d79501071&title=&width=3284)<br />![第六节_3-6-5 第三章第六节第五张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211161006-412ffb6a-49cd-45c3-9963-338c86142e59.png#clientId=uaa862745-87fc-4&from=ui&id=ufeee06b8&originHeight=545&originWidth=762&originalType=binary&ratio=1&rotation=0&showTitle=false&size=51885&status=done&style=none&taskId=u1909347a-7bcc-4dfd-b23e-7391101e9c7&title=)<br />业界存在很多API测试工具，相对优秀的工具，例如ApiFox，Postman，提供了API管理，API调试，自动化测试，测试管理，Mock等能力，仍然是上一代测试工具，云原生时代，我们需要什么样的测试能力？试想一下，如何测试一个微服务接口，需要了解接口入参和出参，如果是研发同学-服务提供者，可能比较熟悉该接口，如果是测试同学，甚至是其他研发同学，可能就需要文档，甚至是口口相传，微服务治理已经可视化应用的API契约信息，结合API契约信息，即可进行快速调试。云原生时代，增强了API测试工具具备的基础能力，甚至在流量管理，API Mock，压测管理等方面做了极大的增强，流量管理，支持springCloud、dubbo等框架的微服务应用流量录制，从而0编码成本完成API自动化测试和性能压测，同时能更全面的测试到业务操作场景对应的API，防止测试遗漏。API Mock，主要解决了在依赖第三方API未就绪的情况下，通过Mock功能，自动根据请求参数返回不同的结果，支持随机生成返回数据，能够真实地模拟后端服务，支持系统联调，及自动化测试的落地。压测管理，可以直接将自动化测试用例一键转化为压测用例，用户无需关心压测机的准备，即可快速了解单个API或者用例的并发数和TPS。
-<a name="LeLds"></a>
-#### 
-云原生时代微服务测试以API为测试对象，屏蔽网络复杂性，提供一套简单易用的测试能力，提供研发测试效率，加速软件交付。结合上述3点，测试同学只需负责用例编写+测试验收，API 调试、API 性能水位、用例自动化均可赋能给研发同学，就像早期DevOps一样，降低研发运维之间的反馈回路，提高软件交付效率，DevTest，降低研发测试之间的反馈回路，在保证交付质量的前提下，进一步提升软件交付效率，同时主动创建巡检任务，定时监控线上服务可用率，先于用户发现问题，解决问题。
+<Lock />

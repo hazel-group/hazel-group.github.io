@@ -140,7 +140,6 @@ declare module 'astro:content' {
 	id: "Graalvm-metadata.md";
   slug: "graalvm-metadata";
   body: string;
-  blankUrl?: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };

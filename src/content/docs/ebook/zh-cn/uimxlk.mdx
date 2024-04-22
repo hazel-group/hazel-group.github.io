@@ -1,28 +1,9 @@
 ---
 title: 总结与展望
 keywords: [ SCA ]
-description: 经过十多年的发展微服务，微服务架构已经进入了大众采纳阶段，已经基本满足了企业业务敏捷开发的诉求，随着微服务实践的深入，微服务治理必将成为企业下一阶段微服务架构演进的重要阶段。本白皮书从技术发展趋势，技术原理，解决方案，企业实践等多个角度阐释了微服务治理的原理，方案，和实践，希望能够帮助企业在下...
+description: SCA Eook
 ---
-经过十多年的发展微服务，微服务架构已经进入了大众采纳阶段，已经基本满足了企业业务敏捷开发的诉求，随着微服务实践的深入，微服务治理必将成为企业下一阶段微服务架构演进的重要阶段。本白皮书从技术发展趋势，技术原理，解决方案，企业实践等多个角度阐释了微服务治理的原理，方案，和实践，希望能够帮助企业在下一阶段采纳微服务治理方案的时候有所参考。
 
-展望未来，微服务治理的发展趋势，让业务迭代更加高效，让业务和治理更加透明，更加解耦，永远是技术发展的亘古不变的目标。
+import Lock from "@components/common/EbookLock.astro";
 
-<a name="z01X2"></a>
-#### 微服务架构分层逐渐清晰
-
-微服务架构分层逐渐形成，后端 BAAS 化，客户端轻量化，业务侧 Serverless 化，让业务更加聚焦业务开发，进一步提升研发效率。
-
-- 后端 BAAS 化，开箱即用，极致弹性，分钟级交付，安全可靠，提供 99.95% 高可用
-- 客户端轻量化：降低业务侵入，多语言标准集成，治理能力下沉
-- 业务侧 Serverless 化：让业务无需感知服务器，更加聚焦业务开发，提升研发和运维效率
-
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/10501/1645427287866-2940a27d-b952-4fdb-a526-5eef9ffe395f.png#clientId=ud0eee522-877b-4&from=paste&height=423&id=ir5pu&originHeight=423&originWidth=720&originalType=binary&ratio=1&rotation=0&showTitle=false&size=88675&status=done&style=none&taskId=u6124dfe2-2b92-4f35-8de7-cd21a0f2cb5&title=&width=720)
-
-<a name="Wll2o"></a>
-#### 服务治理数据面透明化，控制面标准化
-服务治理数据面将会逐步下沉，与业务逻辑逐步解耦，透明的实现治理技术的演进和升级。在数据面的形态上来看，存在多种形态并存，针对 Java 语言，以 Java Agent 为形态的的服务治理技术正在兴起并逐步成为趋势，针对非 Java 语言，基于 Sidecar 的 Service Mesh 技术正在被越来越多的企业采用，而在控制面，以一套控制面去控制不同数据面的形态成为主流，将逐步统一到以 K8s CRD 为中心的服务治理控制面中。服务治理的范围扩展到以开发，测试，发布，运维，安全等多场景的全生命周期。
-
-
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/299789/1647418992013-7551f411-aa80-4e61-a4e1-7dfd5cb064ff.png#clientId=u82e192f0-a67e-4&from=paste&height=776&id=uba3c57e5&originHeight=1552&originWidth=2486&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1174317&status=done&style=none&taskId=u762be6fc-64fc-4002-a6cc-64168f76632&title=&width=1243)
-
-
+<Lock />
