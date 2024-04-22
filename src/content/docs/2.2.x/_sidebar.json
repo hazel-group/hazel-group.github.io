@@ -21,27 +21,6 @@
 				"link": "docs/overview/version-explain/"
 			},
 			{
-				"label": "Roadmap",
-				"translations": {
-					"en": "Roadmap"
-				},
-				"items": [{
-						"label": "RocketMQ 5.0适配",
-						"translations": {
-							"en": "RocketMQ 5.0 adaptation"
-						},
-						"link": "docs/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0/"
-					},
-					{
-						"label": "服务治理",
-						"translations": {
-							"en": "Service Governance"
-						},
-						"link": "docs/overview/roadmap/service-governance/service-governance/"
-					}
-				]
-			},
-			{
 				"label": "FAQ",
 				"translations": {
 					"en": "FAQ"
