@@ -1,6 +1,7 @@
 ---
 import { useTranslations, isChinese } from "@i18n/util";
 import StarAndFork from "./StarAndFork.astro";
+import Carousel from "./Carousel.astro";
 import ProductDisplayCard from "@components/home/ProductDisplayCard.astro";
 
 const t = useTranslations(Astro);
@@ -8,6 +9,29 @@ const ifzh = isChinese(Astro);
 ---
 
 <div class="home-introduce-wrapper">
+<Carousel>
+    <home-introduce
+      slot="next"
+      class="introduce flex flex-col justify-center items-center bg-muted/[0.8] "
+    >
+      <div class="top-section flex flex-col relative mb-[111px]">
+        <div class="introduce_about pt-6 pb-4 text-warning text-xs mt-[2.375rem]">
+          {t("home.introduce.about")}
+        </div>
+        <div
+          class=`title leading-[5rem] text-neutral mb-8 ${ifzh ? 'text-[3.75rem]' : 'text-[4rem]'}`
+        >
+          {t("home.introduce.title")}
+        </div>
+        <StarAndFork />
+      </div>
+    </home-introduce>
+    <ProductDisplayCard />
+</Carousel>
+</div>
+
+
+<!-- <div class="home-introduce-wrapper">
 <home-introduce
   class="introduce flex flex-col justify-center items-center bg-muted/[0.8] "
 >
@@ -24,7 +48,7 @@ const ifzh = isChinese(Astro);
   </div>
 </home-introduce>
 <ProductDisplayCard />
-</div>
+</div> -->
 
 <style is:global>
   .home-introduce-wrapper {
@@ -33,7 +57,7 @@ const ifzh = isChinese(Astro);
       color: theme("colors.accent");
     }
     
-      min-height: calc(100vh - 4rem);
+      /* min-height: calc(100vh - 4rem); */
     
     .top-section {
       width: 85.125rem;
