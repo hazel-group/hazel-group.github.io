@@ -221,7 +221,8 @@ export const getCommunityLinkList = (t: Function): CommunityLink[] => [
 // 文档社区板块的链接列表
 export const getContributeLinkList = (lang: string, editHref: string, feedbackUrl: string, t: Function): ContributeLink[] => [
   {
-    href: `/${lang}/v2/contribution/contributing`,
+    // href: `/${lang}/v2/contribution/contributing`,
+    href: '/docs/developer/zh-cn/contributor-guide/new-contributor-guide_dev/',
     text: t("rightSidebar.contributorGuides"),
     depth: 2,
     icon: "tabler:book",
@@ -325,13 +326,13 @@ export const LEARN_CATEGORY = [
 export const HEADER_ACTIVITY_CARD = [
   {
     "collection": "blog",
-    "slug": "release-nacos132",
+    "slug": "news/ospp-2024",
     "description": "Spring Cloud Alibaba 编程之夏报名启动！",
     "imageUrl": "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   },
   {
     "collection": "blog",
-    "slug": "release-nacos110",
+    "slug": "news/attend-a-meeting",
     "description": "参加社区双周会！",
     "imageUrl": "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
   }
@@ -340,7 +341,7 @@ export const HEADER_ACTIVITY_CARD = [
 export const HEADER_LEARN_CARD = [
   {
     collection: "blog",
-    slug: "release-nacos110",
+    slug: "learning/spring-boot/core",
     description: "最全面的 Spring 中文系列教程，从这里开启你的 Spring 应用开发之旅！",
     imageUrl:
       "https://img.alicdn.com/imgextra/i1/O1CN01xDVfHk1El7oBMjL3p_!!6000000000391-2-tps-1083-721.png",
@@ -351,6 +352,7 @@ export const HEADER_SOLUTIONS_CARD = [
   {
     collection: "blog",
     slug: "release-nacos110",
+    blankUrl: 'https://www.aliyun.com/product/aliware/mse',
     description: "阿里云 MSE 微服务引擎",
     imageUrl:
       "https://img.alicdn.com/imgextra/i2/O1CN011815Q71wQpLpuKYeC_!!6000000006303-0-tps-1284-721.jpg",
@@ -447,11 +449,13 @@ export const getBlogContentList = async (blogList = []) => {
 
   const blogImgs = blogList.map((item) => item.imageUrl);
   const posts = (await getEntries(simplifiedPosts as any)) || [];
+  const blankUrl = blogList.map((item) => item.blankUrl);
 
   return {
     blogDescrip,
     blogImgs,
     posts,
+    blankUrl
   };
 }
 

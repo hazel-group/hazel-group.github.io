@@ -140,6 +140,7 @@ declare module 'astro:content' {
 	id: "Graalvm-metadata.md";
   slug: "graalvm-metadata";
   body: string;
+  blankUrl?: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
@@ -192,37 +193,93 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"learning/microservice-1.md": {
-	id: "learning/microservice-1.md";
-  slug: "learning/microservice-1";
+"learning/spring-boot/core.md": {
+	id: "learning/spring-boot/core.md";
+  slug: "learning/spring-boot/core";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"learning/spring-1.md": {
-	id: "learning/spring-1.md";
-  slug: "learning/spring-1";
+"learning/spring-cloud/spring-cloud-commons.md": {
+	id: "learning/spring-cloud/spring-cloud-commons.md";
+  slug: "learning/spring-cloud/spring-cloud-commons";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"learning/spring-boot-1.md": {
-	id: "learning/spring-boot-1.md";
-  slug: "learning/spring-boot-1";
+"learning/spring-cloud/spring-cloud-context.md": {
+	id: "learning/spring-cloud/spring-cloud-context.md";
+  slug: "learning/spring-cloud/spring-cloud-context";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"learning/spring-cloud-1.md": {
-	id: "learning/spring-cloud-1.md";
-  slug: "learning/spring-cloud-1";
+"learning/spring/core/aop-api.md": {
+	id: "learning/spring/core/aop-api.md";
+  slug: "learning/spring/core/aop-api";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"learning/spring-cloud-alibaba-1.md": {
-	id: "learning/spring-cloud-alibaba-1.md";
-  slug: "learning/spring-cloud-alibaba-1";
+"learning/spring/core/aop.md": {
+	id: "learning/spring/core/aop.md";
+  slug: "learning/spring/core/aop";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"learning/spring/core/ioc.md": {
+	id: "learning/spring/core/ioc.md";
+  slug: "learning/spring/core/ioc";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"learning/spring/core/resources.md": {
+	id: "learning/spring/core/resources.md";
+  slug: "learning/spring/core/resources";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"learning/spring/integration/cache.md": {
+	id: "learning/spring/integration/cache.md";
+  slug: "learning/spring/integration/cache";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"learning/spring/integration/scheduling.md": {
+	id: "learning/spring/integration/scheduling.md";
+  slug: "learning/spring/integration/scheduling";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"learning/spring/web-servlet/mvc.md": {
+	id: "learning/spring/web-servlet/mvc.md";
+  slug: "learning/spring/web-servlet/mvc";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"learning/spring/web-servlet/rest-clients.md": {
+	id: "learning/spring/web-servlet/rest-clients.md";
+  slug: "learning/spring/web-servlet/rest-clients";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"news/attend-a-meeting.md": {
+	id: "news/attend-a-meeting.md";
+  slug: "news/attend-a-meeting";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"news/ospp-2024.md": {
+	id: "news/ospp-2024.md";
+  slug: "news/ospp-2024";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -267,20 +324,6 @@ declare module 'astro:content' {
 "2.2.x/en/overview/faq.md": {
 	id: "2.2.x/en/overview/faq.md";
   slug: "22x/en/overview/faq";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2.2.x/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2.2.x/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "22x/en/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2.2.x/en/overview/roadmap/service-governance/service-governance.md": {
-	id: "2.2.x/en/overview/roadmap/service-governance/service-governance.md";
-  slug: "22x/en/overview/roadmap/service-governance/service-governance";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -467,20 +510,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"2.2.x/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2.2.x/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "22x/zh-cn/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2.2.x/zh-cn/overview/roadmap/service-governance/service-governance.md": {
-	id: "2.2.x/zh-cn/overview/roadmap/service-governance/service-governance.md";
-  slug: "22x/zh-cn/overview/roadmap/service-governance/service-governance";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
 "2.2.x/zh-cn/overview/version-explain.md": {
 	id: "2.2.x/zh-cn/overview/version-explain.md";
   slug: "22x/zh-cn/overview/version-explain";
@@ -663,20 +692,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"2021/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2021/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "2021/en/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2021/en/overview/roadmap/service-governance/service-governance.md": {
-	id: "2021/en/overview/roadmap/service-governance/service-governance.md";
-  slug: "2021/en/overview/roadmap/service-governance/service-governance";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
 "2021/en/overview/version-explain.md": {
 	id: "2021/en/overview/version-explain.md";
   slug: "2021/en/overview/version-explain";
@@ -817,20 +832,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"2021/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2021/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "2021/zh-cn/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2021/zh-cn/overview/roadmap/service-governance/service-governance.md": {
-	id: "2021/zh-cn/overview/roadmap/service-governance/service-governance.md";
-  slug: "2021/zh-cn/overview/roadmap/service-governance/service-governance";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
 "2021/zh-cn/overview/version-explain.md": {
 	id: "2021/zh-cn/overview/version-explain.md";
   slug: "2021/zh-cn/overview/version-explain";
@@ -967,20 +968,6 @@ declare module 'astro:content' {
 "2022/en/overview/faq.md": {
 	id: "2022/en/overview/faq.md";
   slug: "2022/en/overview/faq";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2022/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2022/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "2022/en/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2022/en/overview/roadmap/service-governance/service-governance.md": {
-	id: "2022/en/overview/roadmap/service-governance/service-governance.md";
-  slug: "2022/en/overview/roadmap/service-governance/service-governance";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -1135,20 +1122,6 @@ declare module 'astro:content' {
 "2022/zh-cn/overview/faq.md": {
 	id: "2022/zh-cn/overview/faq.md";
   slug: "2022/zh-cn/overview/faq";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2022/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2022/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "2022/zh-cn/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2022/zh-cn/overview/roadmap/service-governance/service-governance.md": {
-	id: "2022/zh-cn/overview/roadmap/service-governance/service-governance.md";
-  slug: "2022/zh-cn/overview/roadmap/service-governance/service-governance";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -1321,20 +1294,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"2023/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2023/en/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "2023/en/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2023/en/overview/roadmap/service-governance/service-governance.md": {
-	id: "2023/en/overview/roadmap/service-governance/service-governance.md";
-  slug: "2023/en/overview/roadmap/service-governance/service-governance";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
 "2023/en/overview/version-explain.md": {
 	id: "2023/en/overview/version-explain.md";
   slug: "2023/en/overview/version-explain";
@@ -1503,20 +1462,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"2023/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md": {
-	id: "2023/zh-cn/overview/roadmap/rocketmq-5.0.0/rocketmq-5.0.0.md";
-  slug: "2023/zh-cn/overview/roadmap/rocketmq-500/rocketmq-500";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"2023/zh-cn/overview/roadmap/service-governance/service-governance.md": {
-	id: "2023/zh-cn/overview/roadmap/service-governance/service-governance.md";
-  slug: "2023/zh-cn/overview/roadmap/service-governance/service-governance";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
 "2023/zh-cn/overview/version-explain.md": {
 	id: "2023/zh-cn/overview/version-explain.md";
   slug: "2023/zh-cn/overview/version-explain";
@@ -1527,6 +1472,20 @@ declare module 'astro:content' {
 "2023/zh-cn/overview/what-is-sca.md": {
 	id: "2023/zh-cn/overview/what-is-sca.md";
   slug: "2023/zh-cn/overview/what-is-sca";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/ai/overview.md": {
+	id: "2023/zh-cn/user-guide/ai/overview.md";
+  slug: "2023/zh-cn/user-guide/ai/overview";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"2023/zh-cn/user-guide/ai/quick-start.md": {
+	id: "2023/zh-cn/user-guide/ai/quick-start.md";
+  slug: "2023/zh-cn/user-guide/ai/quick-start";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
