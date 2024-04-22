@@ -52,7 +52,7 @@ export default {
 	'home.title': 'Spring Cloud Alibaba Website | Spring Cloud Alibaba Official Community | Spring Cloud Alibaba Download',
 	'home.description': 'One-stop solution for building microservice architecture!',
 	'home.introduce.about': 'ABOUT SPRING CLOUD ALIBABA',
-	'home.introduce.title': '',
+	'home.introduce.title': 'Committed to providing an one-stop solution for microservice development!',
 	'home.introduce.nacos.code': 'VIEW ON GITHUB',
 	'home.introduce.nacos.manual': 'MANUAL',
 	'home.introduce.nacos.notes': 'Released on Nov 30, 2023',
