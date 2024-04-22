@@ -1,25 +1,9 @@
 ---
 title: 3.12 异构微服务互通解决方案
 keywords: [ SCA ]
-description: 背景介绍什么是异构微服务异构微服务本质上指的是不同类型的微服务框架，比如当下比较火热的主流微服务框架 SpringCloud、Dubbo 以及 Istio 服务网格等等，这些微服务框架对开发者屏蔽了底层的细节，为微服务应用提供了服务发现、负载均衡等服务治理的解决方案。一个企业内部所开发的微服务...
+description: SCA Eook
 ---
-<a name="reWDP"></a>
-## 背景介绍
-<a name="xL7tp"></a>
-### 什么是异构微服务
-异构微服务本质上指的是不同类型的微服务框架，比如当下比较火热的主流微服务框架 SpringCloud、Dubbo 以及 Istio 服务网格等等，这些微服务框架对开发者屏蔽了底层的细节，为微服务应用提供了服务发现、负载均衡等服务治理的解决方案。<br />一个企业内部所开发的微服务有可能都是基于同一个微服务框架完成的，对于这样的架构，我们称之为是同构微服务体系；当然也有可能一个企业内的微服务是基于多种不同的微服务框架建立的，这样的架构我们称之为是异构的微服务体系。多种不同类型微服务框架的共存在大型企业内还是比较普遍的，形成这种现象的原因有很多，比如：可能是历史遗留、难以改造的系统；也可能是企业正在做技术栈迁移；又或者是企业内不同业务部门为了满足各自的特殊需求而做的独立选型。这也就意味着异构微服务体系很有可能需要长期共存。<br />本小节中的异构微服务特指以 SpringCloud 框架为代表的 Java 微服务体系，和以 istio 服务网格为载体的多语言微服务体系。
 
-<a name="sY4hb"></a>
-### 为什么需要异构微服务互通
-不同类型的微服务框架往往使用了不同的通信协议、进行服务发现的方式也不尽相同。比如说，SpringCloud 框架直接基于 HTTP 协议进行通信，而 Dubbo 则使用自定义报文的 TCP 协议，并且序列化使用定制 Hessian2 框架，二者进行服务发现的方式一般是对接 Nacos、Eureka、Zookeeper 等注册中心；而对于 istio 服务网格来说，服务间通信一般基于 HTTP 协议，服务发现方式则是由 Envoy 通过 XDS 协议向控制面进程 Pilot 获取服务信息。面对这种场景，要如何透明地实现异构微服务体系之间的服务发现和服务调用？如果我们什么都不做，那么每个微服务体系就只能感知到自己所在体系内的微服务的状态，流量也只能在各自的体系内封闭流转。<br />以下图为例，左侧展示的是 SpringCloud Java 微服务体系，右侧展示的是 Istio 多语言微服务体系。对于 Java 微服务体系而言，服务提供者将自身的服务信息注册到 Nacos 注册中心，然后服务消费者从注册中心进行订阅，根据获取到的提供者信息完成 HTTP 服务调用；对于 Istio 多语言微服务体系而言，控制面进程 Pilot（即图中的 istiod）从注册源获取服务信息，然后通过 XDS 协议下发给数据面的 Envoy，istio 默认的注册源是 Kubernetes 集群，使用的是 Kubernetes 的服务发现机制。两个微服务体系下的应用是无法做到相互访问的，因为对于 java 应用来说，注册中心中并不包含多语言应用的相关信息，消费者无法完成服务发现，而对于多语言应用来说，首先 Java 应用并不一定部署在 Kubernetes 集群中，其次即使部署在 Kubernetes 集群中但极有可能没有创建对应的 Service，这就会导致多语言微服务体系下的服务发现机制无法对其生效。<br />![异构语言互通-Page-9 (2).jpg](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/24156822/1644478449833-bcc329a0-c0ab-40dc-8054-cace2c3119d1.jpeg#clientId=u737dc151-8fb4-4&from=ui&height=484&id=ufbc1cddf&originHeight=933&originWidth=2163&originalType=binary&ratio=1&rotation=0&showTitle=false&size=255603&status=done&style=none&taskId=ud3087350-cd6b-4699-b4d1-41e6a1b3374&title=&width=1121)<br />![第八节_3-12-1 第三章第十二节第一张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211593078-0eff6a0a-6a52-4dfd-9191-cdb1ab65d0d0.png#clientId=u77773cb1-7612-4&from=ui&id=u0b48a0e5&originHeight=324&originWidth=723&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25016&status=done&style=none&taskId=ue63fcc7e-582a-4fc6-8ff5-6eb17110c2d&title=)<br />因此，要做到从体系 A 平滑的迁移到体系 B，或者想要长期地保持企业内部多个微服务体系的共存，那么解决异构微服务体系间的互联互通，实现流量的透明调度将是非常重要的环节。
+import Lock from "@components/common/EbookLock.astro";
 
-<a name="CJcfO"></a>
-## 异构微服务互通解决方案
-异构微服务互通解决方案示意图如下所示，该方案从两个方向解决了 Java 微服务体系和多语言微服务体系互相进行服务发现的问题，从而能够达到异构微服务体系的互联互通。<br />![异构语言互通-Page-1 (1).jpg](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/24156822/1644478465396-1e6e27c8-e150-4100-a47b-7b1d6d1977ee.jpeg#clientId=u737dc151-8fb4-4&from=ui&height=536&id=ud36e16c7&originHeight=1083&originWidth=2283&originalType=binary&ratio=1&rotation=0&showTitle=false&size=310345&status=done&style=none&taskId=u27a7367d-3a9d-47ed-a2ab-f92efc9d5c9&title=&width=1129)<br />![第十一章_3-11-2 第三章第十一节第二张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211614132-d9000bf8-3968-44b1-ac43-c27f430fef58.png#clientId=u77773cb1-7612-4&from=ui&id=u40983dc9&originHeight=324&originWidth=827&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31312&status=done&style=none&taskId=uc054bbf0-0a45-43c3-99da-cfb5fe8ad66&title=)
-<a name="tfowI"></a>
-### 从 Java 微服务体系到多语言微服务体系
-上文提到，Java 应用有可能没有部署在 Kubernetes 集群中或者没有创建对应的 Service，导致 Istio 的服务发现机制对其失效，实际上，Istio 还支持通过配置来添加额外的注册源进行服务发现。从 Istio 1.9 版本开始，官方移除了原有的 MCP 协议的相关代码，而全部转为 MCP-over-XDS 协议实现，第三方注册中心（比如 Nacos、Consul等）需要自行实现基于此协议的 XDS 服务器，将自身存储的服务信息按照协议约定传输给 Istio 的控制面进程 Pilot，目前业界中，阿里巴巴的 Nacos 注册中心已经率先支持了 MCP-over-XDS 协议。在具备这样一个前提之后，只需要在 Istio 的配置中添加第三方注册中心的地址和端口即可完成对接，多语言微服务体系下的应用就可以通过 HTTP 协议进行服务调用。
-
-<a name="BdU76"></a>
-### 从多语言微服务体系到 Java 微服务体系
-Java 微服务体系下的应用无法对多语言应用进行服务发现是因为注册中心中不包含对应的服务信息，其本质是多语言应用并没有向 Nacos 注册中心进行服务注册。所以要解决这个问题，只需要添加一个工具组件来辅助多语言应用进行服务注册即可，在该方案中，这部分功能由组件 mse-rule-controller 来承载，mse-rule-controller 是阿里云 MSE 中用于多语言微服务治理的一个组件。只不过在这个过程中，有一些需要额外注意的点，比如说，Java 微服务体系下的应用在进行负载均衡时，会参考服务提供者元数据中的某些字段进行选择，那么在 mse-rule-controller 对多语言应用进行辅助注册的过程中，就必须按照相同的约定生成服务元数据，我们解决异构微服务互联互通的目的并不单单是为了不同体系下的微服务能够互相进行调用，还希望将来能够以一种统一的方式进行服务治理。
+<Lock />

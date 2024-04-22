@@ -27,16 +27,24 @@ const bookToc = toc.data;
 
 let sidebar = [];
 
-// const slugList = [
-//     "srekog", "hvraft", "pf6ee1", "tnxg5t", "snoxot", "khzqeg", "hkgsqu", 
-//     "ngxm99", "bgmd8i", "akq64a", "somsth", "akszh2", "on0vzt", "aaqbnx",
-//     "ipeble", "me0tbz", "wh4qgy", "vn6lg3", "ggmmft", "tdbw3b", "pz5pqr", 
-//     "euq2fi", "hzzzd9", "assenf", "xqk29p", "gbup3a", "svayai", "muynvi", 
-//     "dtdnyy", "ck6xf6", "rv9pn1", "utfh8i", "gg3fvw", "ogtees", "wh1hoh",
-//     "wct036", "pd0f3u", "fsdbgy", "cdkqhk", "su8w58", "gamvyg", "uimxlk"
-// ];
+const slugList = [
+    "srekog", // 推荐序
+    "hvraft", // 大纲
+    // 第一章
+    "pf6ee1", "tnxg5t", "snoxot", "khzqeg", 
+    // 第二章
+    "hkgsqu", "ngxm99", "bgmd8i", "akq64a", 
+    // 第三章
+    "somsth", "akszh2", "on0vzt", 
+    // 开放到 3.3 小节。以下需要锁定
+    // "aaqbnx",
+    // "ipeble", "me0tbz", "wh4qgy", "vn6lg3", "ggmmft", "tdbw3b", "pz5pqr", 
+    // "euq2fi", "hzzzd9", "assenf", "xqk29p", "gbup3a", "svayai", "muynvi", 
+    // "dtdnyy", "ck6xf6", "rv9pn1", "utfh8i", "gg3fvw", "ogtees", "wh1hoh",
+    // "wct036", "pd0f3u", "fsdbgy", "cdkqhk", "su8w58", "gamvyg", "uimxlk"
+];
 // 电子书暂时全部开放、不锁定。
-const slugList = toc.data.map(i => i.slug).filter(i => i !== '#');
+// const slugList = toc.data.map(i => i.slug).filter(i => i !== '#');
 
 
 /**

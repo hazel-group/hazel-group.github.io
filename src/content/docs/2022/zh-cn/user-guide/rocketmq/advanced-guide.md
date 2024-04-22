@@ -11,7 +11,7 @@ description: Advanced, RocketMQ, Guide.
 ### 架构实现
 
 <p align="center">
-<img src="https://img.alicdn.com/tfs/TB1v8rcbUY1gK0jSZFCXXcwqXXa-1236-773.png" />
+<img src="/img/user/rocketmq/mq-2.png" />
 </p>
 
 spring-cloud-statrer-stream-rocketmq 去除了对 [RocketMQ-Spring](https://github.com/apache/rocketmq-spring) 框架的依赖 。 Spring Cloud Stream Binder 核心类 **RocketMQMessageChannelBinder** 实现了 Spring Cloud Stream 规范，内部会构建 RocketMQInboundChannelAdapter 和 RocketMQProducerMessageHandler。

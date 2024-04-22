@@ -9,14 +9,14 @@ import {
   SOLUTIONS_CARD_LIST,
 } from "../../../constant";
 
-const { blogDescrip, blogImgs, posts } =
+const { blogDescrip, blogImgs, posts, blankUrl } =
   ((await getBlogContentList(HEADER_SOLUTIONS_CARD)) as any) || {};
 ---
 
 <MenuContainer>
   <CardMenu cardData={SOLUTIONS_CARD_LIST} slot="left" />
   <BlogCardContainer
-    blogData={{ categoryMap, blogDescrip, blogImgs, posts }}
+    blogData={{ categoryMap, blogDescrip, blogImgs, posts, blankUrl }}
     slot="right"
   />
 </MenuContainer>

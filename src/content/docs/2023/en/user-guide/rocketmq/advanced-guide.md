@@ -11,7 +11,7 @@ This section shows the implementation and related configuration of spring-cloud-
 ### Architecture implementation
 
 <p align="center">
-<img src="https://img.alicdn.com/tfs/TB1v8rcbUY1gK0jSZFCXXcwqXXa-1236-773.png" />
+<img src="/img/user/rocketmq/mq-2.png" />
 </p>
 
 spring-cloud-statrer-stream-rocketmq removes the dependency on [RocketMQ-Spring](https://github.com/apache/rocketmq-spring) framework. The Spring Cloud Stream Binder core class **RocketMQMessageChannelBinder** implements the Spring Cloud Stream specification, and internally builds RocketMQInboundChannelAdapter and RocketMQProducerMessageHandler.

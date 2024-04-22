@@ -1,34 +1,9 @@
 ---
 title: 3.13 微服务 Serverless PaaS解决方案
 keywords: [ SCA ]
-description: 背景基于微服务架构带来了很多好处，包括解耦系统，降低爆炸半径，解耦团队，提升迭代效率等等。但是现实世界中没有银弹，根据“复杂性守恒定律”，我们解决了一部分复杂性，但是会有另一部分的复杂性，需要解决。典型的，拆分成微服务以后，应用数增多了，迭代的频率也增加了，假设你有3套环境（测试、预发、生产）...
+description: SCA Eook
 ---
-<a name="P2Led"></a>
-# 背景
-基于微服务架构带来了很多好处，包括解耦系统，降低爆炸半径，解耦团队，提升迭代效率等等。但是现实世界中没有银弹，根据“复杂性守恒定律”，我们解决了一部分复杂性，但是会有另一部分的复杂性，需要解决。
 
-典型的，拆分成微服务以后，应用数增多了，迭代的频率也增加了，假设你有3套环境（测试、预发、生产），5个应用，那么你实际需要维护15个应用，不同的规格，不同的实例数，不同的高可用等级、不同的弹性策略等等。如果你关注云原生，可能你会觉得需要容器，需要kubernetes等等。<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/305522/1647410810848-7166211d-63ef-47e8-aef3-71f63589f8df.png#clientId=u7ffbb96f-7c2e-4&from=paste&height=248&id=u0ba9c53d&originHeight=620&originWidth=1774&originalType=binary&ratio=1&rotation=0&showTitle=false&size=382689&status=done&style=none&taskId=u1c8b591e-8a30-4cab-aac4-2958bafc1ac&title=&width=709.6)<br />![第十三节_3-13-1 第三章第十三节第一张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211826922-409fdb80-3d10-4b75-93a2-4fa582e1d6fe.png#clientId=udb04b572-8b47-4&from=ui&id=u133ff5a6&originHeight=311&originWidth=723&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26744&status=done&style=none&taskId=u243ff04d-ddc6-4823-9a58-2f80c9d0d76&title=)<br />或多或少，很多开发者都会发现企业里面都会有类似于上图的一套系统，但是得付出相应的维护成本，这就是微服务带来的复杂性的另一面，那么有没有更简单的解决方案呢？
+import Lock from "@components/common/EbookLock.astro";
 
-<a name="Gwr5G"></a>
-# 微服务Serverless PaaS解决方案
-
-<a name="jbkCc"></a>
-## 进击的Serverless
-提到简单，低负担，我想大家都会想到Serverless，它的本质就是希望开发者不再需要去处理Server运维的复杂性，当然Server并没有消失，而是交给了云平台，这也就是Less的部分。
-
-经过这么多年的发展，Serverless也在不断地演进，"Less"的范围在不断扩大，不仅仅包含Server部分，还有0改造、可观测、弹性、应用托管、微服务、CI/CD等等各个方面。结合我们前面的微服务架构下复杂性讨论，Serverless其实是微服务架构下降低复杂度，减少维护成本的最好的一个解决方案之一。
-
-<a name="Z7H9m"></a>
-## Serverless PaaS解决方案
-在阿里云最新的Serverless体系中，已经不局限仅仅关注“Server”部分，而是围绕应用整体需要，开发或者融合各种PaaS能力，真正对开发者做到“将复杂留给平台，简单留给客户”。以下为阿里云SAE产品作为例：<br /> ![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/305522/1647410991224-ace44534-ab67-4baa-980f-172e0788f5d4.png#clientId=u7ffbb96f-7c2e-4&from=paste&height=282&id=ue5abec2f&originHeight=704&originWidth=1840&originalType=binary&ratio=1&rotation=0&showTitle=false&size=429994&status=done&style=none&taskId=ubef006d8-7ab1-4032-9dc6-1f0c4a506ca&title=&width=736)<br />![第十三节_3-13-2 第三章第十三节第二张图.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/54319/1648211848964-358b9efc-1769-4174-b391-cdbd10d951a8.png#clientId=udb04b572-8b47-4&from=ui&id=u518781b5&originHeight=311&originWidth=723&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31789&status=done&style=none&taskId=u77a7d19e-d115-4d70-8021-55e76d3da0e&title=)<br />首先是第一部分，SAE给用户提供了一个白屏化的界面，极大的降低用户的使用门槛，甚至可以说0门槛，它的交互符合大多数开发者心中PaaS的心智，还有CLI、插件、OpenAPI等等丰富的被集成能力。另外也有很多企业级特性，比如命名空间隔离，细粒度的权限控制等等，这些多试企业需要面对的实实在在的问题
-
-第二部分，在微服务能力上，SAE通过注入Agent，整体上实现了一个无侵入，业务无感的解决方案，提供了丰富的微服务治理能力，包括无损下线，灰度发布、链路跟踪等等。
-
-第三部分，在微服务架构下，应用数量较多，定位问题困难，可观测就需要具备非常高的要求，SAE结合阿里云的ARMS、云监控、SLS、Prometheus等产品，在Metrices、Tracing、Logging等方面都提供了相对完整的解决方案，切实解决开发者在可观测方面的痛点，包括基础监控、调用链、实时日志、事件等等
-
-第四部分，SAE不仅仅让开发者不需要运维IaaS，而且也不需要运维kubernetes，免去了开发者运维kubernetes的苦恼，同时又可以利用kubernetes的各种能力，包括健康检查、弹性等等
-
-
-提到云原生，大家都会想到容器、微服务、不可变基础设施等等技术，但是我们回到为什么会出现云原生，本质也是希望能借助云原生相关的技术构建出“容错性好、易于管理和便于观察的松耦合系统”，所以它也是为了降低复杂性和门槛。相信微服务和Serverless  PaaS结合的解决方案是实现这个目标的最佳手段之一
-
-
+<Lock />

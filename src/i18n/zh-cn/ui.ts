@@ -130,7 +130,9 @@ export default {
 	'home.introduction.detailTitle.7':'Spring Boot',
 	'home.introduction.detail.7':'Spring Boot 中文站点，跟随教程学习从入门到开发生产级应用。',
 
-	'home.introduction.card.des':'加速单体、微服务应用开发、打包与部署',
+	'home.introduction.card.Boot.des':'加速 Spring 应用开发、打包与部署',
+	'home.introduction.card.Cloud.des':'微服务应用开发与治理一站式解决方案',
+	'home.introduction.card.AI.des':'通义千问，加速 AI 应用开发',
 	'home.introduction.card.sca.des':'微服务应用开发与治理一站式解决方案',
 	'home.introduction.card.Nacos.des':'服务发现与配置自动同步',
 	'home.introduction.card.Sentinel.des':'限流降级为应用保驾护航',

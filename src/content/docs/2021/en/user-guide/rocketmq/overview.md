@@ -41,5 +41,5 @@ Binding provides a bridge between the message middleware and the Provider and Co
 The following figure is the architecture design of Spring Cloud Stream:
 
 <p align="center">
-  <img src="https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/images/SCSt-with-binder.png" />
+  <img src="/img/user/rocketmq/mq-1.png" />
 </p>
