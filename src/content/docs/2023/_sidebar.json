@@ -214,6 +214,16 @@
 		"autogenerate": {
 			"directory": "best-practice"
 		}
+	},
+	{
+		"label": "AI",
+		"translations": {
+			"en": "AI"
+		},
+		"autogenerate": {
+			"directory": "user-guide/ai"
+		}
 	}
+
 
 ]
