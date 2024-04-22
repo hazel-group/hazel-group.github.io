@@ -111,6 +111,8 @@ export default {
 	'home.contributors.our': 'Our',
 	'home.contributors.community.stars': 'Community Stars',
 	'home.contributors.learn.more': 'LEARN MORE',
+	'home.overviewcard.about': 'Panoramic overview',
+	'home.overviewcard.title': 'Overview Image',
 
 	'home.introduction.detailTitle.1':'Nacos',
 	'home.introduction.detail.1':'Spring Cloud Alibaba Nacos, provides service discovery and configuration management for Spring Cloud.',

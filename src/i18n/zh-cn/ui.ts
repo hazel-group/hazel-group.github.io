@@ -112,6 +112,8 @@ export default {
 	'home.contributors.our': '我们的',
 	'home.contributors.community.stars': '贡献之星',
 	'home.contributors.learn.more': '更多',
+	'home.overviewcard.about': '全景概览',
+	'home.overviewcard.title': '微服务全景图',
 
 	'home.introduction.detailTitle.1':'Nacos',
 	'home.introduction.detail.1':'Spring Cloud Alibaba Nacos，为 Spring Cloud 微服务提供服务注册发现、配置管理等能力。',

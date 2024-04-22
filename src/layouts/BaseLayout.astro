@@ -44,6 +44,7 @@ Astro.props.lang = lang;
 <html lang={Astro.props.lang} data-theme="light">
   <head>
     <meta charset="utf-8" />
+		<meta name="data-spm" content="5176"> 
     <Head entry={headEntry} />
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="index, follow" />
@@ -54,8 +55,7 @@ Astro.props.lang = lang;
       href="https://img.alicdn.com/tfs/TB1hgJpHAPoK1RjSZKbXXX1IXXa-64-64.png"
     />
   </head>
-  <body>
-    <!-- <HomeHeader align="home" position={position} lang={Astro.props.lang} {...Astro.props} /> -->
+  <body data-spm="29160081">
     <HomeHeader align={align} lang={Astro.props.lang} {...Astro.props} />
     <slot />
   </body>
