@@ -1,7 +1,7 @@
 ---
 title: 快速开始
 keywords: [Spring Cloud Alibaba,Spring AI,Tongyi Qianwen]
-description: "Spring AI 与通义千问集成，使用 Spring AI 开发 Java AI 应用。".
+description: "Spring AI 与通义千问集成，使用 Spring AI 开发 Java AI 应用。"
 ---
 
 ## 项目说明
