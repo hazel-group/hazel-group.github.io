@@ -131,13 +131,13 @@ description: seata.
 tx1 先开始，开启本地事务，拿到本地锁，更新操作 m = 1000 - 100 = 900。本地事务提交前，先拿到该记录的全局锁，本地提交释放本地锁。 tx2 后开始，开启本地事务，拿到本地锁，更新操作 m = 900 - 100 = 800。本地事务提交前，尝试拿该记录的全局锁，tx1 全局提交前，该记录的全局锁被 tx1 持有，tx2 需要重试等待全局锁。
 
 <p align="center">
-<img src="https://sca-storage.oss-cn-hangzhou.aliyuncs.com/sca-example/seata/seata/fig1.png"/>
+<img src="/img/user/seata/at-1.png"/>
 </p>
 
 tx1 二阶段全局提交，释放全局锁。tx2 拿到全局锁提交本地事务。
 
 <p align="center">
-<img src="https://sca-storage.oss-cn-hangzhou.aliyuncs.com/sca-example/seata/seata/fig2.png"/>
+<img src="/img/user/seata/at-2.png"/>
 </p>
 
 如果 tx1 的二阶段全局回滚，则 tx1 需要重新获取该数据的本地锁，进行反向补偿的更新操作，实现分支的回滚。
@@ -153,7 +153,7 @@ tx1 二阶段全局提交，释放全局锁。tx2 拿到全局锁提交本地事
 如果应用在特定场景下，必需要求全局的**读已提交**，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。
 
 <p align="center">
-<img src="https://sca-storage.oss-cn-hangzhou.aliyuncs.com/sca-example/seata/seata/fig3.png"/>
+<img src="/img/user/seata/at-3.png"/>
 </p>
 
 SELECT FOR UPDATE 语句的执行会申请全局锁，如果全局锁被其他事务持有，则释放本地锁（回滚 SELECT FOR UPDATE 语句的本地执行）并重试。这个过程中，查询是被 block 住的，直到全局锁拿到，即读取的相关数据是已提交的，才返回。
@@ -303,7 +303,7 @@ $ update product set name = 'GTS' where name = 'TXC';
 - 二阶段 commit 或 rollback 行为
 
 <p align="center">
-<img src="https://sca-storage.oss-cn-hangzhou.aliyuncs.com/sca-example/seata/seata/fig4.png"/>
+<img src="/img/user/seata/tcc.png"/>
 </p>
 
 根据两阶段行为模式的不同，我们将分支事务划分为 Automatic (Branch) Transaction Mode 和 TCC (Branch) Transaction Mode。

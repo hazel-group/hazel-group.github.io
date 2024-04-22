@@ -27,7 +27,7 @@ Compared with the JVM compilation and deployment method, GraalVM has the followi
 The following is the community’s tests related to the startup speed and runtime occupancy of the sample applications of the currently supported service registration and discovery modules after the upgrade to Spring Boot 3.0, using GraalVM to build native application images (the test process was measured on macOS 11.4, 2.6 GHz 6-Core Intel Core i7 processor, 16G memory environment and simulated 3 times to take the average value):
 
 <p align="center">
-<img src="https://sca-storage.oss-cn-hangzhou.aliyuncs.com/website/graalvm_performance.jpg" />
+<img src="/img/user/graalvm/performance.png" />
 </p>
 
 From the above comparison, it can be found that the latest Spring Cloud Alibaba application that supports Spring Boot 3.0 and is based on GraalVM will be greatly reduced in terms of startup speed, runtime memory usage, and application package size. This brings significant advantages to applications hosted on the cloud in the cloud-native era, allowing them to perform elastic expansion and contraction faster and reduce the overall cost of using the cloud for enterprises!
