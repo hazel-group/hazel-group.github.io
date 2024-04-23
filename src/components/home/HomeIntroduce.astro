@@ -9,11 +9,16 @@ const ifzh = isChinese(Astro);
 ---
 
 <div class="home-introduce-wrapper">
-    <Carousel>
+    <Carousel
+        useduration="apply"
+        duration={5000}
+    >
         <a 
             slot="prev" 
             href="/docs/2023/user-guide/ai/overview/" 
             target="_blank"
+            class="block w-full"
+            style={{ background:"rgb(246, 247, 247)" }}
         >
             <img 
                 class="w-full"

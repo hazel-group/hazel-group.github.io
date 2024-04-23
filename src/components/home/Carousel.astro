@@ -1,11 +1,24 @@
 ---
+interface Props {
+    useduration?: string;   // 是否启用自动轮播  apply / disabled
+    duration?: number;      // 图片轮播时间 例如: 1000。 （组件默认 5000s）
+}
 
+const {
+    duration=5000,
+    useduration="disabled",
+} = Astro.props as Props;
 ---
 
 
-<div class="relative">
+<div 
+    id="carousel-wrapper" 
+    class="relative" 
+    data-duration={duration}
+    data-useduration={useduration}
+>
     <div class="w-full">
-        <div class="carousel-item block" style={{ background:"rgb(246, 247, 247)" }}>
+        <div class="carousel-item block">
             <slot name="prev"></slot>
         </div>
     
@@ -22,9 +35,18 @@
 </div>
 
 <script>
+    // 包裹元素
+    const carouselWrapper = document.getElementById('carousel-wrapper'); 
+    // 利用 html dataset 获取 props 变量参数
+    const duration = carouselWrapper?.dataset?.duration;
+    const useduration = carouselWrapper?.dataset?.useduration;
+    // 所有可执行的轮播项
     const items = document.querySelectorAll('.carousel-item');
-    let currentItem = 0;
+    const nextBtn = document.getElementById('next');
+    const prevBtn = document.getElementById('prev');
 
+    // 轮播切换部分
+    let currentItem = 0;
     function showItem(index) {
         items.forEach((item, idx) => {
             item.style.display = 'none';
@@ -32,18 +54,47 @@
                 item.style.display = 'block';
             };
         });
-    }
-
-    document.getElementById('next').addEventListener('click', () => {
+    };
+    // 下一项
+    nextBtn.addEventListener('click', () => {
         currentItem = (currentItem + 1) % items.length;
         showItem(currentItem);
     });
-
-    document.getElementById('prev').addEventListener('click', () => {
+    // 上一项
+    prevBtn.addEventListener('click', () => {
         currentItem = (currentItem - 1 + items.length) % items.length;
         showItem(currentItem);
     });
 
-    // 初始化显示第一张图片
-    // showItem(0);
-</script>
+    // 计时器部分
+    let timer = null;
+    // 切换轮播、利用按钮点击事件
+    function switchPicture() {
+        if(timer) {
+            prevBtn.click();
+            timer = null;
+            timerStart();
+        };
+    };
+    function timerStart() {
+        timer = setTimeout(switchPicture, duration);
+    };
+    // 依据 proos.useduration 判断是否默认开启 循环切换图片
+    if(useduration == 'apply') {
+        // 鼠标划入 停止轮播
+        carouselWrapper.addEventListener('mouseenter',() =>{
+            if(timer) {
+                clearTimeout(timer);
+                timer = null;
+            };
+        });
+        // 鼠标划出 继续轮播
+        carouselWrapper.addEventListener('mouseleave',() =>{
+            if(!timer) {
+                timerStart();
+            };
+        });
+        // 默认开启
+        timerStart();
+    };
+ </script>
