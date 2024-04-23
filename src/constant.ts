@@ -210,7 +210,7 @@ export const getCommunityLinkList = (t: Function): CommunityLink[] => [
     icon: "basil:document-outline",
   },
   {
-    href: 'https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/blob/main/src/content/docs',
+    href: 'https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/blob/develop-astro-sca/src/content/docs',
     text: t("rightSidebar.github"),
     icon: "ant-design:github-filled",
   },
