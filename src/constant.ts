@@ -23,31 +23,31 @@ export const DOCS_BANNER = {
 export const DOCS_ITEM = [
   {
     key: "2023",
-    label: "2023.0.0.0-RC1",
+    label: "2023.0.x",
     target: "_self",
     link: "/docs/2023/overview/what-is-sca/",
     translations: {
-      en: "2023.0.0.0",
+      en: "2023.0.x",
       link: "/en/docs/2023/overview/what-is-sca/",
     }
   },
   {
     key: "2022",
-    label: "2022.0.0.0",
+    label: "2022.0.x",
     target: "_self",
     link: "/docs/2022/overview/what-is-sca/",
     translations: {
-      en: "2022.0.0.0",
+      en: "2022.0.x",
       link: "/en/docs/2022/overview/what-is-sca/",
     }
   },
   {
     key: "2021",
-    label: "2021.0.5.0",
+    label: "2021.0.x",
     target: "_self",
     link: "/docs/2021/overview/what-is-sca/",
     translations: {
-      en: "2021.0.5.0",
+      en: "2021.0.x",
       link: "/en/docs/2021/overview/what-is-sca/",
     }
   },
@@ -57,7 +57,7 @@ export const DOCS_ITEM = [
     target: "_self",
     link: "/docs/2.2.x/overview/what-is-sca/",
     translations: {
-      en: "2023.0.0.0",
+      en: "2.2.x",
       link: "/en/docs/2.2.x/overview/what-is-sca/",
     }
   },
