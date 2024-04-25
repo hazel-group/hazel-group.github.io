@@ -2,7 +2,7 @@ site:
   name: Spring Cloud Alibaba
   site: 'https://sca.aliyun.com'
   base: '/'
-  trailingSlash: 'always'
+  trailingSlash: 'ignore'
   websiteGithubUrl: 'https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/blob/develop-astro-sca'
   githubUrl: 'https://github.com/alibaba/spring-cloud-alibaba'
   logoUrl: "https://img.alicdn.com/imgextra/i1/O1CN01hmeX5e1NWlvOeF6OE_!!6000000001578-2-tps-286-36.png"
