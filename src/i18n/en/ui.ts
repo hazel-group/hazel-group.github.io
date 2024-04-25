@@ -113,6 +113,7 @@ export default {
 	'home.contributors.learn.more': 'LEARN MORE',
 	'home.overviewcard.about': 'Panoramic overview',
 	'home.overviewcard.title': 'Overview Image',
+	'home.product.introduce.title':'Microservice Solutions Provided By Spring Cloud Alibaba',
 
 	'home.introduction.detailTitle.1':'Nacos',
 	'home.introduction.detail.1':'Spring Cloud Alibaba Nacos, provides service discovery and configuration management for Spring Cloud.',
