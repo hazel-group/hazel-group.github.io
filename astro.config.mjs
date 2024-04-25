@@ -108,8 +108,10 @@ export default defineConfig({
 	},
 	// TODO: 梳理redirects
 	redirects: {
+		'/zh-cn/': '/',
+		'/zh-cn/[...slug]':'/[...slug]',
 		'/en-us/': '/en/',
 		'/[...slug].html': '/[...slug]',
-		'/docs/': '/docs/2022/overview/what-is-sca/',
+		'/docs/': '/docs/2023/overview/what-is-sca/',
 	}
 });
