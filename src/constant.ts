@@ -407,7 +407,7 @@ export const ProductDisplayCardData = [
     cover: "https://img.alicdn.com/imgextra/i3/O1CN01bJroU81BzNHfeB3jN_!!6000000000016-0-tps-1000-1500.jpg",
     coverPosition: "bottom",
     title: "Seata",
-    body: "home.introduction.card.Nacos.des",
+    body: "home.introduction.card.Seata.des",
     href: "docs/2023/user-guide/seata/quick-start/",
   },
   {

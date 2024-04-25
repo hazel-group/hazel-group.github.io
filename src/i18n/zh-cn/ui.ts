@@ -137,7 +137,7 @@ export default {
 	'home.introduction.card.Cloud.des':'微服务应用开发与治理一站式解决方案',
 	'home.introduction.card.AI.des':'通义千问，加速 AI 应用开发',
 	'home.introduction.card.sca.des':'微服务应用开发与治理一站式解决方案',
-	'home.introduction.card.Nacos.des':'分布式事务保证数据一致性',
+	'home.introduction.card.Nacos.des':'服务发现与配置自动同步',
 	'home.introduction.card.Sentinel.des':'限流降级为应用保驾护航',
 	'home.introduction.card.Seata.des':'分布式事务保证数据一致性',
 	'home.introduction.card.RocketMQ.des':'异步消息削峰填谷',

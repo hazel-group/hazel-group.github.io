@@ -131,7 +131,7 @@ export default {
 
 	'home.introduction.card.des':'Accelerate the development, packaging, and deployment of individual and microservice applications',
 	'home.introduction.card.sca.des':'A one-stop solution for microservice application development and governance',
-	'home.introduction.card.Nacos.des':'Distributed transactions ensure data consistency',
+	'home.introduction.card.Nacos.des':'Service discovery and configuration are synchronized automatically',
 	'home.introduction.card.Sentinel.des':'Current limiting downgraded to application protection',
 	'home.introduction.card.Seata.des':'Distributed transactions ensure data consistency',
 	'home.introduction.card.RocketMQ.des':'Asynchronous message peak shaving and valley filling',
