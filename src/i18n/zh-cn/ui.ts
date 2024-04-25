@@ -50,8 +50,11 @@ export default {
 	'commmon.footer.actions.edas': '云服务 EDAS',
 	'commmon.actions.download': '下载',
 
-	'home.title': `${SITE.name}官网 | ${SITE.name} 官方社区 | ${SITE.name} 下载`,
-	'home.description': 'Spring Cloud Alibaba 为分布式应用开发提供一站式解决方案。它包含开发分布式应用程序所需的所有组件，使您可以轻松地使用 Spring Cloud 微服务框架开发应用程序。',
+	'home.title': 'Spring AI 抢先体验',
+	// 'home.title': `${SITE.name}官网 | ${SITE.name} 官方社区 | ${SITE.name} 下载`,
+	// 'home.description': 'Spring Cloud Alibaba 为分布式应用开发提供一站式解决方案。它包含开发分布式应用程序所需的所有组件，使您可以轻松地使用 Spring Cloud 微服务框架开发应用程序。',
+	'home.description': 'Spring Cloud Alibaba 官网全面升级，焕然一新',
+	
 	'home.introduce.about': `关于 ${SITE.name}`,
 	'home.introduce.title': ' 致力于提供微服务开发的一站式解决方案!',
 	'home.introduce.nacos.code': '前往 GitHub',
@@ -135,7 +138,7 @@ export default {
 	'home.introduction.card.Cloud.des':'微服务应用开发与治理一站式解决方案',
 	'home.introduction.card.AI.des':'通义千问，加速 AI 应用开发',
 	'home.introduction.card.sca.des':'微服务应用开发与治理一站式解决方案',
-	'home.introduction.card.Nacos.des':'服务发现与配置自动同步',
+	'home.introduction.card.Nacos.des':'分布式事务保证数据一致性',
 	'home.introduction.card.Sentinel.des':'限流降级为应用保驾护航',
 	'home.introduction.card.Seata.des':'分布式事务保证数据一致性',
 	'home.introduction.card.RocketMQ.des':'异步消息削峰填谷',

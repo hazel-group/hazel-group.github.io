@@ -49,8 +49,8 @@ export default {
 	'commmon.footer.actions.edas': 'Cloud Service EDAS',
 	'commmon.actions.download': 'Download',
 
-	'home.title': 'Spring Cloud Alibaba Website | Spring Cloud Alibaba Official Community | Spring Cloud Alibaba Download',
-	'home.description': 'One-stop solution for building microservice architecture!',
+	'home.title': 'Early Access to Spring AI',
+	'home.description': 'The official website of Spring Cloud Alibaba has been fully upgraded and has a new look!',
 	'home.introduce.about': 'ABOUT SPRING CLOUD ALIBABA',
 	'home.introduce.title': 'Committed to providing an one-stop solution for microservice development!',
 	'home.introduce.nacos.code': 'VIEW ON GITHUB',
@@ -132,7 +132,7 @@ export default {
 
 	'home.introduction.card.des':'Accelerate the development, packaging, and deployment of individual and microservice applications',
 	'home.introduction.card.sca.des':'A one-stop solution for microservice application development and governance',
-	'home.introduction.card.Nacos.des':'Automatic synchronization of service discovery and configuration',
+	'home.introduction.card.Nacos.des':'Distributed transactions ensure data consistency',
 	'home.introduction.card.Sentinel.des':'Current limiting downgraded to application protection',
 	'home.introduction.card.Seata.des':'Distributed transactions ensure data consistency',
 	'home.introduction.card.RocketMQ.des':'Asynchronous message peak shaving and valley filling',
