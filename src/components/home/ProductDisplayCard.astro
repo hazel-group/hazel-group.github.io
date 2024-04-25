@@ -7,11 +7,18 @@ import { ProductDisplayCardData } from "@/constant";
 import { Arrow } from "../icon";
 const t = useTranslations(Astro);
 const ifzh = isChinese(Astro);
+
 ---
 <div class="flex flex-col justify-center items-center pt-14 solution-wrapper bg-base-100 hidden md:flex">
   <div class="lg:w-[85.125rem] md:w-full mb-[10px]">
   <div
-    class=`solution-slogan md:w-[${ifzh?'438px':'543px'}] h-[41px] text-success text-[16px] md:text-[20px] leading-4 rounded-[20px] px-5 py-3`
+    class=`solution-slogan h-[41px] text-success text-[16px] md:text-[20px] leading-4 rounded-[20px] px-5 py-3`
+    class:list={[
+      {
+        "w-[438px]": ifzh,
+        "w-[543px]": !ifzh,
+      },
+    ]}
   >
     {t('home.product.introduce.title')}
   </div>
