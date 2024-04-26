@@ -158,24 +158,24 @@ export const COMPANY_CUSTOMERS: Customer[] = [
 export const SOLUTION_LIST: Solution[] = [
   {
     checked: true,
-    src: "https://help.aliyun.com/zh/mse/use-cases/implement-high-availability-capabilities-of-mse-microservices-registry/?spm=a2c4g.11186623.0.0.102a27e0juv8vG",
+    src: "https://help.aliyun.com/zh/mse/user-guide/implement-an-end-to-end-canary-release-by-using-mse-cloud-native-gateways",
     title: "home.solutions.card.1",
     keyword: [
       "home.solutions.card.keyword.high_availability",
-      "home.solutions.card.keyword.multi_availability",
-      "home.solutions.card.keyword.multi_data",
-      "home.solutions.card.keyword.disaster_recovery_protect",
+      "home.solutions.card.keyword.grayscale_publishing",
+      "home.solutions.card.keyword.eliminating_change_risks",
+      "home.solutions.card.keyword.service_governance"
     ],
   },
   {
     checked: false,
-    src: "https://help.aliyun.com/zh/mse/use-cases/migration-solution-based-on-mse-sync/?spm=a2c4g.11186623.0.0.13f12318fSap49",
+    src: "https://developer.aliyun.com/article/1128388",
     title: "home.solutions.card.2",
     keyword: [
-      "home.solutions.card.keyword.data_synchronization_migration",
-      "home.solutions.card.keyword.smooth_migration",
-      "home.solutions.card.keyword.migration_high_availability",
-      "home.solutions.card.keyword.easy_use",
+      "home.solutions.card.keyword.current_limiting_degradation",
+      "home.solutions.card.keyword.high_availab",
+      "home.solutions.card.keyword.great_promotion_of_stability",
+      "home.solutions.card.keyword.eliminating_runtime_risks"
     ],
   },
   {
