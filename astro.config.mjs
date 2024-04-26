@@ -32,7 +32,6 @@ export default defineConfig({
 	image: {
 		domain: ["img.alicdn"]
 	},
-
 	integrations: [
 		starlight({
 			title: SITE.site,
