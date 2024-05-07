@@ -40,7 +40,7 @@ const backIconMap = {
             })
       }
       {
-        type !== "home" && (
+        type !== "home" && type !== "blog-sub" && (
           <Button
             variant="secondary"
             href={backIconMap[type]}
@@ -51,7 +51,7 @@ const backIconMap = {
             <span class="ml-1">BACK</span>
           </Button>
         )
-      } 
+      }
     </div>
   </BaseContainer>
 </div>
