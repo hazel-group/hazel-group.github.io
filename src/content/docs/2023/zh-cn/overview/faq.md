@@ -110,9 +110,7 @@ Spring Cloud Alibaba：Alibaba 提供的基于 Spring Cloud 编程模型实现�
 
 **A：**
 
-<!-- todo：需要更新连接，无法通过相对路径连接 -->
-
-- 关于社区贡献，可以参考[开发者模块](../../../community/developer/contributor-guide/new-contributor-guide_dev)，其中有相关叙述。
+- 关于社区贡献，可以参考[开发者模块](../../../../docs/developer/contributor-guide/new-contributor-guide_dev/)，其中有相关叙述。
 
 - Committer 是具有仓库写权限的个人，包含以下的标准：
 
@@ -129,9 +127,7 @@ Spring Cloud Alibaba：Alibaba 提供的基于 Spring Cloud 编程模型实现�
 
 **A：**
 
-<!-- todo：需要更新连接，无法通过相对路径连接 -->
-
-- 社区目前现在有[博客模块](../../../blog/SCA-Proxyless-Mesh)，更新一些社区相关的功能介绍和在一些前沿技术上的探索；
+- 社区目前现在有[博客模块](../../../../blog/sca-proxyless-mesh/)，更新一些社区相关的功能介绍和在一些前沿技术上的探索；
 
 - 相关学习资料正在整理中，不久之后会在官网发布。
 
