@@ -2,7 +2,6 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 import { goatuiPlugins, getSafelist } from "@serverless-cd/goat-ui/src/plugins"
 import { GOAT_UI_CONTENT_PATH } from "@serverless-cd/goat-ui/src/common";
 import { UI } from './src/utils/config.ts';
-import themeColor from "./themeColor.json"
 
 const colorList = UI?.colors;
 // 预先设置tailwindcss的safelist，保证动态classname
@@ -21,44 +20,7 @@ export default {
   plugins: [...goatuiPlugins,
   ],
   theme: {
-		colors: {
-			...colorList,
-			white: '#FFFFFF',
-			blue: {
-				'01': themeColor['blue']['01'],
-				'02': themeColor['blue']['02'],
-				'03': themeColor['blue']['03'],
-				'04': themeColor['blue']['04'],
-				'05': themeColor['blue']['05'],
-				'06': themeColor['blue']['06'],
-				'07': themeColor['blue']['07'],
-				'08': themeColor['blue']['08'],
-				'09': themeColor['blue']['09'],
-				'10': themeColor['blue']['10'],
-				'11': themeColor['blue']['11'],
-				'12': themeColor['blue']['12'],
-				'13': themeColor['blue']['13'],
-				'14': themeColor['blue']['14'],
-				'15': themeColor['blue']['15'],
-			},
-			gray: {
-				'01': themeColor['gray']['01'],
-				'02': themeColor['gray']['02'],
-				'03': themeColor['gray']['03'],
-				'04': themeColor['gray']['04'],
-				'05': themeColor['gray']['05'],
-				'06': themeColor['gray']['06'],
-				'07': themeColor['gray']['07'],
-				'08': themeColor['gray']['08'],
-				'09': themeColor['gray']['09'],
-				'10': themeColor['gray']['10'],
-				'11': themeColor['gray']['11'],
-				'12': themeColor['gray']['12'],
-				'13': themeColor['gray']['13'],
-				'14': themeColor['gray']['14'],
-				'15': themeColor['gray']['15'],
-			}
-		},
+		colors: colorList,
     extend: {
       fontFamily: {
 				sans: ["Roboto","SourceHanSans","sans-serif"],
