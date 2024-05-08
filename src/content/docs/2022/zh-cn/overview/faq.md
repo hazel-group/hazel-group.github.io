@@ -76,7 +76,7 @@ Spring Cloud Alibaba 目前有三个分支在积极维护，分别是 `2.2.x`，
 
 <!-- todo：需要更新连接，无法通过相对路径连接 -->
 
-参考[社区](../../../community/community-weekly-meeting/attend-a-meeting)模块。
+参考[社区](../../../../blog/news/attend-a-meeting.md)模块。
 
 ---
 
