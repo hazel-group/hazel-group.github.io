@@ -304,6 +304,20 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"wuyi/ask/user-question-history11160.md": {
+	id: "wuyi/ask/user-question-history11160.md";
+  slug: "wuyi/ask/user-question-history11160";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"wuyi/ask/user-question-history11161.md": {
+	id: "wuyi/ask/user-question-history11161.md";
+  slug: "wuyi/ask/user-question-history11161";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 };
 "docs": {
 "2.2.x/en/best-practice/integrated-example.md": {

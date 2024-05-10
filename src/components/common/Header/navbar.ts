@@ -42,7 +42,7 @@ export default [
     },
     trigger: "click",
     target: "_self",
-    route: "/wuyi",
+    route: "/wuyi/",
   },
   {
     label: "学习",

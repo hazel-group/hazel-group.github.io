@@ -267,7 +267,11 @@ export const i18nMap = {
     'spring-cloud': 'learn.spring-cloud.title',
     'spring-cloud-alibaba': 'learn.spring-cloud-alibaba.title',
     'all': 'learn.all.title'
-  }
+  },
+  "wuyi": {
+    'all': 'learn.all.title',
+    'wuyi-ask': 'wuyi.meet-professor.title',
+  },
 };
 
 export const BLOG_CATEGORY = [
@@ -320,6 +324,19 @@ export const LEARN_CATEGORY = [
     type: 'spring-cloud-alibaba',
     title: 'Spring Cloud Alibaba',
     href: '/learn/spring-cloud-alibaba/'
+  },
+];
+
+export const WUYI_CATEGORY = [
+  {
+    type: 'all',
+    title: '全部文章',
+    href: '/wuyi/'
+  },
+  {
+    type: 'wuyi-ask',
+    title: '专家问答',
+    href: '/wuyi/wuyi-ask/'
   },
 ];
 
