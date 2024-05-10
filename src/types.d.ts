@@ -1,3 +1,8 @@
+/*
+ * @Author: xpy01xpy 965732851@qq.com
+ * @LastEditors: xpy01xpy 965732851@qq.com
+ * @LastEditTime: 2024-05-10 13:34:59
+ */
 import ui from "@/i18n/zh-cn/ui";
 
 type UiKeys = keyof typeof ui;
@@ -52,3 +57,16 @@ export interface MetaDataRobots {
   index?: boolean;
   follow?: boolean;
 }
+
+export interface Post {
+  slug: string;
+  body: string;
+  collection: string;
+  data: {
+      title: string;
+      description: string;
+      date: string;
+      keywords?: any[];
+  };
+  excerpt?: string;
+};
