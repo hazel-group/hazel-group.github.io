@@ -43,6 +43,7 @@ export default [
     trigger: "click",
     target: "_self",
     route: "/wuyi/",
+    activePath: ["/wuyi"],
   },
   {
     label: "学习",

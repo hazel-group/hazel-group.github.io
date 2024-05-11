@@ -336,7 +336,7 @@ export const WUYI_CATEGORY = [
   {
     type: 'expertConsultation',
     title: '专家问答',
-    href: '/wuyi/expertConsultation/'
+    href: '/wuyi/expert-consultation/'
   },
 ];
 
