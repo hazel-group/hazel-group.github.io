@@ -162,6 +162,8 @@ export default {
 	'home.introduction.card.Boot.des':'Learning Spring Boot from no experience to actually build stuff',
 	'home.introduction.card.Cloud.des':'One-stop solution for microservice application development and governance',
 	'home.introduction.card.AI.des':'Spring AI with Alibaba Tongyi AI to accelerate AI application development',
+	'home.introduction.card.schedulerx.des':'Distributed Scheduling tasks',
+
 
 	'cloud.title': 'Spring Cloud Alibaba',
 	'cloud.description': 'Spring Cloud Alibaba is specifically designed for cloud-native applications, providing powerful features for service discovery, dynamic configuration management, and service management. It supports efficient application development and operations.',

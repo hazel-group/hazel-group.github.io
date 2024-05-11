@@ -164,6 +164,7 @@ export default {
 	'home.introduction.card.Sentinel.des':'限流降级为应用保驾护航',
 	'home.introduction.card.Seata.des':'分布式事务保证数据一致性',
 	'home.introduction.card.RocketMQ.des':'异步消息削峰填谷',
+	'home.introduction.card.schedulerx.des':'分布式定时任务',
 	
 
 	'cloud.title': 'Spring Cloud Alibaba',

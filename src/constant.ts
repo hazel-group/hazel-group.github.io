@@ -448,6 +448,13 @@ export const ProductDisplayCardData = [
     body: "home.introduction.card.Cloud.des",
     href: "/learn/spring-cloud/",
   },
+  {
+    cover: "https://img.alicdn.com/imgextra/i1/O1CN01bKcEde1xVhBVptyhX_!!6000000006449-2-tps-1312-880.png",
+    coverPosition: "bottom",
+    title: "Spring Scheduling Tasks",
+    body: "home.introduction.card.schedulerx.des",
+    href: "docs/2023/user-guide/schedulerx/quick-start/",
+  },
 ];
 
 export const categoryMap = {
