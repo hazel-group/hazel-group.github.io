@@ -270,7 +270,7 @@ export const i18nMap = {
   },
   "wuyi": {
     'all': 'learn.all.title',
-    'wuyi-ask': 'wuyi.meet-professor.title',
+    'expertConsultation': 'wuyi.meet-professor.title',
   },
 };
 
@@ -334,9 +334,9 @@ export const WUYI_CATEGORY = [
     href: '/wuyi/'
   },
   {
-    type: 'wuyi-ask',
+    type: 'expertConsultation',
     title: '专家问答',
-    href: '/wuyi/wuyi-ask/'
+    href: '/wuyi/expertConsultation/'
   },
 ];
 

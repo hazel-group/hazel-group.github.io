@@ -304,16 +304,16 @@ declare module 'astro:content' {
   collection: "blog";
   data: any
 } & { render(): Render[".md"] };
-"wuyi/ask/user-question-history11160.md": {
-	id: "wuyi/ask/user-question-history11160.md";
-  slug: "wuyi/ask/user-question-history11160";
+"wuyi/expertConsultation/user-question-history11160.md": {
+	id: "wuyi/expertConsultation/user-question-history11160.md";
+  slug: "wuyi/expertconsultation/user-question-history11160";
   body: string;
   collection: "blog";
   data: any
 } & { render(): Render[".md"] };
-"wuyi/ask/user-question-history11161.md": {
-	id: "wuyi/ask/user-question-history11161.md";
-  slug: "wuyi/ask/user-question-history11161";
+"wuyi/expertConsultation/user-question-history11161.md": {
+	id: "wuyi/expertConsultation/user-question-history11161.md";
+  slug: "wuyi/expertconsultation/user-question-history11161";
   body: string;
   collection: "blog";
   data: any

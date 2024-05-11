@@ -5,7 +5,7 @@ keywords: ["提供者","服务","本地","注册中心","多个提供者","Abstr
 description: "opensource-dubbo 消费者和提供者在同一个服务，请求总是打在本地的提供者上，跟源码发现我注册中心有多个提供者，但AbstractClusterInvoker.doSelect()方法的invokers参数值永远只有一个导致请求总是在本地的提供者上"
 author: 专家问答
 date: "2024-04-27"
-category: wuyi-ask
+category: expertConsultation
 ---
 
 ## 用户问题 ： 

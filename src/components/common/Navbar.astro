@@ -4,6 +4,7 @@ import { isChinese } from "@i18n/util";
 import cloneDeep from "lodash.clonedeep";
 import dataSource from "@components/common/Header/navbar.ts";
 import { DOCS_ITEM } from "@/constant"
+import Flames from '../icon/Flames.astro';
 const ifzh = isChinese(Astro);
 
 interface Props {
@@ -105,6 +106,10 @@ const ifactive = (toggle) => {
           } = toggle;
           // const component = slot && await import(slot);
           const active = ifactive(toggle);
+          const newFlames = {
+            aftericon: route == "/wuyi/"? <Flames /> : "",
+            style: route == "/wuyi/"? "color:red!important;" : "",
+          };
           return (
             <Toggle
               title={ifzh ? label : translations?.en}
@@ -117,6 +122,8 @@ const ifactive = (toggle) => {
               top={top}
               relativePosition = {relativePosition}
               class={`item ${index === lastIdx ? "item-last-child" : ""}`}
+              hotStyle={newFlames.style}
+              hotIcon={newFlames.aftericon}
             ></Toggle>
           );
         })
