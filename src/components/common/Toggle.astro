@@ -13,8 +13,6 @@ interface Props {
   relativePosition?: 'page' | 'parent';
   top?: "4rem" | "3.5rem";
   showArrow?: boolean;
-  hotIcon?: HTMLElement;
-  hotStyle?: string;
 }
 
 const {
@@ -27,8 +25,7 @@ const {
   showArrow = true,
   target = "_self",
   top = "4rem",
-  relativePosition = 'parent',
-  hotIcon = '',
+  relativePosition = 'parent'
 } = Astro.props;
 
 // 父组件的定位方式
@@ -68,10 +65,8 @@ const Component = slot;
               class={`toggle-text flex items-center justify-center no-underline h-full ${
                 active ? "toggle-text-active" : ""
               }`}
-              style={Astro.props?.hotStyle || ''}
             >
               {title}
-              {hotIcon}
             </a>
           )
         }
@@ -147,9 +142,9 @@ customElements.define("toggle-component", Toggle);
     --toggle-trigger-hp: 1rem;
     --toggle-trigger-vp: 0.5rem;
     /* 默认颜色 */
-    --toggle-trigger-tc: theme("colors.warning");
+    --toggle-trigger-tc: theme("colors.error");
     /* 默认激活颜色 */
-    --toggle-trigger-atc: theme("colors.info");
+    --toggle-trigger-atc: theme("colors.secondary");
   }
 
     .toggle-component {

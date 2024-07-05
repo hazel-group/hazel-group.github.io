@@ -27,11 +27,11 @@ class StarlightThemeSelect extends HTMLElement {
 	}
 
 	parseTheme(theme) {
-		// if (theme === 'auto' || theme === 'dark' || theme === 'light') {
-		// 	return theme;
-		// } else {
-		// 	return 'auto';
-		// }
+		if (theme === 'auto' || theme === 'dark' || theme === 'light') {
+			return theme;
+		} else {
+			return 'auto';
+		}
 	}
 
 	getPreferredColorScheme() {

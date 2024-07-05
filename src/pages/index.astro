@@ -4,6 +4,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import HomeIntroduce from '@components/home/HomeIntroduce.astro';
 import ChooseReason from '@components/home/ChooseReason.astro';
 import CompaniesFeedback from '@components/home/CompaniesFeedback.astro';
+import Contributors from '@components/home/Contributors.astro';
+import UseCompanies from '@components/home/UseCompanies.astro';
 import OverviewImage from '@components/home/OverViewImage/index.astro';
 import HomeSolutionsCard from '@components/home/HomeSolutionsCard.astro';
 import HomeFooter from '@components/common/Footer.astro';
@@ -17,9 +19,12 @@ const t = useTranslations(Astro);
   description={t('home.description')}
 >
     <HomeIntroduce/>
+    <UseCompanies />
     <ChooseReason />
     <CompaniesFeedback />
     <OverviewImage />
+    <Contributors />
+
     <HomeFooter>
         <HomeSolutionsCard slot="after-footer" />
     </HomeFooter>

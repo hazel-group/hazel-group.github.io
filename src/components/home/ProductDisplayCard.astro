@@ -1,32 +1,24 @@
 ---
-import { isChinese } from "@i18n/util";
+import { Card } from "@serverless-cd/goat-ui";
 import { useTranslations } from "@i18n/util";
 import { Arrow } from "../icon";
 import { ProductDisplayCardData } from "@/constant";
+import { Arrow } from "../icon";
 const t = useTranslations(Astro);
-const ifzh = isChinese(Astro);
-
 ---
-<div class="flex flex-col justify-center items-center pt-14 solution-wrapper bg-base-100 hidden md:flex">
+<div class="flex flex-col justify-center items-center mt-14 solution-wrapper mb-[76px]">
   <div class="lg:w-[85.125rem] md:w-full mb-[10px]">
   <div
-    class=`solution-slogan h-[41px] text-success text-[16px] md:text-[20px] leading-4 rounded-[20px] px-5 py-3`
-    class:list={[
-      {
-        "w-[438px]": ifzh,
-        "w-[543px]": !ifzh,
-      },
-    ]}
+    class="solution-slogan md:w-[438px] h-[41px] text-success text-[16px] md:text-[20px] leading-4 rounded-[20px] px-5 py-3"
   >
-    {t('home.product.introduce.title')}
+    One-stop Open Source Microservice Solution
   </div>
   </div>
   <div class="flex justify-center items-center lg:w-[85.125rem] md:w-full flex-wrap">
   {
     ProductDisplayCardData.map((item, index) => {
       return (
-      <div class="solution_content w-[328px] h-[306px] border-t border-success/[0.3] mt-7 px-0 mb-[42px] mr-[12px]">
-        <a class="block" href={item.href}>
+      <div class="solution_content w-[328px] h-[306px] border-t border-success/30 mt-7 px-0 mb-[42px] mr-[12px]">
         <div class="pt-4 pb-6 px-4 h-[86px]">
           <div class="text-warning text-[18px] leading-[18px] font-medium mb-[12px] flex justify-between">
             <span>{item.title}</span>
@@ -37,7 +29,6 @@ const ifzh = isChinese(Astro);
           <p class="text-success text-[14px] leading-4">{t(item.body)}</p>
         </div>
         <img class='w-[328px] h-[220px] object-cover rounded-2xl' src={item.cover} alt="" />
-        </a>
       </div>
       );
     })

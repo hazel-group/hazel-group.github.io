@@ -4,9 +4,9 @@ import { Product } from "./common/Product";
 import { hoverNacosData,hoverOpenSergoData } from "../utils";
 import { ProductPanel } from "./common/ProductPanel";
 
-export const ControlPanel = ({ }) => {
+export const ControlPanel = ({}) => {
   return (
-    <ProductPanel title="控制面">
+    <ProductPanel title="控制面"  panelSkewDir={-1}>
       <Product
         image={
           "https://gw.alicdn.com/imgextra/i3/O1CN01dI5UtV1iMnEY2sB3r_!!6000000004399-2-tps-216-154.png"

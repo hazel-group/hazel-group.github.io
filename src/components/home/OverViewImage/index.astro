@@ -5,7 +5,7 @@ const t = useTranslations(Astro);
 ---
 
 <div class="overview-image-wrapper bg-base-100">
-    <div class="top-title w-full flex flex-col items-center mb-[31px] pt-16">
+    <div class="top-title w-full flex flex-col items-center mb-[10px] pt-16">
         <span class="text-gray-10 text-xs mb-6"
             >{t("home.overviewcard.about")}</span
         >
@@ -16,16 +16,15 @@ const t = useTranslations(Astro);
     <OverviewImage
         client:load
         colors={{
-            panelTitleColor:'#597371',//治理面、控制面等字体颜色
-            arrowColor: "#5DC07E",
-            highlightFontColor: "#418B47",
+            arrowColor: "#8BABE9",
+            highlightFontColor: "#2C46C9",
             normalFontColor: "#9295A5",
-            tagBgColor: "#D6EAD8", //弹框右上方标签背景颜色
-            tagBorderColor: "#5DC07E", //弹框右上方标签边框颜色
-            tagFontColor: "#418B47", //弹框右上方标签字体颜色
-            starForkFontColor: "#5DC07E", //弹框收藏、分享数据字体颜色
-            starForkBgColor: "#D6EAD8", //弹框收藏、分享数据背景颜色
-            linkColor: "#5DC07E", //弹框链接颜色
+            tagBgColor: "#C6D6F7", //弹框右上方标签背景颜色
+            tagBorderColor: "#8BABE9", //弹框右上方标签边框颜色
+            tagFontColor: "#0B1337", //弹框右上方标签字体颜色
+            starForkFontColor: "#8498ee", //弹框收藏、分享数据字体颜色
+            starForkBgColor: "#E0E9FB", //弹框收藏、分享数据背景颜色
+            linkColor: "#7097E6", //弹框链接颜色
         }}
         className="mx-auto"
     />

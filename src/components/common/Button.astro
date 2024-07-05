@@ -19,7 +19,7 @@ const {
 } = Astro.props;
 ---
 
-<span class="button-wrapper">
+<span class="button-div">
   <!-- <button> 可以设置默认样式 -->
   <button class=`button w-fit p-0 bg-transparent`>
     <a
@@ -56,7 +56,7 @@ const {
 </span>
 
 <style is:global>
-  .button-wrapper {
+  .button-div {
     button {
       /* normal */
       --button-bg-color: theme("colors.secondary");

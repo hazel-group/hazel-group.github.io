@@ -14,53 +14,24 @@ export const ALGOLIA = {
 // 文档根据版本区分的提示banner
 export const DOCS_BANNER = {
   latest: '',
-  next:'',
+  next: '',
   v1: '',
-  v2:'',
+  v2: '',
 }
 
 // TODO: 文档Header数据
 export const DOCS_ITEM = [
   {
-    key: "2023",
-    label: "2023.0.x",
+    key: "latest",
+    label: "最新版（Latest）",
     target: "_self",
-    link: "/docs/2023/overview/what-is-sca/",
+    link: "/docs/latest/overview/what-is-higress/",
     translations: {
-      en: "2023.0.x",
-      link: "/en/docs/2023/overview/what-is-sca/",
+      en: "Latest",
+      link: "/en/docs/latest/overview/what-is-higress/",
     }
   },
-  {
-    key: "2022",
-    label: "2022.0.x",
-    target: "_self",
-    link: "/docs/2022/overview/what-is-sca/",
-    translations: {
-      en: "2022.0.x",
-      link: "/en/docs/2022/overview/what-is-sca/",
-    }
-  },
-  {
-    key: "2021",
-    label: "2021.0.x",
-    target: "_self",
-    link: "/docs/2021/overview/what-is-sca/",
-    translations: {
-      en: "2021.0.x",
-      link: "/en/docs/2021/overview/what-is-sca/",
-    }
-  },
-  {
-    key: "2.2.x",
-    label: "2.2.x",
-    target: "_self",
-    link: "/docs/2.2.x/overview/what-is-sca/",
-    translations: {
-      en: "2.2.x",
-      link: "/en/docs/2.2.x/overview/what-is-sca/",
-    }
-  },
+
 ];
 
 // 主要特性
@@ -158,24 +129,24 @@ export const COMPANY_CUSTOMERS: Customer[] = [
 export const SOLUTION_LIST: Solution[] = [
   {
     checked: true,
-    src: "https://help.aliyun.com/zh/mse/user-guide/implement-an-end-to-end-canary-release-by-using-mse-cloud-native-gateways",
+    src: "https://help.aliyun.com/zh/mse/use-cases/implement-high-availability-capabilities-of-mse-microservices-registry/?spm=a2c4g.11186623.0.0.102a27e0juv8vG",
     title: "home.solutions.card.1",
     keyword: [
       "home.solutions.card.keyword.high_availability",
-      "home.solutions.card.keyword.grayscale_publishing",
-      "home.solutions.card.keyword.eliminating_change_risks",
-      "home.solutions.card.keyword.service_governance"
+      "home.solutions.card.keyword.multi_availability",
+      "home.solutions.card.keyword.multi_data",
+      "home.solutions.card.keyword.disaster_recovery_protect",
     ],
   },
   {
     checked: false,
-    src: "https://developer.aliyun.com/article/1128388",
+    src: "https://help.aliyun.com/zh/mse/use-cases/migration-solution-based-on-mse-sync/?spm=a2c4g.11186623.0.0.13f12318fSap49",
     title: "home.solutions.card.2",
     keyword: [
-      "home.solutions.card.keyword.current_limiting_degradation",
-      "home.solutions.card.keyword.high_availab",
-      "home.solutions.card.keyword.great_promotion_of_stability",
-      "home.solutions.card.keyword.eliminating_runtime_risks"
+      "home.solutions.card.keyword.data_synchronization_migration",
+      "home.solutions.card.keyword.smooth_migration",
+      "home.solutions.card.keyword.migration_high_availability",
+      "home.solutions.card.keyword.easy_use",
     ],
   },
   {
@@ -210,7 +181,8 @@ export const getCommunityLinkList = (t: Function): CommunityLink[] => [
     icon: "basil:document-outline",
   },
   {
-    href: 'https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/blob/develop-astro-sca/src/content/docs',
+    // TODO: 替换文档链接
+    href: "https://github.com/nacos-group/nacos-group.github.io/tree/develop-astro-nacos/src/content/docs",
     text: t("rightSidebar.github"),
     icon: "ant-design:github-filled",
   },
@@ -221,8 +193,8 @@ export const getCommunityLinkList = (t: Function): CommunityLink[] => [
 // 文档社区板块的链接列表
 export const getContributeLinkList = (lang: string, editHref: string, feedbackUrl: string, t: Function): ContributeLink[] => [
   {
-    // href: `/${lang}/v2/contribution/contributing`,
-    href: '/docs/developer/contributor-guide/new-contributor-guide_dev/',
+    // TODO: 替换贡献者指南链接
+    href: `/${lang}/v2/contribution/contributing`,
     text: t("rightSidebar.contributorGuides"),
     depth: 2,
     icon: "tabler:book",
@@ -260,120 +232,129 @@ export const i18nMap = {
     'activity-preview': 'blog.activity.preview.event',
     'activity-detail': 'blog.activity.detail.event',
     'all': 'blog.activity.all.event'
-  },
-  "learn": {
-    'spring': 'learn.spring.title',
-    'spring-boot': 'learn.spring-boot.title',
-    'spring-cloud': 'learn.spring-cloud.title',
-    'spring-cloud-alibaba': 'learn.spring-cloud-alibaba.title',
-    'all': 'learn.all.title'
-  },
-  "wuyi": {
-    'all': 'learn.all.title',
-    'expertConsultation': 'wuyi.meet-professor.title',
-  },
+
+  }
 };
 
 export const BLOG_CATEGORY = [
   {
     type: 'all',
     title: '全部文章',
-    href: '/blog/'
+    href: '/blog'
   },
   {
     type: 'article',
     title: '技术文章',
-    href: '/blog/article/'
+    href: '/blog/article'
   },
 
   {
     type: 'ecosystem',
     title: '生态文章',
-    href: '/blog/ecosystem/'
+    href: '/blog/ecosystem'
   },
   {
     type: 'case',
     title: '最佳实践',
-    href: '/blog/case/'
+    href: '/blog/case'
   },
 ];
 
-export const LEARN_CATEGORY = [
+export const NEWS_CATEGORY = [
+  {
+    type: 'announcement',
+    title: '社区公告',
+    href: '/news/announcement'
+  },
+  {
+    type: 'release',
+    title: '发布声明',
+    href: '/news/release'
+  },
+  {
+    type: 'committer',
+    title: '人员晋升',
+    href: '/news/committer'
+  },
+  {
+    type: 'cooperate',
+    title: '社区合作',
+    href: '/news/cooperate'
+  },
   {
     type: 'all',
-    title: '全部文章',
-    href: '/learn/'
-  },
-  {
-    type: 'spring',
-    title: 'Spring',
-    href: '/learn/spring/'
-  },
-
-  {
-    type: 'spring-boot',
-    title: 'Spring Boot',
-    href: '/learn/spring-boot/'
-  },
-  {
-    type: 'spring-cloud',
-    title: 'Spring Cloud',
-    href: '/learn/spring-cloud/'
-  },
-  {
-    type: 'spring-cloud-alibaba',
-    title: 'Spring Cloud Alibaba',
-    href: '/learn/spring-cloud-alibaba/'
-  },
+    title: '全部新闻',
+    href: '/news/all'
+  }
 ];
 
-export const WUYI_CATEGORY = [
+export const ACTIVITY_CATEGORY = [
+  {
+    type: 'announcement',
+    title: '社区公告',
+    href: '/activity/announcement'
+  },
+  {
+    type: 'activity-preview',
+    title: '活动预告',
+    href: '/activity/activity-preview'
+  },
+  {
+    type: 'activity-detail',
+    title: '活动详情',
+    href: '/activity/activity-detail'
+  },
   {
     type: 'all',
-    title: '全部文章',
-    href: '/wuyi/'
-  },
-  {
-    type: 'expertConsultation',
-    title: '专家问答',
-    href: '/wuyi/expert-consultation/'
-  },
+    title: '全部活动',
+    href: '/activity/all'
+  }
 ];
 
+// TODO: 设置运营位
 export const HEADER_ACTIVITY_CARD = [
   {
     "collection": "blog",
-    "slug": "news/ospp-2024",
-    "description": "Spring Cloud Alibaba 编程之夏报名启动！",
-    "imageUrl": "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
+    "slug": "qwen-or-chatgpt",
+    "description": "Nacos 两周年献礼，Nacos 1.3.2 + Go SDK 1.0.0发布",
+    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01bGnAVW1pFeLFnlaQL_!!6000000005331-2-tps-508-370.png"
   },
   {
     "collection": "blog",
-    "slug": "news/attend-a-meeting",
-    "description": "参加社区双周会！",
-    "imageUrl": "https://img.alicdn.com/imgextra/i2/O1CN01Gh8wq71CApBVywPq3_!!6000000000041-0-tps-800-1000.jpg",
+    "slug": "pilot-debug",
+    "description": "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png"
   }
 ];
 
 export const HEADER_LEARN_CARD = [
   {
-    collection: "blog",
-    slug: "learning/spring-boot/core",
-    description: "最全面的 Spring 中文系列教程，从这里开启你的 Spring 应用开发之旅！",
-    imageUrl:
-      "https://img.alicdn.com/imgextra/i1/O1CN01xDVfHk1El7oBMjL3p_!!6000000000391-2-tps-1083-721.png",
+    "collection": "blog",
+    "slug": "qwen-or-chatgpt",
+    "description": "Nacos 两周年献礼，Nacos 1.3.2 + Go SDK 1.0.0发布",
+    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01bGnAVW1pFeLFnlaQL_!!6000000005331-2-tps-508-370.png"
   },
+  {
+    "collection": "blog",
+    "slug": "pilot-debug",
+    "description": "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png"
+  }
 ];
 
 export const HEADER_SOLUTIONS_CARD = [
   {
-    collection: "blog",
-    slug: "release-nacos110",
-    blankUrl: 'https://www.aliyun.com/product/aliware/mse',
-    description: "阿里云 MSE 微服务引擎",
-    imageUrl:
-      "https://img.alicdn.com/imgextra/i2/O1CN011815Q71wQpLpuKYeC_!!6000000006303-0-tps-1284-721.jpg",
+    "collection": "blog",
+    "slug": "qwen-or-chatgpt",
+    "description": "Nacos 两周年献礼，Nacos 1.3.2 + Go SDK 1.0.0发布",
+    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01bGnAVW1pFeLFnlaQL_!!6000000005331-2-tps-508-370.png"
   },
+  {
+    "collection": "blog",
+    "slug": "pilot-debug",
+    "description": "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png"
+  }
 ];
 
 export const BLOG_IMAGE_SOURCE = [
@@ -389,72 +370,13 @@ export const BLOG_IMAGE_SOURCE = [
 ];
 
 export const MICROSERVICE_SOLUTION = [
-  { title: 'Nacos', image: '/assets/2-1.jpg', detailTitle: "home.introduction.detailTitle.1", detail: 'home.introduction.detail.1' },
-  { title: 'Sentinel', image: '/assets/2-2.jpg', detailTitle: 'home.introduction.detailTitle.2', detail: 'home.introduction.detail.2' },
-  { title: 'Seata', image: '/assets/2-3.jpg', detailTitle: 'home.introduction.detailTitle.3', detail: 'home.introduction.detail.3' },
-  { title: 'RocketMQ', image: '/assets/2-4.jpg', detailTitle: 'home.introduction.detailTitle.4', detail: 'home.introduction.detail.4' },
-  { title: 'AI', image: '/assets/2-5.jpg', detailTitle: 'home.introduction.detailTitle.5', detail: 'home.introduction.detail.5' },
-  { title: 'Spring Boot', image: '/assets/2-6.jpg', detailTitle: 'home.introduction.detailTitle.6', detail: 'home.introduction.detail.6' },
-  { title: 'Spring', image: '/assets/2-7.jpg', detailTitle: 'home.introduction.detailTitle.7', detail: 'home.introduction.detail.7' },
-];
-
-export const ProductDisplayCardData = [
-  {
-    cover: "https://img.alicdn.com/imgextra/i2/O1CN01psWBwW1tzgeAxapCz_!!6000000005973-0-tps-2448-3672.jpg",
-    coverPosition: "bottom",
-    title: "Nacos",
-    body: "home.introduction.card.Nacos.des",
-    href: "docs/2023/user-guide/nacos/quick-start/",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i2/O1CN01l9eXcR1LJN7PxX79e_!!6000000001278-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "RocketMQ",
-    body: "home.introduction.card.RocketMQ.des",
-    href: "docs/2023/user-guide/rocketmq/quick-start/",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i2/O1CN01HzKXZY29J7h0UIGJ5_!!6000000008046-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "Sentinel",
-    body: "home.introduction.card.Sentinel.des",
-    href: "docs/2023/user-guide/sentinel/quick-start/",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i3/O1CN01bJroU81BzNHfeB3jN_!!6000000000016-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "Seata",
-    body: "home.introduction.card.Seata.des",
-    href: "docs/2023/user-guide/seata/quick-start/",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i2/O1CN01HzKXZY29J7h0UIGJ5_!!6000000008046-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "Spring AI",
-    body: "home.introduction.card.AI.des",
-    href: "docs/2023/user-guide/ai/quick-start/",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i2/O1CN01k1amBw1U0RHtPPlvH_!!6000000002455-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "Spring Boot",
-    body: "home.introduction.card.Boot.des",
-    href: "/learn/spring-boot/",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i3/O1CN01WxXILZ1C0I4pkZUyD_!!6000000000018-0-tps-1000-1500.jpg",
-    coverPosition: "bottom",
-    title: "Spring Cloud",
-    body: "home.introduction.card.Cloud.des",
-    href: "/learn/spring-cloud/",
-  },
-  {
-    cover: "https://img.alicdn.com/imgextra/i1/O1CN01bKcEde1xVhBVptyhX_!!6000000006449-2-tps-1312-880.png",
-    coverPosition: "bottom",
-    title: "Spring Scheduling Tasks",
-    body: "home.introduction.card.schedulerx.des",
-    href: "docs/2023/user-guide/schedulerx/quick-start/",
-  },
+  { title: 'Spring Cloud Alibaba SEATA', image: '/assets/2-1.jpg', detailTitle: "home.introduction.detailTitle.1", detail: 'home.introduction.detail.1' },
+  { title: 'Spring Cloud Alibaba Sentinel', image: '/assets/2-2.jpg', detailTitle: 'home.introduction.detailTitle.2', detail: 'home.introduction.detail.2' },
+  { title: 'Spring', image: '/assets/2-3.jpg', detailTitle: 'home.introduction.detailTitle.3', detail: 'home.introduction.detail.3' },
+  { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-4.jpg', detailTitle: 'home.introduction.detailTitle.4', detail: 'home.introduction.detail.4' },
+  { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-5.jpg', detailTitle: 'home.introduction.detailTitle.5', detail: 'home.introduction.detail.5' },
+  { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-6.jpg', detailTitle: 'home.introduction.detailTitle.6', detail: 'home.introduction.detail.6' },
+  { title: 'Spring Cloud Alibaba Nacos', image: '/assets/2-7.jpg', detailTitle: 'home.introduction.detailTitle.7', detail: 'home.introduction.detail.7' },
 ];
 
 export const categoryMap = {
@@ -469,6 +391,51 @@ export const categoryMap = {
   "activity-detail": "activity_activity-preview",
 };
 
+export const ProductDisplayCardData = [
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01k1amBw1U0RHtPPlvH_!!6000000002455-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring",
+    body: "home.introduction.card.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i3/O1CN01WxXILZ1C0I4pkZUyD_!!6000000000018-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Boot",
+    body: "home.introduction.card.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i4/O1CN01ye2eKa1obLWDSsIiE_!!6000000005243-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba",
+    body: "home.introduction.card.sca.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01psWBwW1tzgeAxapCz_!!6000000005973-0-tps-2448-3672.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba Nacos",
+    body: "home.introduction.card.Nacos.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01HzKXZY29J7h0UIGJ5_!!6000000008046-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba Sentinel",
+    body: "home.introduction.card.Sentinel.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i3/O1CN01bJroU81BzNHfeB3jN_!!6000000000016-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba Seata",
+    body: "home.introduction.card.Seata.des",
+  },
+  {
+    cover: "https://img.alicdn.com/imgextra/i2/O1CN01l9eXcR1LJN7PxX79e_!!6000000001278-0-tps-1000-1500.jpg",
+    coverPosition: "bottom",
+    title: "Spring Cloud Alibaba RocketMQ",
+    body: "home.introduction.card.RocketMQ.des",
+  },
+];
+
 //获取顶部导航悬浮层 博客列表信息
 export const getBlogContentList = async (blogList = []) => {
 
@@ -480,13 +447,11 @@ export const getBlogContentList = async (blogList = []) => {
 
   const blogImgs = blogList.map((item) => item.imageUrl);
   const posts = (await getEntries(simplifiedPosts as any)) || [];
-  const blankUrl = blogList.map((item) => item.blankUrl);
 
   return {
     blogDescrip,
     blogImgs,
     posts,
-    blankUrl
   };
 }
 
@@ -500,7 +465,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "报告文档问题",
         target: "_blank",
-        link: "https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/issues",
+        link: "https://github.com/nacos-group/nacos-group.github.io/issues",
         translations: {
           en: "Report a doc issue",
         },
@@ -508,7 +473,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "贡献社区",
         target: "_blank",
-        link: 'https://github.com/alibaba/spring-cloud-alibaba/pulls',
+        link: "https://github.com/alibaba/nacos/pulls",
         translations: {
           en: "Contribute community",
         },
@@ -516,9 +481,33 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "贡献者",
         target: "_blank",
-        link: 'https://github.com/alibaba/spring-cloud-alibaba/graphs/contributors',
+        link: "https://github.com/alibaba/nacos/graphs/contributors",
         translations: {
           en: "Contributors",
+        },
+      },
+    ],
+  },
+  {
+    label: "事件",
+    translations: {
+      en: "Events",
+    },
+    children: [
+      {
+        label: "新闻",
+        target: "_self",
+        link: "/news/",
+        translations: {
+          en: "News",
+        },
+      },
+      {
+        label: "活动",
+        target: "_self",
+        link: "/activity/",
+        translations: {
+          en: "Activity",
         },
       },
     ],
@@ -540,57 +529,65 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "电子书",
         target: "_self",
-        link: "/docs/ebook/srekog/",
+        link: "/docs/ebook/kbyo6n/",
         translations: {
           en: "E-book",
+        },
+      },
+      {
+        label: "版本下载",
+        target: "_self",
+        link: "/download/nacos-server/",
+        translations: {
+          en: "Download",
         },
       },
     ],
   },
 ];
 
-export const LEARN_CARD_LIST= [
+export const LEARN_CARD_LIST = [
   {
     title: "commmon.header.spring.tutorial",
     description: "commmon.header.spring.tutorial.describe",
-    href: "/learn/spring/",
+    href: "/blog/release-nacos132/?source=blog_article",
   },
   {
     title: "commmon.header.spring.boot.tutorial",
     description: "commmon.header.spring.boot.tutorial.describe",
-    href: "/learn/spring-boot/",
+    href: "/blog/release-nacos132/?source=blog_article",
   },
   {
     title: "commmon.header.spring.cloud.alibaba.tutorial",
     description:  "commmon.header.spring.cloud.alibaba.tutorial.describe",
-    href: "/learn/spring-cloud/",
+    href: "/blog/release-nacos132/?source=blog_article",
   },
   {
     title: "commmon.header.spring.mse.ebook",
     description: "commmon.header.spring.mse.ebook.describe",
-    href: "/docs/ebook/srekog/",
-  }
+    href: "/blog/release-nacos132/?source=blog_article",
+  },
 ];
 
 export const SOLUTIONS_CARD_LIST = [
   {
     title: "commmon.header.microservices.engine",
     description: "commmon.header.microservices.engine.describe",
-    href: "https://help.aliyun.com/zh/mse/use-cases/implement-high-availability-capabilities-of-mse-microservices-registry?spm=a2c4g.11186623.0.0.102a27e0juv8vG",
+    href: "/blog/release-nacos132/?source=blog_article",
   },
   {
     title: "commmon.header.microservices.cloud.native.gateway",
     description: "commmon.header.microservices.cloud.native.gateway.describe",
-    href: "https://developer.aliyun.com/article/1265016?spm=5176.21213303.J_qCOwPWspKEuWcmp8qiZNQ.10.c89e2f3dQa2WtF&scm=20140722.S_community@@%E6%96%87%E7%AB%A0@@1265016._.ID_community@@%E6%96%87%E7%AB%A0@@1265016-RL_%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E8%83%BD%E5%8A%9B-LOC_llm-OR_ser-V_3-RK_rerank-P0_2",
+    href: "/blog/release-nacos132/?source=blog_article",
   },
   {
     title: "commmon.header.microservices.governance",
     description: "commmon.header.microservices.governance.describe",
-    href: "https://help.aliyun.com/zh/mse/use-cases/implement-an-end-to-end-canary-release-by-using-mse-cloud-native-gateways?spm=a2c4g.11186623.0.i3",
+    href: "/blog/release-nacos132/?source=blog_article",
   },
   {
     title: "commmon.header.microservices.application.service",
     description: "commmon.header.microservices.application.service.describe",
-    href: "https://help.aliyun.com/zh/arms/?spm=5176.8140086.J_5253785160.8.3e87be45mtM0kX",
+    href: "/blog/release-nacos132/?source=blog_article",
   },
 ];

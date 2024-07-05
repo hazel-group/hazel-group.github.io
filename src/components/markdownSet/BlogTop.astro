@@ -2,23 +2,17 @@
 import { i18nMap } from "@/constant";
 import { Icon } from "@astrojs/starlight/components";
 import BaseContainer from "@components/common/BaseContainer.astro";
-import BlogButton from "./BlogButton.astro";
 import { Button } from "@serverless-cd/goat-ui";
 import { useTranslations } from "@i18n/util";
 const t = useTranslations(Astro);
 
-const { source, title = "", type = "home", category, activeCategory='' } = Astro.props;
+const { source, title = "", type = "home", category, activeCategory = "" } = Astro.props;
 
-// FIXME: fix
 const backIconMap = {
   "blog-sub": "/blog",
-  "wuyi-sub": "/wuyi",
   "news-sub": "/news",
-  "activity-sub": "/activity/",
-  "learn-sub": "/learn/",
+  "activity-sub": "/activity",
 };
-
-const typeArr = ["home", "blog-sub", "learn-sub", "wuyi-sub"];
 ---
 
 <div
@@ -28,22 +22,23 @@ const typeArr = ["home", "blog-sub", "learn-sub", "wuyi-sub"];
     <div class="blog_header_title">{title}</div>
     <div class="blog_category_menu">
       {
-        typeArr.includes(type) &&
+        ["blog-sub", "home"].includes(type) &&
         category &&
-            category.map((category) => {
-                return (
-                <>
-                    <BlogButton
-                        href={category.href}
-                        text={t(i18nMap[source][category.type])}
-                        variant={category.type == activeCategory? 'primary':'secondary'}
-                    />
-                </>
-                );
-            })
+          category.map((category) => {
+            return (
+              <Button
+                href={category.href}
+                class="rounded-3xl mr-4 mb-2"
+                variant={category.type == activeCategory? 'primary':'secondary'}
+              >
+                {t(i18nMap[source][category.type])}
+              </Button>
+            );
+          })
       }
+
       {
-        !typeArr.includes(type) && (
+        !["home", "blog-sub"].includes(type) && (
           <Button
             variant="secondary"
             href={backIconMap[type]}
@@ -83,7 +78,7 @@ const typeArr = ["home", "blog-sub", "learn-sub", "wuyi-sub"];
     color: theme("colors.success");
   }
   .blog_menu_item:hover {
-    background-color: theme("colors.accent");
+    background-color: theme("colors.warning");
     color: theme("colors.muted");
   }
   .blog_menu_item:active {

@@ -12,7 +12,6 @@ export interface SiteConfig {
   githubUrl?: string;
   websiteGithubUrl?: string;
   logoUrl?: string;
-  downloadEbooks?: string;
 }
 export interface MetaDataConfig extends Omit<MetaData, 'title'> {
   title?: {
@@ -31,16 +30,6 @@ export interface AnalyticsConfig {
       id?: string;
       partytown?: boolean;
     };
-    baiduAnalytics: {
-      id?: string;
-      verification?: string;
-    };
-    aesAnalytics: {
-      pid?: string;
-    };
-    clarityAlalytics: {
-      id?: string;
-    }
   };
 }
 

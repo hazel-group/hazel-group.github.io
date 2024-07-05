@@ -13,8 +13,6 @@ const t = useTranslations(Astro);
 // 分页数据在page参数中传递
 const { page } = Astro.props;
 
-const posts = await getCollection("blog");
-
 const allPages = [...Array(page.lastPage).keys()].map((num) => {
     return `/blog/case${num === 0 ? "" : `/${String(num + 1)}`}`;
 });
@@ -34,17 +32,16 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 }
 ---
 
-<BaseLayout title="Nacos Blog">
+<BaseLayout title="Higress Blog">
     <BlogTop 
         title={t("blog.article.case.best.practices")} 
         type="blog-sub" 
         source="blog"
-        type="home"
         category={BLOG_CATEGORY}
-        activeCategory="case"
+        activeCategory='case'
     />
     <div
-        class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20 bg-error"
+        class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20 bg-base-100"
     >
         <SimpleContainer 
             pageList={page.data as Post[]}

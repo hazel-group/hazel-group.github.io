@@ -2,11 +2,12 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import partytown from '@astrojs/partytown';
+import preact from "@astrojs/preact";
 import { autoImportComponents } from "@serverless-cd/goat-ui/src/utils";
 import locales from './src/i18n/languages';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-import preact from "@astrojs/preact";
+// import compress from 'astro-compress';
 import rehypeExternalLinks from 'rehype-external-links'
 
 import { remarkRemoveMdLinks, remarkRemovePlainLanguageCode, remarkRemoveRepeatHeader, addPrefixImageLink, setLinkReferrer } from './src/utils/frontmatter.mjs';
@@ -32,10 +33,13 @@ export default defineConfig({
 	image: {
 		domain: ["img.alicdn"]
 	},
+
 	integrations: [
 		starlight({
-			title: SITE.site,
-			favicon: '/sca-icon.svg',
+			title: SITE.name + '官网',
+			social: {
+				github: 'https://github.com/withastro/starlight'
+			},
 			expressiveCode: {
 				themes: ['github-dark'], //TODO: 待调研
 			},
@@ -66,6 +70,7 @@ export default defineConfig({
 			'ant-design':['github-filled'],
 			basil:['document-outline']
 		}),
+		preact({ compat: true }),
 		{
 			name: '@goat:config',
 			hooks: {
@@ -77,7 +82,6 @@ export default defineConfig({
 				}
 			}
 		},
-		preact({ compat: true }),
 		...whenExternalScripts(() =>
 		partytown({
 		  config: { forward: ['dataLayer.push'] },
@@ -107,10 +111,10 @@ export default defineConfig({
 	},
 	// TODO: 梳理redirects
 	redirects: {
-		'/zh-cn/': '/',
-		'/zh-cn/[...slug]':'/[...slug]',
 		'/en-us/': '/en/',
 		'/[...slug].html': '/[...slug]',
-		'/docs/': '/docs/2023/overview/what-is-sca/',
+		'/docs/': '/docs/latest/overview/what-is-higress/',
+		'/docs/latest/dev/CustomResourceDefinition/': '/docs/latest/dev/customresourcedefinition/',
+		'/en-us/docs/latest/dev/CustomResourceDefinition/': '/en/docs/latest/dev/customresourcedefinition/'
 	}
 });

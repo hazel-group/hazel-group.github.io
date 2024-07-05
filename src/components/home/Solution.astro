@@ -1,54 +1,10 @@
 ---
 import { CarouselCard } from "@serverless-cd/goat-ui";
-// import { MICROSERVICE_SOLUTION } from "@/constant";
+import { MICROSERVICE_SOLUTION } from "@/constant";
 import { useTranslations } from "@i18n/util";
 import { Arrow } from "../icon";
 const t = useTranslations(Astro);
 
-const MICROSERVICE_SOLUTION = [
-  {
-    title: "Spring Cloud Alibaba SEATA",
-    image: "/assets/2-1.jpg",
-    detailTitle: "home.introduction.detailTitle.1",
-    detail: "home.introduction.detail.1",
-  },
-  {
-    title: "Spring Cloud Alibaba Sentinel",
-    image: "/assets/2-2.jpg",
-    detailTitle: "home.introduction.detailTitle.2",
-    detail: "home.introduction.detail.2",
-  },
-  {
-    title: "Spring",
-    image: "/assets/2-3.jpg",
-    detailTitle: "home.introduction.detailTitle.3",
-    detail: "home.introduction.detail.3",
-  },
-  {
-    title: "Spring Cloud Alibaba Nacos",
-    image: "/assets/2-4.jpg",
-    detailTitle: "home.introduction.detailTitle.4",
-    detail: "home.introduction.detail.4",
-  },
-  {
-    title: "Spring Cloud Alibaba Nacos",
-    image: "/assets/2-5.jpg",
-    detailTitle: "home.introduction.detailTitle.5",
-    detail: "home.introduction.detail.5",
-  },
-  {
-    title: "Spring Cloud Alibaba Nacos",
-    image: "/assets/2-6.jpg",
-    detailTitle: "home.introduction.detailTitle.6",
-    detail: "home.introduction.detail.6",
-  },
-  {
-    title: "Spring Cloud Alibaba Nacos",
-    image: "/assets/2-7.jpg",
-    detailTitle: "home.introduction.detailTitle.7",
-    detail: "home.introduction.detail.7",
-  },
-];
 ---
 
 <div class="flex flex-col justify-center items-center mt-16 solution-wrapper">
@@ -56,7 +12,7 @@ const MICROSERVICE_SOLUTION = [
     <div
       class="solution-slogan md:w-[438px] h-[41px] text-success text-[16px] md:text-[20px] leading-4 rounded-[20px] px-5 py-3"
     >
-     Spring Cloud Alibaba 提供的微服务解决方案
+      One-stop Open Source Microservice Solution
     </div>
   </div>
 

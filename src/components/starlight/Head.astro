@@ -7,10 +7,7 @@ import { createHead } from "@starlight/utils/head";
 import { localizedUrl } from "@starlight/utils/localizedUrl";
 import type { Props } from "@starlight/props";
 import get from 'lodash.get';
-import { ANALYTICS } from "@utils/config";
 import { ViewTransitions } from "astro:transitions";
-
-const {googleAnalytics,baiduAnalytics,aesAnalytics,clarityAlalytics} = ANALYTICS.vendors;
 
 const { entry, lang } = Astro.props;
 const { data } = entry;
@@ -65,14 +62,6 @@ const headDefaults: z.input<ReturnType<typeof HeadConfigSchema>> = [
     {
         tag: "meta",
         attrs: { name: "twitter:description", content: description },
-    },
-    {
-        tag: "meta",
-        attrs: { name: "baidu-site-verification", content: baiduAnalytics.verification },
-    },
-    {
-        tag: "meta",
-        attrs: { name: "google-site-verification", content: 'CkswWpgkls_Ht5kdX4g7bd_SIoW-A_hMma5AEansIvA' },
     },
 ];
 
@@ -167,7 +156,7 @@ const head = createHead(headDefaults, config.head, data.head);
             "//g.alicdn.com/aes/??tracker/3.3.4/index.js,tracker-plugin-pv/3.0.5/index.js,tracker-plugin-event/3.0.0/index.js,tracker-plugin-autolog/3.0.3/index.js,tracker-plugin-survey/3.0.3/index.js,tracker-plugin-jserror/3.0.3/index.js,tracker-plugin-resourceError/3.0.3/index.js";
         t.onload = function () {
             // TODO: 设置aem sdk环境
-            if (window.location.hostname !== "sca.aliyun.com") {
+            if (window.location.hostname !== "nacos.io") {
                 return;
             }
             window.AES_CONFIG = window.AES_CONFIG || {
@@ -175,7 +164,7 @@ const head = createHead(headDefaults, config.head, data.head);
                 env: "prod",
             };
             window.aes = new AES({
-                pid: "b3kPns",
+                pid: "ZAwmfA",
                 user_type: 6,
             });
             window.AESPluginAutologConfig = { exposure: "auto" };
@@ -200,34 +189,19 @@ const head = createHead(headDefaults, config.head, data.head);
     })(document);
 </script>
 
-<!--初始化Clarity SDK-->
-<!-- <script type="text/javascript">
-(function (c, l, a, r, i, t, y) {
-    c[a] =
-        c[a] ||
-        function () {
-            (c[a].q = c[a].q || []).push(arguments);
-        };
-    t = l.createElement(r);
-    t.async = 1;
-    t.src = "https://www.clarity.ms/tag/" + i;
-    y = l.getElementsByTagName(r)[0];
-    y.parentNode.insertBefore(t, y);
-})(window, document, "clarity", "script", "l4jzj6wbhh");
-</script> -->
 
 <script>
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8d45b13e5afb579f4083ee89048f70ac";
+        hm.src = "https://hm.baidu.com/hm.js?4debd66ec73a32e236b30b46d219e2e3";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NP3B57ZGEF"
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YHS75WKFBR"
 ></script>
 
 <script>
@@ -237,5 +211,5 @@ const head = createHead(headDefaults, config.head, data.head);
     }
     gtag("js", new Date());
 
-    gtag("config", "G-0YDFJ7LX7F");
+    gtag("config", "G-YHS75WKFBR");
 </script>

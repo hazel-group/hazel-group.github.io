@@ -32,17 +32,16 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 }
 ---
 
-<BaseLayout title="Nacos Blog">
+<BaseLayout title="Higress Blog">
     <BlogTop 
         title={t("blog.article.technical")} 
         type="blog-sub" 
         source="blog"
-        type="home"
         category={BLOG_CATEGORY}
         activeCategory="article"
     />
     <div
-        class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20 bg-error"
+        class="flex flex-col items-center gap-20 py-8 lg:p-12 xl:p-20 bg-base-100"
     >
         <SimpleContainer 
             pageList={page.data as Post[]}

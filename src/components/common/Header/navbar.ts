@@ -5,15 +5,24 @@ import SolutionsMenu from "./SolutionsMenu.astro";
 
 
 export default [
+  // {
+  //   label: "文档",
+  //   translations: {
+  //     en: "DOCS",
+  //   },
+  //   trigger: "hover",
+  //   slot: DocsMenu,
+  //   position: "absolute",
+  //   activePath: ["/docs"],
+  // },
   {
     label: "文档",
     translations: {
       en: "DOCS",
     },
-    trigger: "hover",
-    slot: DocsMenu,
-    position: "absolute",
-    activePath: ["/docs"],
+    trigger: "click",
+    target: "_self",
+    route:"/docs/latest/overview/what-is-higress/"
   },
   {
     label: "社区",
@@ -36,14 +45,14 @@ export default [
     route: "/blog/",
   },
   {
-    label: "专家答疑",
+    label: "插件市场",
     translations: {
-      en: "wuyi",
+      en: "PLUGIN",
     },
     trigger: "click",
     target: "_self",
-    route: "/wuyi/",
-    activePath: ["/wuyi"],
+    route: "/plugin/",
+    activePath: ["/plugin"],
   },
   {
     label: "学习",
@@ -66,5 +75,14 @@ export default [
     position: "absolute",
     relativePosition: 'page',
     activePath: ["solutions"],
+  },
+  {
+    label: "控制台样例",
+    translations: {
+      en: "DEMO",
+    },
+    trigger: "click",
+    target: "_blank",
+    route: "http://demo.higress.io/",
   },
 ];

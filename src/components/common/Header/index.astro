@@ -37,12 +37,12 @@ let height,
 <span class="header-wrapper">
   <my-layout
     style={`position: ${position}; height: ${height}`}
-    class="w-full backdrop-blur-md top-0 z-[10] bg-base-100 flex justify-center"
+    class="w-full backdrop-blur-md top-0 z-[10] bg-neutral flex justify-center"
   >
     <!-- 方便控制header宽度 -->
     <div class="header-content flex items-center justify-between">
       <div class="left-content h-full flex flex-1 items-center after:content-[''] after:grow after:invisible">
-        <a class="no-underline" href="/">
+        <a class="no-underline flex" href="/">
           <img class="logo" src={SITE.logoUrl} alt=`${SITE.name}-logo` />
         </a>
         <MobileNavbar top={height} class="mobile-navbar h-full ml-4" />
@@ -75,6 +75,32 @@ let height,
 </script>
 
 <script>
+  //cnpilot
+  const copilotJSScript = document.createElement("script");
+  copilotJSScript.type = "text/javascript";
+  copilotJSScript.src =
+    "//g.alicdn.com/cm-design/copilot-booter/0.0.21/copilot-booter.js";
+  copilotJSScript.addEventListener("load", function () {
+    // TODO: 设置CNPilot
+    if (window.CNPilot) {
+      window.CNPilot.mounted({
+        CNPilot_NODE_ENV: "development",
+        CNPilot_OPEN_SOURCE: ["nacos.io"],
+        CNPilot_OPEN_SOURCE_API: "https://ai.nacos.io",
+        showFloatICON: true,
+        globalStyle: {
+          top: "64px",
+        },
+        headerProps: {
+          closeIcon: { show: true }, // 关闭按钮
+        },
+      });
+    }
+  });
+  document.body.append(copilotJSScript);
+</script>
+
+<script>
   class HeaderLayout2 extends HTMLElement {
     private ifscroll: boolean;
     constructor() {
@@ -87,11 +113,11 @@ let height,
       if (window.innerWidth <= 800) return;
       if (window.scrollY >= 100 && !this.ifscroll) {
         this.ifscroll = true;
-        this.classList.add("bg-secondary/[0.84]");
+        this.classList.add("bg-neutral/[0.84]");
       }
       if (window.scrollY <= 100 && this.ifscroll) {
         this.ifscroll = false;
-        this.classList.remove("bg-secondary/[0.84]");
+        this.classList.remove("bg-neutral/[0.84]");
       }
     };
   }
@@ -102,7 +128,7 @@ let height,
   .header-wrapper {
     my-layout {
       --header-content-width: var(--width);
-      --logo-height: 1.125rem;
+      --logo-height: 2rem;
       --header-height: var(--height);
       --header-xl-padding: var(--xpadding);
     }

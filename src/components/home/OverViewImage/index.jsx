@@ -50,7 +50,7 @@ function App({ colors = defaultColorConfig, linkStyle = "text-sm", className = '
       }}
     >
       <div
-        class={` flex flex-col justify-around px-2 pt-14 pb-2 overflow-hidden ` + className}
+        class={` flex flex-col justify-around px-2 pt-4 pb-2 ` + className}
         id="overview-image-root"
         style={{
           background: colors.background,
@@ -58,51 +58,51 @@ function App({ colors = defaultColorConfig, linkStyle = "text-sm", className = '
         {...props}
       >
         <div class='hidden md:inline-block'>
-        <div class="flex justify-around flex-1 items-center">
-          <GovernancePanel />
-          <ControlPanel />
-        </div>
-        <div class="flex justify-around flex-[2]">
-          <DataPanel />
-        </div>
-        <div class="flex justify-around flex-1">
-          <OpsPanel />
-          <TelemetryPanel />
-          </div> 
+          <div class="flex justify-around flex-1 items-center">
+            <ControlPanel />
+            <GovernancePanel />
           </div>
-          <img class='md:hidden' alt='overview image' onClick={handleImageClick} src='https://img.alicdn.com/imgextra/i2/O1CN01OhhnzT1CtFbbiKTWq_!!6000000000138-0-tps-2792-1502.jpg' />
-          {isModalOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 1000,
-          }}
-          onClick={handleModalClick}
-        >
+          <div class="flex justify-around flex-[2]">
+            <DataPanel />
+          </div>
+          <div class="flex justify-around flex-1">
+            <OpsPanel />
+            <TelemetryPanel />
+          </div>
+        </div>
+        <img class='md:hidden' alt='overview image' onClick={handleImageClick} src='https://img.alicdn.com/imgextra/i2/O1CN01OhhnzT1CtFbbiKTWq_!!6000000000138-0-tps-2792-1502.jpg' />
+        {isModalOpen && (
           <div
             style={{
-              maxWidth: '80%',
-              maxHeight: '90%',
-              overflow: 'auto',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              zIndex: 1000,
             }}
-            onClick={(e) => e.stopPropagation()} // 防止点击图片时也关闭遮罩层
+            onClick={handleModalClick}
           >
-            <img
-              src="https://img.alicdn.com/imgextra/i2/O1CN01OhhnzT1CtFbbiKTWq_!!6000000000138-0-tps-2792-1502.jpg"
-              alt="overview image"
-              style={{ maxWidth: '100%' }}
-            />
+            <div
+              style={{
+                maxWidth: '80%',
+                maxHeight: '90%',
+                overflow: 'auto',
+              }}
+              onClick={(e) => e.stopPropagation()} // 防止点击图片时也关闭遮罩层
+            >
+              <img
+                src="https://img.alicdn.com/imgextra/i2/O1CN01OhhnzT1CtFbbiKTWq_!!6000000000138-0-tps-2792-1502.jpg"
+                alt="overview image"
+                style={{ maxWidth: '100%' }}
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
     </AppContext.Provider>
   );
