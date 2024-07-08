@@ -38,12 +38,12 @@ export const DOCS_ITEM = [
 export const CHOOSE_REASON_LIST: ChooseReason[] = [
   {
     title: "home.website.edge.1.title",
-    svgKey: "easy",
+    svgKey: "adaptive",
     description: "home.website.edge.1.description",
   },
   {
     title: "home.website.edge.2.title",
-    svgKey: "adaptive",
+    svgKey: "standard",
     description: "home.website.edge.2.description",
   },
   {

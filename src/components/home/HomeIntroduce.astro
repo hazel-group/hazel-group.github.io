@@ -13,46 +13,50 @@ const ifzh = isChinese(Astro);
 const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("https://api.github.com/repos/alibaba/spring-cloud-alibaba");
 ---
 
-<div class="home-introduce-wrapper">
+<div class="home-introduce-wrapper h-[65vh] relative">
+  <video autoplay muted loop class="video-background">
+    <source src="https://cloud.video.taobao.com/vod/play/V1dONkhFTFY4Rkk2dWh2TkRKRXg/TGpXT3hHcFlsdlM0OEJOSWJEcXlMRzZQZWw1SnpKVVVCTlh4OVFON0V5UUVMUDduY1RJak82VE1sdXdHTjNOaHc9PQ" type="video/mp4">
+  </video>
   <home-introduce
-    class="introduce flex flex-col justify-center items-center bg-neutral/[0.8]"
+    class="introduce flex flex-col justify-center items-center bg-transparent h-full relative z-10"
   >
-    <div
-      class="top-section flex flex-col justify-center items-center relative "
-    >
+  
+    <div class="flex flex-col justify-center items-center h-[75%]">
       <div
-        class="introduce_about mt-[155px] mb-[42px] text-[14px] leading-4 rounded-[18px] py-2 px-4"
-      >
-        <span> ABOUT US </span>
-      </div>
-      <div
-        class=`title leading-[96px] text-base-100 font-medium mb-[22px] ${ifzh ? 'text-[72px]' : 'text-[76px]'}`
+        class=`title leading-[96px] text-base-100 font-medium  ${ifzh ? 'text-[72px]' : 'text-[76px]'}`
       >
         Higress: <span class="ai-description">AI原生</span>的API网关
       </div>
-      <div class="text-[20px] leading-5 text-link mb-[119px]">
+      <div class="text-[20px] leading-5 text-link ">
         An AI-Native API Gateway
       </div>
+    </div>
+
+    <div class="flex h-[15%] ">
       <StarAndForkV2 client:load SITE={SITE} stargazers_count={stargazers_count} forks_count={forks_count} />
     </div>
-    <div class="w-[85.125rem] flex justify-end items-center mb-[60px]">
-      <div class="text-success text-xs">Release Note of V2.3.0 | V1.4.6</div>
+    <div class="w-[85.125rem] flex justify-end items-center h-[10%]">
+      <div class="text-success text-xs">Release Note of V1.4.6</div>
     </div>
   </home-introduce>
 
-  <!-- <ProductDisplayCard /> -->
 </div>
 
 <style is:global>
   .home-introduce-wrapper {
+    .video-background{
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      object-fit: cover;
+    }
     a {
       text-decoration: inherit;
       color: theme("colors.warning");
     }
-    .introduce {
-      z-index: -2;
-    }
-    /* min-height: calc(100vh - 4rem); */
 
     .top-section {
       width: 85.125rem;

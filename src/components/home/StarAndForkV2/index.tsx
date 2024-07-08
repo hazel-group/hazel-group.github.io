@@ -30,7 +30,7 @@ const StarAndForkV2 = (props: StarAndForkT) => {
 	},[]);
 
 	return (
-        <star-and-fork class="shortcut flex">
+        <star-and-fork class="shortcut flex justify-center">
             <Button 
 				size="large"
 				class="rounded-3xl text-neutral"

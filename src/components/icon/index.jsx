@@ -10,7 +10,8 @@ import Ding from './Ding.astro';
 import Email from './Email.astro';
 import Variety from "./Variety.astro";
 import Lock from './Lock.astro'
-import Arrow from './Arrow.astro'
+import Arrow from './Arrow.astro';
+import Standard from "./Standard.astro"
 
 export {
 	Adaptive,
@@ -25,5 +26,6 @@ export {
 	Ding,
 	Variety,
 	Lock,
-	Arrow
+	Arrow,
+	Standard
 }

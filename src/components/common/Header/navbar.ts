@@ -45,7 +45,7 @@ export default [
     route: "/blog/",
   },
   {
-    label: "插件市场",
+    label: "AI插件",
     translations: {
       en: "PLUGIN",
     },
@@ -53,28 +53,6 @@ export default [
     target: "_self",
     route: "/plugin/",
     activePath: ["/plugin"],
-  },
-  {
-    label: "学习",
-    translations: {
-      en: "LEARN",
-    },
-    trigger: "hover",
-    slot: LearnMenu,
-    position: "absolute",
-    relativePosition: 'page',
-    activePath: ["/learn"],
-  },
-  {
-    label: "解决方案",
-    translations: {
-      en: "SOLUTIONS",
-    },
-    trigger: "hover",
-    slot: SolutionsMenu,
-    position: "absolute",
-    relativePosition: 'page',
-    activePath: ["solutions"],
   },
   {
     label: "控制台样例",

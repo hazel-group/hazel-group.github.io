@@ -1,18 +1,16 @@
 ---
 import { useTranslations } from "@i18n/util";
 import { Headline } from "@serverless-cd/goat-ui";
-import { CHOOSE_REASON_LIST } from "@/constant";
-import { Adaptive, Easy, TimeTested, Variety, Standard } from "../icon";
 
 const t = useTranslations(Astro);
 ---
 
-<span class="choose-reason-wrapper">
-  <choose-reason
-    class="choose-reason block bg-neutral py-10 flex flex-col justify-center items-center"
+<span class="ai-structure-wrapper">
+  <ai-structure
+    class="ai-structure block bg-neutral py-10 flex flex-col justify-center items-center"
   >
     <Headline
-      classes={{subtitle: "text-sm"}}
+      classes={{ subtitle: "text-sm" }}
       tagline={t("home.website.edge.about")}
       title={t("home.website.edge.title")}
       titleTheme="error"
@@ -21,45 +19,16 @@ const t = useTranslations(Astro);
       subtitleTheme="success"
     />
 
-    <div class="bottom-card flex flex-wrap">
-      {
-        CHOOSE_REASON_LIST.map((reason) => {
-          const { title, svgKey, description } = reason;
-          return (
-            <div class="item px-5 border-success/[0.5] border-l">
-              <div class="transfrom-header block">
-                <div class="w-12 h-12 bg-warning border-link rounded-md flex justify-center items-center mb-5">
-                  {(() => {
-                    switch (svgKey) {
-                      case "adaptive":
-                        return <Adaptive classes="fill-link" />;
-                      case "standard":
-                        return <Standard classes="fill-link" />;
-                      case "timeTested":
-                        return <TimeTested classes="fill-link" />;
-                      case "variety":
-                        return <Variety classes="fill-link" />;
-                      default:
-                        return null;
-                    }
-                  })()}
-                </div>
-                <div class="py-4 text-info text-[.875rem] leading-4 tracking-[0.15em]">
-                  {t(title)}
-                </div>
-              </div>
-
-              <div class="text-success text-sm" set:html={t(description)} />
-            </div>
-          );
-        })
-      }
-    </div>
-  </choose-reason>
+    <img
+      class="w-[90%] mt-10"
+      alt={t("home.website.edge.title")}
+      src="https://img.alicdn.com/imgextra/i2/O1CN01a3TQwu1hUI8C4HYDb_!!6000000004280-2-tps-2669-1462.png"
+    />
+  </ai-structure>
 </span>
 
 <style is:global>
-  .choose-reason-wrapper {
+  .ai-structure-wrapper {
     .primary-fill {
       fill: theme("colors.primary");
     }
@@ -77,7 +46,7 @@ const t = useTranslations(Astro);
 
     /* 小于50rem  小于 800px */
     @media (max-width: 50rem) {
-      .choose-reason {
+      .ai-structure {
         padding: 1.5rem;
       }
       .top-title,
@@ -108,7 +77,7 @@ const t = useTranslations(Astro);
 
     /* 大于50rem 小于 72rem  800px < width < 1152 */
     @media (min-width: 50rem) and (max-width: 86rem) {
-      .choose-reason {
+      .ai-structure {
         padding: 2.5rem;
       }
       .top-title,

@@ -3,7 +3,8 @@ import { useTranslations } from "@i18n/util";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HomeIntroduce from '@components/home/HomeIntroduce.astro';
 import ChooseReason from '@components/home/ChooseReason.astro';
-import CompaniesFeedback from '@components/home/CompaniesFeedback.astro';
+import OpenEcoIntegration from "@/components/home/OpenEcoIntegration.astro";
+import AiStructure from "@/components/home/AiStructure.astro"
 import Contributors from '@components/home/Contributors.astro';
 import UseCompanies from '@components/home/UseCompanies.astro';
 import OverviewImage from '@components/home/OverViewImage/index.astro';
@@ -21,7 +22,8 @@ const t = useTranslations(Astro);
     <HomeIntroduce/>
     <UseCompanies />
     <ChooseReason />
-    <CompaniesFeedback />
+    <OpenEcoIntegration />
+    <AiStructure />
     <OverviewImage />
     <Contributors />
 
