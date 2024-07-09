@@ -36,6 +36,15 @@ export default [
     activePath: ["/news", "/activity", "/blog", "/docs/ebook/", "/download"],
   },
   {
+    label: "开发者",
+    translations: {
+      en: "Developer",
+    },
+    trigger: "click",
+    target: "_self",
+    route: "/docs/developers/developers_dev/",
+  },
+  {
     label: "博客",
     translations: {
       en: "BLOG",

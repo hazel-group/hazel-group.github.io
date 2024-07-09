@@ -16,9 +16,9 @@ const t = useTranslations(Astro);
       </div>
       <!-- 联系我们 -->
       <div
-        class="w-[70rem] bg-muted flex items-center justify-between rounded-2xl h-9 pl-10 pr-[8.5rem]"
+        class="w-[70rem] contact-us flex items-center justify-between rounded-2xl h-9 pl-10 pr-[8.5rem]"
       >
-        <span class="text-accent text-xs leading-9 tracking-[0.15em]">
+        <span class="text-success text-xs leading-9 tracking-[0.15em]">
           {t("commmon.header.comm.contact")}
         </span>
         <div class="flex items-center cursor-pointer">
@@ -27,8 +27,8 @@ const t = useTranslations(Astro);
             href={SITE.githubUrl}
             class="mr-16 flex items-center no-underline"
           >
-            <Github themeClass="primary-fill" />
-            <span class="ml-2 mt-1 text-sm text-neutral"
+            <Github themeClass="secondary-fill" />
+            <span class="ml-2 mt-1 text-sm text-secondary"
               >{t("commmon.header.contact.git")}</span
             >
           </a>
@@ -40,8 +40,8 @@ const t = useTranslations(Astro);
               alt=""
             />
             <span class="text-neutral flex items-center">
-              <Ding themeClass="primary-fill" />
-              <span class="ml-2 mt-1 text-sm text-neutral"
+              <Ding themeClass="secondary-fill" />
+              <span class="ml-2 mt-1 text-sm text-secondary"
                 >{t("commmon.header.contact.ding")}</span
               >
             </span>
@@ -50,10 +50,10 @@ const t = useTranslations(Astro);
           <!-- TODO: 设置产品联系邮箱 -->
           <a
             href="mailto:nacos_dev@linux.alibaba.com"
-            class="text-neutral flex items-center no-underline"
+            class="text-secondary flex items-center no-underline"
           >
-            <Email themeClass="primary-fill" />
-            <span class="ml-2 mt-1 text-sm text-neutral"
+            <Email themeClass="secondary-fill" />
+            <span class="ml-2 mt-1 text-sm text-secondary"
               >{t("commmon.header.contact.mail")}</span
             >
           </a>
@@ -82,8 +82,14 @@ const t = useTranslations(Astro);
 
 <style is:global>
   .menu-container{
+    .contact-us {
+      background: rgba(76, 80, 93, 0.3);
+    }
     .primary-fill {
       fill: theme("colors.primary");
+    }
+    .secondary-fill {
+      fill: theme("colors.secondary");
     }
     .toggle-dropdown-notactive {
       display: none;

@@ -135,6 +135,8 @@ export default {
 	'home.contributors.learn.more': '更多',
 	'home.overviewcard.about': '全景概览',
 	'home.overviewcard.title': '微服务全景图',
+	'home.standards.title': '标准化',
+	'home.standards.subtitle': '以集中式、外部化和动态的方法管理所有环境中的配置。',
 
 	'home.introduction.card.des':'加速单体、微服务应用开发、打包与部署',
 	'home.introduction.card.sca.des':'微服务应用开发与治理一站式解决方案',

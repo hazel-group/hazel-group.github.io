@@ -55,7 +55,7 @@ ui:
     # 基础色，用做首页的背景色1
     base-100: "#EDF1FC" # sky-01
     # 信息颜色。Headline的上方小字, Fotter商标字体颜色
-    info: "#EDF1FC" #sky-02
+    info: "#E0E9FB" #sky-02
     # 成功。 Header的分割符、主要特性中的分割符、companiesfeedback中的isGray的背景颜色
     success: "#818598" #gray-08
     # 警告。header中的toggle-trigger-atc颜色

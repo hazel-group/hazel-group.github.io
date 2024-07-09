@@ -135,6 +135,8 @@ export default {
 	'home.contributors.learn.more': 'LEARN MORE',
 	'home.overviewcard.about': 'Panoramic overview',
 	'home.overviewcard.title': 'Overview Image',
+	'home.standards.title': 'Standards',
+	'home.standards.subtitle': 'Manage configurations in all environments in a centralized, externalized, and dynamic approach. ',
 
 	'home.introduction.detailTitle.1':'About Spring Boot',
 	'home.introduction.detail.1':'Accelerate the development, packaging, and deployment of individual and microservice applications',

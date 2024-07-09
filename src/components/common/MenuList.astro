@@ -8,7 +8,7 @@ const ifzh = isChinese(Astro);
 
 <div class="flex">
   <!-- 社区label -->
-  <div class="border-l border-success/[0.5] flex flex-col px-7 min-w-[12rem]">
+  <div class="border-l border-warning flex flex-col px-7 min-w-[12rem]">
     <span class="text-xs text-warning mb-2"
       >{ifzh ? comt.label : comt.translations?.en}</span
     >
@@ -33,7 +33,7 @@ const ifzh = isChinese(Astro);
   <div
     class:list={[
       "border-l",
-      "border-success/[0.5]",
+      "border-warning",
       "flex",
       "flex-col",
       "px-7",

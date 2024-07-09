@@ -19,6 +19,10 @@ const {
 } = Astro.props;
 
 const pages = allPages.map((href, i) => {
+
+    if(!href.endsWith('/')){
+        href += '/'
+    }
     return {
         pageNum: i + 1,
         text: String(i + 1),
@@ -27,6 +31,7 @@ const pages = allPages.map((href, i) => {
 });
 
 const collapsedPages = collapseRange(page, pages);
+
 ---
 
 <span class="pagination-wrapper">
@@ -34,7 +39,7 @@ const collapsedPages = collapseRange(page, pages);
         <ul class="flex items-center gap-4 text-lg">
             {
                 page.url.prev && (
-                    <li class="prev rounded-full border border-gray-07">
+                    <li class="prev rounded-full border border-success">
                         <a
                             href={page.url.prev}
                             rel="prefetch"
@@ -56,7 +61,7 @@ const collapsedPages = collapseRange(page, pages);
                                 class:list={[
                                     "relative rounded-md w-10 h-10 flex items-center justify-center border border-transparent transition-colors duration-150",
                                     link.pageNum !== page.currentPage &&
-                                        "hover:border-gray-07 focus:border-gray-07",
+                                        "hover:border-success focus:border-success",
                                 ]}
                                 aria-current={
                                     link.pageNum === page.currentPage
@@ -77,7 +82,7 @@ const collapsedPages = collapseRange(page, pages);
             </li>
             {
                 page.url.next && (
-                    <li class="next ease rounded-full border border-gray-07 transition-colors duration-150">
+                    <li class="next ease rounded-full border border-success transition-colors duration-150">
                         <a
                             href={page.url.next}
                             rel="prefetch"
@@ -96,13 +101,13 @@ const collapsedPages = collapseRange(page, pages);
         a {
             z-index: 1;
             text-decoration: none;
-            color: theme("colors.link");
+            color: theme("colors.warning");
         }
         ul {
             list-style-type: none;
         }
         li :active {
-            color: theme("colors.link");
+            color: theme("colors.primary");
         }
         .next:hover,
         .prev:hover {
@@ -126,8 +131,8 @@ const collapsedPages = collapseRange(page, pages);
                 border-radius: inherit;
                 background: linear-gradient(
                     247.23deg,
-                    theme("colors.primary"),
-                    theme("colors.success")
+                    theme("colors.muted"),
+                    theme("colors.primary")
                 );
                 z-index: -1;
             }

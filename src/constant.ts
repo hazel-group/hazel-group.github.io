@@ -58,7 +58,7 @@ export const CHOOSE_REASON_LIST: ChooseReason[] = [
   },
 ]
 
-// 合作客户反馈
+// TODO: 合作客户反馈
 export const COMPANY_CUSTOMERS: Customer[] = [
   {
     name: "cloud.feedback.soul.name",
@@ -182,7 +182,7 @@ export const getCommunityLinkList = (t: Function): CommunityLink[] => [
   },
   {
     // TODO: 替换文档链接
-    href: "https://github.com/nacos-group/nacos-group.github.io/tree/develop-astro-nacos/src/content/docs",
+    href: "https://github.com/higress-group/higress-group.github.io/tree/develop-astro-higress/src/content/docs",
     text: t("rightSidebar.github"),
     icon: "ant-design:github-filled",
   },
@@ -240,23 +240,23 @@ export const BLOG_CATEGORY = [
   {
     type: 'all',
     title: '全部文章',
-    href: '/blog'
+    href: '/blog/'
   },
   {
     type: 'article',
     title: '技术文章',
-    href: '/blog/article'
+    href: '/blog/article/'
   },
 
   {
     type: 'ecosystem',
     title: '生态文章',
-    href: '/blog/ecosystem'
+    href: '/blog/ecosystem/'
   },
   {
     type: 'case',
     title: '最佳实践',
-    href: '/blog/case'
+    href: '/blog/case/'
   },
 ];
 
@@ -465,7 +465,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "报告文档问题",
         target: "_blank",
-        link: "https://github.com/nacos-group/nacos-group.github.io/issues",
+        link: "https://github.com/higress-group/higress-group.github.io/issues",
         translations: {
           en: "Report a doc issue",
         },
@@ -473,7 +473,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "贡献社区",
         target: "_blank",
-        link: "https://github.com/alibaba/nacos/pulls",
+        link: "https://github.com/alibaba/higress/pulls",
         translations: {
           en: "Contribute community",
         },
@@ -481,7 +481,7 @@ export const COMMUNITY_MENU_LIST = [
       {
         label: "贡献者",
         target: "_blank",
-        link: "https://github.com/alibaba/nacos/graphs/contributors",
+        link: "https://github.com/alibaba/higress/graphs/contributors",
         translations: {
           en: "Contributors",
         },
@@ -524,22 +524,6 @@ export const COMMUNITY_MENU_LIST = [
         link: "/blog/",
         translations: {
           en: "Blog",
-        },
-      },
-      {
-        label: "电子书",
-        target: "_self",
-        link: "/docs/ebook/kbyo6n/",
-        translations: {
-          en: "E-book",
-        },
-      },
-      {
-        label: "版本下载",
-        target: "_self",
-        link: "/download/nacos-server/",
-        translations: {
-          en: "Download",
         },
       },
     ],

@@ -33,49 +33,49 @@
             {
               "label": "全局配置说明",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Config Map"
               },
               "link": "docs/user/configmap"
             },
             {
               "label": "Ingress Annotaion 配置说明",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Higress Annotaion"
               },
               "link": "docs/user/annotation"
             },
             {
               "label": "通过Ingress Annotation实现高阶流量治理",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Annotation Use Case"
               },
               "link": "docs/user/annotation-use-case"
             },
             {
               "label": "Higress参数配置",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Higress Parameters Guide"
               },
               "link": "docs/user/configurations"
             },
             {
               "label": "Mcp Bridge 配置说明",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Mcp Bridge Configuration"
               },
               "link": "docs/user/mcp-bridge"
             },
             {
               "label": "HTTP转Dubbo 配置说明",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "HTTP to Dubbo"
               },
               "link": "docs/user/dubbo-http2rpc"
             },
             {
               "label": "Wasm 插件镜像规范",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Wasm Plugin Image Specification"
               },
               "link": "docs/user/wasm-image-spec"
             }
@@ -88,7 +88,7 @@
           },
           "items":[
             {
-              "label": "AI",
+              "label": "AI Plugins",
               "collapsed": true,
               "autogenerate":{
                 "directory": "plugins/ai"
@@ -97,7 +97,7 @@
             {
               "label": "认证",
               "translations": {
-                "en": "Authentication"
+                "en": "Authentication Plugins"
               },
               "collapsed": true,
               "autogenerate":{
@@ -107,7 +107,7 @@
             {
               "label": "转换",
               "translations": {
-                "en": "Transformation"
+                "en": "Transformation Plugins"
               },
               "collapsed": true,
               "autogenerate":{
@@ -117,7 +117,7 @@
             {
               "label": "流量",
               "translations": {
-                "en": "Traffic"
+                "en": "Traffic Plugins"
               },
               "collapsed": true,
               "autogenerate":{
@@ -127,7 +127,7 @@
             {
               "label": "安全",
               "translations": {
-                "en": "Security"
+                "en": "Security Plugins"
               },
               "collapsed": true,
               "autogenerate":{
@@ -155,56 +155,56 @@
         {
           "label": "最佳实践示例",
           "translations": {
-            "en": "User Doc"
+            "en": "Best Practices"
           },
           "collapsed": true,
           "items":[
             {
               "label": "使用 GO 语言开发 WASM 插件",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Developing a WASM Plugin with Golang"
               },
               "link": "docs/user/wasm-go"
             },
             {
               "label": "通过 OpenKruise Rollout 实现灰度发布",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "OpenKruise Rollout"
               },
               "link": "docs/user/kruise-rollout"
             },
             {
               "label": "配置 Ingress 转发给注册在 Nacos 的服务",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Nacos Route"
               },
               "link": "docs/user/nacos-route"
             },
             {
               "label": "实现 SpringCloud 服务发现和路由",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "SpringCloud"
               },
               "link": "docs/user/spring-cloud"
             },
             {
               "label": "Higress 对接 Dubbo 服务",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Higress Dubbo"
               },
               "link": "docs/user/dubbo"
             },
             {
               "label": "基于 Prometheus 实现入口流量观测",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Request Monitoring Based on Prometheus"
               },
               "link": "docs/user/prometheus"
             },
             {
               "label": "开启 WAF 防护的最佳实践",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "WAF"
               },
               "link": "docs/user/waf"
             }
@@ -215,34 +215,34 @@
     {
       "label": "运维指南",
       "translations": {
-        "en": "Ops Guide"
+        "en": "Ops"
       },
       "collapsed": false,
       "items":[
         {
           "label": "安装部署",
           "translations": {
-            "en": "Custom Plugin"
+            "en": "Deploy"
           },
           "items":[
             {
               "label": "hgctl 工具使用说明",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "hgctl"
               },
               "link": "docs/ops/hgctl"
             },
             {
               "label": "使用 Helm 进行云原生部署",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Deploy Higress by Helm"
               },
               "link": "docs/ops/deploy-by-helm"
             },
             {
               "label": "基于 Docker Compose 进行独立部署",
               "translations": {
-                "en": "Custom Plugin"
+                "en": "Deploy Higress by Docker Compose"
               },
               "link": "docs/ops/deploy-by-docker-compose"
             }
@@ -251,14 +251,14 @@
         {
           "label": "版本升级",
           "translations": {
-            "en": "Custom Plugin"
+            "en": "Upgrade"
           },
           "link": "docs/ops/upgrade"
         },
         {
           "label": "日志说明",
           "translations": {
-            "en": "Custom Plugin"
+            "en": "Log"
           },
           "link": "docs/ops/log"
         }
@@ -267,7 +267,7 @@
     {
       "label": "开发者指南",
       "translations": {
-        "en": "Develop Guide"
+        "en": "Developer Guide"
       },
       "collapsed": false,
       "autogenerate":{
