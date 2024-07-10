@@ -108,7 +108,7 @@ export default {
 	'home.features.3.explain': 'By supporting weighted routing, Dynamic DNS Service helps you implement mid-tier load balancing, more flexible routing, traffic control and DNS resolution services in the production environment within your data center. Dynamic DNS Service     also makes it easier for you to implement DNS-based service discovery, which minimizes the risk of coupling to vendor-specific service discovery APIs.',
 	'home.features.3.explain.one': 'By supporting weighted routing, Dynamic DNS Service helps you implement mid-tier load balancing, more flexible routing, traffic control and DNS resolution services in the production environment within your data center.',
 	'home.use.companies.about': 'SELECTION OF SOME COMPANIES',
-	'home.solutions.about': 'SOLUTIONS',
+	'home.solutions.about': "USER'S VOICE",
 	'home.solutions.card.1': 'Best Practices for High Availability in MSE Registration Configuration Center',
 	'home.solutions.card.2': 'MSE Sync Migration Plan',
 	'home.solutions.card.3': 'How cloud-native gateways achieve security protection capabilities',
@@ -137,6 +137,7 @@ export default {
 	'home.overviewcard.title': 'Overview Image',
 	'home.standards.title': 'Standards',
 	'home.standards.subtitle': 'Manage configurations in all environments in a centralized, externalized, and dynamic approach. ',
+	'home.security.capability.title':'Security Capability Empowerment',
 
 	'home.introduction.detailTitle.1':'About Spring Boot',
 	'home.introduction.detail.1':'Accelerate the development, packaging, and deployment of individual and microservice applications',

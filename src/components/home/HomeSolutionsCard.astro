@@ -2,83 +2,95 @@
 import { useTranslations } from "@i18n/util";
 import Button from "@components/common/Button.astro";
 import { SOLUTION_LIST } from "@/constant";
+import Right from '../icon/Right.astro';
 
 const t = useTranslations(Astro);
 ---
 
 <span class="card-solution-wrapper">
-<card-solution class="card-solution block bg-secondary mb-4 mt-9">
-  <div class="bottom-solutions-card flex items-center justify-center h-fit">
-    <div
-      class="solution-container h-[31.75rem] w-full flex flex-nowrap justify-start"
-    >
+  <card-solution class="card-solution block bg-neutral mb-4 mt-9">
+    <div class="bottom-solutions-card flex items-center justify-center h-fit">
+      <div
+        class="solution-container h-[31.75rem] w-full flex flex-nowrap justify-start"
+      >
+        {
+          SOLUTION_LIST.map((item, index) => {
+            const { src, checked } = item;
+            return (
+              <>
+                <input
+                  type="radio"
+                  name="silder"
+                  id={`c${index}`}
+                  checked={checked}
+                />
+                <label
+                  for={`c${index}`}
+                  input-id={`c${index}`}
+                  class="solutions-card overflow-hidden flex flex-col justify-between cursor-pointer rounded-2xl mx-2"
+                >
+                  <div class="px-16 relative">
+                    <div class="right_arrow absolute top-1/2 left-1.5 opacity-1"><Right/></div>
+                    <div class="main-title text-sm text-base-100 mt-[1.25rem] tracking-[0.15em] text-center opacity-0 tracking-wider">
+                      {t("home.solutions.about")}
+                    </div>
+                    <div class="user_introduce flex justify-between h-full mt-12 opacity-0">
+                      <div class="">
+                        <div class="w-[489px] h-[177px] mb-24 text-secondary text-[20px] leading-9">
+                          {item.introduce}
+                        </div>
+                        <div class="flex text-secondary">
+                          <img src={item.logo} class="w-12 h-12 object-cover mr-4">
+                          <div class='text-lg'>
+                            <p class="font-medium">{item.user}</p>
+                            <p class="font-light">{item.userInfo}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="right-container w-[285px] h-[236px] flex flex-col justify-around p-11">
+                          <p class="text-6xl text-secondary pl-6"><span class='text-[100px]'>{item.speed}</span>x</p>
+                          <p class='text-lg font-light text-secondary'>{item.speedDes}</p>
+                        </div>
+                        <div class="button ml-16 mb-[3.75rem] mt-11">
+                          <Button size="large" class="rounded-3xl text-xs w-[156px]" href={src}>
+                            {t("home.solutions.action")}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+              </>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <div class="mobile-bottom-solutions-card w-full flex flex-col hidden p-[1.5rem]">
       {
         SOLUTION_LIST.map((item, index) => {
-          const { src, checked } = item;
+          const { src, introduce } = item;
           return (
-            <>
-              <input
-                type="radio"
-                name="silder"
-                id={`c${index}`}
-                checked={checked}
-              />
-              <label
-                for={`c${index}`}
-                input-id={`c${index}`}
-                class="solutions-card overflow-hidden flex flex-col justify-between cursor-pointer rounded-2xl mx-2"
-              >
-                <div class="mx-16 ">
-                  <div class="main-title text-xs text-base-100 mt-[1.25rem] tracking-[0.15em] text-center opacity-0 tracking-wider">
-                    {t("home.solutions.about")}
-                  </div>
-                  <div class="item-title text-base-100 text-[2.5rem] leading-[3rem] mt-[3.125rem] opacity-0 mb-7">
-                    {t(item.title)}
-                  </div>
-                  {item.keyword.map((it) => {
-                    return (
-                      <span class="item-keyword opacity-0 border border-secondary rounded-[2.25rem] h-8 px-6 py-2 text-xs text-base-100 mr-3 inline-block mb-4">
-                        {t(it)}
-                      </span>
-                    );
-                  })}
+            <div class="solutions-mobile-card mx-auto h-[14rem] overflow-hidden flex flex-col justify-between cursor-pointer p-4 rounded-3xl">
+              <div class="flex align-center flex-nowrap w-full">
+                <div class="mx-auto text-xs font-normal text-secondary tracking-wider">
+                  {t("home.solutions.about")}
                 </div>
-                <div class="button opacity-0 mx-auto mb-[3.75rem]">
-                  <Button size="large" class="rounded-3xl" href={src}>
-                    {t("home.solutions.action")}
-                  </Button>
-                </div>
-              </label>
-            </>
+              </div>
+              <div class="w-full text-secondary text-base line-clamp-2">{introduce}</div>
+              <div class="button mx-auto">
+                <Button class="rounded-3xl" href={src} target="_blank">
+                  {t("home.solutions.action")}
+                </Button>
+              </div>
+            </div>
           );
         })
       }
     </div>
-  </div>
-
-  <div class="mobile-bottom-solutions-card w-full flex flex-col hidden">
-    {
-      SOLUTION_LIST.map((item, index) => {
-        const { src, title } = item;
-        return (
-          <div class="solutions-mobile-card mx-auto h-[14rem] overflow-hidden flex flex-col justify-between cursor-pointer p-4 rounded-3xl">
-            <div class="flex align-center flex-nowrap w-full">
-              <div class="mx-auto text-xs font-normal text-neutral tracking-wider">
-                {t("home.solutions.about")}
-              </div>
-            </div>
-            <div class="w-full text-warning text-base">{t(title)}</div>
-            <div class="button mx-auto">
-              <Button class="rounded-3xl" href={src} target="_blank">
-                {t("home.solutions.action")}
-              </Button>
-            </div>
-          </div>
-        );
-      })
-    }
-  </div>
-</card-solution>
+  </card-solution>
 </span>
 
 <script>
@@ -107,7 +119,9 @@ const t = useTranslations(Astro);
 
     selectedLabel(e) {
       var _this = this;
-      var inputId = e.target.getAttribute("input-id");
+      // 尝试查找最近的拥有 `input-id` 属性的父级元素
+      var label = e.target.closest('[input-id]');
+      var inputId = label ? label.getAttribute("input-id") : null;
       if (this.flag && inputId && inputId !== this.currentInputid) {
         this.currentInputid = inputId;
         this.flag = false;
@@ -139,6 +153,9 @@ const t = useTranslations(Astro);
       background-size: cover;
       background-position: center;
     }
+    .right-container{
+      background-color: rgba(255, 255, 255, 0.2);
+    }
     .solution-container > .solutions-card:first-of-type {
       margin-left: 0;
     }
@@ -153,40 +170,44 @@ const t = useTranslations(Astro);
         opacity: 1;
       }
     }
+    @keyframes hidecontent {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
     input {
       display: none;
     }
     input:checked + label {
       flex: 1;
-      animation: zoom-animation 5s 0.6s infinite;
+      animation: zoom_animation 5s 0.6s infinite;
     }
     input:checked + label .main-title {
       animation: showcontent 0.3s ease-in-out 0.3s 1 forwards;
     }
-    input:checked + label .item-title {
+    
+    input:checked + label .user_introduce {
       animation: showcontent 0.3s ease-in-out 0.3s 1 forwards;
     }
-    input:checked + label .item-keyword {
-      animation: showcontent 0.3s ease-in-out 0.3s 1 forwards;
-    }
-    input:checked + label .button {
-      animation: showcontent 0.3s ease-in-out 0.3s 1 forwards;
+
+    input:checked + label .right_arrow {
+      animation: hidecontent 0.3s ease-in-out 0.3s 1 forwards;
     }
 
     .solutions-card[for="c0"] {
-      background-image: url("https://img.alicdn.com/imgextra/i2/O1CN01zVKIvG1cs2YlAPDn3_!!6000000003655-2-tps-844-508.png");
+      background-image: url("https://img.alicdn.com/imgextra/i4/O1CN01ty7hGn1byAGtOvH32_!!6000000003533-0-tps-2720-1814.jpg");
     }
     .solutions-card[for="c1"] {
-      background-image: url("https://img.alicdn.com/imgextra/i2/O1CN01zVKIvG1cs2YlAPDn3_!!6000000003655-2-tps-844-508.png");
+      background-image: url("https://img.alicdn.com/imgextra/i2/O1CN01PwKlbo1HDdirw4APl_!!6000000000724-0-tps-2688-1792.jpg");
     }
     .solutions-card[for="c2"] {
-      background-image: url("https://img.alicdn.com/imgextra/i2/O1CN01zVKIvG1cs2YlAPDn3_!!6000000003655-2-tps-844-508.png");
-    }
-    .solutions-card[for="c3"] {
-      background-image: url("https://img.alicdn.com/imgextra/i2/O1CN01zVKIvG1cs2YlAPDn3_!!6000000003655-2-tps-844-508.png");
+      background-image: url("https://img.alicdn.com/imgextra/i4/O1CN01DMaqDl1ZSu0LLU8Px_!!6000000003194-0-tps-2688-1792.jpg");
     }
 
-    @keyframes zoom-animation {
+    @keyframes zoom_animation {
       0% {
         background-size: 100% cover;
       }
@@ -236,7 +257,7 @@ const t = useTranslations(Astro);
       }
     }
 
-    /* 大于50rem 小于 72rem  800px < width < 1152 */
+
     @media (min-width: 50rem) and (max-width: 86rem) {
       && {
         width: 100%;

@@ -108,7 +108,7 @@ export default {
 	'home.features.3.explain': '通过支持权重路由，动态 DNS 服务能让您轻松实现中间层负载均衡、更灵活的路由策略、流量控制以及简单数据中心内网的简单 DNS 解析服务。动态 DNS 服务还能让您更容易地实现以 DNS 协议为基础的服务发现，以消除耦合到厂商私有服务发现 API 上的风险。',
 	'home.features.3.explain.one': '通过支持权重路由，动态 DNS 服务能让您轻松实现中间层负载均衡、更灵活的路由策略、流量控制以及简单数据中心内网的简单 DNS 解析服务。',
 	'home.use.companies.about': '服务千行百业，为企业创新提速',
-	'home.solutions.about': '解决方案',
+	'home.solutions.about': '用户之声',
 	'home.solutions.card.1': 'MSE 注册配置中心高可用最佳实践',
 	'home.solutions.card.2': 'MSE Sync 迁移方案',
 	'home.solutions.card.3': '云原生网关如何实现安全防护能力',
@@ -137,6 +137,8 @@ export default {
 	'home.overviewcard.title': '微服务全景图',
 	'home.standards.title': '标准化',
 	'home.standards.subtitle': '以集中式、外部化和动态的方法管理所有环境中的配置。',
+	'home.security.capability.title':'安全能力授权',
+
 
 	'home.introduction.card.des':'加速单体、微服务应用开发、打包与部署',
 	'home.introduction.card.sca.des':'微服务应用开发与治理一站式解决方案',

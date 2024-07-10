@@ -129,47 +129,33 @@ export const COMPANY_CUSTOMERS: Customer[] = [
 export const SOLUTION_LIST: Solution[] = [
   {
     checked: true,
-    src: "https://help.aliyun.com/zh/mse/use-cases/implement-high-availability-capabilities-of-mse-microservices-registry/?spm=a2c4g.11186623.0.0.102a27e0juv8vG",
-    title: "home.solutions.card.1",
-    keyword: [
-      "home.solutions.card.keyword.high_availability",
-      "home.solutions.card.keyword.multi_availability",
-      "home.solutions.card.keyword.multi_data",
-      "home.solutions.card.keyword.disaster_recovery_protect",
-    ],
+    src: "",
+    introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
+    logo:'',
+    user:'方海涛',
+    userInfo:'Sealos 创始人，环界云计算 CEO',
+    speed:'40',
+    speedDes:'40倍 路由变更生效速度'
   },
   {
     checked: false,
-    src: "https://help.aliyun.com/zh/mse/use-cases/migration-solution-based-on-mse-sync/?spm=a2c4g.11186623.0.0.13f12318fSap49",
-    title: "home.solutions.card.2",
-    keyword: [
-      "home.solutions.card.keyword.data_synchronization_migration",
-      "home.solutions.card.keyword.smooth_migration",
-      "home.solutions.card.keyword.migration_high_availability",
-      "home.solutions.card.keyword.easy_use",
-    ],
+    src: "",
+    introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
+    logo:'',
+    user:'方海涛',
+    userInfo:'Sealos 创始人，环界云计算 CEO',
+    speed:'40',
+    speedDes:'40倍 路由变更生效速度'
   },
   {
     checked: false,
-    src: "https://developer.aliyun.com/article/1265016?spm=5176.21213303.J_qCOwPWspKEuWcmp8qiZNQ.10.c89e2f3dQa2WtF&scm=20140722.S_community@@%E6%96%87%E7%AB%A0@@1265016._.ID_community@@%E6%96%87%E7%AB%A0@@1265016-RL_%E4%BA%91%E5%8E%9F%E7%94%9F%E7%BD%91%E5%85%B3%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E8%83%BD%E5%8A%9B-LOC_llm-OR_ser-V_3-RK_rerank-P0_2",
-    title: "home.solutions.card.3",
-    keyword: [
-      "home.solutions.card.keyword.three_in_one",
-      "home.solutions.card.keyword.safety",
-      "home.solutions.card.keyword.plugin_ecosystem",
-      "home.solutions.card.keyword.application_firewall",
-    ],
-  },
-  {
-    checked: false,
-    src: "https://help.aliyun.com/zh/mse/use-cases/implement-graceful-start-and-shutdown-of-microservice-applications-by-using-mse/?spm=a2c4g.11186623.0.0.385116bftBJhAY",
-    title: "home.solutions.card.4",
-    keyword: [
-      "home.solutions.card.keyword.lossless",
-      "home.solutions.card.keyword.multi_availability",
-      "home.solutions.card.keyword.grayscale",
-      "home.solutions.card.keyword.service_governance",
-    ],
+    src: "",
+    introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
+    logo:'',
+    user:'方海涛',
+    userInfo:'Sealos 创始人，环界云计算 CEO',
+    speed:'40',
+    speedDes:'40倍 路由变更生效速度'
   },
 ];
 

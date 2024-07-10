@@ -6,20 +6,20 @@ import { SITE } from "@utils/config";
 ---
 
 <footer-layout
-  class="home-footer w-full bg-secondary flex flex-col items-center py-10"
+  class="home-footer w-full bg-neutral flex flex-col items-center py-10"
 >
   <slot name="after-footer" />
   <div
-    class="footer-top flex-col flex bg-error rounded-2xl text-center lg:flex-row"
+    class="footer-top flex-col flex bg-[#1E1F24] rounded-2xl text-center lg:flex-row"
   >
     <div class="footer-left flex flex-col gap-0 text-left my-9 ml-10 max-w-2xl">
       <p
-        class="footer-left-title text-neutral text-[1.75rem] leading-9 lg:w-[25.9375rem] lg:h-10"
+        class="footer-left-title text-error text-[1.75rem] leading-9 lg:w-[25.9375rem] lg:h-10"
       >
         {t("commmon.footer.title")}
       </p>
       <p
-        class="footer_left_des flex-1 text-neutral text-[0.875rem] w-[42rem] h-[4.5rem] mt-4 mb-[3rem]"
+        class="footer_left_des flex-1 text-success text-[0.875rem] w-[42rem] h-[4.5rem] mt-4 mb-[3rem]"
       >
         {t("commmon.footer.description")}
       </p>
@@ -37,11 +37,11 @@ import { SITE } from "@utils/config";
     >
       <div>
         <p
-          class="text-neutral text-[0.75rem] leading-4 tracking-[.15em] lg:mb-[3.0625rem]"
+          class="text-success text-[0.75rem] leading-4 tracking-[.15em] lg:mb-[3.0625rem]"
         >
           {t("commmon.footer.docs")}
         </p>
-        <ul class="list-none w-[13.3125rem] h-4 ps-0 text-accent">
+        <ul class="list-none w-[13.3125rem] h-4 ps-0 text-link">
           <li>
             <a
               href="#"
@@ -70,11 +70,11 @@ import { SITE } from "@utils/config";
       </div>
       <div>
         <p
-          class="text-neutral text-[0.75rem] leading-4 tracking-[.15em] lg:mb-[3.0625rem]"
+          class="text-success text-[0.75rem] leading-4 tracking-[.15em] lg:mb-[3.0625rem]"
         >
           {t("commmon.footer.resource")}
         </p>
-        <ul class="list-none w-full h-4 ps-0 text-accent">
+        <ul class="list-none w-full h-4 ps-0 text-link">
           <li>
             <!-- TODO: 下载页面 -->
             <a

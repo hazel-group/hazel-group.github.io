@@ -7,101 +7,47 @@ const t = useTranslations(Astro);
 
 <span class="open-ecosystem-wrapper">
   <open-ecosystem
-    class="open-ecosystem block bg-neutral py-10 flex flex-col justify-center items-center"
+    class="open-ecosystem block bg-neutral py-10 flex justify-center items-center"
   >
-    <Headline
-      classes={{ subtitle: "text-sm" }}
-      tagline={t("home.website.edge.about")}
-      title={t("home.open.ecosystem.title")}
-      titleTheme="error"
-      taglineTheme="info"
-      subtitle={t("home.open.ecosystem.subtitle")}
-      subtitleTheme="success"
-    />
+    <div class="ecosystem-container flex flex-col justify-center items-center">
+      <Headline
+        classes={{ subtitle: "text-sm" }}
+        tagline={t("home.website.edge.about")}
+        title={t("home.open.ecosystem.title")}
+        titleTheme="error"
+        taglineTheme="info"
+        subtitle={t("home.open.ecosystem.subtitle")}
+        subtitleTheme="success"
+      />
 
-    <img
-      class="w-[90%] mt-10"
-      alt={t("home.open.ecosystem.title")}
-      src="https://img.alicdn.com/imgextra/i3/O1CN01fP1req1hWa70Cp4EG_!!6000000004285-2-tps-2728-1405.png"
-    />
+      <img
+        class="w-full mt-10"
+        alt={t("home.open.ecosystem.title")}
+        src="https://img.alicdn.com/imgextra/i3/O1CN01fP1req1hWa70Cp4EG_!!6000000004285-2-tps-2728-1405.png"
+      />
+    </div>
   </open-ecosystem>
 </span>
 
 <style is:global>
   .open-ecosystem-wrapper {
-    .primary-fill {
-      fill: theme("colors.primary");
-    }
-    ,
-    .top-title,
-    .bottom-card {
+    .ecosystem-container  {
       width: 85.125rem;
-    }
-    .bottom-card .item {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 0 0 25%;
     }
 
     /* 小于50rem  小于 800px */
     @media (max-width: 50rem) {
-      .open-ecosystem {
+      .ecosystem-container  {
         padding: 1.5rem;
-      }
-      .top-title,
-      .bottom-card {
         width: 100%;
-      }
-      .top-title {
-        margin-top: 2.5rem;
-        margin-bottom: 2.5rem;
-      }
-      .top-title .title {
-        font-size: 1.125rem; /* 18px */
-        line-height: 1.75rem; /* 28px */
-      }
-      .bottom-card .item {
-        flex: 0 0 100%;
-        border-left: none;
-        padding: 1.25rem 0;
-        border-bottom: 1px solid theme("colors.success");
-      }
-      .bottom-card .item .transfrom-header {
-        display: flex;
-      }
-      .transfrom-header div:last-child {
-        margin-left: 1rem;
       }
     }
 
     /* 大于50rem 小于 72rem  800px < width < 1152 */
     @media (min-width: 50rem) and (max-width: 86rem) {
-      .open-ecosystem {
+      .ecosystem-container  {
         padding: 2.5rem;
-      }
-      .top-title,
-      .bottom-card {
         width: 100%;
-      }
-      .bottom-card .item {
-        flex: 0 0 50%;
-        border-left: none;
-        padding-bottom: 1.25rem;
-      }
-      .bottom-card .item:first-child {
-        border-right: 1px solid theme("colors.success");
-        border-bottom: 1px solid theme("colors.success");
-      }
-      .bottom-card .item:nth-child(2) {
-        border-bottom: 1px solid theme("colors.success");
-      }
-      .bottom-card .item:nth-child(3) {
-        border-right: 1px solid theme("colors.success");
-        padding-top: 1.25rem;
-      }
-      .bottom-card .item:last-child {
-        padding-top: 1.25rem;
       }
     }
   }

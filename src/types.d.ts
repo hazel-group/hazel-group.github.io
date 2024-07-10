@@ -14,8 +14,12 @@ export interface Customer {
 export interface Solution {
   checked: boolean;
   src: string;
-  title: UiKeys;
-  keyword: UiKeys[];
+  introduce: string,
+  logo:string,
+  user:string,
+  userInfo:string,
+  speed:string,
+  speedDes:string
 }
 export interface ChooseReason {
   title: UiKeys;
