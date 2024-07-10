@@ -25,6 +25,16 @@ export default [
     route:"/docs/latest/overview/what-is-higress/"
   },
   {
+    label: "企业版 Higress",
+    translations: {
+      en: "Higress CLOUD",
+    },
+    trigger: "click",
+    target: "_self",
+    route: "/cloud/",
+    activePath: ["/cloud"],
+  },
+  {
     label: "社区",
     translations: {
       en: "COMMUNITY",

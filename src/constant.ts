@@ -131,31 +131,31 @@ export const SOLUTION_LIST: Solution[] = [
     checked: true,
     src: "",
     introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
-    logo:'',
-    user:'方海涛',
-    userInfo:'Sealos 创始人，环界云计算 CEO',
-    speed:'40',
-    speedDes:'40倍 路由变更生效速度'
+    logo: '',
+    user: '方海涛',
+    userInfo: 'Sealos 创始人，环界云计算 CEO',
+    speed: '40',
+    speedDes: '40倍 路由变更生效速度'
   },
   {
     checked: false,
     src: "",
     introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
-    logo:'',
-    user:'方海涛',
-    userInfo:'Sealos 创始人，环界云计算 CEO',
-    speed:'40',
-    speedDes:'40倍 路由变更生效速度'
+    logo: '',
+    user: '方海涛',
+    userInfo: 'Sealos 创始人，环界云计算 CEO',
+    speed: '40',
+    speedDes: '40倍 路由变更生效速度'
   },
   {
     checked: false,
     src: "",
     introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
-    logo:'',
-    user:'方海涛',
-    userInfo:'Sealos 创始人，环界云计算 CEO',
-    speed:'40',
-    speedDes:'40倍 路由变更生效速度'
+    logo: '',
+    user: '方海涛',
+    userInfo: 'Sealos 创始人，环界云计算 CEO',
+    speed: '40',
+    speedDes: '40倍 路由变更生效速度'
   },
 ];
 
@@ -529,7 +529,7 @@ export const LEARN_CARD_LIST = [
   },
   {
     title: "commmon.header.spring.cloud.alibaba.tutorial",
-    description:  "commmon.header.spring.cloud.alibaba.tutorial.describe",
+    description: "commmon.header.spring.cloud.alibaba.tutorial.describe",
     href: "/blog/release-nacos132/?source=blog_article",
   },
   {
@@ -561,3 +561,486 @@ export const SOLUTIONS_CARD_LIST = [
     href: "/blog/release-nacos132/?source=blog_article",
   },
 ];
+
+// Cloud页面价格 后付费的卡片内容
+export const getCloudPostpaidData = (t: Function) => [
+  {
+    title: t("cloud.introduce.free.pkg"),
+    price: t("cloud.introduce.free.price"),
+    priceDesc: [t("cloud.introduce.free.feature")],
+    linkName: t("cloud.introduce.free.link"),
+    link: "https://free.aliyun.com/?searchKey=spring%20cloud&spm=sca.cloud.topbar.0.0.0",
+    feature: [
+      t("cloud.introduce.free.discount.1"),
+    ],
+  },
+  {
+    title: t("cloud.introduce.regular.pkg"),
+    priceDesc: [t("cloud.introduce.regular.feature")],
+    price: '¥0.84',
+    priceSupply: t("cloud.introduce.regular.price_supply"),
+    linkName: t("cloud.introduce.regular.link"),
+    link: "https://www.aliyun.com/product/aliware/mse?spm=sca.cloud.topbar.0.0.0",
+    feature: [
+      t("cloud.introduce.regular.discount.1"),
+    ],
+  },
+  {
+    title: t("cloud.introduce.serverless.pkg"),
+    priceDesc: [
+      t('cloud.introduce.serverless.priceDesc'),
+    ],
+    price: '¥0.135',
+    priceSupply: t('cloud.introduce.serverless.price_supply'),
+    linkName: t("cloud.introduce.regular.link"),
+    link: "https://www.aliyun.com/product/aliware/mse?spm=sca.cloud.topbar.0.0.0",
+    feature: [t('cloud.introduce.serverless.feature')],
+  },
+];
+
+// Cloud页面价格 资源包的卡片内容
+
+export const getCloudResourcePackData = (t: Function) => [
+  {
+    title: t("cloud.introduce.free.pkg"),
+    price: t("cloud.introduce.free.price"),
+    unit: "",
+    priceDesc: [t("cloud.introduce.free.feature")],
+    linkName: t("cloud.introduce.free.link"),
+    link: "https://free.aliyun.com/?searchKey=spring%20cloud&spm=sca.cloud.topbar.0.0.0",
+    feature: [
+      t("cloud.introduce.free.discount.1"),
+    ],
+  },
+  {
+    title: t("cloud.introduce.regular.pkg"),
+    priceDesc: [t("cloud.introduce.regular.feature")],
+    price: '¥422',
+    priceSupply: t("cloud.introduce.regular.unit"),
+    priceDes: t('cloud.introduce.regular.des'),
+    linkName: t("cloud.introduce.regular.link"),
+    link: "https://www.aliyun.com/product/aliware/mse?spm=sca.cloud.topbar.0.0.0",
+    feature: [
+      t("cloud.introduce.regular.discount.1"),
+      t("cloud.introduce.regular.feature.1"),
+      t("cloud.introduce.regular.feature.2"),
+    ],
+  },
+  {
+    title: t("cloud.introduce.serverless.pkg"),
+    priceDesc: [
+      t('cloud.introduce.serverless.priceDesc'),
+    ],
+    price: '¥92 ',
+    priceSupply: '元起',
+    linkName: t("cloud.introduce.regular.link"),
+    link: "https://www.aliyun.com/product/aliware/mse?spm=sca.cloud.topbar.0.0.0",
+    feature: [
+      t('cloud.introduce.serverless.feature'),
+      t('cloud.introduce.serverless.feature.1'),
+      t('cloud.introduce.serverless.feature.2'),
+    ],
+  },
+];
+
+// 版本功能对比
+export const versionDataSource = [
+  {
+    title: "易用性", data: [
+      {
+        name: {
+          title: '自动化运维',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: '',
+          des: ['免运维']
+        },
+      },
+      {
+        name: {
+          title: '多种服务发现能力',
+        },
+        free: {
+          checked: '',
+          des: '自行实现'
+        },
+        speciality: {
+          checked: true,
+          des: ['支持 K8s、Nacos、Zookeeper、DNS、固定IP及其他云产品']
+        },
+        serverless: {
+          checked: true,
+          des: ['支持 K8s、Nacos、Zookeeper、DNS、固定IP及其他云产品']
+        },
+      },
+      {
+        name: {
+          title: '协议自动转化（HTTPS转Dubbo)',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: [],
+        },
+      },
+      {
+        name: {
+          title: 'RAM鉴权和权限管理',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '云产品集成',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: ['和阿里云 MSE 注册配置、微服务治理等产品深度集成']
+        },
+        serverless: {
+          checked: true,
+          des: ['和阿里云 MSE 注册配置、微服务治理等产品深度集成']
+        },
+      },
+    ]
+  },
+  {
+    title: "可用性", data: [
+      {
+        name: {
+          title: 'SLA',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: '',
+          des: ['99.95%'],
+        },
+        serverless: {
+          checked: '',
+          des: ['99.9%']
+        },
+      },
+      {
+        name: {
+          title: '多节点容灾',
+          des: ''
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '多可区容灾',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '推空保护',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '过载保护',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '限流降级',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: ['路由颗粒度限流降级']
+        },
+        serverless: {
+          checked: true,
+          des: ['路由颗粒度限流降级']
+        },
+      },
+      {
+        name: {
+          title: '故障自动检测和恢复',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '自动扩缩容',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: false,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: ['内置扩容上限，避免恶意攻击导致资损']
+        },
+      },
+    ]
+  },
+  {
+    title: "安全性", data: [
+      {
+        name: {
+          title: 'IP黑白名单',
+        },
+        free: {
+          checked: '',
+          des: '自行通过插件实现'
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '消费者鉴权',
+        },
+        free: {
+          checked: '',
+          des: '自行通过插件实现'
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '全局认证及鉴权',
+        },
+        free: {
+          checked: '',
+          des: '自行通过插件实现'
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: 'Waf防护',
+        },
+        free: {
+          checked: '',
+          des: '自行通过插件实现'
+        },
+        speciality: {
+          checked: true,
+          des: ['实例级别防护和路由级别防护']
+        },
+        serverless: {
+          checked: true,
+          des: ['实例级别防护和路由级别防护']
+        },
+      },
+    ]
+  },
+  {
+    title: "性能", data: [
+      {
+        name: {
+          title: 'HTTPS 请求吞吐量提升',
+        },
+        free: {
+          checked: '',
+          des: '自行调优',
+        },
+        speciality: {
+          checked: '',
+          des: ['86%','软硬一体技术和 Envoy 内核调优']
+        },
+        serverless: {
+          checked: '',
+          des: ['86%','软硬一体技术和 Envoy 内核调优']
+        },
+      },
+      {
+        name: {
+          title: 'RT 下降',
+        },
+        free: {
+          checked: '',
+          des: '自行调优',
+        },
+        speciality: {
+          checked: '',
+          des: ['86%','软硬一体技术和 Envoy 内核调优'],
+        },
+        serverless: {
+          checked: '',
+          des: ['86%','软硬一体技术和 Envoy 内核调优'],
+        },
+      },
+    ]
+  },
+  {
+    title: "可观测性", data: [
+      {
+        name: {
+          title: '基础监控',
+          des:'(基于 Prometheus + Grafana 的监控套件)'
+        },
+        free: {
+          checked: true,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '高级监控',
+          des:'(可对QPS、请求耗时、后端服务成功率等指标进行监控)',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+      {
+        name: {
+          title: '自定义告警',
+          des:'(通过钉钉、电话、短信等告警渠道)',
+        },
+        free: {
+          checked: false,
+          des: ''
+        },
+        speciality: {
+          checked: true,
+          des: []
+        },
+        serverless: {
+          checked: true,
+          des: []
+        },
+      },
+    ]
+  },
+]

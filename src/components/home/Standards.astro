@@ -6,14 +6,10 @@ const t = useTranslations(Astro);
 ---
 
 <higress-standards
-  class="higress-standards flex flex-col items-center justify-center bg-neutral p-6 md:p-10"
+  class="higress-standards flex flex-col items-center justify-center bg-neutral py-8"
 >
-  <div
-    class="higress-standards-wrapper md:flex block w-full bg-neutral p-9 mt-10 rounded-2xl"
-  >
-    <div
-      class="left-container flex-1 h-full flex flex-col justify-around md:pl-[8.5rem]"
-    >
+  <div class="higress-standards-wrapper flex items-center justify-around">
+    <div class="left-container h-full flex flex-col justify-center">
       <div class="flex flex-col">
         <div
           class="text-base-100 text-[44px] leading-[56px] text-center font-medium tracking-normal md:text-left"
@@ -36,23 +32,54 @@ const t = useTranslations(Astro);
         {t("home.contributors.learn.more")}
       </Button>
     </div>
-    <div class="right-container flex-1">
-      <div
-        id="right-container-warp"
-        class="right-container-warp flex flex-wrap justify-around m-auto w-[16rem] ssm:w-[21rem] md:w-[25rem] lg:w-[27rem]"
-      >
-        <Image
-          src="https://img.alicdn.com/imgextra/i3/O1CN012foBRN1lVtzLyjemW_!!6000000004825-0-tps-1002-664.jpg"
-          alt="Higress Standards"
-          width="501"
-          height="332"
-        />
-      </div>
+    <div class="right-container-warp">
+      <img
+        src="https://img.alicdn.com/imgextra/i3/O1CN012foBRN1lVtzLyjemW_!!6000000004825-0-tps-1002-664.jpg"
+      />
+      <!-- <Image
+        src="https://img.alicdn.com/imgextra/i3/O1CN012foBRN1lVtzLyjemW_!!6000000004825-0-tps-1002-664.jpg"
+        alt="Higress Standards"
+        width="501"
+        height="332"
+      /> -->
     </div>
-
-    <style is:global>
-      .higress-standards-wrapper {
+  </div>
+</higress-standards>
+<style is:global>
+  .higress-standards {
+    .higress-standards-wrapper {
+      width: 85.125rem;
+    }
+    .right-container-warp {
+      img {
+        width:501px;
+        height:332px;
       }
-    </style>
-  </div></higress-standards
->
+    }
+    @media (max-width: 50rem) {
+      .higress-standards-wrapper {
+        width: 100%;
+        flex-direction: column;
+        padding: 1.5rem;
+      }
+      .left-container {
+        width: 100%;
+        align-items: center;
+      }
+      .right-container-warp {
+        width: 100%;
+        overflow: hidden;
+
+        img {
+          width: 350px;
+          object-fit: contain;
+        }
+      }
+    }
+    @media (min-width: 50rem) and (max-width: 86rem) {
+      .higress-standards-wrapper {
+        width: 100%;
+      }
+    }
+  }
+</style>

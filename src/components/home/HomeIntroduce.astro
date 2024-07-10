@@ -15,7 +15,7 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
 
 <div class="home-introduce-wrapper h-[65vh] relative">
   <video autoplay muted loop class="video-background">
-    <source src="https://cloud.video.taobao.com/vod/play/V1dONkhFTFY4Rkk2dWh2TkRKRXg/TGpXT3hHcFlsdlM0OEJOSWJEcXlMRzZQZWw1SnpKVVVCTlh4OVFON0V5UUVMUDduY1RJak82VE1sdXdHTjNOaHc9PQ" type="video/mp4">
+    <source src="https://cloud.video.taobao.com/vod/play/V3VEOGxHS3IxSU5wWkFYeTFuZU4wdHJ2eXloK1g1aXlXV0pvNU0zVjhmYTZQZWw1SnpKVVVCTlh4OVFON0V5UUVMUDduY1RJak82VE1sdXdHTjNOaHc9PQ" type="video/mp4">
   </video>
   <home-introduce
     class="introduce flex flex-col justify-center items-center bg-transparent h-full relative z-1"
@@ -35,7 +35,7 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
     <div class="flex h-[15%] ">
       <StarAndForkV2 client:load SITE={SITE} stargazers_count={stargazers_count} forks_count={forks_count} />
     </div>
-    <div class="w-[85.125rem] flex justify-end items-center h-[10%]">
+    <div class="versionInfo flex justify-end items-center h-[10%]">
       <div class="text-success text-xs">Release Note of V1.4.6</div>
     </div>
   </home-introduce>
@@ -56,6 +56,9 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
     a {
       text-decoration: inherit;
       color: theme("colors.warning");
+    }
+    .versionInfo{
+      width: 85.125rem;
     }
 
     .top-section {
@@ -138,7 +141,7 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
         min-height: 0;
         padding: 1.5rem;
       }
-      .top-section {
+      .top-section,.versionInfo {
         width: 100%;
       }
       /* .top-section .title {
@@ -178,7 +181,7 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
         padding: 2.5rem;
       }
       .top-section,
-      .bottom-section {
+      .bottom-section,.versionInfo {
         width: 100%;
       }
       .top-section .notes .pc-version-intro {
