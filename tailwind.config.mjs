@@ -2,46 +2,62 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 import { goatuiPlugins, getSafelist } from "@serverless-cd/goat-ui/src/plugins"
 import { GOAT_UI_CONTENT_PATH } from "@serverless-cd/goat-ui/src/common";
 import { UI } from './src/utils/config.ts';
+import plugin from "tailwindcss/plugin"
 
 const colorList = UI?.colors;
 // 预先设置tailwindcss的safelist，保证动态classname
-const safelist = getSafelist({ 
-  colorList: Object.keys(colorList)
+const safelist = getSafelist({
+	colorList: Object.keys(colorList)
 });
 
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  content: [
-    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    GOAT_UI_CONTENT_PATH,
+	content: [
+		"./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+		GOAT_UI_CONTENT_PATH,
 	],
 	safelist: safelist,
-  plugins: [...goatuiPlugins,
-  ],
-  theme: {
-    colors: colorList,
-    extend: {
-      fontFamily: {
-				sans: ["Roboto","SourceHanSans","sans-serif"],
-				mono: ["Roboto","SourceHanSans","sans-serif"],
-      },
-      keyframes: {
-        fadeByGroup: {
-          '0%, 35%, 100%': { opacity: 0 },
-    			'5%, 30%': { opacity: 1 }
-        }
-      },
+	plugins: [
+		...goatuiPlugins,
+		plugin(function({ addUtilities }) {
+			const newUtilities = {
+				// 卡片hover动效
+			  '.hover-transform-box-shadow': {
+				transition: 'transform 0.2s, box-shadow 0.2s',
+				'&:hover': {
+				  transform: 'translateY(-4px)',
+				  boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(0, 0, 0, 0.1)',
+				},
+			  },
+			}
+	  
+			addUtilities(newUtilities, ['responsive', 'hover']);
+		  }),
+	],
+	theme: {
+		colors: colorList,
+		extend: {
+			fontFamily: {
+				sans: ["Roboto", "SourceHanSans", "sans-serif"],
+				mono: ["Roboto", "SourceHanSans", "sans-serif"],
+			},
+			keyframes: {
+				fadeByGroup: {
+					'0%, 35%, 100%': { opacity: 0 },
+					'5%, 30%': { opacity: 1 }
+				}
+			},
 			animation: {
-        'fade-by-group': 'fadeByGroup 9s infinite linear'
-      },
+				'fade-by-group': 'fadeByGroup 9s infinite linear'
+			},
 			flex: {
 				'16': '0 0 16.66%',
 			},
 			maxWidth: {
 				'1/6': '16.66%'
-      },
-      typography: (theme) => ({
+			},
+			typography: (theme) => ({
 				blogToc: {
 					css: {
 						a: {
@@ -65,7 +81,7 @@ export default {
 						},
 					}
 				},
-				blogTocfold:{
+				blogTocfold: {
 					css: {
 						a: {
 							textDecoration: 'inherit',
@@ -80,7 +96,7 @@ export default {
 							paddingLeft: 0,
 							li: {
 								paddingLeft: '0.5rem',
-								paddingBottom:'0.5rem'
+								paddingBottom: '0.5rem'
 							}
 						},
 						li: {
@@ -103,18 +119,18 @@ export default {
 						}
 					}
 				}
-			})
-    }
-  },
-  daisyui: {
-    themes: [
-      {
-        // you can config light or dark theme color value with an object or as a string, when you set the theme as a string, it means you are using our default theme config.
-        // all theme color value can only be a string except 'accent' and 'gray'.
-        light: {
-          ...colorList
-        },
-      },
-    ],
-  },
+			}),
+		}
+	},
+	daisyui: {
+		themes: [
+			{
+				// you can config light or dark theme color value with an object or as a string, when you set the theme as a string, it means you are using our default theme config.
+				// all theme color value can only be a string except 'accent' and 'gray'.
+				light: {
+					...colorList
+				},
+			},
+		],
+	},
 };

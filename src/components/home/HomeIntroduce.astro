@@ -36,7 +36,7 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
       <StarAndForkV2 client:load SITE={SITE} stargazers_count={stargazers_count} forks_count={forks_count} />
     </div>
     <div class="versionInfo flex justify-end items-center h-[10%]">
-      <div class="text-success text-xs">Release Note of V1.4.6</div>
+        <a class="text-xs text-link block" href="https://github.com/alibaba/higress/releases/tag/v1.4.1" target="_blank"> Release Note of V1.4.1</a>
     </div>
   </home-introduce>
 
@@ -53,10 +53,10 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
       z-index: 0;
       object-fit: cover;
     }
-    a {
+    /* a {
       text-decoration: inherit;
-      color: theme("colors.warning");
-    }
+      color: theme("colors.link");
+    } */
     .versionInfo{
       width: 85.125rem;
     }

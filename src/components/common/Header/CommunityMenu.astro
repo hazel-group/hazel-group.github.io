@@ -9,7 +9,7 @@ import MenuContainer from "../MenuContainer.astro";
 import BlogCardContainer from "../BlogCardContainer.astro";
 import MenuList from "../MenuList.astro";
 
-const [comt, events, resources] = COMMUNITY_MENU_LIST;
+const [comt, events] = COMMUNITY_MENU_LIST;
 
 const { blogDescrip, blogImgs, posts } = await getBlogContentList(
   HEADER_ACTIVITY_CARD
@@ -17,7 +17,7 @@ const { blogDescrip, blogImgs, posts } = await getBlogContentList(
 ---
 
 <MenuContainer>
-  <MenuList menuData={{ comt, events, resources }} slot="left" />
+  <MenuList menuData={{ comt, events }} slot="left" />
   <BlogCardContainer
     blogData={{ categoryMap, blogDescrip, blogImgs, posts }}
     slot="right"

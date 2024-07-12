@@ -1,7 +1,5 @@
 import DocsMenu from "./DocsMenu.astro";
 import CommunityMenu from "./CommunityMenu.astro";
-import LearnMenu from "./LearnMenu.astro";
-import SolutionsMenu from "./SolutionsMenu.astro";
 
 
 export default [

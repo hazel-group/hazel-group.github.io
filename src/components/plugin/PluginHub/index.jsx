@@ -111,9 +111,9 @@ const PluginHub = (props) => {
 
 
   return (
-    <div class="flex flex-col justify-center items-center bg-secondary ">
+    <div class="flex flex-col justify-center items-center bg-secondary">
       {/* 过滤器 */}
-      <div className="page-hub-filters flex   w-[1016px] bg-base-100 h-[80px] mt-[72px] rounded-2xl ">
+      <div className="page-hub-filters flex   w-[1016px] bg-base-100 h-[80px] mt-[72px] rounded-2xl">
         <div class="filter-name w-[347px] flex items-center px-6">
           <Filter />
           <input
@@ -140,7 +140,7 @@ const PluginHub = (props) => {
           )
         }
       </div>
-      <div>
+      <div class='mb-20'>
         {Object.entries(cardData).map(([functionality, plugins]) => (
           <PluginCard key={functionality} dataSource={{ Functionality: functionality, plugins }} />
         ))}

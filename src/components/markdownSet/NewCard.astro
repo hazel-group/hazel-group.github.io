@@ -16,7 +16,7 @@ postData.date = new Date(postData.date);
 
 <div class:list={[...classList, "new-card-wrapper"]}>
   <div
-    class="new_card_container flex flex-row bg-primary/[0.9] text-secondary rounded-3xl"
+    class="new_card_container flex flex-row bg-primary/[0.9] text-secondary rounded-3xl hover-transform-box-shadow"
   >
     <div class="new_card_container_left basis-2/5 p-2">
       <div class="shadow-xl poster rounded-3xl w-full h-full">
@@ -95,15 +95,6 @@ postData.date = new Date(postData.date);
       transition:
         transform 0.2s,
         box-shadow 0.2s;
-    }
-    .new_card_container:hover {
-      transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-      transform: translateY(-4px);
-      box-shadow:
-        4px 4px 8px rgba(0, 0, 0, 0.1),
-        -4px -4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .background {

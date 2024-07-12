@@ -302,43 +302,13 @@ export const HEADER_ACTIVITY_CARD = [
   {
     "collection": "blog",
     "slug": "qwen-or-chatgpt",
-    "description": "Nacos 两周年献礼，Nacos 1.3.2 + Go SDK 1.0.0发布",
+    "description": "通义千问2.5“客串”ChatGPT4，你分的清吗",
     "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01bGnAVW1pFeLFnlaQL_!!6000000005331-2-tps-508-370.png"
   },
   {
     "collection": "blog",
-    "slug": "pilot-debug",
-    "description": "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
-    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png"
-  }
-];
-
-export const HEADER_LEARN_CARD = [
-  {
-    "collection": "blog",
-    "slug": "qwen-or-chatgpt",
-    "description": "Nacos 两周年献礼，Nacos 1.3.2 + Go SDK 1.0.0发布",
-    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01bGnAVW1pFeLFnlaQL_!!6000000005331-2-tps-508-370.png"
-  },
-  {
-    "collection": "blog",
-    "slug": "pilot-debug",
-    "description": "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
-    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png"
-  }
-];
-
-export const HEADER_SOLUTIONS_CARD = [
-  {
-    "collection": "blog",
-    "slug": "qwen-or-chatgpt",
-    "description": "Nacos 两周年献礼，Nacos 1.3.2 + Go SDK 1.0.0发布",
-    "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01bGnAVW1pFeLFnlaQL_!!6000000005331-2-tps-508-370.png"
-  },
-  {
-    "collection": "blog",
-    "slug": "pilot-debug",
-    "description": "Nacos 1.1.0发布，支持灰度配置和地址服务器模块",
+    "slug": "ai_plugin",
+    "description": "Higress助力AI大模型企业级应用落地",
     "imageUrl": "https://img.alicdn.com/imgextra/i4/O1CN01zfayJW1Lhe4kliPv9_!!6000000001331-2-tps-508-370.png"
   }
 ];
@@ -458,8 +428,8 @@ export const COMMUNITY_MENU_LIST = [
       },
       {
         label: "贡献社区",
-        target: "_blank",
-        link: "https://github.com/alibaba/higress/pulls",
+        target: "_self",
+        link: "/docs/developers/contributor-guide/guide_dev/",
         translations: {
           en: "Contribute community",
         },
@@ -470,30 +440,6 @@ export const COMMUNITY_MENU_LIST = [
         link: "https://github.com/alibaba/higress/graphs/contributors",
         translations: {
           en: "Contributors",
-        },
-      },
-    ],
-  },
-  {
-    label: "事件",
-    translations: {
-      en: "Events",
-    },
-    children: [
-      {
-        label: "新闻",
-        target: "_self",
-        link: "/news/",
-        translations: {
-          en: "News",
-        },
-      },
-      {
-        label: "活动",
-        target: "_self",
-        link: "/activity/",
-        translations: {
-          en: "Activity",
         },
       },
     ],
@@ -516,51 +462,6 @@ export const COMMUNITY_MENU_LIST = [
   },
 ];
 
-export const LEARN_CARD_LIST = [
-  {
-    title: "commmon.header.spring.tutorial",
-    description: "commmon.header.spring.tutorial.describe",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
-  {
-    title: "commmon.header.spring.boot.tutorial",
-    description: "commmon.header.spring.boot.tutorial.describe",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
-  {
-    title: "commmon.header.spring.cloud.alibaba.tutorial",
-    description: "commmon.header.spring.cloud.alibaba.tutorial.describe",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
-  {
-    title: "commmon.header.spring.mse.ebook",
-    description: "commmon.header.spring.mse.ebook.describe",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
-];
-
-export const SOLUTIONS_CARD_LIST = [
-  {
-    title: "commmon.header.microservices.engine",
-    description: "commmon.header.microservices.engine.describe",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
-  {
-    title: "commmon.header.microservices.cloud.native.gateway",
-    description: "commmon.header.microservices.cloud.native.gateway.describe",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
-  {
-    title: "commmon.header.microservices.governance",
-    description: "commmon.header.microservices.governance.describe",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
-  {
-    title: "commmon.header.microservices.application.service",
-    description: "commmon.header.microservices.application.service.describe",
-    href: "/blog/release-nacos132/?source=blog_article",
-  },
-];
 
 // Cloud页面价格 后付费的卡片内容
 export const getCloudPostpaidData = (t: Function) => [
