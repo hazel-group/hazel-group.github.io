@@ -1,7 +1,7 @@
 ---
 title: IP 限制
 keywords: [higress]
-description: IP 限制插件配置参考
+description: IP 限制插件通过将 IP 地址列入白名单或黑名单来限制对服务或路由的访问。支持对单个 IP 地址、多个 IP 地址和类似 10.10.10.0/24 的 CIDR 范围的限制。
 ---
 
 ## 功能说明

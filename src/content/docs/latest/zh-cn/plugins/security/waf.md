@@ -1,7 +1,7 @@
 ---
 title: WAF 防护
 keywords: [higress, waf]
-description: WAF 防护插件配置参考
+description: 开源版 WAF 插件，支持基于 OWASP ModSecurity Core Rule Set (CRS) 的 WAF 规则配置。
 ---
 
 ## 功能说明

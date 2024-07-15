@@ -1,7 +1,7 @@
 ---
 title: CORS
 keywords: [higress, cors]
-description: CORS 插件配置参考
+description: CORS 插件可以为服务端启用 CORS（Cross-Origin Resource Sharing，跨域资源共享）的返回 HTTP 响应头。
 ---
 
 ## 功能说明

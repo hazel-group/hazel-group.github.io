@@ -1,7 +1,7 @@
 ---
 title: JWT 认证
 keywords: [higress, auth]
-description: JWT 认证插件配置参考
+description: JWT 认证插件实现了基于 JWT(JSON Web Tokens) 进行认证鉴权的功能，支持从 HTTP 请求的 URL 参数、请求头、Cookie 字段解析 JWT，同时验证该 Token 是否有权限访问。
 ---
 
 ## 功能说明

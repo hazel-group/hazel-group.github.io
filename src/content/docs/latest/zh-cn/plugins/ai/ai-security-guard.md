@@ -1,7 +1,7 @@
 ---
 title: AI 内容安全
 keywords: [ higress, ai]
-description: AI 内容安全插件配置参考
+description: 基于AI 内容安全插件可对接[阿里云内容安全]，为大模型问答的合规性保驾护航。
 ---
 
 ## 功能说明 

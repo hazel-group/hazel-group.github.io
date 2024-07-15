@@ -1,7 +1,7 @@
 ---
 title: AI 缓存
 keywords: [higress, ai]
-description: AI 缓存插件配置参考
+description: AI 缓存插件实现了将 LLM 响应进行抽取并缓存的功能，对于向 LLM API 高频请求相同问题的场景可以显著降低响应时延并节省成本。
 ---
 
 ## 功能说明

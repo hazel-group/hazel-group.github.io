@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import { useTranslations } from "@i18n/util";
 const t = useTranslations(Astro);
-// TODO: 替换logo
 const companiesLogosTop = [
   "https://img.alicdn.com/imgextra/i1/O1CN01TleQq128FAP8POtL5_!!6000000007902-2-tps-241-42.png",
   "https://img.alicdn.com/imgextra/i4/O1CN01IOIk0s1bWgJ05f4HF_!!6000000003473-2-tps-1200-699.png",
@@ -75,6 +74,22 @@ const companiesLogosTop = [
         }
       </ul>
     </div>
+
+    <!-- <div class="mobile-bottom-card hidden">
+      {
+        companiesLogosTop.map((logo) => (
+          <div class="card-item">
+            <Image
+              src={logo}
+              alt="log"
+              width="139"
+              height="76"
+              class="object-contain"
+            />
+          </div>
+        ))
+      }
+    </div> -->
   </use-companies>
 </span>
 <script>
@@ -197,6 +212,9 @@ const companiesLogosTop = [
       }
       .bottom-silder {
         width: 100%;
+        display: none !important;
+      }
+      .top-title{
         display: none !important;
       }
       .mobile-bottom-card {

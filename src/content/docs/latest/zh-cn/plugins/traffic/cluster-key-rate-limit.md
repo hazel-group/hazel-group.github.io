@@ -1,7 +1,7 @@
 ---
 title: 基于 Key 集群限流
 keywords: [higress, rate-limit]
-description: 基于 Key 集群限流插件配置参考
+description: 基于 Key 集群限流插件实现了基于特定 Key 实现集群限流，键值来源可以是 URL 参数、HTTP 请求头、客户端 IP 地址、consumer 名称、Cookie 中 Key 名称。
 ---
 
 ## 功能说明

@@ -1,7 +1,7 @@
 ---
 title: HMAC 认证
 keywords: [higress, auth]
-description: HMAC 认证插件配置参考
+description: HMAC 认证插件实现了基于 HMAC 算法为 HTTP 请求生成不可伪造的签名，并基于签名实现身份认证和鉴权。
 ---
 
 ## 功能说明

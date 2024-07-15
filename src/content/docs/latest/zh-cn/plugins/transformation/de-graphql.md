@@ -1,7 +1,7 @@
 ---
 title: DeGraphQL
 keywords: [higress, transformer]
-description: Degraphql 插件配置参考
+description: Degraphql 插件用于将 Restful API 转换为 GraphQL 请求。
 ---
 
 ## 功能说明

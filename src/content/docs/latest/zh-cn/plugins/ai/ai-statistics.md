@@ -1,7 +1,7 @@
 ---
 title: AI 统计
 keywords: [ higress, ai]
-description: AI 统计插件配置参考
+description: AI 统计插件提供了路由级、服务级、模型级的 token 用量观测能力，包括日志、监控以及告警。
 ---
 
 ## 功能说明

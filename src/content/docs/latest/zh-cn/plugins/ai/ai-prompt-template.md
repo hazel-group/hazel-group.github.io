@@ -1,7 +1,7 @@
 ---
 title: AI 提示词模板
 keywords: [higress, ai]
-description: AI 提示词模板插件配置参考
+description: AI 提示词模版插件用于快速构建固定格式的 Prompt，对于特定应用需要限制问题格式的场景会比较有帮助，可以在网关上配置 Prompt 模版，并基于大模型的能力来提供对应的 API。
 ---
 
 ## 功能说明

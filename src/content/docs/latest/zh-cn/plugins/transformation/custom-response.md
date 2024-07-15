@@ -1,7 +1,7 @@
 ---
 title: 自定义应答
 keywords: [higress, transformer]
-description: 自定义应答插件配置参考
+description: 自定义应答插件支持配置自定义的响应，包括自定义 HTTP 应答状态码、HTTP 应答头，以及 HTTP 应答 Body。可以用于 Mock 响应，也可以用于判断特定状态码后给出自定义应答。
 ---
 
 ## 功能说明

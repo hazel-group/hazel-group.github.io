@@ -1,7 +1,7 @@
 ---
 title: OIDC 认证
 keywords: [higress, auth]
-description: OIDC 认证插件配置参考
+description: OIDC 认证插件实现了 OIDC 认证能力, 插件目前存在的 CSRF 攻击问题，不建议用于生产环境。
 ---
 
 ## 功能说明

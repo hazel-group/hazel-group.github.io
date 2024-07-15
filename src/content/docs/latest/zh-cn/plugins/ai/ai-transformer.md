@@ -1,7 +1,7 @@
 ---
 title: AI 请求/响应转换
 keywords: [higress, ai ,transformer]
-description: AI 请求/响应转换插件配置参考
+description: 基于 AI 请求/响应转换插件，用户可以不用写代码，直接使用自然语言的方式对网关的请求/响应进行修改。
 ---
 
 ## 功能说明

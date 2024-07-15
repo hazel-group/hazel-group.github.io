@@ -1,7 +1,8 @@
 ---
 title: 缓存控制
 keywords: [higress, transformer]
-description: 缓存控制插件配置参考
+description: 缓存控制插件实现了基于 URL 文件后缀来为请求的响应头部添加 `Expires` 和 `Cache-Control` 头部，从而方便浏览器对特定后缀的文件进行缓存，例如 `jpg`、`png` 等图片文件。
+
 ---
 
 ## 功能说明

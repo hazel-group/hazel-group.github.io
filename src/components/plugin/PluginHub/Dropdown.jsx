@@ -27,7 +27,7 @@ const Dropdown = (props) => {
   const isItemSelected = (item) => selectedItems.find(selectedItem => selectedItem.value === item.value);
   
   return (
-    <div  class=" w-[217px] ">
+    <div  class=" w-[217px] flex-1">
       <button class='w-full h-full cursor-pointer flex justify-between items-center bg-base-100 hover:bg-muted px-7' onClick={onDropdownClick} >
         <span>
           <span>{dataSource.name}</span>

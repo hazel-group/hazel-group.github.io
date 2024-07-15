@@ -3,11 +3,12 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import PluginIntroduce from "@components/plugin/PluginIntroduce.astro";
 import PluginHub from "@components/plugin/PluginHub/index";
 import CloudFooter from "@components/common/Footer.astro";
-import { useTranslations } from "@i18n/util";
 import { isChinese } from "@i18n/util";
+import { useTranslations } from "@i18n/util";
+const t = useTranslations(Astro);
 const ifzh = isChinese(Astro);
 import { getCollection } from "astro:content";
-import { generateHydrateScript } from "astro/runtime/server/hydration.js";
+import { toCodes } from "astro:i18n";
 
 const Functionality = {
   ai: "AI",
@@ -42,12 +43,12 @@ const dataSource = posts
           ? item.id.match(/plugins\/(.*?)\/[^\/]+\.md$/)[1]
           : ""
       ],
-    SupportBy: "higress",
+    SupportBy: "Higress",
   }))
   .filter((item) => item.Functionality);
 ---
 
-<BaseLayout title="plugin" description="plugin.description">
+<BaseLayout title={t('plugin.title')} description={t('plugin.description')}>
   <PluginIntroduce />
   <PluginHub client:load dataSource={dataSource} />
   <CloudFooter />

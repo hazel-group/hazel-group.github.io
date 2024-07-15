@@ -1,13 +1,13 @@
 ---
 title: AI 代理
 keywords: [higress, ai, proxy]
-description: AI 代理插件配置参考
+description: AI 代理插件实现了基于 OpenAI API 契约的 AI 代理功能。目前支持 OpenAI、Azure OpenAI、月之暗面（Moonshot）和通义千问等 AI 服务提供商。
+
 ---
 
 ## 功能说明
 
-`AI 代理`插件实现了基于 OpenAI API 契约的 AI 代理功能。目前支持 OpenAI、Azure OpenAI、月之暗面（Moonshot）和通义千问等 AI
-服务提供商。
+`AI 代理`插件实现了基于 OpenAI API 契约的 AI 代理功能。目前支持 OpenAI、Azure OpenAI、月之暗面（Moonshot）和通义千问等 AI 服务提供商。
 
 ## 配置字段
 

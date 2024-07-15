@@ -1,7 +1,7 @@
 ---
 title: Basic 认证
 keywords: [higress, auth]
-description: Basic 认证插件配置参考
+description: Basic 认证插件插件实现了基于 HTTP Basic Auth 标准进行认证鉴权的功能。
 ---
 
 ## 功能说明

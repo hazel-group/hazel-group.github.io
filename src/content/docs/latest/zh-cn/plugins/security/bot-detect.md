@@ -1,7 +1,7 @@
 ---
 title: 机器人拦截
 keywords: [higress, bot detect]
-description: Bot Detect 插件配置参考
+description: Bot Detect 插件用于识别并阻止互联网爬虫对站点资源的爬取。
 ---
 
 ## 功能说明

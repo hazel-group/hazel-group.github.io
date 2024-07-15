@@ -1,7 +1,7 @@
 ---
 title: Key 认证
 keywords: [higress, auth]
-description: API Key 认证插件配置参考
+description: API Key 认证插件实现了基于 API Key 进行认证鉴权的功能，支持从 HTTP 请求的 URL 参数或者请求头解析 API Key，同时验证该 API Key 是否有权限访问。
 ---
 
 ## 功能说明

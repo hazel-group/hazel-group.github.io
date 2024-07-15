@@ -1,7 +1,7 @@
 ---
 title: 请求校验
 keywords: [higress]
-description: 请求校验插件配置参考
+description: 请求校验插件用于提前验证向上游服务转发的请求。该插件使用 `JSON Schema` 机制进行数据验证，可以验证请求的 Body 以及 Header 的数据。
 ---
 
 ## 功能说明

@@ -67,10 +67,10 @@ export default {
 	'commmon.footer.actions.edas': '云服务 EDAS',
 	'commmon.actions.download': '下载',
 
-	'home.title': `${SITE.name}官网 | ${SITE.name} 官方社区 | ${SITE.name} 下载`,
+	'home.title': `${SITE.name}官网 | ${SITE.name} 官方社区 | ${SITE.name} 官方插件`,
 	'home.title.native.ai':'AI原生',
 	'home.title.native.api.gateway':'的API网关',
-	'home.description': 'Nacos 通过提供简单易用的动态服务发现、服务配置、服务共享与管理等服务基础设施，帮助用户在云原生时代，在私有云、混合云或者公有云等所有云环境中，更好的构建、交付、管理自己的微服务平台，更快的复用和组合业务服务，更快的交付商业创新的价值，从而为用户赢得市场。',
+	'home.description': 'Higress是基于阿里内部两年多的Envoy Gateway实践沉淀，以开源Istio + Envoy为核心构建的云原生API网关，实现了流量调度 + 服务治理 + 安全防护三合一的高集成能力，深度集成Dubbo、Nacos、Sentinel等微服务技术栈，能够为您带来低成本的网关部署运维及高性能、易使用、易扩展、功能丰富的一站式网关解决方案。',
 	'home.introduce.about': `关于 ${SITE.name}`,
 	'home.introduce.title': ' 一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台',
 	'home.introduce.nacos.code': '前往 GitHub',
@@ -166,6 +166,8 @@ export default {
 	'home.introduction.detailTitle.7':'详细标题7',
 	'home.introduction.detail.7':'详细介绍7',
 
+	'plugin.title': 'Higress 插件',
+	'plugin.description': 'Higress 的核心，提供了丰富的插件功能，让您可以轻松实现微服务应用的定制化需求。',
 	'plugin.introduction.des':'解锁无限可能：增强、定制和更易集成！',
 	
 

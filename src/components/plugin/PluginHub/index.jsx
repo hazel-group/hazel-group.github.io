@@ -47,19 +47,24 @@ const PluginHub = (props) => {
   }, []);
 
   useEffect(() => {
-    setCardData(getFilteredData());
-  }, [filterText]);
-
-  useEffect(() => {
-    // 根据筛选条件来更新 cardData
-    const filteredData = applyFilters(dataSource, allSelectedItems);
+    // 使用过滤器和input输入更新 cardData
+    const filteredData = applyFilters(dataSource, allSelectedItems, filterText);
     // 更新 PluginCard 的 dataSource
     setCardData(groupByFunctionality(filteredData));
-  }, [allSelectedItems]);
+  }, [dataSource, allSelectedItems, filterText]);
 
   // 过滤器筛选
-  const applyFilters = (data, filters) => {
-    return data.filter(item => {
+  const applyFilters = (data, filters, filterText) => {
+    let filteredData = data;
+
+    // input过滤
+    if (filterText) {
+      filteredData = filteredData.filter((item) =>
+        item.Title.toLowerCase().includes(filterText.toLowerCase())
+      );
+    }
+
+    return filteredData.filter(item => {
       return Object.entries(filters).every(([key, selectedOptions]) => {
         if (selectedOptions.length === 0) {
           return true; // 如果筛选项为空，则表示选择了所有，不需要过滤
@@ -68,18 +73,6 @@ const PluginHub = (props) => {
         return selectedOptions.find(option => option.name === filterValue);
       });
     });
-  };
-
-  // input输入筛选
-  const getFilteredData = () => {
-    let filteredData = dataSource;
-
-    if (filterText) {
-      filteredData = filteredData.filter((item) =>
-        item.Title.toLowerCase().includes(filterText.toLowerCase())
-      );
-    }
-    return groupByFunctionality(filteredData);
   };
 
   const handleDropdownClick = (label) => {
@@ -134,8 +127,8 @@ const PluginHub = (props) => {
   return (
     <div class="flex flex-col justify-center items-center bg-secondary">
       {/* 过滤器 */}
-      <div className="page-hub-filters flex   w-[1016px] bg-base-100 h-[80px] mt-[72px] rounded-2xl" ref={selectPlugin}>
-        <div class="filter-name w-[347px] flex items-center px-6">
+      <div className="page-hub-filters w-[80%] bg-base-100 h-[80px] mt-[72px] rounded-2xl hidden  md:flex lg:flex" ref={selectPlugin}>
+        <div class="filter-name w-[40%] flex items-center px-6">
           <Filter />
           <input
             type='text'
@@ -150,12 +143,12 @@ const PluginHub = (props) => {
         </div>
         {
           data.map((item, index) =>
-              <Dropdown
-                dataSource={item}
-                isOpen={openDropdown === item.label} // 传递一个标识，判断Dropdown是否应展开
-                onDropdownClick={() => handleDropdownClick(item.label)}
-                onSelectionChange={(selectedItems) => handleSelectionChange(item.label, selectedItems)}
-              />
+            <Dropdown
+              dataSource={item}
+              isOpen={openDropdown === item.label} // 传递一个标识，判断Dropdown是否应展开
+              onDropdownClick={() => handleDropdownClick(item.label)}
+              onSelectionChange={(selectedItems) => handleSelectionChange(item.label, selectedItems)}
+            />
           )
         }
       </div>

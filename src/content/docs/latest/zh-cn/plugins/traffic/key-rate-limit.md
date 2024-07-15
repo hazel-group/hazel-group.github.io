@@ -1,7 +1,7 @@
 ---
 title: 基于 Key 限流
 keywords: [higress, rate-limit]
-description: Key 限流插件配置参考
+description: Key 限流插件实现了基于特定键值实现限流，键值来源可以是 URL 参数、HTTP 请求头。
 ---
 
 ## 功能说明

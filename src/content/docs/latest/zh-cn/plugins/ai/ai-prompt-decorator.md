@@ -1,7 +1,7 @@
 ---
 title: AI 提示词修饰
 keywords: [higress, ai]
-description: AI提示词修饰插件配置参考
+description: AI 提示词修饰插件用于对 Prompt 进行调整，支持在用户输入的 Prompt 前后添加额外的 Prompt。
 ---
 
 ## 功能说明

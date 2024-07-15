@@ -1,7 +1,7 @@
 ---
 title: AI 检索增强生成
 keywords: [higress, ai, rag]
-description: AI 检索增强生成插件配置参考
+description: 基于 AI 检索增强生成（RAG）插件，可以通过对接阿里云向量检索服务实现 LLM-RAG 应用的开发。
 ---
 
 ## 功能说明

@@ -1,7 +1,7 @@
 ---
 title: 请求屏蔽
 keywords: [higress]
-description: 请求屏蔽插件配置参考
+description: 请求屏蔽插件实现了基于 URL、请求头等特征屏蔽 HTTP 请求，可以用于防护部分站点资源不对外部暴露。
 ---
 
 ## 功能说明

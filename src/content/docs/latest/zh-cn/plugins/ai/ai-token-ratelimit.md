@@ -1,7 +1,7 @@
 ---
 title: AI Token 限流
 keywords: [higress, ai, rate-limit]
-description: AI Token 限流插件配置参考
+description: AI Token 限流插件实现了基于特定键值实现 token 限流，键值来源可以是 URL 参数、HTTP 请求头、客户端 IP 地址、consumer 名称、cookie 中 key 名称。
 ---
 
 ## 功能说明

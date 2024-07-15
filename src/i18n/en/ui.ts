@@ -1,3 +1,4 @@
+import { SITE } from "@utils/config"
 export default {
 	// website
 	'commmon.header.menu.cloud': 'NACOS CLOUD',
@@ -67,10 +68,10 @@ export default {
 	'commmon.footer.actions.edas': 'Cloud Service EDAS',
 	'commmon.actions.download': 'Download',
 
-	'home.title': 'Nacos Website | Nacos Official Community | Nacos Download',
+	'home.title': `${SITE.name} Website | ${SITE.name} Official Community | ${SITE.name} Plugin`,
 	'home.title.native.ai':'Native AI',
 	'home.title.native.api.gateway':'API Gateway',
-	'home.description': 'Nacos by providing simple and easy to use dynamic service discovery, service configuration, service sharing and management and other service infrastructure, to help users in the cloud native era, in the private cloud, hybrid cloud or public cloud and all cloud environments, better build, deliver, manage their own microservice platform, faster reuse and combination of business services, faster delivery of business innovation value, So as to win the market for users',
+	'home.description': 'Powered by Istio and Envoy, Higress realizes the integration of the triple gateway architecture of traffic gateway, microservice gateway and security gateway, thereby greatly reducing the costs of deployment, operation and maintenance.',
 	'home.introduce.about': 'ABOUT Higress',
 	'home.introduce.title': 'An easy-to-use dynamic service discovery, configuration and service management platform for building cloud native applications',
 	'home.introduce.nacos.code': 'VIEW ON GITHUB',
@@ -157,6 +158,8 @@ export default {
 	'home.introduction.detailTitle.7':'Detailed Title 7',
 	'home.introduction.detail.7':'Detailed Introduction 7',
 
+	'plugin.title': 'Higress Plugins',
+	'plugin.description': 'At its core, Higress provides a rich set of plugins that allow you to easily customize your microservices application.',
 	'plugin.introduction.des':'Unlock Possibilities with Our Gateway Plugin: Easy Enhance, Customize, and Integrate!',
 
 	'home.introduction.card.des':'Accelerate the development, packaging, and deployment of individual and microservice applications',
