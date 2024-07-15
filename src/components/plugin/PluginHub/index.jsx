@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useState, useRef } from "preact/hooks";
 import Dropdown from "./Dropdown";
 import Filter from "./Filter";
 import Close from './Close';
@@ -7,9 +7,11 @@ import PluginCard from './PluginCard';
 const PluginHub = (props) => {
 
   const { dataSource } = props;
+  const selectPlugin = useRef(null);
   const data = [
     {
       label: 'Tiers',
+      name: '插件版本',
       options: [
         { name: '企业版', value: 0 },
         { name: '开源版', value: 1 },
@@ -17,6 +19,7 @@ const PluginHub = (props) => {
     },
     {
       label: 'Functionality',
+      name: '功能类别',
       options: [
         { name: 'AI', value: 0 },
         { name: '认证', value: 1 },
@@ -26,10 +29,11 @@ const PluginHub = (props) => {
       ]
     },
     {
-      label: 'Support by',
+      label: 'SupportBy',
+      name: '插件来源',
       options: [
-        { name: 'higress', value: 0 },
-        { name: 'Technical partner', value: 1 },
+        { name: 'Higress', value: 0 },
+        { name: '技术合作伙伴', value: 1 },
       ]
     },
   ]
@@ -38,7 +42,6 @@ const PluginHub = (props) => {
   // 添加状态来追踪当前展开的Dropdown
   const [openDropdown, setOpenDropdown] = useState(null);
   const [filterText, setFilterText] = useState('');
-
   useEffect(() => {
     setCardData(groupByFunctionality(dataSource)); // 初始化时设置原始分组数据
   }, []);
@@ -108,19 +111,37 @@ const PluginHub = (props) => {
     return groups;
   };
 
+  // 点击空白处关闭Dropdown
+  const handleClickOutSide = (event) => {
+    if (selectPlugin.current && !selectPlugin.current.contains(event.target)) {
+      handleCloseDropdown()
+    }
+  }
+
+  const handleCloseDropdown = () => {
+    setOpenDropdown(null);
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutSide);
+    return () => {
+      document.removeEventListener('click', handleClickOutSide);
+    };
+  }, []);
+
 
 
   return (
     <div class="flex flex-col justify-center items-center bg-secondary">
       {/* 过滤器 */}
-      <div className="page-hub-filters flex   w-[1016px] bg-base-100 h-[80px] mt-[72px] rounded-2xl">
+      <div className="page-hub-filters flex   w-[1016px] bg-base-100 h-[80px] mt-[72px] rounded-2xl" ref={selectPlugin}>
         <div class="filter-name w-[347px] flex items-center px-6">
           <Filter />
           <input
             type='text'
             id='filter-plugins'
-            placeholder="Filter plugins"
-            class='bg-base-100 ml-2'
+            placeholder="过滤插件名称"
+            class='bg-base-100 ml-2 outline-none '
             value={filterText}
             onInput={(e) => setFilterText(e.target.value)}
             autoComplete="off"
@@ -129,14 +150,12 @@ const PluginHub = (props) => {
         </div>
         {
           data.map((item, index) =>
-            <div key={index} className="filter-functionality border-l border-link w-[217px] pt-7">
               <Dropdown
                 dataSource={item}
                 isOpen={openDropdown === item.label} // 传递一个标识，判断Dropdown是否应展开
                 onDropdownClick={() => handleDropdownClick(item.label)}
                 onSelectionChange={(selectedItems) => handleSelectionChange(item.label, selectedItems)}
               />
-            </div>
           )
         }
       </div>

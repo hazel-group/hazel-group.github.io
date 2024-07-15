@@ -40,7 +40,7 @@ const t = useTranslations(Astro);
                           {item.introduce}
                         </div>
                         <div class="flex text-secondary">
-                          <img src={item.logo} class="w-12 h-12 object-cover mr-4">
+                          <img src={item.logo} class="w-auto h-12 object-contain mr-4">
                           <div class='text-lg'>
                             <p class="font-medium">{item.user}</p>
                             <p class="font-light">{item.userInfo}</p>
@@ -48,12 +48,16 @@ const t = useTranslations(Astro);
                         </div>
                       </div>
                       <div>
-                        <div class="right-container w-[285px] h-[236px] flex flex-col justify-around p-11">
-                          <p class="text-6xl text-secondary pl-6"><span class='text-[100px]'>{item.speed}</span>x</p>
-                          <p class='text-lg font-light text-secondary'>{item.speedDes}</p>
+                        <div class="right-container w-auto h-[236px] flex flex-col justify-around py-11 px-9">
+                          <p class="text-6xl text-secondary ">
+                            <span class='text-[100px]'>{item.speed}</span>
+                            <span>{item.unit}</span></p>
+                          {item.speedDes&& item.speedDes.map((des)=>(
+                            <p class='text-lg font-light text-secondary'>{des}</p>
+                          ))}
                         </div>
                         <div class="button ml-16 mb-[3.75rem] mt-11">
-                          <Button size="large" class="rounded-3xl text-xs w-[156px]" href={src}>
+                          <Button size="large" class="rounded-3xl text-xs w-[156px]" href={src} target="_blank">
                             {t("home.solutions.action")}
                           </Button>
                         </div>

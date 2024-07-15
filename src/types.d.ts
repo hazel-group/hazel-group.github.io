@@ -19,7 +19,8 @@ export interface Solution {
   user:string,
   userInfo:string,
   speed:string,
-  speedDes:string
+  unit:string,
+  speedDes:string[]
 }
 export interface ChooseReason {
   title: UiKeys;

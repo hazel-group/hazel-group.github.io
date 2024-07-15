@@ -26,7 +26,7 @@ const posts = await getCollection("docs", (item) => {
 
 const generateLink = (slug) => {
   const arr = slug.split("/" + lang);
-  return (lang ==='en' ? "/en" : "") + "/docs/" + arr.join("") + "/";
+  return (lang ==='en' ? "/en" : "") + "/docs/" + arr.join("") + "/?source=plugin/";
 }
 
 const dataSource = posts
@@ -42,7 +42,7 @@ const dataSource = posts
           ? item.id.match(/plugins\/(.*?)\/[^\/]+\.md$/)[1]
           : ""
       ],
-    SupportedBy: "",
+    SupportBy: "higress",
   }))
   .filter((item) => item.Functionality);
 ---

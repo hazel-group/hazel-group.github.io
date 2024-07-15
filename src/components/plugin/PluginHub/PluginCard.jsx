@@ -3,7 +3,7 @@ const PluginCard = (props) => {
   const { dataSource } = props;
 
   return (
-    <div class='w-[1016px] mt-12'>
+    <div class='w-[1016px] mt-12 mb-8'>
       <p class="text-[36px] leading-9 font-medium mb-12">{dataSource.Functionality}</p>
       <div class=" grid grid-cols-3 gap-4">
         {dataSource.plugins.map((item, index) => <a href={item.Link} class='no-underline '>

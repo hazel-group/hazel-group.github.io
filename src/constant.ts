@@ -129,40 +129,43 @@ export const COMPANY_CUSTOMERS: Customer[] = [
 export const SOLUTION_LIST: Solution[] = [
   {
     checked: true,
-    src: "",
-    introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
-    logo: '',
+    src: "https://mp.weixin.qq.com/s/Ks1iOCQFFMyLJp8C7HtpaA",
+    introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定",
+    logo: 'https://img.alicdn.com/imgextra/i2/O1CN01ArAIoX1Ca0zd6BlrB_!!6000000000096-2-tps-1058-450.png',
     user: '方海涛',
     userInfo: 'Sealos 创始人，环界云计算 CEO',
     speed: '40',
-    speedDes: '40倍 路由变更生效速度'
+    unit:'x',
+    speedDes: ['40倍 路由变更生效速度']
   },
   {
     checked: false,
-    src: "",
-    introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
-    logo: '',
-    user: '方海涛',
-    userInfo: 'Sealos 创始人，环界云计算 CEO',
-    speed: '40',
-    speedDes: '40倍 路由变更生效速度'
+    src: "https://mp.weixin.qq.com/s/yg_-MuI2psneWPEUBCP96w",
+    introduce: "费芮互动通过 Higress 解决了原本 Nginx Ingress 网关的诸多痛点，性能提升90%，响应时间下降50%，并大幅提升业务入口的稳定及安全性，高效支撑每日1亿+粉丝交互， 4万+线下门店、每月3000万+笔的移动支付需求。",
+    logo: 'https://img.alicdn.com/imgextra/i1/O1CN01OItOyX1iugZcRz2jC_!!6000000004473-2-tps-160-130.png',
+    user: '戴喜军',
+    userInfo: '上海费芮网络科技系统运维副总监',
+    speed: '90',
+    unit:'%',
+    speedDes: ['90% 性能提升','50% HTTPS 延时下降']
   },
   {
     checked: false,
-    src: "",
-    introduce: "Sealos几乎打爆了市面上所有开源网关 ... 需要有支撑数十万条 Ingress 的能力... 在我们的场景里面能够达到生产可用的目前只有 Higress...我们之前的代码都是用的Nginx Ingress，所以几乎没有任何迁移成本，直接几分钟的升级就可以搞定。",
-    logo: '',
-    user: '方海涛',
-    userInfo: 'Sealos 创始人，环界云计算 CEO',
-    speed: '40',
-    speedDes: '40倍 路由变更生效速度'
+    src: "https://mp.weixin.qq.com/s/AzFfHEW9_vBLbUjHsU_iow",
+    introduce: "美洽是全球智能云客服服务商，除了阿里云，美洽在国外其他云上也有部署业务，希望统一多云网关技术架构，Higress 在阿里云上有成熟的企业版产品，又有开源版，正好符合... 基于 Websocket  进行 AI 客服长连接保持和消息通信，非常关注网关更新网关配置所带来的副作用 ... 在迁移到 Higress 上之后 ，彻底解决配置更新 reload 带来的断线重连风暴问题",
+    logo: 'https://img.alicdn.com/imgextra/i1/O1CN010vTgRy1eHWEx9uMCX_!!6000000003846-2-tps-760-360.png',
+    user: '古建国',
+    userInfo: '美洽科技架构师',
+    speed: '100',
+    unit:'%',
+    speedDes: ['100% 连接无损的配置热更新']
   },
 ];
 
 // 文档贡献板块的链接列表
 export const getCommunityLinkList = (t: Function): CommunityLink[] => [
   {
-    href: `/blog`,
+    href: `/blog/`,
     text: t("rightSidebar.readBlog"),
     icon: "basil:document-outline",
   },
@@ -180,7 +183,7 @@ export const getCommunityLinkList = (t: Function): CommunityLink[] => [
 export const getContributeLinkList = (lang: string, editHref: string, feedbackUrl: string, t: Function): ContributeLink[] => [
   {
     // TODO: 替换贡献者指南链接
-    href: `/${lang}/v2/contribution/contributing`,
+    href: `/${lang}/developers/contributor-guide/guide_dev/`,
     text: t("rightSidebar.contributorGuides"),
     depth: 2,
     icon: "tabler:book",
@@ -470,7 +473,7 @@ export const getCloudPostpaidData = (t: Function) => [
     price: t("cloud.introduce.free.price"),
     priceDesc: [t("cloud.introduce.free.feature")],
     linkName: t("cloud.introduce.free.link"),
-    link: "https://free.aliyun.com/?searchKey=spring%20cloud&spm=sca.cloud.topbar.0.0.0",
+    link: "https://free.aliyun.com/?searchKey=spring%20cloud&spm=higress.cloud.topbar.0.0.0",
     feature: [
       t("cloud.introduce.free.discount.1"),
     ],
@@ -481,7 +484,7 @@ export const getCloudPostpaidData = (t: Function) => [
     price: '¥0.84',
     priceSupply: t("cloud.introduce.regular.price_supply"),
     linkName: t("cloud.introduce.regular.link"),
-    link: "https://www.aliyun.com/product/aliware/mse?spm=sca.cloud.topbar.0.0.0",
+    link: "https://www.aliyun.com/product/aliware/mse?spm=higress.cloud.topbar.0.0.0",
     feature: [
       t("cloud.introduce.regular.discount.1"),
     ],
@@ -494,7 +497,7 @@ export const getCloudPostpaidData = (t: Function) => [
     price: '¥0.135',
     priceSupply: t('cloud.introduce.serverless.price_supply'),
     linkName: t("cloud.introduce.regular.link"),
-    link: "https://www.aliyun.com/product/aliware/mse?spm=sca.cloud.topbar.0.0.0",
+    link: "https://www.aliyun.com/product/aliware/mse?spm=higress.cloud.topbar.0.0.0",
     feature: [t('cloud.introduce.serverless.feature')],
   },
 ];
@@ -508,7 +511,7 @@ export const getCloudResourcePackData = (t: Function) => [
     unit: "",
     priceDesc: [t("cloud.introduce.free.feature")],
     linkName: t("cloud.introduce.free.link"),
-    link: "https://free.aliyun.com/?searchKey=spring%20cloud&spm=sca.cloud.topbar.0.0.0",
+    link: "https://free.aliyun.com/?searchKey=spring%20cloud&spm=higress.cloud.topbar.0.0.0",
     feature: [
       t("cloud.introduce.free.discount.1"),
     ],
@@ -520,7 +523,7 @@ export const getCloudResourcePackData = (t: Function) => [
     priceSupply: t("cloud.introduce.regular.unit"),
     priceDes: t('cloud.introduce.regular.des'),
     linkName: t("cloud.introduce.regular.link"),
-    link: "https://www.aliyun.com/product/aliware/mse?spm=sca.cloud.topbar.0.0.0",
+    link: "https://www.aliyun.com/product/aliware/mse?spm=higress.cloud.topbar.0.0.0",
     feature: [
       t("cloud.introduce.regular.discount.1"),
       t("cloud.introduce.regular.feature.1"),
@@ -535,7 +538,7 @@ export const getCloudResourcePackData = (t: Function) => [
     price: '¥92 ',
     priceSupply: '元起',
     linkName: t("cloud.introduce.regular.link"),
-    link: "https://www.aliyun.com/product/aliware/mse?spm=sca.cloud.topbar.0.0.0",
+    link: "https://www.aliyun.com/product/aliware/mse?spm=higress.cloud.topbar.0.0.0",
     feature: [
       t('cloud.introduce.serverless.feature'),
       t('cloud.introduce.serverless.feature.1'),

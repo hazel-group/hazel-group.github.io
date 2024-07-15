@@ -1,5 +1,6 @@
 ---
-
+import { Button } from "@serverless-cd/goat-ui";
+import { Icon } from "@astrojs/starlight/components";
 ---
 
 <div class="lg:sl-flex two-column-content-wrapper">
@@ -12,7 +13,19 @@
       </aside>
     )
   }
-  <div class="main-pane"><slot /></div>
+  <div class="main-pane">
+    <div id="back-btn" class="pt-4 pl-6">
+      <Button
+        variant="secondary"
+        target="_self"
+        class="rounded-3xl"
+      >
+        <Icon name="left-arrow" class="text-lg align-middle" />
+        <span>BACK</span>
+      </Button>
+    </div>
+    <slot />
+  </div>
 </div>
 
 <style is:global>
@@ -58,3 +71,34 @@
     }
   }
 </style>
+
+<script>
+  function addBackBtnClick (){
+  const url = new URL(window.location.href);
+  let source = url.searchParams.get("source");
+  if(source) {
+    source = source.replace(/_/g, "/");
+  };
+  const backBtn: HTMLAnchorElement = document.querySelector("#back-btn a");
+  if(backBtn){
+    backBtn.onclick = (e) => {
+      e.preventDefault();
+      const params = new URLSearchParams(window.location.search);
+      params.delete("source")
+
+      let newPathname = ""
+      if (source && source !== 'undefined') {
+          newPathname = `/${source}/`;
+      } else {
+          newPathname = '/';
+      }
+      const newUrl = `${newPathname}${params.toString() ? `?${params.toString()}` : ''}`;
+
+      window.location.href = newUrl; 
+    };
+  }
+  
+}
+document.addEventListener("astro:page-load",addBackBtnClick);
+document.addEventListener("DOMContentLoaded", addBackBtnClick)
+</script>

@@ -46,12 +46,13 @@ export default {
 	'commmon.markdown.subheading.page':'This Page',
 	'commmon.base.layout.keywords':'Dynamic service discovery, configuration management, service management',
 	'commmon.base.page.previousLink':'Prev',
-	'commmon.base.page.nextLink':'Next',
+	'commmon.base.page.nextLink': 'Next',
+	'common.base.quick.start': 'Quick Start',
 
 
 	'commmon.footer.title': 'Vision',
 	'commmon.footer.subscribe': 'By providing an easy-to-use service infrastructure such as dynamic service discovery,service configuration, service sharing and management and etc.',
-	'commmon.footer.description':'By providing an easy-to-use service infrastructure such as dynamic service discovery, service configuration, service sharing and management and etc., Nacos help users better construct, deliver and manage their own service platform, reuse and composite business service faster and deliver value of business innovation more quickly so as to win market for users in the era of cloud native and in all cloud environments, such as private, mixed, or public clouds.',
+	'commmon.footer.description':"Higress provide outstanding cloud-native application networking solutions with AI by default capabilities, enabling enterprises to swiftly build AI Native applications. We are committed to creating world-class intelligent gateway products, accelerating enterprises' rapid transformation in the AI wave.",
 	'commmon.footer.email.placeholder': 'Enter email address…',
 	'commmon.footer.actions.subscribe': 'SUBSCRIBE',
 	'commmon.footer.docs': 'DOCUMENTATION',
@@ -67,6 +68,8 @@ export default {
 	'commmon.actions.download': 'Download',
 
 	'home.title': 'Nacos Website | Nacos Official Community | Nacos Download',
+	'home.title.native.ai':'Native AI',
+	'home.title.native.api.gateway':'API Gateway',
 	'home.description': 'Nacos by providing simple and easy to use dynamic service discovery, service configuration, service sharing and management and other service infrastructure, to help users in the cloud native era, in the private cloud, hybrid cloud or public cloud and all cloud environments, better build, deliver, manage their own microservice platform, faster reuse and combination of business services, faster delivery of business innovation value, So as to win the market for users',
 	'home.introduce.about': 'ABOUT Higress',
 	'home.introduce.title': 'An easy-to-use dynamic service discovery, configuration and service management platform for building cloud native applications',
@@ -135,8 +138,9 @@ export default {
 	'home.overviewcard.about': 'Panoramic overview',
 	'home.overviewcard.title': 'Overview Image',
 	'home.standards.title': 'Standards',
-	'home.standards.subtitle': 'Manage configurations in all environments in a centralized, externalized, and dynamic approach. ',
+	'home.standards.subtitle': 'Strictly following the Ingress, Gateway API, and Istio API standards ensures seamless one-click migration of similar gateways. ',
 	'home.security.capability.title':'Security Capability Empowerment',
+	'home.security.capability.subtitle':'Higress offer WAF security, authorization, and traffic protection at both global and route-specific levels, ensuring your business automatically benefits from enterprise-grade security capabilities.',
 
 	'home.introduction.detailTitle.1':'About Spring Boot',
 	'home.introduction.detail.1':'Accelerate the development, packaging, and deployment of individual and microservice applications',
@@ -152,6 +156,8 @@ export default {
 	'home.introduction.detail.6':'Detailed Introduction 6',
 	'home.introduction.detailTitle.7':'Detailed Title 7',
 	'home.introduction.detail.7':'Detailed Introduction 7',
+
+	'plugin.introduction.des':'Unlock Possibilities with Our Gateway Plugin: Easy Enhance, Customize, and Integrate!',
 
 	'home.introduction.card.des':'Accelerate the development, packaging, and deployment of individual and microservice applications',
 	'home.introduction.card.sca.des':'A one-stop solution for microservice application development and governance',

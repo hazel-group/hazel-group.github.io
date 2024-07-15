@@ -47,10 +47,11 @@ export default {
 	'commmon.markdown.subheading.page':'本页',
 	'commmon.base.layout.keywords':'动态服务发现,配置管理,服务管理',
 	'commmon.base.page.previousLink':'上一篇',
-	'commmon.base.page.nextLink':'下一篇',
+	'commmon.base.page.nextLink': '下一篇',
+	'common.base.quick.start': '快速开始',
 	
 	'commmon.footer.title': '愿景',
-	'commmon.footer.description':'Nacos 通过提供简单易用的动态服务发现、服务配置、服务共享与管理等服务基础设施，帮助用户在云原生时代，在私有云、混合云或者公有云等所有云环境中，更好的构建、交付、管理自己的微服务平台，更快的复用和组合业务服务，更快的交付商业创新的价值，从而为用户赢得市场。',
+	'commmon.footer.description':'Higress 通过卓越的云原生应用网络解决方案，结合AI by default的能力，帮助企业快速构建AI Native应用。我们致力于打造世界一流的智能化网关产品，加速企业在AI浪潮中的快速转型。',
 	'commmon.footer.subscribe': '提供易于使用的服务基础设施，如动态服务发现、服务配置、服务共享和管理等等。',
 	'commmon.footer.email.placeholder': '请输入电子邮件地址...',
 	'commmon.footer.actions.subscribe': '订阅',
@@ -67,6 +68,8 @@ export default {
 	'commmon.actions.download': '下载',
 
 	'home.title': `${SITE.name}官网 | ${SITE.name} 官方社区 | ${SITE.name} 下载`,
+	'home.title.native.ai':'AI原生',
+	'home.title.native.api.gateway':'的API网关',
 	'home.description': 'Nacos 通过提供简单易用的动态服务发现、服务配置、服务共享与管理等服务基础设施，帮助用户在云原生时代，在私有云、混合云或者公有云等所有云环境中，更好的构建、交付、管理自己的微服务平台，更快的复用和组合业务服务，更快的交付商业创新的价值，从而为用户赢得市场。',
 	'home.introduce.about': `关于 ${SITE.name}`,
 	'home.introduce.title': ' 一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台',
@@ -135,9 +138,9 @@ export default {
 	'home.overviewcard.about': '全景概览',
 	'home.overviewcard.title': '微服务全景图',
 	'home.standards.title': '标准化',
-	'home.standards.subtitle': '以集中式、外部化和动态的方法管理所有环境中的配置。',
+	'home.standards.subtitle': '严格遵循Ingress、Gateway API 和 Istio API标准，可实现同类网关一键平滑迁移',
 	'home.security.capability.title':'安全能力授权',
-
+	'home.security.capability.subtitle':'提供全局和路由粒度的WAF安全，认证鉴权和流量防护能力，使您的业务默认具备企业级安全能力。',
 
 	'home.introduction.card.des':'加速单体、微服务应用开发、打包与部署',
 	'home.introduction.card.sca.des':'微服务应用开发与治理一站式解决方案',
@@ -162,6 +165,8 @@ export default {
 	'home.introduction.detail.6':'详细介绍6',
 	'home.introduction.detailTitle.7':'详细标题7',
 	'home.introduction.detail.7':'详细介绍7',
+
+	'plugin.introduction.des':'解锁无限可能：增强、定制和更易集成！',
 	
 
 	'cloud.title': 'Higress Cloud',

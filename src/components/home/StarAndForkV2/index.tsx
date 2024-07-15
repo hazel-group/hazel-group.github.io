@@ -1,14 +1,15 @@
 import Button from './Button.jsx';
 import Star from "./Star.jsx";
-import Fork from "./Fork.jsx"
+import Start from './Start.jsx';
 import { useEffect, useState } from "preact/hooks";
 import useCustomSWR from "@/utils/useCustomSWR";
 import type { StarAndForkT } from 'src/types';
 
 
+
 const StarAndForkV2 = (props: StarAndForkT) => {
 	const { SITE } = props;
-	const { swrData={}, fetchData } = useCustomSWR("https://git-proxy-test-git-proxy-ieeqhwptvv.cn-hongkong.fcapp.run/api/alibaba/spring-cloud-alibaba");
+	const { swrData={}, fetchData } = useCustomSWR("https://git-proxy-test-git-proxy-ieeqhwptvv.cn-hongkong.fcapp.run/api/alibaba/higress");
 	const [startCount, setStartCount] = useState(props.stargazers_count || 0);
 	const [forkCount, setForkCount] = useState(props.forks_count || 0);
 
@@ -45,14 +46,13 @@ const StarAndForkV2 = (props: StarAndForkT) => {
 
 			<Button 
 				size="large"
-				class="ml-4 rounded-3xl"
-				href={`${SITE.githubUrl}/fork`}
-				target="_blank"
 				type="primary"
-                iconClass="text-base-100"
+				class="rounded-3xl"
+				href="/docs/latest/user/quickstart/"
+				target="_self"
 			>
-				<Fork theme="light" class="text-base-100"/>
-				<span class="ml-2 text-base-100">{forkCount}</span>
+				<Start />
+				<span class="ml-2">快速开始</span>
 			</Button>
         </star-and-fork>
 	);

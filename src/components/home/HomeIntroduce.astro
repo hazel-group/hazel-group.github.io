@@ -10,7 +10,7 @@ const t = useTranslations(Astro);
 const ifzh = isChinese(Astro);
 
 // 服务端构建预先获取star数和fork数作为兜底
-const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("https://api.github.com/repos/alibaba/spring-cloud-alibaba");
+const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("https://api.github.com/repos/alibaba/higress");
 ---
 
 <div class="home-introduce-wrapper h-[65vh] relative">
@@ -21,18 +21,18 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
     class="introduce flex flex-col justify-center items-center bg-transparent h-full relative z-1"
   >
   
-    <div class="flex flex-col justify-center items-center h-[75%]">
+    <div class=" flex flex-col justify-center items-center h-[75%]">
       <div
-        class=`title leading-[96px] text-base-100 font-medium  ${ifzh ? 'text-[72px]' : 'text-[76px]'}`
+        class=`top-introduce-title leading-[96px] text-base-100 font-medium  ${ifzh ? 'text-[72px]' : 'text-[76px]'}`
       >
-        Higress: <span class="ai-description">AI原生</span>的API网关
+        Higress: <span class="ai-description">{t('home.title.native.ai')}</span>{t('home.title.native.api.gateway')}
       </div>
       <div class="text-[20px] leading-5 text-link ">
         An AI-Native API Gateway
       </div>
     </div>
 
-    <div class="flex h-[15%] ">
+    <div class="flex h-[15%]">
       <StarAndForkV2 client:load SITE={SITE} stargazers_count={stargazers_count} forks_count={forks_count} />
     </div>
     <div class="versionInfo flex justify-end items-center h-[10%]">
@@ -71,7 +71,7 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
     .top-section .notes .mobile-version-intro {
       display: none;
     }
-    .top-section .shortcut button {
+    .shortcut button {
       height: 3rem;
       min-height: 3rem;
       padding-left: 1rem;
@@ -141,20 +141,23 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
         min-height: 0;
         padding: 1.5rem;
       }
-      .top-section,.versionInfo {
+      .top-section,.introduce {
         width: 100%;
       }
-      /* .top-section .title {
-        font-size: 1.875rem;
-        line-height: 2.25rem;
-      } */
+      .top-introduce-title {
+        font-size: 1.875rem !important;
+        line-height: 2.25rem !important;
+      }
+      .versionInfo{
+      width: 100%;
+    }
       .top-section .notes .pc-version-intro {
         display: none;
       }
       .top-section .notes .mobile-version-intro {
         display: inline;
       }
-      .top-section .shortcut button {
+      .shortcut button {
         height: 2rem;
         min-height: 2rem;
         padding-left: 0.75rem;
@@ -179,9 +182,10 @@ const { stargazers_count=0, forks_count=0 }:StarAndForkT = await sendFetch("http
     @media (min-width: 50rem) and (max-width: 86rem) {
       .introduce {
         padding: 2.5rem;
+        width: 100%;
       }
       .top-section,
-      .bottom-section,.versionInfo {
+      .bottom-section, {
         width: 100%;
       }
       .top-section .notes .pc-version-intro {

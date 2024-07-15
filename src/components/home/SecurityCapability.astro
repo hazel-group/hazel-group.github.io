@@ -6,7 +6,7 @@ const t = useTranslations(Astro);
 ---
 
 <higress-security
-  class="higress-security flex flex-col items-center justify-center bg-neutral py-8"
+  class="higress-security flex flex-col items-center justify-center bg-neutral py-0 md:py-8"
 >
   <div class="higress-security-wrapper flex items-center justify-around">
     <div class="left-security-warp">
@@ -17,21 +17,21 @@ const t = useTranslations(Astro);
     <div class="right-security-container h-full flex flex-col justify-center">
       <div class="flex flex-col">
         <div
-          class="text-base-100 text-[44px] leading-[56px] text-center font-medium tracking-normal md:text-left"
+          class="security_capability_title text-base-100 text-center font-medium tracking-normal md:text-left"
         >
           {t("home.security.capability.title")}
         </div>
         <div
-          class="title text-success font-normal text-center text-sm my-8 md:my-12 md:text-left"
+          class="title max-w-[450px] text-success font-normal text-center text-sm my-8 md:my-12 md:text-left"
         >
-          {t("home.standards.subtitle")}
+          {t("home.security.capability.subtitle")}
         </div>
       </div>
       <Button
         size="large"
         type="normal"
-        class="rounded-3xl text-neutral w-[166px] h-[52px]"
-        href="https://github.com/alibaba/higress/graphs/contributors"
+        class="security-btn rounded-3xl text-neutral"
+        href="https://higress.io/zh-cn/docs/plugins/security/waf"
         iconClass="text-neutral"
       >
         {t("home.contributors.learn.more")}
@@ -45,10 +45,22 @@ const t = useTranslations(Astro);
     .higress-security-wrapper {
       width: 85.125rem;
     }
+    .security_capability_title {
+      font-size: 2.75rem;
+      line-height: 3.5rem;
+    }
+    .security-btn{
+      width: 10.375rem;
+      height: 3.25rem;
+    }
     .left-security-warp {
+      overflow: hidden;
       img {
         width: 523px;
         height: 430px;
+        object-fit: contain;
+        position: relative;
+        left: -60px;
       }
     }
     @media (max-width: 50rem) {
@@ -60,6 +72,14 @@ const t = useTranslations(Astro);
       .right-security-container {
         width: 100%;
         align-items: center;
+      }
+      .security-btn{
+        width: 7.5rem;
+        height: 1.875rem;
+    }
+      .security_capability_title {
+        font-size: 1.125rem;
+        line-height: 1.25rem;
       }
       .left-security-warp {
         width: 100%;
