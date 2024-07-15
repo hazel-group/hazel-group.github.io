@@ -1,18 +1,7 @@
-import DocsMenu from "./DocsMenu.astro";
 import CommunityMenu from "./CommunityMenu.astro";
 
 
 export default [
-  // {
-  //   label: "文档",
-  //   translations: {
-  //     en: "DOCS",
-  //   },
-  //   trigger: "hover",
-  //   slot: DocsMenu,
-  //   position: "absolute",
-  //   activePath: ["/docs"],
-  // },
   {
     label: "文档",
     translations: {
@@ -23,6 +12,15 @@ export default [
     route:"/docs/latest/overview/what-is-higress/"
   },
   {
+    label: "博客",
+    translations: {
+      en: "BLOG",
+    },
+    trigger: "click",
+    target: "_self",
+    route: "/blog/",
+  },
+  {
     label: "企业版 Higress",
     translations: {
       en: "Higress CLOUD",
@@ -31,6 +29,16 @@ export default [
     target: "_self",
     route: "/cloud/",
     activePath: ["/cloud"],
+  },
+  {
+    label: "AI 插件",
+    translations: {
+      en: "PLUGIN",
+    },
+    trigger: "click",
+    target: "_self",
+    route: "/plugin/",
+    activePath: ["/plugin"],
   },
   {
     label: "社区",
@@ -52,25 +60,8 @@ export default [
     target: "_self",
     route: "/docs/developers/developers_dev/",
   },
-  {
-    label: "博客",
-    translations: {
-      en: "BLOG",
-    },
-    trigger: "click",
-    target: "_self",
-    route: "/blog/",
-  },
-  {
-    label: "AI插件",
-    translations: {
-      en: "PLUGIN",
-    },
-    trigger: "click",
-    target: "_self",
-    route: "/plugin/",
-    activePath: ["/plugin"],
-  },
+
+  
   {
     label: "控制台样例",
     translations: {
