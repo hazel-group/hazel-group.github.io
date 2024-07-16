@@ -94,7 +94,7 @@ export default {
 	'home.website.edge.4.title': '安全防护',
 	'home.website.edge.4.description': '提供JWT、OIDC、自定义认证鉴权，深度集成开源Web应用防火墙，使企业快速具备安全防护能力。',
 	'home.open.ecosystem.title': '生态集成',
-	'home.open.ecosystem.subtitle': '在Istio和Envoy的助力下，highress实现了流量网关、微服务网关和安全网关三重网关架构的集成，从而大大降低了部署和运维成本。',
+	'home.open.ecosystem.subtitle': '在Istio和Envoy的助力下，Higress实现了流量网关、微服务网关和安全网关三重网关架构的集成，从而大大降低了部署和运维成本。',
 	'home.ai.structure.title': 'AI 网关',
 	'home.ai.structure.subtitle': '为开发者提供了一站式的AI插件集和增强后端模型调度处理能力，使得AI与网关的集成更加便捷和高效。',
 	'home.ebook.resource': '资源',

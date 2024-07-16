@@ -66,3 +66,4 @@ ui:
     muted: "#C5D7F7" #blue-03
     # 搜索/语言切换组件的文字颜色
     link: "#DDDEE4" #gray-03
+    language: "#222327"
