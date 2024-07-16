@@ -23,7 +23,7 @@ export default [
   {
     label: "企业版 Higress",
     translations: {
-      en: "Higress CLOUD",
+      en: "HIGRESS CLOUD",
     },
     trigger: "click",
     target: "_self",
@@ -54,7 +54,7 @@ export default [
   {
     label: "开发者",
     translations: {
-      en: "Developer",
+      en: "DEVELOPER",
     },
     trigger: "click",
     target: "_self",
