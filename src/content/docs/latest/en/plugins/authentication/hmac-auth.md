@@ -1,7 +1,7 @@
 ---
 title: HMAC authentication
 keywords: [higress,hmac]
-description: HMAC authentication plug-in configuration reference
+description: HMAC authentication implements the generation of tamper-proof signatures for HTTP requests based on HMAC algorithm, and uses the signature for identity authentication and authorization.
 ---
 
 ## Function Description

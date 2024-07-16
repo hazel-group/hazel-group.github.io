@@ -4,6 +4,14 @@ import { getEntries } from "astro:content";
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
+// 吊顶提示文案
+export const TOPBAR = {
+  "text": "8月2日（周五）开源沙龙首个AI原生应用架构专场 | 上海站 ，欢迎报名！",
+  "mobileText": "欢迎报名8月2日上海首个AI原生应用架构开源沙龙！",
+  "link": "https://summit.aliyun.com/cloudnative2024_developer_shanghai?spm=5176.20960838.0.0.7802305eyqMQf8",
+  "target": "_blank",
+  "display": true
+}
 // TODO: 配置algolia
 export const ALGOLIA = {
   appId: '1QV814950M',

@@ -1,8 +1,6 @@
-import { twMerge } from "tailwind-merge";
+
 const PluginCardList = (props) => {
     const { dataSource } = props;
-
-    console.log("=======",dataSource)
 
     return (
         <div class='w-[80%] mt-12 mb-8 mx-auto'>

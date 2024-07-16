@@ -1,7 +1,7 @@
 ---
 title: JWT authentication
 keywords: [higress, jwt]
-description: JWT authentication plug-in configuration reference
+description: JWT authentication implements authentication and authorization based on JWT (JSON Web Token).
 ---
 
 ## Description

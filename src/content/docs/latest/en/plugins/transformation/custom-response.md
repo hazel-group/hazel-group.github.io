@@ -1,7 +1,7 @@
 ---
 title: Custom response
 keywords: [higress, custom response]
-description: Custom response plugin configuration reference
+description: Custom response plugin implements a function of sending custom responses.
 ---
 
 ## Description

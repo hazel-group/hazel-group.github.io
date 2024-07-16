@@ -1,7 +1,7 @@
 ---
 title: Basic Auth
 keywords: [higress, basic auth]
-description: Basic authentication plug-in configuration reference
+description: basic-auth plugin implements the function of authentication based on the HTTP Basic Auth standard.
 ---
 
 ## Description 

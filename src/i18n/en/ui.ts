@@ -22,6 +22,7 @@ export default {
 	'commmon.header.comm.rightcut': 'An easy-to-use platform for building cloud native applications',
 	'commmon.header.comm.contact': 'CONTACT US',
 	'commmon.header.common.translator': 'EN',
+	'commmon.header.alert.link': 'Know more',
 	'commmon.header.contact.git': 'GitHub',
 	'commmon.header.contact.ding': 'DingDing',
 	'commmon.header.contact.mail': 'E-mail',
@@ -161,6 +162,7 @@ export default {
 	'plugin.title': 'Higress Plugins',
 	'plugin.description': 'At its core, Higress provides a rich set of plugins that allow you to easily customize your microservices application.',
 	'plugin.introduction.des':'Unlock Possibilities with Our Gateway Plugin: Easy Enhance, Customize, and Integrate!',
+	'plugin.select.filter.description': 'Filter by plugin type',
 
 	'home.introduction.card.des':'Accelerate the development, packaging, and deployment of individual and microservice applications',
 	'home.introduction.card.sca.des':'A one-stop solution for microservice application development and governance',

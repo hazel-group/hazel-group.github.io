@@ -1,7 +1,7 @@
 ---
 title:  Rate limiting based on Key
 keywords: [higress, rate limit]
-description: Key rate limiting plug-in configuration reference
+description: Key rate limiting plug-in implements a rate-limiting function based on specific key-values. The key-values may come from URL parameters or HTTP headers.
 ---
 
 ## Description

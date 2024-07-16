@@ -22,6 +22,7 @@ export default {
 	'commmon.header.comm.rightcut': '一个易于使用的构建云原生应用程序的平台。',
 	'commmon.header.comm.contact': '联系我们',
 	'commmon.header.common.translator': '中文',
+	'commmon.header.alert.link': '点此了解',
 	'commmon.header.contact.git': 'GitHub',
 	'commmon.header.contact.ding': '钉钉',
 	'commmon.header.contact.mail': '电子邮箱',
@@ -168,7 +169,8 @@ export default {
 
 	'plugin.title': 'Higress 插件',
 	'plugin.description': 'Higress 的核心，提供了丰富的插件功能，让您可以轻松实现微服务应用的定制化需求。',
-	'plugin.introduction.des':'解锁无限可能：增强、定制和更易集成！',
+	'plugin.introduction.des': '解锁无限可能：增强、定制和更易集成！',
+	'plugin.select.filter.description': '过滤插件名称',
 	
 
 	'cloud.title': 'Higress Cloud',

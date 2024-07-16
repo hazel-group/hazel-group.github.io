@@ -1,7 +1,7 @@
 ---
 title: request blocking
 keywords: [higress, request block]
-description: Request blocking plug-in configuration reference
+description: Request blocking plug-in  implements a request blocking function based on request characteristics such as URL and request header. It can be used to protect internal resources from unauthorized access.
 ---
 
 ## Description

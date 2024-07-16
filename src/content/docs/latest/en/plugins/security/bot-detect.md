@@ -1,7 +1,7 @@
 ---
 title: Robot Detect
 keywords: [higress,bot detect]
-description: Bot Detect plugin configuration reference
+description: Bot Detect plugin plugin can be used to identify and prevent web crawlers from crawling websites.
 ---
 
 ## Description

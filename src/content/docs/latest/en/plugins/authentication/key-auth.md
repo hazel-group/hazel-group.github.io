@@ -1,7 +1,7 @@
 ---
 title: Key Authentication
 keywords: [higress, key auth]
-description: API Key authentication plug-in configuration reference
+description: API Key authentication implements the authentication function based on the API Key
 ---
 ## Features
 The `key-auth` plug-in implements the authentication function based on the API Key, supports parsing the API Key from the URL parameter or request header of the HTTP request, and verifies whether the API Key has permission to access.
