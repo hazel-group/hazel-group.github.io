@@ -92,6 +92,7 @@ import { Icon } from "@astrojs/starlight/components";
       } else {
           newPathname = '/';
       }
+      console.log("======backbtn")
       const newUrl = `${newPathname}${params.toString() ? `?${params.toString()}` : ''}`;
 
       window.location.href = newUrl; 

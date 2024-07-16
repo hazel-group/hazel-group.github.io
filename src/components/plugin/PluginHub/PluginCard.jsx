@@ -7,9 +7,10 @@ const PluginCardList = (props) => {
              <p class="block text-[36px] leading-9 font-medium mb-12">{dataSource.Functionality}</p>
              <div class=" grid gap-8 gap-x-12 sm:gap-y-8 not-content lg:grid-cols-3 sm:grid-cols-2">
                 {dataSource.plugins.map((item, index) => (
-                        <a
-                            class="hover-transform-box-shadow bg-error nounderline relative flex flex-col hover:shadow-xl transition ease-in-out hover:scale-[102%] cursor-pointer rounded-lg backdrop-blur border border-[#ffffff29]"
-                            href={item.link}
+                    <a
+                    href={item.Link}
+                        
+                            class="no-underline hover-transform-box-shadow bg-error nounderline relative flex flex-col hover:shadow-xl transition ease-in-out hover:scale-[102%] cursor-pointer rounded-lg backdrop-blur border border-[#ffffff29]"
                         >
                              <div class="p-6 rounded-2xl ">
                             <img class="logo w-12 h-12 rounded-lg" src="https://img.alicdn.com/imgextra/i3/O1CN01dMHdeW24VsfWvPRA9_!!6000000007397-2-tps-192-192.png" />

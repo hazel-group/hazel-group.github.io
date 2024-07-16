@@ -70,7 +70,7 @@ export default {
 	'commmon.actions.download': 'Download',
 
 	'home.title': `${SITE.name} Website | ${SITE.name} Official Community | ${SITE.name} Plugin`,
-	'home.title.native.ai':'Native AI',
+	'home.title.native.ai':'AI-Native',
 	'home.title.native.api.gateway':' API Gateway',
 	'home.description': 'Powered by Istio and Envoy, Higress realizes the integration of the triple gateway architecture of traffic gateway, microservice gateway and security gateway, thereby greatly reducing the costs of deployment, operation and maintenance.',
 	'home.introduce.about': 'ABOUT Higress',

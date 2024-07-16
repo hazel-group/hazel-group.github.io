@@ -12,13 +12,14 @@ export default [
     route:"/docs/latest/overview/what-is-higress/"
   },
   {
-    label: "博客",
+    label: "AI 插件",
     translations: {
-      en: "BLOG",
+      en: "PLUGIN",
     },
     trigger: "click",
     target: "_self",
-    route: "/blog/",
+    route: "/plugin/",
+    activePath: ["/plugin"],
   },
   {
     label: "企业版 Higress",
@@ -31,14 +32,13 @@ export default [
     activePath: ["/cloud"],
   },
   {
-    label: "AI 插件",
+    label: "博客",
     translations: {
-      en: "PLUGIN",
+      en: "BLOG",
     },
     trigger: "click",
     target: "_self",
-    route: "/plugin/",
-    activePath: ["/plugin"],
+    route: "/blog/",
   },
   {
     label: "社区",
@@ -51,6 +51,7 @@ export default [
     position:"absolute",
     activePath: ["/news", "/activity", "/blog", "/docs/ebook/", "/download"],
   },
+ 
   {
     label: "开发者",
     translations: {
@@ -60,7 +61,7 @@ export default [
     target: "_self",
     route: "/docs/developers/developers_dev/",
   },
-
+  
   
   {
     label: "控制台样例",

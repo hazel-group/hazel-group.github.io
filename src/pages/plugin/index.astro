@@ -27,7 +27,7 @@ const posts = await getCollection("docs", (item) => {
 
 const generateLink = (slug) => {
   const arr = slug.split("/" + lang);
-  return (lang ==='en' ? "/en" : "") + "/docs/" + arr.join("") + "/?source=plugin/";
+  return (lang ==='en' ? "/en" : "") + "/docs/" + arr.join("") + "/?source=plugin";
 }
 
 const dataSource = posts
